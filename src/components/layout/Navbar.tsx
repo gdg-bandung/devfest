@@ -2,7 +2,7 @@ const link = ["Agenda", "Speakers", "Ticket"];
 
 export default function Navbar() {
   return (
-    <nav class="fixed top-0 w-full bg-black z-50 py-2 lg:p-0">
+    <nav class="sticky top-0 w-full bg-black z-50 py-2 lg:p-0">
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
           <h1>
