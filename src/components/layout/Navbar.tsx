@@ -5,12 +5,15 @@ export default function Navbar() {
     <nav class="sticky top-0 w-full bg-black z-50 py-2 lg:p-0">
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <h1>
-            <img
-              src="/favicon.webp"
-              alt="DevFest Bandung"
-              class="w-32 lg:w-40"
-            />
+          <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
+            <a href="/" aria-label="DevFest Bandung">
+              <p class="hidden">DevFest Bandung</p>
+              <img
+                src="/favicon.webp"
+                alt="DevFest Bandung"
+                class="w-32 lg:w-40"
+              />
+            </a>
           </h1>
           <ul class="hidden lg:flex space-x-8">
             {link.map((item) => (
