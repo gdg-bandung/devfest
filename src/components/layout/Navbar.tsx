@@ -1,0 +1,38 @@
+const link = ["Agenda", "Speakers", "Ticket"];
+
+export default function Navbar() {
+  return (
+    <nav class="fixed top-0 w-full bg-black z-50 py-2 lg:p-0">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <h1>
+            <img
+              src="/favicon.webp"
+              alt="DevFest Bandung"
+              class="w-32 lg:w-40"
+            />
+          </h1>
+          <ul class="hidden lg:flex space-x-8">
+            {link.map((item) => (
+              <li class="flex items-center justify-center text-lg gap-1">
+                {item}{" "}
+                <span class="text-[10px] font-medium block bg-dark-gray text-white/50 px-2 py-[2px] rounded-full">
+                  Soon!
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div class="hidden lg:flex items-center gap-2">
+            Take a seat! →
+            <button class="bg-blue hover:bg-dark-blue border-2 border-dark-blue cursor-not-allowed text-white px-6 py-4 rounded-2xl transition-colors">
+              Coming Soon!
+            </button>
+          </div>
+          <button class="lg:hidden">
+            <img src="/icons/menu.svg" alt="Menu" />
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
