@@ -1,0 +1,145 @@
+---
+// Footer component
+const SOCIAL_MEDIA = [
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/gdgbdg",
+    icon: "/icons/facebook.svg",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/gdg_bandung/",
+    icon: "/icons/instagram.svg",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/gdg-bandung",
+    icon: "/icons/linkedin.svg",
+  },
+  {
+    name: "Telegram",
+    url: "https://t.me/gdgbandung",
+    icon: "/icons/telegram.svg",
+  },
+  {
+    name: "X",
+    url: "https://x.com/gdgbandung",
+    icon: "/icons/x.svg",
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@gdgbandung",
+    icon: "/icons/youtube.svg",
+  },
+];
+---
+
+<footer>
+  <!-- Main Footer Content -->
+  <div class="container mx-auto py-9 border-t border-gray-700">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:justify-between">
+      <!-- Brand Section -->
+      <div class="lg:max-w-lg">
+        <!-- Logo -->
+        <img
+          src="/images/gdg-bandung.webp"
+          alt="GDG Bandung"
+          class="w-64 mb-6"
+        />
+
+        <!-- Description -->
+        <p class="text-gray-300 leading-relaxed">
+          We organize events ranging from small meetups to large-scale
+          conferences like DevFest to create spaces for developers to learn,
+          connect, and grow together. Our community welcomes developers of all
+          levels, from beginners to experts.
+        </p>
+      </div>
+
+      <div
+        class="flex justify-between w-full gap-8 lg:gap-12 lg:max-w-sm xl:max-w-md"
+      >
+        <!-- Community Links -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Community</h4>
+          <div class="space-y-4">
+            <a
+              href="https://gdgbandung.com/brand-guidelines"
+              target="_blank"
+              class="block text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Brand Guidelines
+            </a>
+            <a
+              href="https://gdgbandung.com/code-of-conduct"
+              target="_blank"
+              class="block text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Code of Conduct
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Links -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-6">Contact Us</h4>
+          <div class="space-y-4">
+            <a
+              href="https://gdgbandung.com/terms-and-conditions"
+              target="_blank"
+              class="block text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Request for Media Partner
+            </a>
+            <a
+              href="#"
+              class="block text-gray-300 hover:text-white transition-colors duration-300"
+            >
+              Join as Partner
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="container mx-auto py-6 border-t border-gray-700">
+    <div
+      class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"
+    >
+      <!-- Copyright -->
+      <div class="text-center lg:text-left">
+        <p class="text-sm">
+          © 2025 Google Developer Group Bandung • All rights reserved.
+        </p>
+      </div>
+
+      <!-- Social Media -->
+      <div
+        class="text-center lg:text-right flex flex-col lg:flex-row gap-6 items-center"
+      >
+        <p class="text-sm">Connect With Us</p>
+        <div
+          class="flex items-center justify-center lg:justify-end gap-4 lg:gap-2"
+        >
+          {
+            SOCIAL_MEDIA.map((media) => (
+              <a
+                href={media.url}
+                target="_blank"
+                class="hover:text-white transition-colors duration-300"
+              >
+                <img
+                  src={media.icon}
+                  alt={media.name}
+                  class="w-6 h-6 lg:w-4 lg:h-4"
+                />
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
