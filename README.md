@@ -1,6 +1,6 @@
-# DevFest Bandung 2024 🚀
+# DevFest Bandung 2025 🚀
 
-The official website for DevFest Bandung 2024 - A Google Developer Groups event bringing together developers, designers, and tech enthusiasts.
+The official website for DevFest Bandung 2025 - A Google Developer Groups event bringing together developers, designers, and tech enthusiasts.
 
 🌐 **Live Site**: [https://devfest.gdgbandung.com/](https://devfest.gdgbandung.com/)
 
