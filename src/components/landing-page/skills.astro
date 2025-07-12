@@ -1,0 +1,72 @@
+---
+// Skills section component
+const SKILLS = [
+  {
+    title: "Demystify KMP build Architecture",
+    description: "Android",
+    image: "/icons/android.svg",
+  },
+  {
+    title: "Introduction Imagen and Veo 3",
+    description: "Gemini",
+    image: "/icons/gemini.svg",
+  },
+  {
+    title: "What's new in Firebase",
+    description: "Firebase",
+    image: "/icons/firebase.svg",
+  },
+  {
+    title: "Cloud assist in action",
+    description: "Cloud",
+    image: "/icons/cloud.svg",
+  },
+];
+---
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6">
+    <div class="lg:flex lg:items-center lg:justify-between lg:gap-16">
+      <!-- Left Content -->
+      <div class="lg:flex-1 mb-12 lg:mb-0">
+        <h2
+          class="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-white leading-tight"
+        >
+          Learn new skill
+          <br />Master new tools
+        </h2>
+        <p class="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-lg">
+          Whether you're seasoned developer or just starting out, you'll find
+          everything you need to sharpen your skills with us
+        </p>
+      </div>
+
+      <!-- Right Content - Skills Cards -->
+      <div class="lg:flex-shrink-0">
+        <div
+          class="bg-light-green backdrop-blur-sm border-4 border-soft-green rounded-3xl p-6 lg:p-8 mx-auto lg:mx-0 flex flex-col gap-3 lg:gap-4"
+        >
+          {
+            SKILLS.map((skill) => (
+              <div class="flex items-center gap-4 p-4 rounded-2xl bg-white">
+                <div class="w-14 h-14 bg-light-gray rounded-2xl flex items-center justify-center">
+                  <img
+                    src={skill.image}
+                    alt={skill.description}
+                    class="w-8 h-8 object-contain object-center"
+                  />
+                </div>
+                <div class="flex-1">
+                  <h3 class="font-bold text-black text-lg leading-tight">
+                    {skill.title}
+                  </h3>
+                  <p class="text-gray-600 text-sm">{skill.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
