@@ -1,0 +1,90 @@
+---
+// Sponsor section component
+const SPONSOR_LOGOS = [
+  {
+    name: "Logitech",
+    image: "/images/sponsors/logitech.png",
+    class: "max-h-8",
+  },
+  {
+    name: "Qwords",
+    image: "/images/sponsors/qwords.png",
+    class: "max-h-8",
+  },
+  {
+    name: "BenQ",
+    image: "/images/sponsors/benq.png",
+    class: "max-h-6",
+  },
+  {
+    name: "TIDB",
+    image: "/images/sponsors/tidb.png",
+    class: "max-h-6",
+  },
+  {
+    name: "PEXIO",
+    image: "/images/sponsors/pexio.png",
+    class: "max-h-[18px]",
+  },
+  {
+    name: "midtrans",
+    image: "/images/sponsors/midtrans.png",
+    class: "max-h-6",
+  },
+];
+---
+
+<section class="py-16 lg:py-24">
+  <div class="container mx-auto px-6">
+    <div
+      class="bg-white backdrop-blur-sm border-2 border-yellow rounded-3xl p-6 md:p-8 lg:p-12 relative overflow-hidden"
+    >
+      <div class="flex items-center justify-between flex-col lg:flex-row">
+        <!-- Left Content -->
+        <div class="flex-1 lg:pr-16">
+          <h2
+            class="text-4xl xl:text-5xl font-bold mb-6 text-black leading-tight"
+          >
+            Be Our Exclusive Partner: Empower Indonesia's Tech Future with GDG
+            Bandung!
+          </h2>
+          <p class="text-lg text-black mb-8 leading-relaxed lg:max-w-2xl">
+            The premier opportunity in 2025 to solidify your brand as an
+            innovation leader within Indonesia's most influential developer
+            community.
+          </p>
+        </div>
+
+        <!-- Right Content -->
+        <div class="flex-shrink-0 flex flex-col items-center">
+          <p class="text-black mb-6 text-sm">
+            More than 15+ companies have sponsored us in the past
+          </p>
+
+          <!-- Sponsor Logos Flex -->
+          <div
+            class="flex flex-wrap items-center justify-center gap-4 mb-8 lg:max-w-xs"
+          >
+            {
+              SPONSOR_LOGOS.map((sponsor) => (
+                <img
+                  src={sponsor.image}
+                  alt={sponsor.name}
+                  class={sponsor.class}
+                />
+              ))
+            }
+          </div>
+
+          <!-- CTA Button -->
+          <button
+            class="bg-blue hover:bg-dark-blue border-2 border-dark-blue font-medium text-white px-8 py-6 rounded-2xl flex items-center justify-center gap-3 cursor-pointer transition-colors duration-300 w-full"
+          >
+            <img src="/icons/arrow.svg" alt="Arrow" class="w-5 h-5" />
+            Become our Sponsor
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
