@@ -71,6 +71,8 @@ const SPONSOR_LOGOS = [
                   src={sponsor.image}
                   alt={sponsor.name}
                   class={sponsor.class}
+                  fetchpriority="low"
+                  loading="lazy"
                 />
               ))
             }

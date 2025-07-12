@@ -10,7 +10,13 @@ const link = ["Agenda", "Speakers", "Ticket"];
       <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
         <a href="/" aria-label="DevFest Bandung">
           <p class="hidden">DevFest Bandung</p>
-          <img src="/logo.webp" alt="DevFest Bandung" class="w-32 lg:w-40" />
+          <img
+            src="/logo.webp"
+            alt="DevFest Bandung"
+            class="w-32 lg:w-40"
+            fetchpriority="high"
+            loading="eager"
+          />
         </a>
       </h1>
       <ul class="hidden lg:flex space-x-8">
@@ -33,7 +39,7 @@ const link = ["Agenda", "Speakers", "Ticket"];
           Coming Soon!
         </button>
       </div>
-      <MobileMenuToggle menuItems={link} client:load />
+      <MobileMenuToggle menuItems={link} client:visible />
     </div>
   </div>
 </nav>
