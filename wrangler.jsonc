@@ -2,11 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "devfest",
   "compatibility_date": "2025-04-01",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "formdata_parser_supports_files",
-    "brotli_content_encoding"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "main": "./dist/_worker.js/index.js",
   "assets": {
     "directory": "./dist",
