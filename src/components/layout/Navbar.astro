@@ -35,11 +35,12 @@ const link = ["Agenda", "Speakers", "Ticket"];
       </ul>
       <div class="hidden lg:flex items-center gap-2">
         Take a seat! →
-        <button
-          class="bg-blue hover:bg-dark-blue border-2 border-dark-blue cursor-not-allowed text-white px-6 py-4 rounded-2xl transition-colors"
+        <a
+          href="https://goers.co/devfestbdg25"
+          class="bg-blue hover:bg-dark-blue border-2 border-dark-blue cursor-pointer text-white px-6 py-4 rounded-2xl transition-colors"
         >
-          Coming Soon!
-        </button>
+          Book Now!
+        </a>
       </div>
       <MobileMenuToggle menuItems={link} client:visible />
     </div>

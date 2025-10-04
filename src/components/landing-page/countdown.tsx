@@ -1,6 +1,7 @@
 import { createSignal, createEffect } from "solid-js";
+import { PUBLIC_END_COUNTDOWN } from "astro:env/client";
 
-const targetDate = new Date("2025-11-27T07:00:00+07:00");
+const targetDate = new Date(PUBLIC_END_COUNTDOWN)
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = createSignal({
