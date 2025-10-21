@@ -5,7 +5,7 @@ const link = ["Agenda", "Speakers", "Ticket"];
 ---
 
 <nav
-  class="sticky top-0 w-full bg-black z-50 py-2 lg:p-0 px-8 lg:px-16 xl:px-[180px]"
+  class="fixed top-0 w-full bg-transparent z-50 py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px]"
 >
   <div class="container mx-auto py-6">
     <div class="flex items-center justify-between">
@@ -15,20 +15,17 @@ const link = ["Agenda", "Speakers", "Ticket"];
           <img
             src="/logo.webp"
             alt="DevFest Bandung"
-            class="w-32 lg:w-40"
+            class="w-32 lg:w-48"
             fetchpriority="high"
             loading="eager"
           />
         </a>
       </h1>
-      <ul class="hidden lg:flex space-x-8">
+      <ul class="hidden lg:flex space-x-10">
         {
           link.map((item) => (
-            <li class="flex items-center justify-center text-lg gap-1">
+            <li class="flex items-center justify-center text-xl gap-1 text-white">
               {item}{" "}
-              <span class="text-[10px] font-medium block bg-dark-gray text-white/50 px-2 py-[2px] rounded-full">
-                Soon!
-              </span>
             </li>
           ))
         }
