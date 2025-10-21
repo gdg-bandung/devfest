@@ -55,16 +55,16 @@ const link = ["Agenda", "Speakers", "Ticket"];
     function handleScroll() {
       if (window.scrollY > 50) {
         // Add scrolled styles
-        navbar?.classList.add('bg-black', 'py-2');
+        navbar?.classList.add('bg-black', 'py-4');
         navbar?.classList.remove('bg-transparent', 'py-9');
-        navbarContainer?.classList.add('py-2');
+        navbarContainer?.classList.add('py-4');
         navbarContainer?.classList.remove('py-6');
       } else {
         // Remove scrolled styles
         navbar?.classList.add('bg-transparent', 'py-9');
-        navbar?.classList.remove('bg-black', 'py-2');
+        navbar?.classList.remove('bg-black', 'py-4');
         navbarContainer?.classList.add('py-6');
-        navbarContainer?.classList.remove('py-2');
+        navbarContainer?.classList.remove('py-4');
       }
     }
     
