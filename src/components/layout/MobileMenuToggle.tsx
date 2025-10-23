@@ -23,19 +23,19 @@ export default function MobileMenuToggle(props: MobileMenuToggleProps) {
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
-        <div class="w-6 h-6 relative">
+        <div class="w-8 h-8 relative">
           <span
-            class={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+            class={`absolute w-8 h-[3px] bg-white transition-all duration-300 ease-in-out ${
               isMenuOpen() ? "rotate-45 top-2.5" : "top-0.5"
             }`}
           ></span>
           <span
-            class={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out top-2.5 ${
+            class={`absolute w-8 h-[3px] bg-white transition-all duration-300 ease-in-out top-2.5 ${
               isMenuOpen() ? "opacity-0" : "opacity-100"
             }`}
           ></span>
           <span
-            class={`absolute w-6 h-0.5 bg-white transition-all duration-300 ease-in-out ${
+            class={`absolute w-8 h-[3px] bg-white transition-all duration-300 ease-in-out ${
               isMenuOpen() ? "-rotate-45 top-2.5" : "top-4.5"
             }`}
           ></span>
@@ -91,10 +91,7 @@ export default function MobileMenuToggle(props: MobileMenuToggleProps) {
                     class="flex items-center justify-between px-6 py-4 text-lg text-white hover:bg-dark-gray transition-colors"
                     onClick={closeMenu}
                   >
-                    <span>{item}</span>
-                    <span class="text-[10px] font-medium bg-dark-gray text-white/50 px-2 py-1 rounded-full">
-                      Soon!
-                    </span>
+                    {item}
                   </a>
                 </li>
               ))}

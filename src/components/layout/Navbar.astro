@@ -6,9 +6,9 @@ const link = ["Agenda", "Speakers", "Ticket"];
 
 <nav
   id="navbar"
-  class="fixed top-0 w-full z-50 py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
+  class="fixed top-0 w-full z-50 py-8 lg:py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
 >
-  <div class="container mx-auto py-6 transition-all duration-300 ease-in-out" id="navbar-container">
+  <div class="container mx-auto transition-all duration-300 ease-in-out" id="navbar-container">
     <div class="flex items-center justify-between">
       <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
         <a href="/" aria-label="DevFest Bandung">
@@ -16,7 +16,7 @@ const link = ["Agenda", "Speakers", "Ticket"];
           <img
             src="/logo.webp"
             alt="DevFest Bandung"
-            class="w-32 lg:w-48"
+            class="w-44 lg:w-48"
             fetchpriority="high"
             loading="eager"
           />
@@ -55,16 +55,14 @@ const link = ["Agenda", "Speakers", "Ticket"];
     function handleScroll() {
       if (window.scrollY > 50) {
         // Add scrolled styles
-        navbar?.classList.add('bg-black', 'py-4');
-        navbar?.classList.remove('bg-transparent', 'py-9');
-        navbarContainer?.classList.add('py-4');
-        navbarContainer?.classList.remove('py-6');
+        navbar?.classList.add('bg-black', 'lg:py-4', 'py-2');
+        navbar?.classList.remove('bg-transparent', 'py-8', 'lg:py-9');
+        navbarContainer?.classList.add('py-2', 'lg:py-4');
       } else {
         // Remove scrolled styles
-        navbar?.classList.add('bg-transparent', 'py-9');
-        navbar?.classList.remove('bg-black', 'py-4');
-        navbarContainer?.classList.add('py-6');
-        navbarContainer?.classList.remove('py-4');
+        navbar?.classList.add('bg-transparent', 'py-8', 'lg:py-9');
+        navbar?.classList.remove('bg-black', 'lg:py-4', 'py-2');
+        navbarContainer?.classList.remove('py-2', 'lg:py-4');
       }
     }
     
