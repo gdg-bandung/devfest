@@ -1,32 +1,141 @@
 ---
-
+import Countdown from "./countdown";
 ---
 
-<section id="about" class="py-12 lg:py-15 px-8 lg:px-16 xl:px-[180px]">
-  <div class="container mx-auto">
+<section
+  id="about"
+  class="pt-8 pb-16 lg:py-28 px-8 lg:px-16 xl:px-[180px] bg-light-blue relative overflow-hidden"
+>
+  <!-- Decorative Patterns Desktop -->
+  <img
+    src="/images/about/pattern-1.svg"
+    alt="Decorative Top Left"
+    class="absolute top-0 -left-10 xl:left-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-2.svg"
+    alt="Decorative Top Right"
+    class="absolute top-8 -right-36 xl:right-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-3.svg"
+    alt="Decorative Bottom Left"
+    class="absolute top-1/2 -translate-y-1/2 left-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-5.svg"
+    alt="Decorative Center Left"
+    class="absolute bottom-7 left-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-6.svg"
+    alt="Decorative Bottom Right"
+    class="absolute bottom-52 right-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-4.svg"
+    alt="Decorative Bottom Right"
+    class="absolute bottom-0 right-0 hidden lg:block"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- Decorative Patterns Mobile -->
+  <img
+    src="/images/about/pattern-1-mobile.svg"
+    alt="Decorative Top Left"
+    class="absolute top-[5px] left-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-2-mobile.svg"
+    alt="Decorative Top Right"
+    class="absolute top-8 right-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-3-mobile.svg"
+    alt="Decorative Bottom Left"
+    class="absolute top-1/2 -translate-y-1/2 left-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-5-mobile.svg"
+    alt="Decorative Center Left"
+    class="absolute bottom-0 left-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-6-mobile.svg"
+    alt="Decorative Bottom Right"
+    class="absolute bottom-1/4 right-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    src="/images/about/pattern-4-mobile.svg"
+    alt="Decorative Bottom Right"
+    class="absolute bottom-0 right-0 lg:hidden"
+    fetchpriority="low"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <div
+    class="container mx-auto flex flex-col items-center gap-14 lg:gap-[60px] z-10 relative"
+  >
+    <h2 class="text-xl lg:text-4xl text-center max-w-3xl mx-auto text-black">
+      DevFest is a large, inclusive community-led tech conference! It embraces
+      developers globally, hosting events to explore tools, learn from experts,
+      and connect with local developers.
+    </h2>
     <div
-      class="grid grid-cols-1 lg:grid-cols-7 gap-1 text-center justify-center"
+      class="flex flex-col-reverse lg:flex-col items-center gap-9 lg:gap-[60px] max-w-4xl w-full"
     >
-      <h2 class="text-4xl md:text-6xl font-medium text-start col-span-3">
-        About<br />DevFest
-      </h2>
-      <div class="col-span-4 flex items-center">
-        <p class="text-lg lg:text-xl text-start">
-          DevFest is a large, inclusive community-led tech conference! It
-          embraces developers globally, hosting events to explore tools, learn
-          from experts, and connect with local developers.
-        </p>
+      <Countdown client:visible />
+      <div
+        class="relative py-10 w-full flex justify-center items-center h-[572px]"
+      >
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 h-full rounded-3xl border-4 border-soft-blue max-w-3xl w-[calc(100%-21px)] lg:w-full"
+        >
+        </div>
+        <div class="bg-gray max-w-4xl w-full h-[480px] rounded-3xl relative overflow-hidden">
+          <iframe
+            src="https://www.youtube.com/embed/QALB9eA1EI0?si=ZixD8iHe54xiT1Pc"
+            class="w-full h-full"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </div>
-    <img
-      src="/images/about.webp"
-      class="w-full mt-8"
-      alt="DevFest photo set"
-      width="720"
-      height="385.2"
-      fetchpriority="low"
-      loading="lazy"
-      decoding="async"
-    />
   </div>
 </section>
