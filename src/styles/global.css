@@ -7,6 +7,7 @@
   /* basic */
   --color-black: #1f2123;
   --color-dark-gray: #2f3337;
+  --color-gray: #78838D;
   --color-light-gray: #f4f4f4;
   --color-white: #ffffff;
   /* red */
@@ -33,4 +34,37 @@
 
 body {
   @apply font-sans bg-black text-white;
+}
+
+.gradient-border {
+  background: radial-gradient(
+      66.28% 78.96% at 49.93% 0%,
+      #f94543 0%,
+      rgba(247, 48, 110, 0) 100%
+    ),
+    radial-gradient(
+      51.24% 53.26% at 37.28% 98.85%,
+      #08b962 0%,
+      rgba(8, 185, 98, 0) 100%
+    ),
+    radial-gradient(
+      36.47% 53.22% at 14.75% 46.55%,
+      #fabc12 0%,
+      rgba(250, 188, 18, 0) 100%
+    ),
+    radial-gradient(
+      57.17% 99.67% at 84.71% 48.58%,
+      #3186ff 0%,
+      rgba(49, 134, 255, 0) 100%
+    );
+}
+
+.custom-gradient-overlay {
+  background: linear-gradient(0deg, #1f2123, #1f2123),
+    linear-gradient(
+      180deg,
+      rgba(12, 28, 45, 0) 35.58%,
+      rgba(12, 28, 45, 0.440299) 80.29%,
+      #0c1c2d 100%
+    );
 }

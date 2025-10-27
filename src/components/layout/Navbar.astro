@@ -5,9 +5,10 @@ const link = ["Agenda", "Speakers", "Ticket"];
 ---
 
 <nav
-  class="sticky top-0 w-full bg-black z-50 py-2 lg:p-0 px-8 lg:px-16 xl:px-[180px]"
+  id="navbar"
+  class="fixed top-0 w-full z-50 py-8 lg:py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
 >
-  <div class="container mx-auto py-6">
+  <div class="container mx-auto transition-all duration-300 ease-in-out" id="navbar-container">
     <div class="flex items-center justify-between">
       <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
         <a href="/" aria-label="DevFest Bandung">
@@ -15,20 +16,17 @@ const link = ["Agenda", "Speakers", "Ticket"];
           <img
             src="/logo.webp"
             alt="DevFest Bandung"
-            class="w-32 lg:w-40"
+            class="w-44 lg:w-48"
             fetchpriority="high"
             loading="eager"
           />
         </a>
       </h1>
-      <ul class="hidden lg:flex space-x-8">
+      <ul class="hidden lg:flex space-x-10">
         {
           link.map((item) => (
-            <li class="flex items-center justify-center text-lg gap-1">
+            <li class="flex items-center justify-center text-xl gap-1 text-white">
               {item}{" "}
-              <span class="text-[10px] font-medium block bg-dark-gray text-white/50 px-2 py-[2px] rounded-full">
-                Soon!
-              </span>
             </li>
           ))
         }
@@ -46,3 +44,32 @@ const link = ["Agenda", "Speakers", "Ticket"];
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.getElementById('navbar');
+    const navbarContainer = document.getElementById('navbar-container');
+    
+    if (!navbar || !navbarContainer) return;
+    
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        // Add scrolled styles
+        navbar?.classList.add('bg-black', 'lg:py-2.5', 'py-2');
+        navbar?.classList.remove('bg-transparent', 'py-8', 'lg:py-9');
+        navbarContainer?.classList.add('py-2', 'lg:py-2.5');
+      } else {
+        // Remove scrolled styles
+        navbar?.classList.add('bg-transparent', 'py-8', 'lg:py-9');
+        navbar?.classList.remove('bg-black', 'lg:py-2.5', 'py-2');
+        navbarContainer?.classList.remove('py-2', 'lg:py-2.5');
+      }
+    }
+    
+    // Initial check
+    handleScroll();
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  });
+</script>

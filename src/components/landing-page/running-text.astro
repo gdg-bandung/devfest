@@ -1,0 +1,136 @@
+---
+// Running text marquee component
+export interface Props {
+  color?: "blue" | "green" | "red" | "yellow";
+  text?: string;
+}
+
+const { color = "yellow", text = "DevFest Bandung 2025" } = Astro.props;
+
+// Define color themes
+const colorThemes = {
+  blue: {
+    backgroundColor: "bg-light-blue",
+    borderColor: "border-blue",
+    textColor: "text-dark-blue",
+    starFillColor: "#4285f3",
+    starStrokeColor: "#0057e5",
+  },
+  green: {
+    backgroundColor: "bg-light-green",
+    borderColor: "border-green",
+    textColor: "text-dark-green",
+    starFillColor: "#32a952",
+    starStrokeColor: "#047d5f",
+  },
+  red: {
+    backgroundColor: "bg-light-red",
+    borderColor: "border-red",
+    textColor: "text-dark-red",
+    starFillColor: "#ea4335",
+    starStrokeColor: "#c73130",
+  },
+  yellow: {
+    backgroundColor: "bg-light-yellow",
+    borderColor: "border-yellow",
+    textColor: "text-black",
+    starFillColor: "#FBBD03",
+    starStrokeColor: "#FFE003",
+  },
+};
+
+const theme = colorThemes[color];
+---
+
+<section
+  class={`${theme.backgroundColor} py-3 lg:py-6 overflow-hidden border-y-4 ${theme.borderColor}`}
+>
+  <div class="flex whitespace-nowrap" id="marquee-container">
+    <div
+      class={`flex items-center ${theme.textColor} font-bold text-2xl md:text-3xl lg:text-4xl marquee-content`}
+    >
+      {
+        Array(8)
+          .fill(true)
+          .map((_, index) =>
+            index % 2 === 0 ? (
+              <span class="pr-[6px]">{text}</span>
+            ) : (
+              <svg
+                class="pr-[6px]"
+                width="36"
+                height="36"
+                viewBox="0 0 36 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.2725 6.55127C20.1165 11.9118 24.3603 16.1551 29.7207 17.9995C24.3605 19.8437 20.1167 24.0875 18.2725 29.4478C16.4281 24.0874 12.1847 19.8436 6.82422 17.9995C12.1849 16.1553 16.4283 11.9119 18.2725 6.55127Z"
+                  fill={theme.starFillColor}
+                  stroke={theme.starStrokeColor}
+                  stroke-width="2"
+                />
+              </svg>
+            )
+          )
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById(
+      "marquee-container"
+    ) as HTMLElement;
+    const content = container?.querySelector(".marquee-content") as HTMLElement;
+
+    if (!container || !content) return;
+
+    // Clone the content for seamless loop
+    const clone = content.cloneNode(true) as HTMLElement;
+    container.appendChild(clone);
+
+    let position = 0;
+    const speed = 1; // pixels per frame
+    let animationId: number | null = null;
+    let isPaused = false;
+
+    function animate() {
+      if (!isPaused && container && content) {
+        position -= speed;
+
+        // Get the width of one content set
+        const contentWidth = content.offsetWidth;
+
+        // Reset position when one full content has scrolled
+        if (Math.abs(position) >= contentWidth) {
+          position = 0;
+        }
+
+        container.style.transform = `translateX(${position}px)`;
+      }
+
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Start animation
+    animate();
+
+    // Pause on hover
+    container.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
+
+    container.addEventListener("mouseleave", () => {
+      isPaused = false;
+    });
+
+    // Cleanup on page unload
+    window.addEventListener("beforeunload", () => {
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+      }
+    });
+  });
+</script>
