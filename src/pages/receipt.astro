@@ -1,0 +1,60 @@
+---
+import BaseHead from "../components/layout/BaseHead.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={`Receipt - ${SITE_TITLE}`} description="Thank you for registering for DevFest Bandung 2025! Your payment has been processed successfully." />
+  </head>
+  <body class="bg-black text-white">
+    <!-- Navigation -->
+    <Navbar />
+
+    <!-- Receipt Content -->
+    <section class="pt-32 pb-16 px-8 lg:px-16 xl:px-[180px]">
+      <div class="container mx-auto max-w-4xl">
+        
+        <!-- Success Message -->
+        <div class="text-center mb-12">
+          <div class="w-20 h-20 bg-green rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h1 class="text-4xl lg:text-6xl font-bold mb-4">Thank you!</h1>
+          <p class="text-xl lg:text-2xl text-gray-300">Your payment has been processed successfully.</p>
+        </div>
+
+        <!-- Event Info Card -->
+        <div class="bg-dark-gray rounded-2xl p-8 mb-8">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+            <div class="mb-6 lg:mb-0">
+              <img src="/logo.webp" alt="DevFest Bandung" class="w-48 mb-4" />
+              <h2 class="text-2xl font-bold mb-2">DevFest Bandung 2025</h2>
+              <p class="text-gray-300">The Biggest Developer Festival in Indonesia</p>
+            </div>
+            <div class="text-left lg:text-right">
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">📅 Date & Time</h3>
+                <p class="text-gray-300">Saturday, November 29, 2025</p>
+                <p class="text-gray-300">09:00 AM - 05:00 PM</p>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-2">📍 Venue</h3>
+                <p class="text-gray-300">Universitas Kristen Maranatha</p>
+                <p class="text-gray-300">Bandung, Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>
