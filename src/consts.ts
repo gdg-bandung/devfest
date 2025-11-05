@@ -4,3 +4,21 @@
 export const SITE_TITLE = "DevFest Bandung";
 export const SITE_DESCRIPTION =
   "Join us for the biggest developer conference in Southeast Asia. Learn, network, and grow with the tech community.";
+
+export enum PropertyType {
+  WEB = "web",
+  AI = "ai",
+  MOBILE = "mobile",
+  CLOUD = "cloud",
+  FIREBASE = "firebase",
+  GENERAL = "general",
+  DESIGN = "design",
+}
+
+export enum ThemeColor {
+  BLUE = "blue",
+  GREEN = "green",
+  RED = "red",
+  YELLOW = "yellow",
+  RAINBOW = "rainbow",
+}

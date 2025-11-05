@@ -1,7 +1,7 @@
 import { createSignal, Show } from "solid-js";
 
 interface MobileMenuToggleProps {
-  menuItems: string[];
+  menuItems: { name: string; link?: string }[];
 }
 
 export default function MobileMenuToggle(props: MobileMenuToggleProps) {
@@ -87,11 +87,11 @@ export default function MobileMenuToggle(props: MobileMenuToggleProps) {
               {props.menuItems.map((item) => (
                 <li>
                   <a
-                    href="#"
+                    href={item.link ?? "#"}
                     class="flex items-center justify-between px-6 py-4 text-lg text-white hover:bg-dark-gray transition-colors"
                     onClick={closeMenu}
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
