@@ -33,6 +33,7 @@ export default function SpeakerCard({
   propertyType,
   photoUrl = "",
   customClass = "",
+  isSeeAllSpeakerCard = false,
 }: {
   name: string;
   role: string;
@@ -40,6 +41,7 @@ export default function SpeakerCard({
   propertyType: (typeof PropertyType)[keyof typeof PropertyType];
   photoUrl?: string;
   customClass?: string;
+  isSeeAllSpeakerCard?: boolean;
 }) {
   return (
     <article
@@ -57,6 +59,13 @@ export default function SpeakerCard({
           class="w-[98%] aspect-square object-contain bottom-1 left-1 absolute"
         />
       )}
+      {isSeeAllSpeakerCard && (
+        <img
+          src={`/images/speaker/photos/placeholder.webp`}
+          alt="See All Speakers Placeholder"
+          class="w-[98%] aspect-square object-contain bottom-1 left-1 absolute"
+        />
+      )}
       <img
         src={`/images/speaker/gdg/${themeColor}-gdg.svg`}
         alt={`${themeColor} GDG`}
@@ -67,22 +76,32 @@ export default function SpeakerCard({
         alt={propertyType}
         class="absolute bottom-0.5 lg:bottom-1 right-1 lg:right-2 w-1/6"
       />
-      <div
-        class={`absolute bottom-[3%] left-[3%] w-[73%] lg:w-[72%] text-center p-[3%] ${color[themeColor].backgroundColor} ${color[themeColor].borderColor} bg-opacity-80 rounded-lg lg:rounded-2xl`}
-      >
-        <h3
-          class={`${
-            name.length > 20
-              ? "text-[8px] sm:text-xs md:sm lg:text-base xl:text-lg"
-              : "text-[10px] sm:text-sm md:text-base lg:text-lg xl:text-2xl"
-          } font-bold text-white text-start`}
+
+      {isSeeAllSpeakerCard ? (
+        <a
+          href="/speaker"
+          class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 py-5 px-6 bg-blue border-4 border-dark-blue rounded-xl text-white font-bold text-2xl hover:bg-dark-blue transition-opacity duration-300 focus:outline-none focus:ring-4 focus:ring-blue focus:ring-opacity-50 cursor-pointer z-30"
         >
-          {name}
-        </h3>
-        <p class="text-[8px] sm:text-xs lg:text-sm xl:text-base text-white italic mt-0.5 md:mt-1 lg:mt-1.5 text-start">
-          {role}
-        </p>
-      </div>
+          See&nbsp;All&nbsp;Speakers
+        </a>
+      ) : (
+        <div
+          class={`absolute bottom-[3%] left-[3%] w-[73%] lg:w-[72%] text-center p-[3%] ${color[themeColor].backgroundColor} ${color[themeColor].borderColor} bg-opacity-80 rounded-lg lg:rounded-2xl`}
+        >
+          <h3
+            class={`${
+              name.length > 20
+                ? "text-[8px] sm:text-xs md:sm lg:text-base xl:text-lg"
+                : "text-[10px] sm:text-sm md:text-base lg:text-lg xl:text-2xl"
+            } font-bold text-white text-start`}
+          >
+            {name}
+          </h3>
+          <p class="text-[8px] sm:text-xs lg:text-sm xl:text-base text-white italic mt-0.5 md:mt-1 lg:mt-1.5 text-start">
+            {role}
+          </p>
+        </div>
+      )}
     </article>
   );
 }
