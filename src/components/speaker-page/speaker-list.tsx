@@ -10,7 +10,7 @@ const tabs = [
   { name: "Cloud", key: PropertyType.CLOUD },
   { name: "AI/ML", key: PropertyType.AI },
   { name: "Design", key: PropertyType.DESIGN },
-  { name: "More", key: PropertyType.GENERAL },
+  { name: "Other", key: PropertyType.GENERAL },
 ];
 
 export default function SpeakerList() {
@@ -48,10 +48,13 @@ export default function SpeakerList() {
             </div>
           </div>
           <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-11">
-            {SPEAKERS.filter((speaker) =>
-              activeTab() === "all"
-                ? true
-                : speaker.propertyType === activeTab()
+            {SPEAKERS.filter(
+              (speaker) =>
+                (activeTab() === "all"
+                  ? true
+                  : speaker.propertyType === activeTab() ||
+                    (speaker.propertyType === PropertyType.FIREBASE &&
+                      activeTab() === PropertyType.GENERAL)) && speaker.photoUrl
             ).map((speaker) => (
               <SpeakerCard
                 name={speaker.name}
