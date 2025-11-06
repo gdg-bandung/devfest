@@ -77,18 +77,16 @@ import { PropertyType, ThemeColor } from "../../consts";
     document.addEventListener("DOMContentLoaded", function () {
       const splide = new Splide("#speakers-slide", {
         perPage: 3,
-        perMove: 3,
+        perMove: 1,
         breakpoints: {
           640: {
             perPage: 2,
             padding: 0,
             gap: "21px",
-            perMove: 2,
           },
           1024: {
             perPage: 2,
             padding: 0,
-            perMove: 2,
           },
         },
         rewind: false,

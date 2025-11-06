@@ -56,9 +56,8 @@ const haxColor = {
     }
   </ul>
   <div class="flex flex-col items-center gap-[10.55px] relative z-20">
-    <a
-      href={disabled ? "#" : "https://goers.co/devfestbdg25"}
-      class={`w-full p-[3.52px] rounded-[14.07px] ${disabled ? "bg-white cursor-not-allowed" : "bg-rainbow cursor-pointer"}`}
+    <button
+      class={`w-full p-[3.52px] rounded-[14.07px] ${disabled ? "bg-white cursor-not-allowed" : "bg-rainbow cursor-pointer get-ticket-btn"}`}
     >
       <div
         class="rounded-[13px] bg-white w-full py-[21.1px] px-[31.65px] flex items-center justify-center gap-[7.91px] text-[15.83px] font-bold text-black"
@@ -66,7 +65,7 @@ const haxColor = {
         {disabled ? "Sold Out" : "Get The Ticket"}
         <img src="/icons/ticket.svg" alt="ticket" />
       </div>
-    </a>
+    </button>
     {
       !disabled && (
         <p class="font-bold text-soft-red">Ends 15 Nov 2025, 23:59 WIB</p>
