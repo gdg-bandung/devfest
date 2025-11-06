@@ -70,77 +70,77 @@ import { PropertyType, ThemeColor } from "../../consts";
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    import Splide from "@splidejs/splide";
+<script>
+  import Splide from "@splidejs/splide";
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const splide = new Splide("#speakers-slide", {
-        perPage: 3,
-        perMove: 1,
-        breakpoints: {
-          640: {
-            perPage: 2,
-            padding: 0,
-            gap: "21px",
-          },
-          1024: {
-            perPage: 2,
-            padding: 0,
-          },
+  document.addEventListener("DOMContentLoaded", function () {
+    const splide = new Splide("#speakers-slide", {
+      perPage: 3,
+      perMove: 1,
+      breakpoints: {
+        640: {
+          perPage: 2,
+          padding: 0,
+          gap: "21px",
         },
-        rewind: false,
-        gap: "44px",
-        trimSpace: false,
-        padding: 0,
-        arrows: false,
-        pagination: false,
-      });
-      splide.mount();
+        1024: {
+          perPage: 2,
+          padding: 0,
+        },
+      },
+      rewind: false,
+      gap: "44px",
+      trimSpace: false,
+      padding: 0,
+      arrows: false,
+      pagination: false,
+    });
+    splide.mount();
 
-      splide.on("move", (newIndex) => {
-        const prevButton = document.querySelector(
-          "#speakers-arrow button:first-child"
-        ) as HTMLButtonElement;
-        const nextButton = document.querySelector(
-          "#speakers-arrow button:last-child"
-        ) as HTMLButtonElement;
-        const prevArrow = prevButton?.querySelector("svg path");
-        const nextArrow = nextButton?.querySelector("svg path");
-
-        if (prevButton && prevArrow) {
-          if (newIndex === 0) {
-            prevButton.setAttribute("disabled", "true");
-            prevArrow.setAttribute("fill", "gray");
-          } else {
-            prevButton.removeAttribute("disabled");
-            prevArrow.setAttribute("fill", "white");
-          }
-        }
-
-        if (nextButton && nextArrow) {
-          if (newIndex >= splide.length - (splide?.options?.perPage || 0)) {
-            nextButton.setAttribute("disabled", "true");
-            nextArrow.setAttribute("fill", "gray");
-          } else {
-            nextButton.removeAttribute("disabled");
-            nextArrow.setAttribute("fill", "white");
-          }
-        }
-      });
-
+    splide.on("move", (newIndex) => {
       const prevButton = document.querySelector(
         "#speakers-arrow button:first-child"
-      );
+      ) as HTMLButtonElement;
       const nextButton = document.querySelector(
         "#speakers-arrow button:last-child"
-      );
-      prevButton?.addEventListener("click", () => {
-        splide.go("<");
-      });
-      nextButton?.addEventListener("click", () => {
-        splide.go(">");
-      });
+      ) as HTMLButtonElement;
+      const prevArrow = prevButton?.querySelector("svg path");
+      const nextArrow = nextButton?.querySelector("svg path");
+
+      if (prevButton && prevArrow) {
+        if (newIndex === 0) {
+          prevButton.setAttribute("disabled", "true");
+          prevArrow.setAttribute("fill", "gray");
+        } else {
+          prevButton.removeAttribute("disabled");
+          prevArrow.setAttribute("fill", "white");
+        }
+      }
+
+      if (nextButton && nextArrow) {
+        if (newIndex >= splide.length - (splide?.options?.perPage || 0)) {
+          nextButton.setAttribute("disabled", "true");
+          nextArrow.setAttribute("fill", "gray");
+        } else {
+          nextButton.removeAttribute("disabled");
+          nextArrow.setAttribute("fill", "white");
+        }
+      }
     });
-  </script>
-</section>
+
+    const prevButton = document.querySelector(
+      "#speakers-arrow button:first-child"
+    );
+    const nextButton = document.querySelector(
+      "#speakers-arrow button:last-child"
+    );
+    prevButton?.addEventListener("click", () => {
+      splide.go("<");
+    });
+    nextButton?.addEventListener("click", () => {
+      splide.go(">");
+    });
+  });
+</script>

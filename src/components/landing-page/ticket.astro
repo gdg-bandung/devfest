@@ -45,110 +45,14 @@ import TicketCard from "../ticket/ticket-card.astro";
 </section>
 
 <script>
-  const modal = document.getElementById("ticket-modal");
   const getTicketButtons = document.querySelectorAll(".get-ticket-btn");
-  const modalContent = document.getElementById("modal-content");
-
-  let widgetLoaded = false;
+  const presaleBtn = document.getElementById('presale-btn');
 
   getTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      if (modal) {
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        document.body.style.overflow = "hidden";
-      }
-
-      // Load Goers widget if not already loaded
-      if (!widgetLoaded) {
-        loadGoersWidget();
+      if (presaleBtn) {
+        presaleBtn.click();
       }
     });
   });
-  
-  function loadGoersWidget() {
-    if (!modalContent) return;
-
-    // Clear loading spinner
-    modalContent.innerHTML = "";
-
-    // Create the widget container
-    const widgetContainer = document.createElement("div");
-    widgetContainer.className = "w-full min-h-[500px]";
-
-    // Create the Goers widget link
-    const widgetLink = document.createElement("a");
-    widgetLink.id = "___GOERS___widget";
-    widgetLink.href =
-      "https://goersapp.com/events/devfest-bandung-2025-the-biggest-developer-festival-in-indonesia--devfestbdg25";
-    widgetLink.setAttribute("data-background-color", "#FFFFFF");
-    widgetLink.textContent =
-      "DevFest Bandung 2025 - The Biggest Developer Festival In Indonesia";
-
-    widgetContainer.appendChild(widgetLink);
-    modalContent.appendChild(widgetContainer);
-
-    // Load the widget scripts
-    loadScript(
-      "https://d1ah56qj523gwb.cloudfront.net/widget/1.2.1/widget.min.js",
-      {
-        integrity:
-          "sha384-SYWte49En/51CagiEURWoKO+a4U1ZOvF4U5bqEuKX52fp/ikiP8onM2mZ4hxZfKg",
-        crossorigin: "anonymous",
-      }
-    )
-      .then(() => {
-        return loadScript(
-          "https://d1ah56qj523gwb.cloudfront.net/widget/scroller/1.0.0/widget.scroller.min.js",
-          {
-            integrity:
-              "sha384-OzDpNO+ICNdbnJXZOq3wvYMMY/wWP5AMMdNq4qrleB+ELuEuRbZK6gZP95Tcx1in",
-            crossorigin: "anonymous",
-          }
-        );
-      })
-      .then(() => {
-        widgetLoaded = true;
-        console.log("Goers widget loaded successfully");
-      })
-      .catch((error) => {
-        console.error("Error loading Goers widget:", error);
-        modalContent.innerHTML = `
-        <div class="text-center py-8">
-          <p class="text-red-500 mb-4">Failed to load ticket widget</p>
-          <a href="https://goers.co/devfestbdg25" target="_blank" 
-             class="bg-blue hover:bg-dark-blue text-white px-6 py-3 rounded-lg inline-block">
-            Open Ticket Page Directly
-          </a>
-        </div>
-      `;
-      });
-  }
-
-  function loadScript(
-    src: string,
-    attributes: Record<string, string> = {}
-  ): Promise<void> {
-    return new Promise((resolve, reject) => {
-      // Check if script is already loaded
-      const existingScript = document.querySelector(`script[src="${src}"]`);
-      if (existingScript) {
-        resolve();
-        return;
-      }
-
-      const script = document.createElement("script");
-      script.src = src;
-
-      // Add attributes
-      Object.entries(attributes).forEach(([key, value]) => {
-        script.setAttribute(key, value);
-      });
-
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-
-      document.head.appendChild(script);
-    });
-  }
 </script>
