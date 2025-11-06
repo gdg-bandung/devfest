@@ -56,14 +56,14 @@ export default function SpeakerCard({
         <img
           src={photoUrl}
           alt={name}
-          class="w-[98%] aspect-square object-contain bottom-1 left-1 absolute"
+          class="w-[98%] aspect-square object-contain bottom-[1%] left-[1%] absolute"
         />
       )}
       {isSeeAllSpeakerCard && (
         <img
           src={`/images/speaker/photos/placeholder.webp`}
           alt="See All Speakers Placeholder"
-          class="w-[98%] aspect-square object-contain bottom-1 left-1 absolute"
+          class="w-[98%] aspect-square object-contain bottom-[1%] left-[1%] absolute"
         />
       )}
       <img
