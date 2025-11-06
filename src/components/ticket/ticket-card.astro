@@ -13,7 +13,7 @@ interface Props {
   priceDesc: string;
 }
 
-const { color, disabled } = Astro.props;
+const { color, disabled, title, ticketCount, price, priceDesc } = Astro.props;
 
 const checklist = [
   "Free Lunch",
@@ -39,11 +39,11 @@ const haxColor = {
     <TicketOrnament2 color={haxColor[color]} />
   </div>
   <div class="relative z-20">
-    <h3 class="text-[28.13px] font-medium">Early Bird</h3>
-    <p><strong class="font-bold">500</strong> Tickets Remaining</p>
+    <h3 class="text-[28.13px] font-medium">{title}</h3>
+    <p><strong class="font-bold">{ticketCount}</strong> Tickets Remaining</p>
     <p class="text-[21.1px] font-normal mt-[31.65px]">
-      <strong class="text-[79.13px] font-bold">IDR 75K</strong>
-      <br />/Person
+      <strong class="text-[79.13px] font-bold">{price}</strong>
+      <br />{priceDesc}
     </p>
   </div>
   <ul class="flex flex-col gap-3">
@@ -76,7 +76,9 @@ const haxColor = {
   {
     disabled && (
       <div class="bg-black/50 w-full h-full top-0 left-0 absolute z-30 rounded-[20.55px] overflow-hidden">
-        <p class="bg-red border-[2.78px] border-dark-red py-[8.35px] font-bold text-[41.76px] w-7xl -rotate-30 text-center absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">SOLD OUT!</p>
+        <p class="bg-red border-[2.78px] border-dark-red py-[8.35px] font-bold text-[41.76px] w-7xl -rotate-30 text-center absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
+          SOLD OUT!
+        </p>
       </div>
     )
   }
