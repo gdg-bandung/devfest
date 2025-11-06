@@ -1,0 +1,38 @@
+---
+import BaseHead from "../components/layout/BaseHead.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Hero from "../components/speaker-page/hero.astro";
+import SpeakerList from "../components/speaker-page/speaker-list.tsx";
+import Sponsor from "../components/landing-page/sponsor.astro";
+import Community from "../components/landing-page/community.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead
+      title={"Speaker - " + SITE_TITLE}
+      description={SITE_DESCRIPTION}
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <Navbar />
+
+    <!-- Speakers Hero -->
+    <Hero />
+
+    <!-- Speakers List Section -->
+    <SpeakerList client:visible />
+
+    <!-- Sponsor Section -->
+    <Sponsor />
+
+    <!-- Community Section -->
+    <Community />
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

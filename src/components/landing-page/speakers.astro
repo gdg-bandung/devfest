@@ -1,59 +1,10 @@
 ---
-import SpeakerCard from "../speaker-page/speaker-card.astro";
+import SpeakerCard from "../speaker-page/speaker-card.tsx";
 import ArrowRight from "../ui/icons/arrow-right";
+import { SPEAKERS } from "../../data/speakers.data";
 
 import "@splidejs/splide/css";
-
-const splideContent: {
-  name: string;
-  role: string;
-  themeColor: "blue" | "rainbow" | "green" | "red" | "yellow";
-  propertyType:
-    | "web"
-    | "ai"
-    | "mobile"
-    | "cloud"
-    | "firebase"
-    | "general"
-    | "design";
-  photoUrl?: string;
-}[] = [
-  {
-    name: "Eko Kurniawan K",
-    role: "Technical Architect of Blibli.com",
-    themeColor: "blue",
-    propertyType: "web",
-    photoUrl: "/images/speaker/photos/eko-kurniawan-k.webp",
-  },
-  {
-    name: "Eko Kurniawan K",
-    role: "Technical Architect of Blibli.com",
-    themeColor: "rainbow",
-    propertyType: "ai",
-    photoUrl: "/images/speaker/photos/eko-kurniawan-k.webp",
-  },
-  {
-    name: "Eko Kurniawan K",
-    role: "Technical Architect of Blibli.com",
-    themeColor: "green",
-    propertyType: "mobile",
-    photoUrl: "/images/speaker/photos/eko-kurniawan-k.webp",
-  },
-  {
-    name: "Eko Kurniawan K",
-    role: "Technical Architect of Blibli.com",
-    themeColor: "rainbow",
-    propertyType: "ai",
-    photoUrl: "/images/speaker/photos/eko-kurniawan-k.webp",
-  },
-  {
-    name: "Eko Kurniawan K",
-    role: "Technical Architect of Blibli.com",
-    themeColor: "green",
-    propertyType: "mobile",
-    photoUrl: "/images/speaker/photos/eko-kurniawan-k.webp",
-  },
-];
+import { PropertyType, ThemeColor } from "../../consts";
 ---
 
 <section class="flex flex-col items-center py-20 lg:py-40 gap-7 lg:gap-[88px]">
@@ -75,13 +26,13 @@ const splideContent: {
       </div>
     </div>
   </div>
-  <div class="px-8 lg:px-0 w-full">
-    <div class="container mx-auto lg:max-w-full min-[153.75rem]:container relative">
+  <div class="px-8 lg:px-16 xl:px-[180px] w-full relative overflow-hidden">
+    <div class="container mx-auto">
       <div id="speakers-slide" class="splide">
         <div class="splide__track">
           <ul class="splide__list">
             {
-              splideContent.map((speaker) => (
+              SPEAKERS.filter((_, index) => index < 6).map((speaker) => (
                 <li class="splide__slide">
                   <SpeakerCard
                     name={speaker.name}
@@ -93,102 +44,103 @@ const splideContent: {
                 </li>
               ))
             }
+            <li class="splide__slide">
+              <SpeakerCard
+                name=""
+                role=""
+                themeColor={ThemeColor.BLUE}
+                propertyType={PropertyType.GENERAL}
+                isSeeAllSpeakerCard={true}
+              />
+            </li>
           </ul>
         </div>
-        <div
-          class="absolute top-0 right-0 h-full hidden lg:block 3xl:hidden lg:w-24 xl:w-80 z-10"
-          style="background: linear-gradient(90deg, rgba(31, 33, 35, 0) 0%, #1F2123 107.19%);
+      </div>
+      <div
+        class="absolute top-0 right-0 h-full hidden lg:block 3xl:hidden lg:w-24 xl:w-80 z-10"
+        style="background: linear-gradient(90deg, rgba(31, 33, 35, 0) 0%, #1F2123 107.19%);
 "
-        >
-        </div>
-        <div
-          class="absolute top-0 left-0 h-full hidden lg:block 3xl:hidden lg:w-24 xl:w-80 z-10 transform rotate-180"
-          style="background: linear-gradient(90deg, rgba(31, 33, 35, 0) 0%, #1F2123 107.19%);
+      >
+      </div>
+      <div
+        class="absolute top-0 left-0 h-full hidden lg:block 3xl:hidden lg:w-24 xl:w-80 z-10 transform rotate-180"
+        style="background: linear-gradient(90deg, rgba(31, 33, 35, 0) 0%, #1F2123 107.19%);
 "
-        >
-        </div>
+      >
       </div>
     </div>
   </div>
-</section>
 
-<script>
-  import Splide from "@splidejs/splide";
+  <script>
+    import Splide from "@splidejs/splide";
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const splide = new Splide("#speakers-slide", {
-      perPage: 4,
-      perMove: 1,
-      breakpoints: {
-        640: {
-          perPage: 2,
-          padding: 0,
-          gap: "21px",
+    document.addEventListener("DOMContentLoaded", function () {
+      const splide = new Splide("#speakers-slide", {
+        perPage: 3,
+        perMove: 1,
+        breakpoints: {
+          640: {
+            perPage: 2,
+            padding: 0,
+            gap: "21px",
+          },
+          1024: {
+            perPage: 2,
+            padding: 0,
+          },
         },
-        1024: {
-          perPage: 2,
-          padding: 0,
-        },
-        1536: {
-          perPage: 3,
-          padding: "80px",
-        },
-        2460: {
-          perPage: 3,
-          padding: "180px",
-        },
-      },
-      rewind: false,
-      gap: "44px",
-      trimSpace: false,
-      padding: 0,
-      arrows: false,
-      pagination: false,
-    });
-    splide.mount();
+        rewind: false,
+        gap: "44px",
+        trimSpace: false,
+        padding: 0,
+        arrows: false,
+        pagination: false,
+      });
+      splide.mount();
 
-    splide.on("move", (newIndex) => {
+      splide.on("move", (newIndex) => {
+        const prevButton = document.querySelector(
+          "#speakers-arrow button:first-child"
+        ) as HTMLButtonElement;
+        const nextButton = document.querySelector(
+          "#speakers-arrow button:last-child"
+        ) as HTMLButtonElement;
+        const prevArrow = prevButton?.querySelector("svg path");
+        const nextArrow = nextButton?.querySelector("svg path");
+
+        if (prevButton && prevArrow) {
+          if (newIndex === 0) {
+            prevButton.setAttribute("disabled", "true");
+            prevArrow.setAttribute("fill", "gray");
+          } else {
+            prevButton.removeAttribute("disabled");
+            prevArrow.setAttribute("fill", "white");
+          }
+        }
+
+        if (nextButton && nextArrow) {
+          if (newIndex >= splide.length - (splide?.options?.perPage || 0)) {
+            nextButton.setAttribute("disabled", "true");
+            nextArrow.setAttribute("fill", "gray");
+          } else {
+            nextButton.removeAttribute("disabled");
+            nextArrow.setAttribute("fill", "white");
+          }
+        }
+      });
+
       const prevButton = document.querySelector(
         "#speakers-arrow button:first-child"
-      ) as HTMLButtonElement;
+      );
       const nextButton = document.querySelector(
         "#speakers-arrow button:last-child"
-      ) as HTMLButtonElement;
-      const prevArrow = prevButton?.querySelector("svg path");
-      const nextArrow = nextButton?.querySelector("svg path");
-
-      if (prevButton && prevArrow) {
-        if (newIndex === 0) {
-          prevButton.setAttribute("disabled", "true");
-          prevArrow.setAttribute("fill", "gray");
-        } else {
-          prevButton.removeAttribute("disabled");
-          prevArrow.setAttribute("fill", "white");
-        }
-      }
-
-      if (nextButton && nextArrow) {
-        if (newIndex >= splide.length - (splide?.options?.perPage || 0)) {
-          nextButton.setAttribute("disabled", "true");
-          nextArrow.setAttribute("fill", "gray");
-        } else {
-          nextButton.removeAttribute("disabled");
-          nextArrow.setAttribute("fill", "white");
-        }
-      }
+      );
+      prevButton?.addEventListener("click", () => {
+        splide.go("<");
+      });
+      nextButton?.addEventListener("click", () => {
+        splide.go(">");
+      });
     });
-
-    const prevButton = document.querySelector(
-      "#speakers-arrow button:first-child"
-    );
-    const nextButton = document.querySelector(
-      "#speakers-arrow button:last-child"
-    );
-    prevButton?.addEventListener("click", () => {
-      splide.go("<");
-    });
-    nextButton?.addEventListener("click", () => {
-      splide.go(">");
-    });
-  });
-</script>
+  </script>
+</section>

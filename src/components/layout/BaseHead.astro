@@ -59,3 +59,6 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Prefetch image -->
+<link rel="preload" as="image" href="/images/hero.webp" />
