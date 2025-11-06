@@ -1,0 +1,45 @@
+---
+// Ticket section component
+import TicketCard from "../ticket/ticket-card.astro";
+---
+
+<section class="py-12 lg:py-15 px-8 lg:px-16 xl:px-[180px]">
+  <div class="container mx-auto">
+    <div>
+      <div
+        class="flex flex-col lg:flex-row items-center text-center justify-between space-y-6 mb-[60px]"
+      >
+        <h2 class="text-7xl font-medium">TICKET</h2>
+        <p class="max-w-[582px] w-full text-2xl lg:text-start">
+          Over 1.800+ people have snugged their ticket, hurry up and get yours
+          before they're gone!
+        </p>
+      </div>
+      <ul class="grid md:grid-cols-2 xl:grid-cols-3 gap-[42px]">
+        <TicketCard
+          title="Early Bird"
+          ticketCount={500}
+          price="IDR 50K"
+          priceDesc="/Person + applicable fees"
+          color="border-soft-yellow"
+          disabled
+        />
+        <TicketCard
+          title="Pre-Sale"
+          ticketCount={1000}
+          price="IDR 55K"
+          priceDesc="/Person"
+          color="border-soft-blue"
+          disabled
+        />
+        <TicketCard
+          title="Regular"
+          ticketCount={500}
+          price="IDR 75K"
+          priceDesc="/Person"
+          color="border-soft-green"
+        />
+      </ul>
+    </div>
+  </div>
+</section>

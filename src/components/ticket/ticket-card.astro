@@ -1,0 +1,83 @@
+---
+// Ticket section component
+import Checklist from "../ui/icons/checklist.astro";
+import TicketOrnament1 from "../ui/icons/ticket-ornament-1.astro";
+import TicketOrnament2 from "../ui/icons/ticket-ornament-2.astro";
+
+interface Props {
+  color: "border-soft-green" | "border-soft-blue" | "border-soft-yellow";
+  disabled?: boolean;
+  title: string;
+  ticketCount: number;
+  price: string;
+  priceDesc: string;
+}
+
+const { color, disabled } = Astro.props;
+
+const checklist = [
+  "Free Lunch",
+  "All Access Stages",
+  "Exclusive SWAG",
+  "Lanyard and ID Card",
+];
+
+const haxColor = {
+  "border-soft-green": "#14d364",
+  "border-soft-blue": "#63bdfd",
+  "border-soft-yellow": "#ffe003",
+};
+---
+
+<li
+  class={`relative flex flex-col justify-start gap-6 p-8 rounded-[20.55px] border-[3.52px] ${color} text-white`}
+>
+  <div class="absolute top-0 right-0">
+    <TicketOrnament1 color={haxColor[color]} />
+  </div>
+  <div class="absolute bottom-0 left-0">
+    <TicketOrnament2 color={haxColor[color]} />
+  </div>
+  <div class="relative z-20">
+    <h3 class="text-[28.13px] font-medium">Early Bird</h3>
+    <p><strong class="font-bold">500</strong> Tickets Remaining</p>
+    <p class="text-[21.1px] font-normal mt-[31.65px]">
+      <strong class="text-[79.13px] font-bold">IDR 75K</strong>
+      <br />/Person
+    </p>
+  </div>
+  <ul class="flex flex-col gap-3">
+    {
+      checklist.map((item) => (
+        <li class="flex items-center gap-2.5">
+          <Checklist /> {item}
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex flex-col items-center gap-[10.55px] relative z-20">
+    <a
+      href={disabled ? "#" : "https://goers.co/devfestbdg25"}
+      class={`w-full p-[3.52px] rounded-[14.07px] ${disabled ? "bg-white cursor-not-allowed" : "bg-rainbow cursor-pointer"}`}
+    >
+      <div
+        class="rounded-[13px] bg-white w-full py-[21.1px] px-[31.65px] flex items-center justify-center gap-[7.91px] text-[15.83px] font-bold text-black"
+      >
+        {disabled ? "Sold Out" : "Get The Ticket"}
+        <img src="/icons/ticket.svg" alt="ticket" />
+      </div>
+    </a>
+    {
+      !disabled && (
+        <p class="font-bold text-soft-red">Ends 15 Nov 2025, 23:59 WIB</p>
+      )
+    }
+  </div>
+  {
+    disabled && (
+      <div class="bg-black/50 w-full h-full top-0 left-0 absolute z-30 rounded-[20.55px] overflow-hidden">
+        <p class="bg-red border-[2.78px] border-dark-red py-[8.35px] font-bold text-[41.76px] w-7xl -rotate-30 text-center absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">SOLD OUT!</p>
+      </div>
+    )
+  }
+</li>
