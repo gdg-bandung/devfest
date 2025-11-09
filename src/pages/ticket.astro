@@ -4,8 +4,12 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import Community from "../components/landing-page/community.astro";
 import Hero from "../components/ticket-page/hero.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import TicketList from "../components/ticket-page/ticket-list.astro";
+// import VenueLocation from "../components/ticket-page/venue-location.astro";
+import FAQ from "../components/landing-page/faq";
+import Benefit from "../components/ticket-page/benefit.astro"; 
+import ReadyForDevFest from "../components/ticket-page/ready-for-devfest.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <html lang="en">
@@ -21,6 +25,18 @@ import TicketList from "../components/ticket-page/ticket-list.astro";
 
     <!-- Ticket Section -->
     <TicketList />
+
+    <!-- Venue Location Section -->
+    <!-- <VenueLocation /> -->
+
+    <!-- Benefit Section -->
+    <Benefit />
+
+    <!-- Ready For DevFest Section -->
+    <ReadyForDevFest />
+
+    <!--FAQ Section -->
+    <FAQ client:visible />
 
     <!-- Community Section -->
     <Community />

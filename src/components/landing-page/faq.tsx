@@ -1,6 +1,7 @@
 import { createEffect, createSignal } from "solid-js";
 import ArrowRight2 from "../ui/icons/arrow-right-2";
 import Splide from "@splidejs/splide";
+import "@splidejs/splide/css";
 
 const FAQ_LIST = [
   {
