@@ -1,0 +1,31 @@
+---
+import BaseHead from "../components/layout/BaseHead.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Community from "../components/landing-page/community.astro";
+import Hero from "../components/ticket-page/hero.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import TicketList from "../components/ticket-page/ticket-list.astro";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={"Ticket - " + SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <Navbar />
+
+    <!-- Speakers Hero -->
+    <Hero />
+
+    <!-- Ticket Section -->
+    <TicketList />
+
+    <!-- Community Section -->
+    <Community />
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>
