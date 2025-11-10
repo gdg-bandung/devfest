@@ -56,6 +56,7 @@ export const FAQ_LIST: { id: string; question: string; answer: any }[] = [
           target="_blank"
           class="font-bold"
           rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
         >
           https://gdgbandung.com/devfest
         </a>
@@ -178,12 +179,13 @@ export const FAQ_LIST: { id: string; question: string; answer: any }[] = [
       <>
         Feel free to reach out to us at:{" "}
         <a
-          href="https://connect.gdgbandung.com"
+          href="mailto:hi@gdgbandung.com"
           target="_blank"
           class="font-bold"
           rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
         >
-          https://connect.gdgbandung.com
+          hi@gdgbandung.com
         </a>
       </>
     ),
@@ -195,12 +197,13 @@ export const FAQ_LIST: { id: string; question: string; answer: any }[] = [
       <>
         Feel free to reach out to us at:{" "}
         <a
-          href="https://connect.gdgbandung.com"
+          href="mailto:hi@gdgbandung.com"
           target="_blank"
           class="font-bold"
           rel="noopener noreferrer"
+          onClick={e => e.stopPropagation()}
         >
-          https://connect.gdgbandung.com
+          hi@gdgbandung.com
         </a>
       </>
     ),
