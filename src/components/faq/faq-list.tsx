@@ -69,7 +69,7 @@ export default function FAQList() {
                 class={`rounded-3xl p-6 md:p-8 transition-all duration-300 ${
                   expandedIds().has(faq.id)
                     ? "bg-blue text-white shadow-2xl"
-                    : "bg-white hover:bg-white text-blue shadow-lg hover:shadow-xl"
+                    : "bg-light-blue hover:bg-white text-blue shadow-lg hover:shadow-xl"
                 }`}
               >
                 {/* Card Title */}
