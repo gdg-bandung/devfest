@@ -9,11 +9,20 @@ interface Props {
   disabled?: boolean;
   title: string;
   ticketCount: number;
+  ticketCountNow?: number;
   price: string;
   priceDesc: string;
 }
 
-const { color, disabled, title, ticketCount, price, priceDesc } = Astro.props;
+const {
+  color,
+  disabled,
+  title,
+  ticketCount,
+  ticketCountNow,
+  price,
+  priceDesc,
+} = Astro.props;
 
 const checklist = [
   "Free Lunch",
@@ -40,7 +49,14 @@ const haxColor = {
   </div>
   <div class="relative z-20">
     <h3 class="text-[28.13px] font-medium">{title}</h3>
-    <p><strong class="font-bold">{ticketCount}</strong> Tickets Remaining</p>
+    <p>
+      {
+        Boolean(ticketCountNow) && (
+          <span class="line-through">{ticketCount}</span>
+        )
+      } <strong class="font-bold">{ticketCountNow ?? ticketCount}</strong> Tickets
+      Remaining
+    </p>
     <p class="text-[21.1px] font-normal mt-[31.65px]">
       <strong class="text-[79.13px] font-bold">{price}</strong>
       <br />{priceDesc}
