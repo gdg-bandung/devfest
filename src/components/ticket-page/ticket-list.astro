@@ -1,0 +1,228 @@
+---
+// Ticket section component
+import TicketCard from "../ticket-page/ticket-card.astro";
+---
+
+<section class="py-12 lg:py-15 px-8 lg:px-16 xl:px-[180px]">
+  <div class="container mx-auto">
+    <div>
+      <h2 class="text-[40px] lg:text-[64px] font-medium mb-8 lg:mb-6 text-center">
+        Get your <strong class="text-blue">tickets</strong>
+      </h2>
+      <ul class="grid md:grid-cols-2 xl:grid-cols-3 gap-[42px]">
+        <TicketCard
+          title="Early Bird"
+          ticketCount={500}
+          price="IDR 50K"
+          priceDesc="/Person + applicable fees"
+          color="border-soft-yellow"
+          disabled
+        />
+        <TicketCard
+          title="Pre-Sale"
+          ticketCount={500}
+          price="IDR 55K"
+          priceDesc="/Person"
+          color="border-soft-blue"
+          disabled
+        />
+        <TicketCard
+          title="Regular"
+          ticketCount={1000}
+          price="IDR 75K"
+          priceDesc="/Person"
+          color="border-soft-green"
+        />
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ticket Modal -->
+  <div
+    id="ticket-modal"
+    class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4"
+  >
+    <div
+      class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative"
+    >
+      <!-- Modal Header -->
+      <div
+        class="flex items-center justify-between p-6 border-b border-gray-200"
+      >
+        <h3 class="text-2xl font-bold text-black">
+          Get Your DevFest Bandung 2025 Ticket
+        </h3>
+        <button
+          id="close-modal"
+          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+        >
+          <svg
+            class="w-5 h-5 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div
+        class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]"
+        id="modal-content"
+      >
+        <!-- Goers Widget will be loaded here -->
+        <div class="flex items-center justify-center py-8">
+          <div
+            class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("ticket-modal");
+    const closeBtn = document.getElementById("close-modal");
+    const modalContent = document.getElementById("modal-content");
+    const getTicketButtons = document.querySelectorAll(".get-ticket-btn");
+
+    let widgetLoaded = false;
+
+    function openModal() {
+      if (modal) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+
+        // Load Goers widget if not already loaded
+        if (!widgetLoaded) {
+          loadGoersWidget();
+        }
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+    }
+
+    function loadGoersWidget() {
+      if (!modalContent) return;
+
+      // Clear loading spinner
+      modalContent.innerHTML = "";
+
+      // Create the widget container
+      const widgetContainer = document.createElement("div");
+      widgetContainer.className = "w-full min-h-[500px]";
+
+      // Create the Goers widget link
+      const widgetLink = document.createElement("a");
+      widgetLink.id = "___GOERS___widget";
+      widgetLink.href =
+        "https://goersapp.com/events/devfest-bandung-2025-the-biggest-developer-festival-in-indonesia--devfestbdg25";
+      widgetLink.setAttribute("data-background-color", "#FFFFFF");
+      widgetLink.textContent =
+        "DevFest Bandung 2025 - The Biggest Developer Festival In Indonesia";
+
+      widgetContainer.appendChild(widgetLink);
+      modalContent.appendChild(widgetContainer);
+
+      // Load the widget scripts
+      loadScript(
+        "https://d1ah56qj523gwb.cloudfront.net/widget/1.2.1/widget.min.js",
+        {
+          integrity:
+            "sha384-SYWte49En/51CagiEURWoKO+a4U1ZOvF4U5bqEuKX52fp/ikiP8onM2mZ4hxZfKg",
+          crossorigin: "anonymous",
+        }
+      )
+        .then(() => {
+          return loadScript(
+            "https://d1ah56qj523gwb.cloudfront.net/widget/scroller/1.0.0/widget.scroller.min.js",
+            {
+              integrity:
+                "sha384-OzDpNO+ICNdbnJXZOq3wvYMMY/wWP5AMMdNq4qrleB+ELuEuRbZK6gZP95Tcx1in",
+              crossorigin: "anonymous",
+            }
+          );
+        })
+        .then(() => {
+          widgetLoaded = true;
+          console.log("Goers widget loaded successfully");
+        })
+        .catch((error) => {
+          console.error("Error loading Goers widget:", error);
+          modalContent.innerHTML = `
+          <div class="text-center py-8">
+            <p class="text-red-500 mb-4">Failed to load ticket widget</p>
+            <a href="https://goers.co/devfestbdg25" target="_blank" 
+               class="bg-blue hover:bg-dark-blue text-white px-6 py-3 rounded-lg inline-block">
+              Open Ticket Page Directly
+            </a>
+          </div>
+        `;
+        });
+    }
+
+    function loadScript(
+      src: string,
+      attributes: Record<string, string> = {}
+    ): Promise<void> {
+      return new Promise((resolve, reject) => {
+        // Check if script is already loaded
+        const existingScript = document.querySelector(`script[src="${src}"]`);
+        if (existingScript) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = src;
+
+        // Add attributes
+        Object.entries(attributes).forEach(([key, value]) => {
+          script.setAttribute(key, value);
+        });
+
+        script.onload = () => resolve();
+        script.onerror = () =>
+          reject(new Error(`Failed to load script: ${src}`));
+
+        document.head.appendChild(script);
+      });
+    }
+
+    // Event listeners
+    getTicketButtons.forEach((button) => {
+      button.addEventListener("click", openModal);
+    });
+    closeBtn?.addEventListener("click", closeModal);
+
+    // Close modal when clicking outside
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal?.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+  });
+</script>

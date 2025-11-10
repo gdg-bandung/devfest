@@ -10,6 +10,7 @@ import Community from "../components/landing-page/community.astro";
 import Footer from "../components/layout/Footer.astro";
 import Speakers from "../components/landing-page/speakers.astro";
 import Ticket from "../components/landing-page/ticket.astro";
+import FAQ from "../components/landing-page/faq";
 // import Agenda from "../components/landing-page/agenda.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
@@ -39,6 +40,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
     <!-- Ticket Section -->
     <Ticket />
+
+    <!-- FAQ Section -->
+    <FAQ client:visible />
 
     <!-- Sponsor Section -->
     <Sponsor />
