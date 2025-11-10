@@ -1,0 +1,27 @@
+---
+import BaseHead from "../components/layout/BaseHead.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Community from "../components/landing-page/community.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import FAQList from "../components/faq/faq-list";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={"FAQ - " + SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <Navbar />
+
+    <!-- FAQ Section -->
+    <FAQList client:load />
+
+    <!-- Community Section -->
+    <Community />
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>
