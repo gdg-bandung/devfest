@@ -148,6 +148,20 @@ export const SPEAKERS: {
     photoUrl: "/images/speaker/photos/danang-juffry.webp",
   },
   {
+    name: "M Fariz Sinaga",
+    role: "Head of AI at Google Cloud Indonesia",
+    themeColor: ThemeColor.BLUE,
+    propertyType: PropertyType.GENERAL,
+    photoUrl: "/images/speaker/photos/m-fariz-sinaga.webp",
+  },
+  {
+    name: "Joseph Sanjaya",
+    role: "Senior Android Engineer @ Vidio",
+    themeColor: ThemeColor.BLUE,
+    propertyType: PropertyType.GENERAL,
+    photoUrl: "/images/speaker/photos/joseph-sanjaya.webp",
+  },
+  {
     name: "Torch",
     role: "Sponsor",
     themeColor: ThemeColor.BLUE,
