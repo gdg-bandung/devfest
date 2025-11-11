@@ -79,7 +79,7 @@ export const SPEAKERS: {
   },
   {
     name: "Avip Syaifullah",
-    role: "Chief Executive Officerof WPU Course",
+    role: "Chief Executive Officer of WPU Course",
     themeColor: ThemeColor.YELLOW,
     propertyType: PropertyType.WEB,
     photoUrl: "/images/speaker/photos/avip-syaifullah.webp",
@@ -142,7 +142,7 @@ export const SPEAKERS: {
   },
   {
     name: "Danang Juffry",
-    role: "Community Manager Indonesia& Brunei",
+    role: "Community Manager Indonesia & Brunei",
     themeColor: ThemeColor.BLUE,
     propertyType: PropertyType.GENERAL,
     photoUrl: "/images/speaker/photos/danang-juffry.webp",
@@ -162,17 +162,17 @@ export const SPEAKERS: {
     photoUrl: "/images/speaker/photos/joseph-sanjaya.webp",
   },
   {
-    name: "Torch",
-    role: "Sponsor",
+    name: "Samuel Ishak Putra",
+    role: "Country Marketing Manager at Logitech Indonesia",
     themeColor: ThemeColor.BLUE,
     propertyType: PropertyType.GENERAL,
-    photoUrl: "",
+    photoUrl: "/images/speaker/photos/samuel-ishak-putra.webp",
   },
   {
-    name: "MSI",
-    role: "Sponsor",
+    name: "Digga Febriawan P",
+    role: "Product Specialist at MSI",
     themeColor: ThemeColor.BLUE,
     propertyType: PropertyType.GENERAL,
-    photoUrl: "",
+    photoUrl: "/images/speaker/photos/digga-febriawan-p.webp",
   },
 ];
