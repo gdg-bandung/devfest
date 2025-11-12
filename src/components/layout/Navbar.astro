@@ -30,7 +30,7 @@ const link = [
           />
         </a>
       </h1>
-      <ul class="hidden lg:flex space-x-10">
+      <ul class="hidden lg:flex space-x-20">
         {
           link.map((item) => (
             <li class="flex items-center justify-center text-xl gap-1 text-white">
@@ -39,15 +39,6 @@ const link = [
           ))
         }
       </ul>
-      <div class="hidden lg:flex items-center gap-2">
-        Take a seat! →
-        <a
-          href="https://goers.co/devfestbdg25"
-          class="bg-blue hover:bg-dark-blue border-2 border-dark-blue cursor-pointer text-white px-6 py-4 rounded-2xl transition-colors"
-        >
-          Book Now!
-        </a>
-      </div>
       <MobileMenuToggle menuItems={link} client:visible />
     </div>
   </div>

@@ -35,25 +35,12 @@ import TicketCard from "../ticket-page/ticket-card.astro";
         <TicketCard
           title="Regular"
           ticketCount={1000}
-          ticketCountNow={50}
           price="IDR 75K"
           priceDesc="/Person"
           color="border-soft-green"
+          disabled
         />
       </ul>
     </div>
   </div>
 </section>
-
-<script>
-  const getTicketButtons = document.querySelectorAll(".get-ticket-btn");
-  const presaleBtn = document.getElementById('presale-btn');
-
-  getTicketButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (presaleBtn) {
-        presaleBtn.click();
-      }
-    });
-  });
-</script>
