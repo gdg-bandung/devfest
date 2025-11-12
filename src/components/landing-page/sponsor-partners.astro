@@ -1,0 +1,148 @@
+---
+import SponsorCard from "../sponsor/sponsor-card.astro";
+import SponsorListContainer from "../sponsor/sponsor-list-container.astro";
+import {
+  DIAMOND_SPONSORS,
+  PLATINUM_SPONSORS,
+  SILVER_SPONSORS,
+  MEDIA_PARTNERS,
+} from "../../data/sponsor.data";
+---
+
+<section class="py-15 lg:py-28 px-8 lg:px-16 xl:px-[180px] bg-white text-black">
+  <div class="container mx-auto">
+    <div class="flex flex-col gap-10 lg:gap-20">
+      <div
+        class="flex flex-col lg:flex-row gap-4 items-start lg:justify-between"
+      >
+        <div>
+          <h2 class="mb-6 lg:mb-3 font-medium text-[40px] lg:text-7xl">
+            SPONSORS & PARTNERS
+          </h2>
+          <p class="max-w-2xl text-2xl">
+            Be Our Exclusive Partner: Empower Indonesia's Tech Future with GDG
+            Bandung!
+          </p>
+        </div>
+        <a
+          href="http://gdgbandung.com/devfest-sponsorship"
+          target="_blank"
+          class="bg-blue hover:bg-dark-blue border-2 border-dark-blue font-medium text-white px-8 py-6 rounded-2xl flex items-center justify-center gap-3 cursor-pointer transition-colors duration-300 w-fit"
+        >
+          <img
+            src="/icons/arrow-right-with-border.svg"
+            alt="Arrow"
+            class="w-5 h-5"
+            decoding="async"
+            fetchpriority="low"
+            loading="lazy"
+          />
+          Become a Sponsor
+        </a>
+      </div>
+      <SponsorListContainer title="Diamond Sponsors">
+        <ul
+          class="w-full flex flex-wrap items-center justify-center gap-4 lg:gap-[23.25px] *:w-[calc(50%-1rem)] lg:*:w-[calc(33.333%-23.25px)] *:max-w-full"
+        >
+          {
+            DIAMOND_SPONSORS.map((sponsor) => (
+              <li class="flex items-center justify-center h-[65px] md:h-[100px] lg:h-[156px]">
+                <SponsorCard
+                  image={sponsor.image}
+                  name={sponsor.name}
+                  class={`py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px] ${sponsor.class || ""}`}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SponsorListContainer>
+      <SponsorListContainer title="Platinum Sponsors">
+        <ul
+          class="w-full flex flex-wrap items-center justify-center gap-4 lg:gap-[23.25px] *:w-[calc(50%-1rem)] md:*:w-[calc(33.333%-1rem)] lg:*:w-[calc(25%-23.25px)] *:max-w-full"
+        >
+          {
+            PLATINUM_SPONSORS.map((sponsor) => (
+              <li class="flex items-center justify-center h-12 md:h-24 lg:h-32">
+                <SponsorCard
+                  image={sponsor.image}
+                  name={sponsor.name}
+                  class="py-2 md:py-5 lg:py-9 px-3 md:px-6 lg:px-[26px]"
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SponsorListContainer>
+      <SponsorListContainer title="Silver Sponsors">
+        <ul
+          class="w-full flex flex-wrap items-center justify-center gap-4 lg:gap-[23.25px] *:w-[calc(33.333%-1rem)] md:*:w-[calc(25%-1rem)] lg:*:w-[calc(20%-23.25px)] *:max-w-full"
+        >
+          {
+            SILVER_SPONSORS.map((sponsor) => (
+              <li class="flex items-center justify-center h-12 md:h-20 lg:h-[100px]">
+                <SponsorCard
+                  image={sponsor.image}
+                  name={sponsor.name}
+                  class="py-[9px] md:py-3.5 lg:py-[17px] px-3 md:px-6 lg:px-[26px]"
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SponsorListContainer>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-[23.25px]">
+        <SponsorListContainer title="Official Venue Partners">
+          <div
+            class="w-[calc(50%-1rem)] lg:w-full h-[65px] md:h-[100px] lg:h-[156px]"
+          >
+            <SponsorCard
+              image="/images/sponsor-&-partner/universitas-kristen-maranatha.webp"
+              name="Universitas Kristen Maranatha"
+              class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+            />
+          </div>
+        </SponsorListContainer>
+        <SponsorListContainer title="Official Ticketing Partners">
+          <div
+            class="w-[calc(50%-1rem)] lg:w-full h-[65px] md:h-[100px] lg:h-[156px]"
+          >
+            <SponsorCard
+              image="/images/sponsor-&-partner/goers.webp"
+              name="Goers"
+              class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+            />
+          </div>
+        </SponsorListContainer>
+        <SponsorListContainer title="Official Merchandise Partners">
+          <div
+            class="w-[calc(50%-1rem)] lg:w-full h-[65px] md:h-[100px] lg:h-[156px]"
+          >
+            <SponsorCard
+              image="/images/sponsor-&-partner/torch.webp"
+              name="Torch"
+              class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+            />
+          </div>
+        </SponsorListContainer>
+      </div>
+      <SponsorListContainer title="Media Partners">
+        <ul
+          class="w-full flex flex-wrap items-center justify-center gap-4 lg:gap-[23.25px] *:w-[calc(33.333%-1rem)] md:*:w-[calc(33.333%-1rem)] lg:*:w-[calc(25%-23.25px)] *:max-w-full"
+        >
+          {
+            MEDIA_PARTNERS.map((sponsor) => (
+              <li class="flex items-center justify-center h-10 md:h-16 lg:h-[92px]">
+                <SponsorCard
+                  image={sponsor.image}
+                  name={sponsor.name}
+                  class="py-[13px] md:py-4 lg:py-[31px] px-3 md:px-6 lg:px-[26px]"
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SponsorListContainer>
+    </div>
+  </div>
+</section>

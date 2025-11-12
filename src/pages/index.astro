@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar.astro";
 import Hero from "../components/landing-page/hero.astro";
 import RunningText from "../components/landing-page/running-text.astro";
 import About from "../components/landing-page/about.astro";
-import Sponsor from "../components/landing-page/sponsor.astro";
+import SponsorPartners from "../components/landing-page/sponsor-partners.astro";
 import Skills from "../components/landing-page/skills.astro";
 import Community from "../components/landing-page/community.astro";
 import Footer from "../components/layout/Footer.astro";
@@ -27,7 +27,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <Hero />
 
     <!-- Running Text -->
-    <RunningText />
+    <RunningText id="running-text-1" />
 
     <!-- About Section -->
     <About />
@@ -41,11 +41,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <!-- Ticket Section -->
     <Ticket />
 
+    <!-- Running Text -->
+    <RunningText id="running-text-2" color="blue" />
+
+    <!-- Sponsors & Partners Section -->
+    <SponsorPartners />
+
     <!-- FAQ Section -->
     <FAQ client:visible />
-
-    <!-- Sponsor Section -->
-    <Sponsor />
 
     <!-- Skills Section -->
     <Skills />

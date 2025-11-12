@@ -98,16 +98,6 @@ export default function MobileMenuToggle(props: MobileMenuToggleProps) {
             </ul>
           </div>
 
-          {/* Menu Footer */}
-          <div class="p-6 border-t border-dark-gray">
-            <div class="text-sm text-white/70 mb-4">Take a seat! →</div>
-            <a
-              href="https://goers.co/devfestbdg25"
-              class="block text-center w-full bg-blue hover:bg-dark-blue border-2 border-dark-blue cursor-pointer text-white px-6 py-4 rounded-2xl transition-colors"
-            >
-              Book Now!
-            </a>
-          </div>
         </div>
       </div>
     </>

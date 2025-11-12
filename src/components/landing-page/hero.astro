@@ -4,42 +4,10 @@
   <div
     class="container mx-auto text-center flex flex-col items-center gap-6 z-20"
   >
-    <button id="presale-btn" class="p-0.5 rounded-3xl gradient-border cursor-pointer"
-      ><div
-        class="py-2 px-4 rounded-3xl flex gap-2 bg-white text-black items-center"
-      >
-        <strong class="font-bold">Almost Sold Out! -</strong> Regular: Production Release ticket DevFest Bandung 2025 - Get a ticket <svg
-          width="13"
-          height="12"
-          viewBox="0 0 13 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="hidden lg:block"
-        >
-          <path
-            d="M4.95508 9.96004L8.21508 6.70004C8.60008 6.31504 8.60008 5.68504 8.21508 5.30004L4.95508 2.04004"
-            stroke="#1F2123"
-            stroke-width="1.2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-        <svg
-          width="19"
-          height="18"
-          viewBox="0 0 13 12"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="lg:hidden"
-        >
-          <path
-            d="M4.95508 9.96004L8.21508 6.70004C8.60008 6.31504 8.60008 5.68504 8.21508 5.30004L4.95508 2.04004"
-            stroke="#1F2123"
-            stroke-width="1.2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
+    <button class="p-0.5 rounded-3xl gradient-border"
+      ><div class="py-2 px-4 rounded-3xl bg-white text-black items-center">
+        <strong class="font-bold">🔥 Tickets Sold Out!</strong> Big thanks to everyone
+        for the incredible support and excitement!
       </div>
     </button>
     <h2
@@ -48,173 +16,34 @@
       The <strong class="text-blue">BIGGEST DevFest</strong> event in&nbsp;Indonesia
       is coming
     </h2>
-    <p class="text-xl md:text-2xl lg:text-3xl text-white mx-auto leading-relaxed">
+    <p
+      class="text-xl md:text-2xl lg:text-3xl text-white mx-auto leading-relaxed"
+    >
       Catch up on the latest from Tech Conferences, Workshops, Panel Discussion, <br
         class="hidden lg:inline"
       /> Women Empowerment, and Live Podcasts. Don't miss out!
     </p>
-    <div class="flex justify-center items-center gap-32">
-      <div class="hidden lg:block">
-        <time class="font-bold text-2xl">Sat, 29 November 2025</time>
-        <address class="text-xs not-italic text-start">
+    <div class="flex flex-col justify-center items-center">
+      <time class="font-bold text-2xl"
+        >Sat, 29 November 2025 <br />07:30 - 17:00 WIB</time
+      >
+      <a href="https://maps.app.goo.gl/6FDrdoiHJrZrXX9F7" target="_blank"
+        ><address class="not-italic text-start">
           Universitas Kristen Maranatha, Bandung
         </address>
-      </div>
-      <a
+      </a>
+      <!-- <a
         href="https://goers.co/devfestbdg25"
         target="_blank"
         class="bg-blue hover:bg-dark-blue border-2 border-dark-blue font-medium text-white text-xl px-8 py-6 rounded-2xl flex items-center gap-3 cursor-pointer justify-center"
       >
         <img src="/icons/arrow-right-filled.svg" alt="Arrow" class="w-6 h-6" /> Get
         a ticket <div class="mt-0.5 h-0.5 w-4 bg-white"></div> here
-      </a>
+      </a> -->
     </div>
     <p class="flex items-center justify-center gap-2 text-start">
       <img src="/images/person.webp" alt="participants" class="inline h-5" />
-      Over 1800+ people have <br class="min-[500px]:hidden"/> snagged their tickets!
+      Over 2000+ people have <br class="min-[500px]:hidden" /> snagged their tickets!
     </p>
   </div>
-
-  <!-- Ticket Modal -->
-  <div id="ticket-modal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden relative">
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-200">
-        <h3 class="text-2xl font-bold text-black">Get Your DevFest Bandung 2025 Ticket</h3>
-        <button id="close-modal" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors">
-          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Modal Content -->
-      <div class="p-6 overflow-y-auto max-h-[calc(90vh-120px)]" id="modal-content">
-        <!-- Goers Widget will be loaded here -->
-        <div class="flex items-center justify-center py-8">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const presaleBtn = document.getElementById('presale-btn');
-    const modal = document.getElementById('ticket-modal');
-    const closeBtn = document.getElementById('close-modal');
-    const modalContent = document.getElementById('modal-content');
-    
-    let widgetLoaded = false;
-    
-    function openModal() {
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-        
-        // Load Goers widget if not already loaded
-        if (!widgetLoaded) {
-          loadGoersWidget();
-        }
-      }
-    }
-    
-    function closeModal() {
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = 'auto';
-      }
-    }
-    
-    function loadGoersWidget() {
-      if (!modalContent) return;
-      
-      // Clear loading spinner
-      modalContent.innerHTML = '';
-      
-      // Create the widget container
-      const widgetContainer = document.createElement('div');
-      widgetContainer.className = 'w-full min-h-[500px]';
-      
-      // Create the Goers widget link
-      const widgetLink = document.createElement('a');
-      widgetLink.id = '___GOERS___widget';
-      widgetLink.href = 'https://goersapp.com/events/devfest-bandung-2025-the-biggest-developer-festival-in-indonesia--devfestbdg25';
-      widgetLink.setAttribute('data-background-color', '#FFFFFF');
-      widgetLink.textContent = 'DevFest Bandung 2025 - The Biggest Developer Festival In Indonesia';
-      
-      widgetContainer.appendChild(widgetLink);
-      modalContent.appendChild(widgetContainer);
-      
-      // Load the widget scripts
-      loadScript('https://d1ah56qj523gwb.cloudfront.net/widget/1.2.1/widget.min.js', {
-        integrity: 'sha384-SYWte49En/51CagiEURWoKO+a4U1ZOvF4U5bqEuKX52fp/ikiP8onM2mZ4hxZfKg',
-        crossorigin: 'anonymous'
-      }).then(() => {
-        return loadScript('https://d1ah56qj523gwb.cloudfront.net/widget/scroller/1.0.0/widget.scroller.min.js', {
-          integrity: 'sha384-OzDpNO+ICNdbnJXZOq3wvYMMY/wWP5AMMdNq4qrleB+ELuEuRbZK6gZP95Tcx1in',
-          crossorigin: 'anonymous'
-        });
-      }).then(() => {
-        widgetLoaded = true;
-        console.log('Goers widget loaded successfully');
-      }).catch((error) => {
-        console.error('Error loading Goers widget:', error);
-        modalContent.innerHTML = `
-          <div class="text-center py-8">
-            <p class="text-red-500 mb-4">Failed to load ticket widget</p>
-            <a href="https://goers.co/devfestbdg25" target="_blank" 
-               class="bg-blue hover:bg-dark-blue text-white px-6 py-3 rounded-lg inline-block">
-              Open Ticket Page Directly
-            </a>
-          </div>
-        `;
-      });
-    }
-    
-    function loadScript(src: string, attributes: Record<string, string> = {}): Promise<void> {
-      return new Promise((resolve, reject) => {
-        // Check if script is already loaded
-        const existingScript = document.querySelector(`script[src="${src}"]`);
-        if (existingScript) {
-          resolve();
-          return;
-        }
-        
-        const script = document.createElement('script');
-        script.src = src;
-        
-        // Add attributes
-        Object.entries(attributes).forEach(([key, value]) => {
-          script.setAttribute(key, value);
-        });
-        
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-        
-        document.head.appendChild(script);
-      });
-    }
-    
-    // Event listeners
-    presaleBtn?.addEventListener('click', openModal);
-    closeBtn?.addEventListener('click', closeModal);
-    
-    // Close modal when clicking outside
-    modal?.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
-        closeModal();
-      }
-    });
-  });
-</script>
