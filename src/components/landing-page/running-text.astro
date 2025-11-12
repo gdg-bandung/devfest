@@ -3,9 +3,10 @@
 export interface Props {
   color?: "blue" | "green" | "red" | "yellow";
   text?: string;
+  id: string;
 }
 
-const { color = "yellow", text = "DevFest Bandung 2025" } = Astro.props;
+const { color = "yellow", text = "DevFest Bandung 2025", id } = Astro.props;
 
 // Define color themes
 const colorThemes = {
@@ -45,7 +46,7 @@ const theme = colorThemes[color];
 <section
   class={`${theme.backgroundColor} py-3 lg:py-6 overflow-hidden border-y-4 ${theme.borderColor}`}
 >
-  <div class="flex whitespace-nowrap" id="marquee-container">
+  <div class="flex whitespace-nowrap" id={id}>
     <div
       class={`flex items-center ${theme.textColor} font-bold text-2xl md:text-3xl lg:text-4xl marquee-content`}
     >
@@ -54,10 +55,10 @@ const theme = colorThemes[color];
           .fill(true)
           .map((_, index) =>
             index % 2 === 0 ? (
-              <span class="pr-[6px]">{text}</span>
+              <span class="pr-1.5">{text}</span>
             ) : (
               <svg
-                class="pr-[6px]"
+                class="pr-1.5"
                 width="36"
                 height="36"
                 viewBox="0 0 36 36"
@@ -78,22 +79,22 @@ const theme = colorThemes[color];
   </div>
 </section>
 
-<script>
+<script define:vars={{ id }}>
   document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById(
-      "marquee-container"
-    ) as HTMLElement;
-    const content = container?.querySelector(".marquee-content") as HTMLElement;
+      id
+    );
+    const content = container?.querySelector(".marquee-content");
 
     if (!container || !content) return;
 
     // Clone the content for seamless loop
-    const clone = content.cloneNode(true) as HTMLElement;
+    const clone = content.cloneNode(true);
     container.appendChild(clone);
 
     let position = 0;
     const speed = 1; // pixels per frame
-    let animationId: number | null = null;
+    let animationId = null;
     let isPaused = false;
 
     function animate() {

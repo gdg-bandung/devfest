@@ -1,0 +1,22 @@
+---
+export interface Props {
+  name: string;
+  image: string;
+  class: string;
+}
+
+const { name, image, class: className } = Astro.props;
+---
+
+<div
+  class={`flex w-full items-center justify-center h-full border border-gray rounded-[6.65px] lg:rounded-2xl ${className}`}
+>
+  <img
+    src={image}
+    alt={name}
+    class="w-full h-full object-contain"
+    decoding="async"
+    fetchpriority="low"
+    loading="lazy"
+  />
+</div>
