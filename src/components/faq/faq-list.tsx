@@ -38,7 +38,7 @@ export default function FAQList() {
   return (
     <section class="pt-32 pb-6 lg:pt-40 lg:pb-14 flex items-center px-8 lg:px-16 xl:px-[180px]">
       <div class="container mx-auto text-center flex flex-col items-center gap-6 z-20">
-        <h2 class="text-center text-5xl sm:text-6xl md:text-[64px] lg:text-[80px] font-medium bg-linear-to-r text-white leading-tight">
+        <h2 class="text-center text-5xl sm:text-6xl md:text-[64px] lg:text-[72px] xl:text-[80px] font-medium bg-linear-to-r text-white leading-tight">
           Frequently Asked <strong class="text-blue">Questions</strong>
         </h2>
         <p class="text-center text-xl md:text-2xl lg:text-3xl text-white lg:mx-auto leading-relaxed">
