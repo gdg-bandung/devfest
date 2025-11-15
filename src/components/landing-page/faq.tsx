@@ -71,7 +71,7 @@ export default function FAQ() {
               <span class="text-blue">Question</span>
             </h2>
             <div>
-              <p class="mb-11 lg:text-2xl">
+              <p class="mb-11 lg:text-xl xl:text-2xl">
                 We've gathered answers to the most popular questions about the
                 Devfest 2025 experience.
               </p>
@@ -144,7 +144,7 @@ export default function FAQ() {
                                 : "max-h-0 opacity-0"
                             }`}
                           >
-                            <p class="text-xs lg:text-2xl  text-white">
+                            <p class="text-xs lg:text-xl xl:text-2xl  text-white">
                               {faq.answer}
                             </p>
                           </div>

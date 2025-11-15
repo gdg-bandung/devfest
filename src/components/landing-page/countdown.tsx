@@ -43,11 +43,11 @@ export default function Countdown() {
   return (
     <div class="flex items-center justify-between lg:justify-center gap-2 sm:gap-3 lg:gap-6">
       <CountdownItem label="Days" value={timeLeft().days} color="bg-blue" />
-      <p class="text-sm lg:text-4xl font-bold text-gray">:</p>
+      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
       <CountdownItem label="Hours" value={timeLeft().hours} color="bg-red" />
-      <p class="text-sm lg:text-4xl font-bold text-gray">:</p>
+      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
       <CountdownItem label="Minutes" value={timeLeft().minutes} color="bg-yellow" />
-      <p class="text-sm lg:text-4xl font-bold text-gray">:</p>
+      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
       <CountdownItem label="Seconds" value={timeLeft().seconds} color="bg-green" />
     </div>
   );
@@ -55,7 +55,7 @@ export default function Countdown() {
 
 function CountdownItem(props: { label: string; value: number, color: string }) {
   return (
-    <div class={`py-1.5 px-3 md:py-3 flex flex-col justify-center items-center gap-[2px] w-15 sm:w-[68px] md:gap-1 md:w-[108px] rounded-xl md:rounded-2xl ${props.color}`}>
+    <div class={`py-1.5 px-3 md:py-3 flex flex-col justify-center items-center gap-0.5 w-15 sm:w-[68px] md:gap-1 md:w-[108px] rounded-xl md:rounded-2xl ${props.color}`}>
       <p class="text-lg md:text-2xl font-medium">{props.value}</p>
       <p class="text-[10px] md:text-sm">{props.label}</p>
     </div>
