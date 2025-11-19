@@ -12,7 +12,6 @@ const { name, image, class: className, link } = Astro.props;
 <a
   href={link ?? "#"}
   target={link ? "_blank" : "_self"}
-  class="w-full h-full"
   class={`flex w-full items-center justify-center h-full border border-gray rounded-[6.65px] lg:rounded-2xl ${className}`}
 >
   <img
