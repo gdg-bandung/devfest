@@ -51,6 +51,7 @@ import {
                   image={sponsor.image}
                   name={sponsor.name}
                   class={`py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px] ${sponsor.class || ""}`}
+                  link={sponsor.link}
                 />
               </li>
             ))
@@ -68,6 +69,7 @@ import {
                   image={sponsor.image}
                   name={sponsor.name}
                   class="py-2 md:py-5 lg:py-9 px-3 md:px-6 lg:px-[26px]"
+                  link={sponsor.link}
                 />
               </li>
             ))
@@ -85,6 +87,7 @@ import {
                   image={sponsor.image}
                   name={sponsor.name}
                   class="py-[9px] md:py-3.5 lg:py-[17px] px-3 md:px-6 lg:px-[26px]"
+                  link={sponsor.link}
                 />
               </li>
             ))
@@ -100,6 +103,7 @@ import {
               image="/images/sponsor-&-partner/universitas-kristen-maranatha.webp"
               name="Universitas Kristen Maranatha"
               class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+              link="https://www.maranatha.edu/"
             />
           </div>
         </SponsorListContainer>
@@ -111,6 +115,7 @@ import {
               image="/images/sponsor-&-partner/goers.webp"
               name="Goers"
               class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+              link="https://www.goersapp.com/"
             />
           </div>
         </SponsorListContainer>
@@ -122,6 +127,7 @@ import {
               image="/images/sponsor-&-partner/torch.webp"
               name="Torch"
               class="py-4 md:py-8 lg:py-11 px-3 md:px-5 lg:px-[26px]"
+              link="https://torch.id/"
             />
           </div>
         </SponsorListContainer>
@@ -136,7 +142,8 @@ import {
                 <SponsorCard
                   image={sponsor.image}
                   name={sponsor.name}
-                  class="py-[13px] md:py-4 lg:py-[31px] px-3 md:px-6 lg:px-[26px]"
+                  class={`py-[13px] md:py-4 lg:py-[31px] px-3 md:px-6 lg:px-[26px] ${sponsor.class || ""}`}
+                  link={sponsor.link}
                 />
               </li>
             ))
