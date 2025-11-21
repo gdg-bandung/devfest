@@ -62,18 +62,20 @@ export const MEDIA_PARTNERS = [
   {
     name: "bradio",
     image: "/images/sponsor-&-partner/bradio.webp",
-    class: "py-[13px] md:py-4 lg:py-[18px]",
+    class: "!py-3 md:!py-4 lg:!py-6",
     link: "https://bradio956.fm/",
   },
   {
     name: "naramakna.id",
     image: "/images/sponsor-&-partner/naramakna.webp",
     link: "https://naramakna.id/",
+    class: "!py-3 md:!py-4 lg:!py-5",
   },
   {
     name: "antaranews.com",
     image: "/images/sponsor-&-partner/antara-news.webp",
     link: "https://www.antaranews.com/",
+    class: "!py-3 md:!py-4 lg:!py-6",
   },
   {
     name: "ayobandung.com",
@@ -84,11 +86,13 @@ export const MEDIA_PARTNERS = [
     name: "bandung 24 jam",
     image: "/images/sponsor-&-partner/bandung-24-jam.webp",
     link: "https://www.instagram.com/bandung24jam/",
+    class: "!py-2 md:!py-3 lg:!py-4",
   },
   {
     name: "berita bandung id",
     image: "/images/sponsor-&-partner/berita-bandung-id.webp",
     link: "https://beritabandung.id/",
+    class: "!py-3 md:!py-4 lg:!py-6",
   },
   {
     name: "dunia coding",
@@ -103,23 +107,49 @@ export const MEDIA_PARTNERS = [
   {
     name: "IBBC",
     image: "/images/sponsor-&-partner/ibbc.webp",
-    class: "!py-1 !px-2 !md:py-2 !lg:py-2",
+    class: "!py-1 !px-2",
     link: "https://www.instagram.com/infobdgbaratcimahi/",
   },
   {
     name: "infobdg.com",
     image: "/images/sponsor-&-partner/infobdg.webp",
     link: "https://www.infobdg.com/v2/",
+    class: "!py-3 md:!py-4 lg:!py-6",
   },
   {
     name: "jabarekspres.com",
     image: "/images/sponsor-&-partner/jabar-ekpress.webp",
-    class: "!py-1 !px-1 !md:py-1 !lg:py-1",
+    class: "!py-0 !px-1",
     link: "https://jabarekspres.com/",
   },
   {
     name: "jabarnews.com",
     image: "/images/sponsor-&-partner/jabarnews.webp",
     link: "https://www.jabarnews.com/",
+    class: "!py-3 md:!py-4 lg:!py-6",
+  },
+  {
+    name: "kompasiana",
+    image: "/images/sponsor-&-partner/kompasiana.webp",
+    link: "https://www.kompasiana.com/",
+    class: "!py-2 md:!py-3 lg:!py-4",
+  },
+  {
+    name: "radio prfm",
+    image: "/images/sponsor-&-partner/pr-fm.webp",
+    link: "https://prfmnews.pikiran-rakyat.com/",
+    class: "!py-2 md:!py-3 lg:!py-4",
+  },
+  {
+    name: "rri pro 2 bandung",
+    image: "/images/sponsor-&-partner/rri-pro2-bandung.webp",
+    link: "https://radioonline.co.id/pro-2-rri-96-0-fm-bandung/",
+    class: "!py-2 md:!py-3 lg:!py-5",
+  },
+  {
+    name: "rumah komunitas",
+    image: "/images/sponsor-&-partner/rumah-komunitas.webp",
+    link: "https://www.rumahkomunitas.com/",
+    class: "!py-2 md:!py-3 lg:!py-5",
   },
 ];
