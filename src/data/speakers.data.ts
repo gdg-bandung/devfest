@@ -175,4 +175,11 @@ export const SPEAKERS: {
     propertyType: PropertyType.GENERAL,
     photoUrl: "/images/speaker/photos/digga-febriawan-p.webp",
   },
+  {
+    name: "Bobby Robbson ",
+    role: "Direktur Utama Kliktron",
+    themeColor: ThemeColor.BLUE,
+    propertyType: PropertyType.GENERAL,
+    photoUrl: "/images/speaker/photos/bobby-robbson.webp",
+  },
 ];
