@@ -49,7 +49,7 @@ export const listStageAgenda: {
         time: "07:40 - 08:25",
         category: "Opening Speech",
         subtitle:
-          "Hadian Rahmat S.Kom \nDanang Juffry ST. M.B.A \nOscar Karnalim, S.T., M.T., Ph.D. \nProf. Ir. Frans Umbu Datta, M.App.Sc., Ph.D.\nMuhammad Farhan, S.T., M.Si.\nDr. lendra  Sofyan, ST., M.Si.\nMeutya Hafid, S.I.Kom., M.Si.",
+          "Hadian Rahmat S.Kom \nDanang Juffry ST. M.B.A \nOscar Karnalim, S.T., M.T., Ph.D. \nProf. Ir. Frans Umbu Datta, M.App.Sc., Ph.D.\nMuhammad Farhan, S.T., M.Si.\nDr. lendra  Sofyan, ST., M.Si.",
         theme: "red",
         speakers: [
           { name: "Sundar Pichai" },
