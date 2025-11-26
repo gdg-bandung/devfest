@@ -21,7 +21,7 @@ const badgeStyles = {
   red: "bg-[#EA4335]",
 };
 
-export default function AgendaItemSolid(props: AgendaItemSolidProps) {
+export default function AgendaItem(props: AgendaItemSolidProps) {
   const bgColor = () => themeStyles[props.session.theme];
   const badgeColor = () => badgeStyles[props.session.theme];
   const isLast = () => props.isLast ?? false;

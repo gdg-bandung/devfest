@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 import type { Session } from "../../data/agenda.data";
-import AgendaItemSolid from "./agenda-item";
+import AgendaItem from "./agenda-item";
 
 interface AgendaListSolidProps {
   location: string;
@@ -8,7 +8,10 @@ interface AgendaListSolidProps {
   agenda: Session[];
 }
 
-export default function AgendaListSolid(props: AgendaListSolidProps) {
+export default function AgendaList(props: AgendaListSolidProps) {
+  const location = () => props.location;
+  const description = () => props.description;
+
   return (
     <div class="flex flex-col">
       {/* Location Header */}
@@ -30,9 +33,9 @@ export default function AgendaListSolid(props: AgendaListSolidProps) {
             <span class="text-[#4285F4] font-bold tracking-wider text-lg">
               LOCATION
             </span>
-            <span class="text-white font-bold text-xl">{props.location}</span>
+            <span class="text-white font-bold text-xl">{location()}</span>
           </p>
-          <p class="text-light-gray">{props.description}</p>
+          <p class="text-light-gray">{description()}</p>
         </div>
 
         {/* Mobile Location Layout */}
@@ -49,15 +52,15 @@ export default function AgendaListSolid(props: AgendaListSolidProps) {
             <span class="text-[#4285F4] font-bold tracking-wider text-sm">
               LOCATION
             </span>
-            <span class="text-white font-bold text-lg">{props.location}</span>
-            <p class="text-light-gray">{props.description}</p>
+            <span class="text-white font-bold text-lg">{location()}</span>
+            <p class="text-light-gray">{description()}</p>
           </div>
         </div>
       </div>
 
       {/* Agenda Items */}
       <For each={props.agenda}>
-        {(session) => <AgendaItemSolid session={session} isLast={false} />}
+        {(session) => <AgendaItem session={session} isLast={false} />}
       </For>
 
       {/* Closing Indicator */}

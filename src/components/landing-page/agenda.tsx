@@ -69,16 +69,15 @@ export default function AgendaSection() {
               {/* Agenda Cards */}
               <div class="space-y-0">
                 <For each={getFilteredAgenda()}>
-                  {(session, index) => (
+                  {(session) => (
                     <div class="relative pl-12 pb-8">
                       {/* Timeline Dot  */}
                       <div class="absolute left-2.5 top-6 w-3 h-3 rounded-full bg-blue z-10"></div>
 
                       {/* Card */}
                       <div
-                        class={`relative rounded-2xl p-6 overflow-hidden text-white transition-all duration-300 hover:scale-[1.02] ${
-                          themeStyles[session.theme]
-                        }`}
+                        class={`relative rounded-2xl p-6 overflow-hidden text-white transition-all duration-300 hover:scale-[1.02] ${themeStyles[session.theme]
+                          }`}
                       >
                         {/* Background Pattern */}
                         <BoxIcon

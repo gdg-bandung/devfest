@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { listStageAgenda } from "../../data/agenda.data";
-import AgendaListSolid from "./agenda-list";
+import AgendaList from "./agenda-list";
 import StageTabs from "./stage-tabs";
 
 export default function AgendaContent() {
@@ -18,7 +18,7 @@ export default function AgendaContent() {
         </div>
 
         {/* Agenda List */}
-        <AgendaListSolid
+        <AgendaList
           location={listStageAgenda[selectedStageIndex()].location}
           agenda={listStageAgenda[selectedStageIndex()].agenda}
           description={listStageAgenda[selectedStageIndex()].description}
