@@ -3,12 +3,15 @@ export interface Props {
   name: string;
   image: string;
   class: string;
+  link?: string;
 }
 
-const { name, image, class: className } = Astro.props;
+const { name, image, class: className, link } = Astro.props;
 ---
 
-<div
+<a
+  href={link ?? "#"}
+  target={link ? "_blank" : "_self"}
   class={`flex w-full items-center justify-center h-full border border-gray rounded-[6.65px] lg:rounded-2xl ${className}`}
 >
   <img
@@ -19,4 +22,4 @@ const { name, image, class: className } = Astro.props;
     fetchpriority="low"
     loading="lazy"
   />
-</div>
+</a>

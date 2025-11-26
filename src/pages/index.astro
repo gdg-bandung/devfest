@@ -11,7 +11,7 @@ import Footer from "../components/layout/Footer.astro";
 import Speakers from "../components/landing-page/speakers.astro";
 import Ticket from "../components/landing-page/ticket.astro";
 import FAQ from "../components/landing-page/faq";
-// import Agenda from "../components/landing-page/agenda.astro";
+import Agenda from "../components/landing-page/agenda";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
@@ -36,7 +36,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     <Speakers />
 
     <!-- Agenda Section -->
-    <!-- <Agenda /> -->
+    <Agenda client:visible />
 
     <!-- Ticket Section -->
     <Ticket />

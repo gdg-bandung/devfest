@@ -1,0 +1,49 @@
+---
+import BaseHead from "../components/layout/BaseHead.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import AgendaContent from "../components/agenda/agenda-content";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Community from "../components/landing-page/community.astro";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={`Agenda - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="bg-[#101010] text-white">
+    <!-- Navigation -->
+    <Navbar />
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20">
+      <!-- Header -->
+      <section
+        class="px-8 lg:px-16 xl:px-[180px] pt-8 lg:pt-16 pb-6 lg:mb-10 text-center"
+      >
+        <div class="container mx-auto">
+          <h2
+            class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 tracking-tight"
+          >
+            Explore the <span class="text-[#4285F4]">Sessions</span>
+          </h2>
+          <p
+            class="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white mx-auto leading-relaxed"
+          >
+            Get to know every session, speaker, and stage — from hands-on
+            workshops to inspiring keynotes.
+          </p>
+        </div>
+      </section>
+
+      <!-- Agenda Content -->
+      <AgendaContent client:load />
+    </main>
+
+    <!-- Community Section -->
+    <Community />
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

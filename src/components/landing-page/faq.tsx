@@ -27,7 +27,7 @@ export default function FAQ() {
       padding: 0,
       arrows: false,
       pagination: false,
-      drag: false
+      drag: false,
     });
 
     splide.mount();
@@ -111,47 +111,78 @@ export default function FAQ() {
             <div id="faq-slide" class="splide">
               <div class="splide__track">
                 <ul class="splide__list">
-                  {FAQ_LIST.map((faq, index) => (
-                    <li class="splide__slide cursor-pointer">
-                      <button
-                        onClick={() => handleCardClick(index)}
-                        class={`transition-all duration-500 cursor-pointer h-[305px] lg:h-[619px] ${
-                          index === activeIndex()
-                            ? "w-[288px] lg:w-[628px]"
-                            : "w-[288px] md:[140px] lg:w-[305px]"
-                        }`}
-                      >
-                        <div
-                          class={`rounded-3xl p-8 h-full flex flex-col gap-3.5 lg:gap-8 shadow-xl transition-colors duration-500 ${
+                  {FAQ_LIST.filter((_, index) => index < 6).map((faq, index) =>
+                    index === 5 ? (
+                      <li class="splide__slide cursor-pointer">
+                        <a
+                          href="/faq"
+                          class={`block transition-all duration-500 cursor-pointer h-[305px] lg:h-[619px] ${
                             index === activeIndex()
-                              ? "bg-blue text-white justify-center"
-                              : "bg-light-blue text-blue justify-end"
+                              ? "w-[288px] lg:w-[628px]"
+                              : "w-[288px] lg:w-[305px]"
                           }`}
                         >
-                          <h3
-                            class={`lg:text-[40px] font-bold leading-snug transition-all duration-700 ${
-                              index === activeIndex()
-                                ? "text-white"
-                                : "text-blue"
-                            }`}
-                          >
-                            {faq.question}
-                          </h3>
                           <div
-                            class={`transition-all duration-700 overflow-hidden ${
+                            class={`rounded-3xl p-8 h-full flex flex-col gap-3.5 lg:gap-8 shadow-xl transition-colors duration-500 ${
                               index === activeIndex()
-                                ? "max-h-full opacity-100"
-                                : "max-h-0 opacity-0"
+                                ? "bg-blue text-white justify-center"
+                                : "bg-light-blue text-blue justify-end"
                             }`}
                           >
-                            <p class="text-xs lg:text-xl xl:text-2xl  text-white">
-                              {faq.answer}
-                            </p>
+                            <h3
+                              class={`lg:text-[40px] font-bold leading-snug transition-all duration-700 text-center ${
+                                index === activeIndex()
+                                  ? "text-white"
+                                  : "text-blue"
+                              }`}
+                            >
+                              See More FAQs
+                            </h3>
                           </div>
-                        </div>
-                      </button>
-                    </li>
-                  ))}
+                        </a>
+                      </li>
+                    ) : (
+                      <li class="splide__slide cursor-pointer">
+                        <button
+                          onClick={() => handleCardClick(index)}
+                          class={`transition-all duration-500 cursor-pointer h-[305px] lg:h-[619px] ${
+                            index === activeIndex()
+                              ? "w-[288px] lg:w-[628px]"
+                              : "w-[288px] lg:w-[305px]"
+                          }`}
+                        >
+                          <div
+                            class={`rounded-3xl p-8 h-full flex flex-col gap-3.5 lg:gap-8 shadow-xl transition-colors duration-500 ${
+                              index === activeIndex()
+                                ? "bg-blue text-white justify-center"
+                                : "bg-light-blue text-blue justify-end"
+                            }`}
+                          >
+                            <h3
+                              class={`lg:text-[40px] font-bold leading-snug transition-all duration-700 ${
+                                index === activeIndex()
+                                  ? "text-white"
+                                  : "text-blue"
+                              }`}
+                            >
+                              {faq.question}
+                            </h3>
+                            <div
+                              class={`transition-all duration-700 overflow-hidden ${
+                                index === activeIndex()
+                                  ? "max-h-full opacity-100"
+                                  : "max-h-0 opacity-0"
+                              }`}
+                            >
+                              <p class="text-xs lg:text-xl xl:text-2xl  text-white">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </div>
+                        </button>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </div>
