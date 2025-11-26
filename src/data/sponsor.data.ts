@@ -51,6 +51,11 @@ export const SILVER_SPONSORS = [
     image: "/images/sponsor-&-partner/heviitro.webp",
     link: "https://www.instagram.com/heviitro.official/",
   },
+  {
+    name: "Orely.co",
+    image: "/images/sponsor-&-partner/orely.webp",
+    link: "https://orely.co/",
+  },
 ];
 
 export const MEDIA_PARTNERS = [
@@ -150,6 +155,18 @@ export const MEDIA_PARTNERS = [
     name: "rumah komunitas",
     image: "/images/sponsor-&-partner/rumah-komunitas.webp",
     link: "https://www.rumahkomunitas.com/",
+    class: "!py-2 md:!py-3 lg:!py-5",
+  },
+  {
+    name: "maestro radio bandung",
+    image: "/images/sponsor-&-partner/maestro-radio-bandung.webp",
+    link: "https://www.maestroradiobandung.com/",
+    class: "!py-1",
+  },
+  {
+    name: "promedia",
+    image: "/images/sponsor-&-partner/promedia.webp",
+    link: "https://www.promediateknologi.id/",
     class: "!py-2 md:!py-3 lg:!py-5",
   },
 ];

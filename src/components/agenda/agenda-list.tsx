@@ -19,7 +19,7 @@ export default function AgendaListSolid(props: AgendaListSolidProps) {
         {/* Center Column: Timeline & Dot (Desktop) */}
         <div class="hidden lg:flex flex-col items-center relative">
           {/* Line connecting to next item */}
-          <div class="w-0.5 bg-gray-800 absolute top-2 h-full left-1/2 -translate-x-1/2"></div>
+          <div class="w-[2.54px] absolute top-2 h-full left-1/2 -translate-x-1/2" style="background: radial-gradient(50% 50% at 50% 50%, #1F5FC7 0%, #0F2E61 100%);"></div>
           {/* Large Dot */}
           <div class="w-5 h-5 rounded-full bg-[#4285F4] z-10 mt-0 ring-4 ring-[#4285F4]/30"></div>
         </div>
@@ -41,8 +41,8 @@ export default function AgendaListSolid(props: AgendaListSolidProps) {
           <div class="absolute left-3 top-1 w-4 h-4 rounded-full bg-[#4285F4] ring-2 ring-[#4285F4]/30 z-10"></div>
           {/* Mobile Line */}
           <div
-            class="absolute left-[19px] top-2 bottom-0 w-0.5 bg-gray-800 -z-10"
-            style={{ height: "calc(100% + 30px)" }}
+            class="absolute left-[19px] top-2 bottom-0 w-[2.54px] -z-10"
+            style="background: radial-gradient(50% 50% at 50% 50%, #1F5FC7 0%, #0F2E61 100%); height: calc(100% + 30px);"
           ></div>
 
           <div class="flex flex-col gap-1 mb-8">

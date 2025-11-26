@@ -68,7 +68,6 @@ export const listStageAgenda: {
           { name: "Dr. Hanny Juliany Dani" },
           { name: "Muhammad Farhan" },
           { name: "Dr. Iendra Sofyan" },
-          { name: "Meutya Hafid" },
         ],
       },
       {
@@ -558,7 +557,7 @@ export const listStageAgenda: {
           "Engineering at Scale: The Art of Building 99.9% Crash-Free Mobile Apps",
         subtitle: "Deni Rohimat",
         theme: "red",
-        speakers: [{ name: "Deni Rohimat" }],
+        speakers: [{ name: "Deni Rohimat", avatar: "/images/speaker/photos/deni-rohimat.webp" }, ],
       },
       {
         time: "15:25 - 15:30",

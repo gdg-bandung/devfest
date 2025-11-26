@@ -30,9 +30,9 @@ export default function AgendaItemSolid(props: AgendaItemSolidProps) {
     <div class="grid grid-cols-1 lg:grid-cols-[250px_40px_1fr] gap-y-4 lg:gap-x-8 relative group">
       {/* Mobile Timeline Line (Hidden on Desktop) */}
       <div
-        class={`absolute left-[19px] top-10 bottom-0 w-0.5 bg-gray-800 lg:hidden -z-10 ${
-          isLast() ? "h-[calc(100%-20px)]" : "h-full"
-        }`}
+        class={`absolute left-[19px] top-10 bottom-0 w-[2.54px] lg:hidden -z-10 ${isLast() ? "h-[calc(100%-20px)]" : "h-full"
+          }`}
+        style="background: radial-gradient(50% 50% at 50% 50%, #1F5FC7 0%, #0F2E61 100%);"
       ></div>
 
       {/* Left Column: Category & Time */}
@@ -54,19 +54,18 @@ export default function AgendaItemSolid(props: AgendaItemSolidProps) {
       <div class="hidden lg:flex flex-col items-center relative">
         {/* Line */}
         <div
-          class={`w-0.5 bg-gray-800 absolute top-0 left-1/2 -translate-x-1/2 ${
-            isLast() ? "h-12" : "h-full"
-          }`}
+          class={`w-[2.54px] absolute top-0 left-1/2 -translate-x-1/2 ${isLast() ? "h-12" : "h-full"
+            }`}
+          style="background: radial-gradient(50% 50% at 50% 50%, #1F5FC7 0%, #0F2E61 100%);"
         ></div>
         {/* Dot */}
-        <div class="w-4 h-4 rounded-full bg-[#4285F4] z-10 mt-10 shadow-[0_0_0_4px_rgba(16,16,16,1)]"></div>
+        <div class="w-4 h-4 rounded-full bg-blue z-10 mt-10 shadow-[0_0_0_4px_rgba(16,16,16,1)]"></div>
       </div>
 
       {/* Right Column: Card */}
       <div
-        class={`relative rounded-2xl p-6 lg:p-8 overflow-hidden text-white transition-transform hover:scale-[1.01] duration-300 ${bgColor()} ${
-          isLast() ? "" : "mb-12"
-        } lg:h-[230px] flex flex-col justify-center`}
+        class={`relative rounded-2xl p-6 lg:p-8 overflow-hidden text-white transition-transform hover:scale-[1.01] duration-300 ${bgColor()} ${isLast() ? "" : "mb-12"
+          } lg:h-[230px] flex flex-col justify-center`}
       >
         {/* Background Pattern */}
         <BoxIcon
@@ -94,21 +93,12 @@ export default function AgendaItemSolid(props: AgendaItemSolidProps) {
               <For each={props.session.speakers?.filter((item) => item.avatar)}>
                 {(speaker) => (
                   <div class="w-16 h-16 lg:w-24 lg:h-24 rounded-full overflow-hidden border-2 border-white/20 bg-white/10 relative z-0 hover:z-10 transition-all hover:scale-110">
-                    <Show
-                      when={speaker.avatar}
-                      fallback={
-                        <div class="w-full h-full flex items-center justify-center text-xs font-bold uppercase bg-gray-800">
-                          {speaker.name.charAt(0)}
-                        </div>
-                      }
-                    >
-                      <img
-                        src={speaker.avatar}
-                        alt={speaker.name}
-                        class="w-full h-full object-cover scale-120 mt-4"
-                        loading="lazy"
-                      />
-                    </Show>
+                    <img
+                      src={speaker.avatar}
+                      alt={speaker.name}
+                      class="w-full h-full object-cover scale-120 mt-2"
+                      loading="lazy"
+                    />
                   </div>
                 )}
               </For>
