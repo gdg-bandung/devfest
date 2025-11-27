@@ -187,6 +187,13 @@ export const SPEAKERS: {
     role: "Public Relation & External Partnership Torch",
     themeColor: ThemeColor.BLUE,
     propertyType: PropertyType.GENERAL,
-    photoUrl: "/images/speaker/photos/hadi-sadikin-rachmat .webp",
+    photoUrl: "/images/speaker/photos/hadi-sadikin-rachmat.webp",
+  },
+  {
+    name: "Deni Rohimat",
+    role: "Senior Mobile Apps Engineer",
+    themeColor: ThemeColor.BLUE,
+    propertyType: PropertyType.GENERAL,
+    photoUrl: "/images/speaker/photos/deni-rohimat.webp",
   },
 ];
