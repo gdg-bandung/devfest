@@ -1,27 +1,5 @@
 ---
-import BaseHead from "../components/layout/BaseHead.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Footer from "../components/layout/Footer.astro";
-import Community from "../components/landing-page/community.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import FAQList from "../components/faq/faq-list";
+import EventLayout from '../components/layout/EventLayout.astro';
+const faqs=[['When is DevFest Bandung 2026?','The event is planned for late November 2026. We are keeping the exact schedule in the countdown and will share full details as the programme is confirmed.'],['How do I register?','Registration is not open yet. Join the waiting list and we will send you the registration announcement first.'],['How can I become a speaker?','The Call for Papers will open soon. Visit the CFP page to understand the topics and register for the announcement.'],['How can my company sponsor DevFest?','Visit the Sponsor page to request a sponsorship deck or contact the organising team directly.'],['Will the event be in English or Indonesian?','DevFest Bandung welcomes both English and Indonesian content. Session language will be clearly shown in the published schedule.'],['Where can I find news about the event?','This site and GDG Bandung social channels are the official sources for event news.']];
 ---
-
-<html lang="en">
-  <head>
-    <BaseHead title={"FAQ - " + SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <Navbar />
-
-    <!-- FAQ Section -->
-    <FAQList client:load />
-
-    <!-- Community Section -->
-    <Community />
-
-    <!-- Footer -->
-    <Footer />
-  </body>
-</html>
+<EventLayout title="FAQ — DevFest 2026 Bandung"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Frequently asked questions</div><h1>Everything you need<br/><span class="gradient">to know.</span></h1><p>Answers for future attendees, speakers, partners, and the wider DevFest Bandung community.</p></div></section><section class="section alt"><div class="wrap faq">{faqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}<div class="card" style="margin-top:35px"><div class="eyebrow mono">Still curious?</div><h3>Join the waiting list for every important update.</h3><button class="button primary" data-open-modal>Register interest →</button></div></div></section></EventLayout>

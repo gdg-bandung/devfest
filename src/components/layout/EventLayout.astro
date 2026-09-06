@@ -1,0 +1,17 @@
+---
+import BaseHead from "./BaseHead.astro";
+import Navbar from "./Navbar.astro";
+import Footer from "./Footer.astro";
+import WaitingListModal from "./WaitingListModal.astro";
+const {
+  title = "DevFest 2026 Bandung",
+  description = "The premier community-led technology gathering in Bandung.",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head><BaseHead title={title} description={description} /></head><body
+    ><div class="site-shell">
+      <Navbar /><main><slot /></main><Footer />
+    </div><WaitingListModal /></body>
+</html>

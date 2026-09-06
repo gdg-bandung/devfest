@@ -1,62 +1,151 @@
 ---
-import BaseHead from "../components/layout/BaseHead.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Hero from "../components/landing-page/hero.astro";
-import RunningText from "../components/landing-page/running-text.astro";
-import About from "../components/landing-page/about.astro";
-import SponsorPartners from "../components/landing-page/sponsor-partners.astro";
-import Skills from "../components/landing-page/skills.astro";
-import Community from "../components/landing-page/community.astro";
-import Footer from "../components/layout/Footer.astro";
-import Speakers from "../components/landing-page/speakers.astro";
-import Ticket from "../components/landing-page/ticket.astro";
-import FAQ from "../components/landing-page/faq";
-import Agenda from "../components/landing-page/agenda";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import EventLayout from "../components/layout/EventLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <Navbar />
-
-    <!-- Hero Section -->
-    <Hero />
-
-    <!-- Running Text -->
-    <RunningText id="running-text-1" />
-
-    <!-- About Section -->
-    <About />
-
-    <!-- Speakers Section -->
-    <Speakers />
-
-    <!-- Agenda Section -->
-    <Agenda client:visible />
-
-    <!-- Ticket Section -->
-    <Ticket />
-
-    <!-- Running Text -->
-    <RunningText id="running-text-2" color="blue" />
-
-    <!-- Sponsors & Partners Section -->
-    <SponsorPartners />
-
-    <!-- FAQ Section -->
-    <FAQ client:visible />
-
-    <!-- Skills Section -->
-    <Skills />
-
-    <!-- Community Section -->
-    <Community />
-
-    <!-- Footer -->
-    <Footer />
-  </body>
-</html>
+<EventLayout title="DevFest 2026 Bandung">
+  <section class="hero">
+    <div class="wrap">
+      <div class="pill mono">GDG Bandung · West Java's developer gathering</div>
+      <h1>DevFest 2026 <span class="gradient">Bandung</span></h1>
+      <p class="lead">
+        Catch up on the latest from Tech Conferences, Workshops, Panel
+        Discussion, Women Empowerment, Live Podcasts and Mini Hackathon.
+      </p>
+      <div class="countdown">
+        <div class="mono" style="color:#64748b">Counting down to DevFest</div>
+        <div class="clock">
+          <div><b id="days">00</b><span>Days</span></div>
+          <div><b id="hours">00</b><span>Hours</span></div>
+          <div><b id="mins">00</b><span>Minutes</span></div>
+          <div>
+            <b id="secs" style="color:#34a853">00</b><span>Seconds</span>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="button primary" data-open-modal
+          >Join waiting list →</button
+        >
+        <a class="button secondary" href="/cfp">Call for speakers</a>
+        <a class="button yellow" href="/sponsor">Become a sponsor</a>
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="wrap two-col">
+      <div>
+        <div class="eyebrow mono">More than sessions</div><h2
+          class="section-title"
+        >
+          A room for the people building what’s next.
+        </h2><p class="section-copy">
+          DevFest Bandung brings the region’s builders, product teams, students,
+          and technology leaders together around practical ideas, open
+          conversations, and useful connections.
+        </p>
+      </div><div class="recap">
+        <div class="mono" style="color:#ffd427">Last edition</div><h3
+          style="font-size:28px;margin:12px 0"
+        >
+          DevFest Bandung 2025
+        </h3><p>
+          A community-powered day of learning, sharing, and meeting new
+          collaborators. Revisit the moments, speakers, and people who made it
+          memorable on our Instagram.
+        </p><a
+          class="button secondary"
+          style="margin-top:10px"
+          href="https://www.instagram.com/gdgbandung/">See 2025 recap ↗</a>
+      </div>
+    </div><div class="metrics">
+      <div class="metric">
+        <b>1,000+</b><span>community attendees</span>
+      </div><div class="metric">
+        <b>20+</b><span>sessions & workshops</span>
+      </div><div class="metric">
+        <b>30+</b><span>community partners</span>
+      </div><div class="metric">
+        <b>1</b><span>shared developer community</span>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow mono">Designed for discovery</div><h2
+        class="section-title"
+      >
+        One day. Many ways in.
+      </h2><p class="section-copy">
+        A considered mix of technical depth, human stories, and time to meet the
+        people behind the work.
+      </p><div class="grid-3">
+        <article class="card">
+          <div class="icon blue">⌘</div><h3>Technical talks</h3><p>
+            Fresh engineering perspectives—from applied AI and cloud
+            architecture to product craft.
+          </p>
+        </article><article class="card">
+          <div class="icon green">◎</div><h3>Hands-on workshops</h3><p>
+            Move from inspiration to implementation with practical sessions and
+            peer learning.
+          </p>
+        </article><article class="card">
+          <div class="icon red">↗</div><h3>Community exchange</h3><p>
+            Panel discussions, live podcasts, and meaningful conversations
+            beyond the stage.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="wrap two-col">
+      <div>
+        <div class="eyebrow mono">Partner with us</div><h2
+          class="section-title"
+        >
+          Put your brand in the room where talent gathers.
+        </h2><p class="section-copy">
+          We create thoughtful sponsorships that connect international
+          technology brands with Indonesia’s vibrant developer community.
+        </p><a class="button primary" style="margin-top:22px" href="/sponsor"
+          >Explore sponsorship →</a>
+      </div><div class="card">
+        <div class="mono" style="color:#34a853">For sponsors</div><h3>
+          Built around your goals
+        </h3><p>
+          From recruitment and product discovery to technical credibility and
+          community impact, let’s shape a partnership with a clear point of
+          view.
+        </p>
+      </div>
+    </div>
+  </section>
+</EventLayout>
+<style>
+  .metrics {
+    width: min(1180px, calc(100% - 40px));
+    margin: 34px auto 0;
+  }
+</style>
+<script>
+  const target = new Date("2026-11-28T00:00:00+07:00");
+  function tick() {
+    let n = Math.max(0, target.getTime() - Date.now());
+    let d = Math.floor(n / 864e5),
+      h = Math.floor(n / 36e5) % 24,
+      m = Math.floor(n / 6e4) % 60,
+      s = Math.floor(n / 1e3) % 60;
+    [
+      ["days", d],
+      ["hours", h],
+      ["mins", m],
+      ["secs", s],
+    ].forEach(([id, v]) => {
+      const e = document.getElementById(id);
+      if (e) e.textContent = String(v).padStart(2, "0");
+    });
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>

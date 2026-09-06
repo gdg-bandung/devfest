@@ -1,74 +1,102 @@
 ---
-import MobileMenuToggle from "./MobileMenuToggle";
-
-const link = [
-  { name: "Agenda", link: "/agenda" },
-  { name: "Speakers", link: "/speaker" },
-  { name: "Ticket", link: "/ticket" },
-  { name: "FAQ", link: "/faq" },
+const path = Astro.url.pathname;
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Speakers", href: "/speakers", soon: true },
+  { name: "Schedule", href: "/schedule", soon: true },
+  { name: "Sponsor", href: "/sponsor" },
+  { name: "CFP", href: "/cfp" },
+  { name: "Venue", href: "/venue", soon: true },
+  { name: "FAQ", href: "/faq" },
 ];
 ---
 
-<nav
-  id="navbar"
-  class="fixed top-0 w-full z-50 py-8 lg:py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
->
-  <div
-    class="container mx-auto transition-all duration-300 ease-in-out"
-    id="navbar-container"
-  >
-    <div class="flex items-center justify-between">
-      <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
-        <a href="/" aria-label="DevFest Bandung">
-          <p class="hidden">DevFest Bandung</p>
-          <img
-            src="/logo.webp"
-            alt="DevFest Bandung"
-            class="w-44 lg:w-48"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </a>
-      </h1>
-      <ul class="hidden lg:flex space-x-20">
-        {
-          link.map((item) => (
-            <li class="flex items-center justify-center text-xl gap-1 text-white">
-              {item.link ? <a href={item.link}>{item.name}</a> : item.name}
-            </li>
-          ))
-        }
-      </ul>
-      <MobileMenuToggle menuItems={link} client:visible />
-    </div>
-  </div>
-</nav>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
-    const navbarContainer = document.getElementById("navbar-container");
-
-    if (!navbar || !navbarContainer) return;
-
-    function handleScroll() {
-      if (window.scrollY > 50) {
-        // Add scrolled styles
-        navbar?.classList.add("bg-black", "lg:py-2.5", "py-2");
-        navbar?.classList.remove("bg-transparent", "py-8", "lg:py-9");
-        navbarContainer?.classList.add("py-2", "lg:py-2.5");
-      } else {
-        // Remove scrolled styles
-        navbar?.classList.add("bg-transparent", "py-8", "lg:py-9");
-        navbar?.classList.remove("bg-black", "lg:py-2.5", "py-2");
-        navbarContainer?.classList.remove("py-2", "lg:py-2.5");
-      }
+<header class="site-header">
+  <nav class="wrap nav" id="nav">
+    <a class="brand logo-brand" href="/" aria-label="DevFest Bandung"
+      ><img src="/logo.webp" alt="DevFest Bandung" /></a
+    ><div class="navlinks">
+      {
+        links.map((link) => (
+          <div class="nav-item">
+            {link.soon ? (
+              <span class="disabled-link" aria-disabled="true">
+                {link.name}
+              </span>
+            ) : (
+              <a class={path === link.href ? "active" : ""} href={link.href}>
+                {link.name}
+              </a>
+            )}
+            {link.soon && <span class="soon">Soon</span>}
+          </div>
+        ))
+      }<button class="button primary mobile-register" data-open-modal
+        >Register</button>
+    </div><button class="button primary desktop-register" data-open-modal
+      >Register</button
+    ><button
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      id="nav-toggle"><img src="/icons/menu.svg" alt="" /></button>
+  </nav>
+</header>
+<style>
+  .logo-brand {
+    display: flex;
+    align-items: center;
+    background: #202124;
+    border-radius: 7px;
+    padding: 5px 9px;
+  }
+  .logo-brand img {
+    width: 146px;
+    height: auto;
+  }
+  .disabled-link {
+    color: #9aa8ba;
+    cursor: not-allowed;
+  }
+  .mobile-register {
+    display: none;
+  }
+  .nav-toggle {
+    padding: 6px;
+  }
+  .nav-toggle img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) saturate(100%) invert(11%) sepia(15%) saturate(1631%)
+      hue-rotate(178deg) brightness(93%);
+  }
+  @media (max-width: 850px) {
+    .logo-brand {
+      padding: 4px 7px;
     }
-
-    // Initial check
-    handleScroll();
-
-    // Listen for scroll events
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    .logo-brand img {
+      width: 126px;
+    }
+    .desktop-register {
+      display: none;
+    }
+    .nav.open .mobile-register {
+      display: inline-flex;
+      width: 100%;
+      margin-top: 8px;
+    }
+    .nav.open .navlinks {
+      min-height: calc(100vh - 76px);
+    }
+  }
+</style>
+<script>
+  document.getElementById("nav-toggle")?.addEventListener("click", () => {
+    const nav = document.getElementById("nav");
+    nav?.classList.toggle("open");
+    document
+      .getElementById("nav-toggle")
+      ?.setAttribute("aria-expanded", String(nav?.classList.contains("open")));
   });
 </script>
