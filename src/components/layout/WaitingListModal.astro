@@ -1,0 +1,71 @@
+<div class="modal" id="waiting-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="waiting-title">
+  <div class="modal-card">
+    <div class="modal-top">
+      <div>
+        <div class="eyebrow mono">Waiting list open</div><h2 id="waiting-title">
+          Join the DevFest Bandung 2026 waiting list
+        </h2><p class="section-copy">
+          Waiting list registration is now open. Share your details so GDG Bandung can curate a relevant and engaged participant community for DevFest Bandung 2026.
+        </p>
+      </div><button class="close" data-close-modal aria-label="Close">×</button>
+    </div><form id="waiting-form" class="form-grid">
+      <label
+        >Nama<input required name="name" placeholder="Your full name" /></label
+      ><label
+        >Nomor HP<input
+          required
+          type="tel"
+          name="phone"
+          placeholder="08xx xxxx xxxx"
+        /></label
+      ><label
+        >Email Personal<input
+          required
+          type="email"
+          name="email"
+          placeholder="you@email.com"
+        /></label
+      ><label
+        >Email Company <small>(optional)</small><input
+          type="email"
+          name="companyEmail"
+          placeholder="you@company.com"
+        /></label
+      ><label class="full"
+        >LinkedIn<input
+          required
+          name="linkedin"
+          placeholder="linkedin.com/in/your-name"
+        /></label
+      ><button class="button primary full" type="submit"
+        >Join waiting list →</button>
+    </form><p class="form-message" id="form-message">
+      Your waiting list registration has been received. These details will help GDG Bandung curate the DevFest Bandung 2026 participant community.
+    </p>
+  </div>
+</div>
+<script>
+  const modal = document.getElementById("waiting-modal");
+  document.querySelectorAll("[data-open-modal]").forEach((el) =>
+    el.addEventListener("click", () => {
+      modal?.classList.add("open");
+      modal?.setAttribute("aria-hidden", "false");
+    }),
+  );
+  document
+    .querySelectorAll("[data-close-modal]")
+    .forEach((el) =>
+      el.addEventListener("click", () => modal?.classList.remove("open")),
+    );
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) modal.classList.remove("open");
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") modal?.classList.remove("open");
+  });
+  document.getElementById("waiting-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("form-message")!.style.display = "block";
+    (e.currentTarget as HTMLFormElement).style.display = "none";
+  });
+</script>

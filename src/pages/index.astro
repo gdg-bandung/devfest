@@ -1,62 +1,50 @@
 ---
-import BaseHead from "../components/layout/BaseHead.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Hero from "../components/landing-page/hero.astro";
-import RunningText from "../components/landing-page/running-text.astro";
-import About from "../components/landing-page/about.astro";
-import SponsorPartners from "../components/landing-page/sponsor-partners.astro";
-import Skills from "../components/landing-page/skills.astro";
-import Community from "../components/landing-page/community.astro";
-import Footer from "../components/layout/Footer.astro";
-import Speakers from "../components/landing-page/speakers.astro";
-import Ticket from "../components/landing-page/ticket.astro";
-import FAQ from "../components/landing-page/faq";
-import Agenda from "../components/landing-page/agenda";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import EventLayout from "../components/layout/EventLayout.astro";
+import { EVENT, PREVIOUS_EDITION_PROOF } from "../data/event.data";
+import { listStageAgenda } from "../data/agenda.data";
+import { FAQ_LIST } from "../data/faq.data";
+import { HISTORICAL_COLLABORATIONS } from "../data/sponsor.data";
+import Countdown from "../components/landing-page/countdown";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <Navbar />
+<EventLayout title={EVENT.seoTitle} description={EVENT.seoDescription}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill mono">GDG Bandung · 2026</span>
+        <h1>DevFest Bandung <span class="gradient">2026&nbsp;</span></h1>
+        <p class="hero-lead">Explore AI-assisted building, agent development, secure production systems, and scalable multi-agent experiences through talks, hands-on codelabs, and the Builder Space.</p>
+        <div class="countdown-wrap"><span class="mono">Counting down to DevFest Bandung 2026</span><Countdown client:load /></div>
+        <div class="hero-actions"><button class="button primary" data-open-modal type="button">Register</button><a class="button secondary" href="/cfp">Call for speakers →</a><a class="button yellow" href="/sponsor">Call for sponsors →</a></div>
+      </div>
+      <div class="theme-lockup" aria-label="DevFest Bandung 2026 theme">
+        <div class="theme-word"><i aria-hidden="true"></i>BUILD</div>
+        <div class="theme-word"><i aria-hidden="true"></i>SECURE</div>
+        <div class="theme-word"><i aria-hidden="true"></i>SCALE</div>
+        <div class="theme-word"><i aria-hidden="true"></i>AGENTIC ERA</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <Hero />
+  <div class="marquee" aria-label="DevFest Bandung themes"><div class="marquee-track"><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span></div></div>
 
-    <!-- Running Text -->
-    <RunningText id="running-text-1" />
+  <section class="section alt" id="about">
+    <div class="wrap two-col">
+      <div><div class="eyebrow mono">The builder era</div><h2 class="section-title">More people can build. Every builder needs a path to scale.</h2><p class="section-copy">The role of a developer is changing—from writing every line of code to reviewing, orchestrating, and making thoughtful choices about models, platforms, and tools. At the same time, AI is opening the door for more people to turn real problems into useful solutions.</p><p class="section-copy">DevFest Bandung 2026 brings both worlds into one room: learn how to build with confidence, secure what you ship, and scale what works.</p></div>
+      <div class="story-panel"><div class="mono">DevFest Bandung 2025 recap</div><p>Our previous edition brought a large, engaged community together. Revisit the people, partners, and moments that made it memorable on Instagram.</p><div class="tag-row"><span class="tag">2,000+ participants</span><span class="tag">64.94% professionals</span></div><a class="button secondary" href="https://www.instagram.com/gdg_bandung/" target="_blank" rel="noopener noreferrer" style="margin-top:20px">See the Instagram recap →</a></div>
+    </div>
+    <div class="wrap metrics"><div class="metric"><b>500</b><span>target participants in the 2026 proposal</span></div>{PREVIOUS_EDITION_PROOF.slice(0, 3).map((item) => <div class="metric"><b>{item.value}</b><span>previous-edition {item.label}</span></div>)}</div>
+  </section>
 
-    <!-- About Section -->
-    <About />
+  <section class="section" id="tracks"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Learn by doing</div><h2 class="section-title">Three ways into the programme.</h2><p class="section-copy">The approved content direction follows the full arc: build an idea, secure the system, scale the outcome—and make room for anyone curious enough to try.</p></div></div><div class="track-grid">{listStageAgenda.map((track) => <article class={`track-card ${track.accent}`}><span class="mono">{track.audience}</span><h3>{track.title}</h3><p>{track.description}</p></article>)}</div></div></section>
 
-    <!-- Speakers Section -->
-    <Speakers />
+  <section class="section alt" id="speakers"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Call for speakers</div><h2 class="section-title">Speak to the whole room.</h2><p class="section-copy">Have a practical story, a hard technical lesson, or a sharp idea for developers and builders? Submit a proposal first. The speaker lineup will be announced after review.</p></div><a class="button primary" href="/cfp">Submit a proposal →</a></div><div class="empty-state"><strong>Speaker lineup: coming soon.</strong><p>We welcome proposals for talks and practical sessions that help the community build, secure, and scale.</p></div></div></section>
 
-    <!-- Agenda Section -->
-    <Agenda client:visible />
+  <section class="section" id="learning"><div class="wrap"><div class="eyebrow mono">Build / secure / scale</div><h2 class="section-title">Learning that moves with you.</h2><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Build with AI</h3><p>Move from an idea to a useful app, workflow, or prototype through Builder track codelabs and Vibe Lounge challenges.</p></article><article class="benefit-card"><strong>02</strong><h3>Secure by default</h3><p>Understand the governance, safety, and engineering choices needed when autonomous systems become part of your product.</p></article><article class="benefit-card"><strong>03</strong><h3>Scale what works</h3><p>Explore production-ready agents, enterprise systems, and the architecture behind high-performance multi-agent experiences.</p></article></div></div></section>
 
-    <!-- Ticket Section -->
-    <Ticket />
+  <section class="section alt" id="partners"><div class="wrap two-col"><div><div class="eyebrow mono">Partner with the community</div><h2 class="section-title">Make your brand useful in the room.</h2><p class="section-copy">DevFest partnerships work best when they help people learn, try, meet, or build. Bring a product, a challenge, a hiring story, or a community commitment to a high-intent technology audience.</p><a class="button primary" href="/sponsor" style="margin-top:20px">Call for sponsors →</a></div><div class="portfolio-grid home-portfolio">{HISTORICAL_COLLABORATIONS.slice(0, 4).map((brand) => <div class="portfolio-card"><div class="portfolio-logo"><img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" /></div><div class="portfolio-copy"><div class="mono">Historical collaboration</div><h3>{brand.name}</h3></div></div>)}</div></div></section>
 
-    <!-- Running Text -->
-    <RunningText id="running-text-2" color="blue" />
+  <section class="section" id="faq"><div class="wrap two-col"><div><div class="eyebrow mono">Questions, answered</div><h2 class="section-title">Plan your next move.</h2><p class="section-copy">Dates and programme details are published as they are confirmed. If your question is not here, the organising team is one email away.</p><a class="button secondary" href="/faq" style="margin-top:20px">Read all FAQs →</a></div><div class="faq-list">{FAQ_LIST.slice(0, 4).map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div></section>
 
-    <!-- Sponsors & Partners Section -->
-    <SponsorPartners />
-
-    <!-- FAQ Section -->
-    <FAQ client:visible />
-
-    <!-- Skills Section -->
-    <Skills />
-
-    <!-- Community Section -->
-    <Community />
-
-    <!-- Footer -->
-    <Footer />
-  </body>
-</html>
+  <section class="section alt" id="community"><div class="wrap two-col"><div><div class="eyebrow mono">Beyond one event</div><h2 class="section-title">Community → learning → building → connection.</h2><p class="section-copy">GDG Bandung is a year-round community for people who want to learn in public, find collaborators, and turn curiosity into momentum. DevFest is our biggest shared checkpoint.</p></div><div class="story-panel"><div class="mono">Keep building with us</div><p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p><a class="button secondary" href="https://gdg.community.dev/gdg-bandung/" target="_blank" rel="noopener noreferrer">Join GDG Bandung →</a></div></div></section>
+</EventLayout>

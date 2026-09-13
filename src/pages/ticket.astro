@@ -1,47 +1,7 @@
 ---
-import BaseHead from "../components/layout/BaseHead.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Footer from "../components/layout/Footer.astro";
-import Community from "../components/landing-page/community.astro";
-import Hero from "../components/ticket-page/hero.astro";
-import TicketList from "../components/ticket-page/ticket-list.astro";
-import VenueLocation from "../components/ticket-page/venue-location.astro";
-import FAQ from "../components/landing-page/faq";
-import Benefit from "../components/ticket-page/benefit.astro"; 
-import ReadyForDevFest from "../components/ticket-page/ready-for-devfest.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import EventLayout from "../components/layout/EventLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={"Ticket - " + SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <Navbar />
-
-    <!-- Speakers Hero -->
-    <Hero />
-
-    <!-- Ticket Section -->
-    <TicketList />
-
-    <!-- Venue Location Section -->
-    <VenueLocation />
-
-    <!-- Benefit Section -->
-    <Benefit />
-
-    <!-- Ready For DevFest Section -->
-    <ReadyForDevFest />
-
-    <!--FAQ Section -->
-    <FAQ client:visible />
-
-    <!-- Community Section -->
-    <Community />
-
-    <!-- Footer -->
-    <Footer />
-  </body>
-</html>
+<EventLayout title="Tickets — DevFest Bandung 2026"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Attend DevFest Bandung</div><h1>Make room for<br /><span class="gradient">what's next.</span></h1><p>Registration and ticket details will be published when the 2026 plan is ready. Join event updates to get the announcement first.</p><div class="notice"><strong>Registration opens soon.</strong><br />Venue and ticket details will be announced by GDG Bandung.</div><button class="button primary" data-open-modal type="button" style="margin-top:22px">Get ticket updates →</button></div></section>
+  <section class="section alt"><div class="wrap two-col"><div><div class="eyebrow mono">What your day can include</div><h2 class="section-title">Learn. Try. Meet. Build.</h2><p class="section-copy">The 2026 programme is being shaped around hands-on codelabs, expert sessions, a Builder Space, and time for networking and collaboration.</p></div><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Technical depth</h3><p>Explore agents, production systems, governance, security, and scale.</p></article><article class="benefit-card"><strong>02</strong><h3>Hands-on time</h3><p>Build with AI through approved codelab and Vibe Lounge directions.</p></article><article class="benefit-card"><strong>03</strong><h3>Community</h3><p>Meet the people and teams making Bandung's tech ecosystem move.</p></article></div></div></section>
+</EventLayout>

@@ -1,74 +1,43 @@
 ---
-import MobileMenuToggle from "./MobileMenuToggle";
-
-const link = [
-  { name: "Agenda", link: "/agenda" },
-  { name: "Speakers", link: "/speaker" },
-  { name: "Ticket", link: "/ticket" },
-  { name: "FAQ", link: "/faq" },
+const path = Astro.url.pathname;
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Speakers", href: "/speakers", soon: true },
+  { name: "Schedule", href: "/schedule", soon: true },
+  { name: "Sponsor", href: "/sponsor" },
+  { name: "CFP", href: "/cfp" },
+  { name: "Venue", href: "/venue", soon: true },
+  { name: "FAQ", href: "/faq" },
 ];
 ---
 
-<nav
-  id="navbar"
-  class="fixed top-0 w-full z-50 py-8 lg:py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
->
-  <div
-    class="container mx-auto transition-all duration-300 ease-in-out"
-    id="navbar-container"
-  >
-    <div class="flex items-center justify-between">
-      <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
-        <a href="/" aria-label="DevFest Bandung">
-          <p class="hidden">DevFest Bandung</p>
-          <img
-            src="/logo.webp"
-            alt="DevFest Bandung"
-            class="w-44 lg:w-48"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </a>
-      </h1>
-      <ul class="hidden lg:flex space-x-20">
-        {
-          link.map((item) => (
-            <li class="flex items-center justify-center text-xl gap-1 text-white">
-              {item.link ? <a href={item.link}>{item.name}</a> : item.name}
-            </li>
-          ))
-        }
-      </ul>
-      <MobileMenuToggle menuItems={link} client:visible />
-    </div>
-  </div>
-</nav>
+<header class="site-header">
+  <nav class="wrap nav" id="nav" aria-label="Primary navigation">
+    <a class="logo-brand" href="/" aria-label="DevFest Bandung 2026 home">
+      <img src="/logo-devfest.webp" alt="DevFest Bandung" width="154" height="45" />
+    </a>
+    <ul class="navlinks" id="primary-links">
+      {links.map((link) => (
+        <li class="nav-item">
+          {link.soon ? <span class="disabled-link" aria-disabled="true">{link.name}</span> : <a class={path === link.href ? "active" : ""} href={link.href} aria-current={path === link.href ? "page" : undefined}>{link.name}</a>}
+          {link.soon && <span class="soon">Coming soon</span>}
+        </li>
+      ))}
+      <li class="mobile-register-item"><button class="button primary mobile-register" data-open-modal type="button">Register</button></li>
+    </ul>
+    <button class="button primary register-button" data-open-modal type="button">Register</button>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-links" id="nav-toggle" type="button">
+      <img src="/icons/menu.svg" alt="" />
+    </button>
+  </nav>
+</header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
-    const navbarContainer = document.getElementById("navbar-container");
-
-    if (!navbar || !navbarContainer) return;
-
-    function handleScroll() {
-      if (window.scrollY > 50) {
-        // Add scrolled styles
-        navbar?.classList.add("bg-black", "lg:py-2.5", "py-2");
-        navbar?.classList.remove("bg-transparent", "py-8", "lg:py-9");
-        navbarContainer?.classList.add("py-2", "lg:py-2.5");
-      } else {
-        // Remove scrolled styles
-        navbar?.classList.add("bg-transparent", "py-8", "lg:py-9");
-        navbar?.classList.remove("bg-black", "lg:py-2.5", "py-2");
-        navbarContainer?.classList.remove("py-2", "lg:py-2.5");
-      }
-    }
-
-    // Initial check
-    handleScroll();
-
-    // Listen for scroll events
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  const toggle = document.getElementById("nav-toggle");
+  toggle?.addEventListener("click", () => {
+    const nav = document.getElementById("nav");
+    const open = nav?.classList.toggle("open") ?? false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
 </script>

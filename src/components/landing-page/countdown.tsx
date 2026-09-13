@@ -1,7 +1,7 @@
-import { createSignal, createEffect } from "solid-js";
-import { PUBLIC_END_COUNTDOWN } from "astro:env/client";
+import { createSignal, onCleanup, onMount } from "solid-js";
+import { EVENT } from "../../data/event.data";
 
-const targetDate = new Date(PUBLIC_END_COUNTDOWN)
+const targetDate = new Date(`${EVENT.dateISO}T08:00:00+07:00`);
 
 export default function Countdown() {
   const [timeLeft, setTimeLeft] = createSignal({
@@ -11,7 +11,7 @@ export default function Countdown() {
     seconds: 0,
   });
 
-  let interval: NodeJS.Timeout;
+  let interval: ReturnType<typeof setInterval> | undefined;
 
   const updateCountdown = () => {
     const now = new Date();
@@ -32,32 +32,30 @@ export default function Countdown() {
     setTimeLeft({ days, hours, minutes, seconds });
   };
 
-  createEffect(() => {
+  onMount(() => {
+    updateCountdown();
     interval = setInterval(updateCountdown, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
   });
+  onCleanup(() => interval && clearInterval(interval));
 
   return (
-    <div class="flex items-center justify-between lg:justify-center gap-2 sm:gap-3 lg:gap-6">
-      <CountdownItem label="Days" value={timeLeft().days} color="bg-blue" />
-      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
-      <CountdownItem label="Hours" value={timeLeft().hours} color="bg-red" />
-      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
-      <CountdownItem label="Minutes" value={timeLeft().minutes} color="bg-yellow" />
-      <p class="text-sm md:text-2xl lg:text-4xl font-bold text-gray">:</p>
-      <CountdownItem label="Seconds" value={timeLeft().seconds} color="bg-green" />
+    <div class="countdown" role="timer" aria-label="Countdown to DevFest Bandung 2026">
+      <CountdownItem label="Days" value={timeLeft().days} color="blue" />
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <CountdownItem label="Hours" value={timeLeft().hours} color="red" />
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <CountdownItem label="Minutes" value={timeLeft().minutes} color="yellow" />
+      <span class="countdown-separator" aria-hidden="true">:</span>
+      <CountdownItem label="Seconds" value={timeLeft().seconds} color="green" />
     </div>
   );
 }
 
 function CountdownItem(props: { label: string; value: number, color: string }) {
   return (
-    <div class={`py-1.5 px-3 md:py-3 flex flex-col justify-center items-center gap-0.5 w-15 sm:w-[68px] md:gap-1 md:w-[108px] rounded-xl md:rounded-2xl ${props.color}`}>
-      <p class="text-lg md:text-2xl font-medium">{props.value}</p>
-      <p class="text-[10px] md:text-sm">{props.label}</p>
+    <div class={`countdown-item ${props.color}`}>
+      <p class="countdown-value">{String(props.value).padStart(2, "0")}</p>
+      <p class="countdown-label">{props.label}</p>
     </div>
   );
 }

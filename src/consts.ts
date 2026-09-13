@@ -1,13 +1,14 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import { EVENT } from "./data/event.data";
 
-export const SITE_TITLE = "DevFest Bandung 2025";
-export const SITE_DESCRIPTION =
-  "Join us for the biggest developer conference in Southeast Asia. Learn, network, and grow with the tech community.";
+export const SITE_TITLE = EVENT.seoTitle;
+export const SITE_DESCRIPTION = EVENT.seoDescription;
 
 export enum PropertyType {
   WEB = "web",
   AI = "ai",
+  DEVELOPER = "developer",
+  BUILDER = "builder",
+  COMMUNITY = "community",
   MOBILE = "mobile",
   CLOUD = "cloud",
   FIREBASE = "firebase",

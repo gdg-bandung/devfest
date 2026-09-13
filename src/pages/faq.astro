@@ -1,27 +1,6 @@
 ---
-import BaseHead from "../components/layout/BaseHead.astro";
-import Navbar from "../components/layout/Navbar.astro";
-import Footer from "../components/layout/Footer.astro";
-import Community from "../components/landing-page/community.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import FAQList from "../components/faq/faq-list";
+import EventLayout from "../components/layout/EventLayout.astro";
+import { FAQ_LIST } from "../data/faq.data";
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={"FAQ - " + SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <Navbar />
-
-    <!-- FAQ Section -->
-    <FAQList client:load />
-
-    <!-- Community Section -->
-    <Community />
-
-    <!-- Footer -->
-    <Footer />
-  </body>
-</html>
+<EventLayout title="FAQ — DevFest Bandung 2026"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Frequently asked questions</div><h1>Everything you need<br /><span class="gradient">to know.</span></h1><p>Answers for attendees, speakers, partners, and the wider DevFest Bandung community. Confirmed details will be added as the programme develops.</p></div></section><section class="section alt"><div class="wrap faq-list">{FAQ_LIST.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}<div class="card" style="margin-top:35px;padding:25px"><div class="eyebrow mono">Still curious?</div><h3>Ask the organising team.</h3><a class="button primary" href="mailto:hi@gdgbandung.com">Email hi@gdgbandung.com →</a></div></div></section></EventLayout>

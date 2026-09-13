@@ -4,6 +4,7 @@ import "@fontsource/open-sans/latin-500.css";
 import "@fontsource/open-sans/latin-600.css";
 import "@fontsource/open-sans/latin-700.css";
 import "../../styles/global.css";
+import { EVENT } from "../../data/event.data";
 
 interface Props {
   title: string;
@@ -11,7 +12,7 @@ interface Props {
   image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://devfest.gdgbandung.com");
 
 const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 ---
@@ -28,6 +29,7 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="theme-color" content="#f0f0f0" />
 
 <!-- Theme Color -->
 <link
@@ -52,6 +54,7 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={EVENT.name} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -59,6 +62,4 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-<!-- Prefetch image -->
-<link rel="preload" as="image" href="/images/hero.webp" />
+<meta name="twitter:site" content="@gdgbandung" />
