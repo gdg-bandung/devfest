@@ -2,64 +2,79 @@
 import EventLayout from "../components/layout/EventLayout.astro";
 ---
 
-<EventLayout title="Call for Papers — DevFest 2026 Bandung"
-  ><section class="page-hero">
-    <div class="wrap">
-      <div class="eyebrow mono">Call for papers</div><h1>
-        Bring your best<br /><span class="gradient">idea to Bandung.</span>
-      </h1><p>
-        We are looking for useful stories, hard-won lessons, and practical
-        knowledge that helps the developer community move forward.
-      </p><div class="notice">
-        <b>CFP opens soon.</b> Join the waiting list and be first to receive the submission
-        announcement.
-      </div><button
-        class="button primary"
-        style="margin-top:22px"
-        data-open-modal>Get CFP updates →</button>
-    </div>
-  </section><section class="section alt">
-    <div class="wrap">
-      <div class="eyebrow mono">What we want to hear</div><div class="grid-3">
-        <article class="card">
-          <div class="icon blue">☁</div><h3>Build for scale</h3><p>
-            Cloud, infrastructure, reliability, developer tooling, and lessons
-            from production.
-          </p>
-        </article><article class="card">
-          <div class="icon red">✦</div><h3>Applied intelligence</h3><p>
-            AI that works in practice, data, responsible technology, and real
-            product impact.
-          </p>
-        </article><article class="card">
-          <div class="icon yellow">⌁</div><h3>People & products</h3><p>
-            Design, careers, inclusion, leadership, and communities that make
-            technology better.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section><section class="section">
-    <div class="wrap two-col">
+<EventLayout title="Call for Speakers — DevFest Bandung 2026">
+  <section class="page-hero cfp-hero">
+    <div class="wrap cfp-hero-grid">
       <div>
-        <div class="eyebrow mono">Every voice matters</div><h2
-          class="section-title"
-        >
-          First-time speakers are welcome.
-        </h2><p class="section-copy">
-          Great talks start with a perspective worth sharing—not a long speaker
-          résumé. We encourage new voices, practical demos, and stories that
-          help the room learn together.
-        </p>
-      </div><div class="card">
-        <div class="mono" style="color:#4285f4">Formats to be announced</div><h3
-        >
-          Talks, panels & lightning ideas
-        </h3><p>
-          Submission format, review timeline, and speaker support will be
-          published when CFP opens.
-        </p>
+        <div class="eyebrow mono">Call for speakers</div>
+        <h1>Speak to the<br /><span class="gradient">whole room.</span></h1>
+        <p>Share a practical story, a hard-won technical lesson, or a clear idea that helps developers and builders build, secure, and scale in the agentic era.</p>
+        <div class="cfp-actions">
+          <a class="button primary" href="#submission">Submission opens soon →</a>
+          <button class="button secondary" data-open-modal type="button">Get CFP updates</button>
+        </div>
+      </div>
+      <aside class="cfp-banner" aria-label="Sessionize call for speakers notice">
+        <div class="mono">Powered by Sessionize</div>
+        <h2>Bring the work<br />you want to share.</h2>
+        <p>The submission destination will be linked here when the event CFP form is published.</p>
+        <a class="sessionize-link" href="https://sessionize.com/brand" target="_blank" rel="noopener noreferrer">Open the Sessionize banner reference →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head cfp-section-head">
+        <div>
+          <div class="eyebrow mono">What we want to hear</div>
+          <h2 class="section-title">Useful ideas for the builder era.</h2>
+          <p class="section-copy">The approved programme direction gives speakers room to contribute across three complementary experiences.</p>
+        </div>
+      </div>
+      <div class="cfp-grid">
+        <article class="cfp-card blue-border"><span class="mono">01 · Builder track</span><h3>Build from the first idea</h3><p>Practical stories about AI-assisted apps, prototypes, products, and the Google ecosystem.</p></article>
+        <article class="cfp-card red-border"><span class="mono">02 · Developer track</span><h3>Secure the system</h3><p>Lessons about agents, development, deployment, governance, security, and production readiness.</p></article>
+        <article class="cfp-card yellow-border"><span class="mono">03 · Builder Space</span><h3>Make room to try</h3><p>Accessible, hands-on directions that invite curious builders to experiment and share what they make.</p></article>
       </div>
     </div>
-  </section></EventLayout
->
+  </section>
+
+  <section class="section" id="submission">
+    <div class="wrap cfp-details">
+      <div>
+        <div class="eyebrow mono">A considered review</div>
+        <h2 class="section-title">Your perspective matters more than your title.</h2>
+      </div>
+      <div class="cfp-detail-copy">
+        <p>We welcome first-time speakers, experienced practitioners, builders, and community voices. Keep the proposal focused on what the room can learn and apply.</p>
+        <div class="notice">The CFP submission link, format, review timeline, and speaker support will be published when the event form is confirmed.</div>
+      </div>
+    </div>
+  </section>
+</EventLayout>
+
+<style>
+  .cfp-hero { padding-bottom: 76px; }
+  .cfp-hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 55px; }
+  .cfp-hero h1 { margin-bottom: 22px; }
+  .cfp-hero p { max-width: 670px; }
+  .cfp-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .cfp-banner { padding: 32px; border: 1px solid var(--ink); background: var(--ink); color: var(--white); box-shadow: 9px 9px 0 var(--blue); }
+  .cfp-banner .mono { color: var(--yellow); }
+  .cfp-banner h2 { margin: 18px 0 12px; font-size: clamp(30px, 4vw, 48px); line-height: 1.02; letter-spacing: -.06em; }
+  .cfp-banner p { color: #d2d2d2; font-size: 15px; line-height: 1.65; }
+  .sessionize-link { display: inline-block; margin-top: 16px; color: var(--blue-soft); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+  .cfp-section-head { align-items: start; }
+  .cfp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
+  .cfp-card { min-height: 220px; padding: 27px; border: 1px solid var(--line); border-top: 5px solid var(--blue); background: var(--white); box-shadow: var(--shadow); }
+  .cfp-card.red-border { border-top-color: var(--red); }.cfp-card.yellow-border { border-top-color: var(--yellow); }
+  .cfp-card .mono { color: var(--muted); }
+  .cfp-card h3 { margin: 24px 0 10px; font-size: 25px; letter-spacing: -.05em; }
+  .cfp-card p { margin: 0; color: var(--muted); line-height: 1.7; }
+  .cfp-details { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: start; }
+  .cfp-detail-copy { padding-top: 13px; }
+  .cfp-detail-copy p { margin-top: 0; color: var(--muted); font-size: 18px; line-height: 1.75; }
+  @media (max-width: 900px) { .cfp-hero-grid, .cfp-details { grid-template-columns: 1fr; gap: 35px; }.cfp-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .cfp-actions, .cfp-actions .button { width: 100%; }.cfp-banner { padding: 25px; box-shadow: 6px 6px 0 var(--blue); }.cfp-card { min-height: 0; } }
+</style>

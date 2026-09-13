@@ -73,7 +73,7 @@ export default function FAQ() {
             <div>
               <p class="mb-11 lg:text-xl xl:text-2xl">
                 We've gathered answers to the most popular questions about the
-                Devfest 2025 experience.
+                DevFest Bandung 2026 experience.
               </p>
               <div class="flex flex-row gap-2">
                 <button

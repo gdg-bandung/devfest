@@ -9,7 +9,7 @@ export default function AgendaSection() {
   // Get first 4 agendas for the active stage
   const getFilteredAgenda = () => {
     const stage = listStageAgenda[activeStage()];
-    return stage.agenda.slice(0, 4);
+    return stage.sessions.slice(0, 4);
   };
 
   const currentStage = () => listStageAgenda[activeStage()];
@@ -31,16 +31,10 @@ export default function AgendaSection() {
               AGENDA
             </h2>
             <p class="text-light-gray text-base lg:text-lg leading-relaxed mb-6 lg:mb-9">
-              We will held the event with 6 stages:{" "}
-              <span class="text-blue font-semibold">
-                Bandung Logitech Verse
-              </span>
-              , <span class="text-green font-semibold">Spark Sessions</span>,{" "}
-              <span class="text-yellow font-semibold">AI Alchemy Lab</span>,{" "}
-              <span class="text-red font-semibold">Cloud Architect Hub</span>,{" "}
-              <span class="text-green font-semibold">Beyond Innovation</span>{" "}
-              and{" "}
-              <span class="text-yellow font-semibold">AI Builders Zone</span>
+              Explore the approved 2026 content directions across the{" "}
+              <span class="text-blue font-semibold">Builder track</span>,{" "}
+              <span class="text-red font-semibold">Developer track</span>, and{" "}
+              <span class="text-yellow font-semibold">Builder Space</span>.
             </p>
             <div class="w-[51px] h-px bg-white mb-6 lg:mb-9"></div>
             <p class="text-light-gray text-base lg:text-lg leading-relaxed">

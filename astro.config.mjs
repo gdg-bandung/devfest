@@ -12,6 +12,7 @@ export default defineConfig({
   integrations: [solidJs()],
 
   vite: {
+    // @ts-expect-error Astro and the workspace Vite dependency resolve different compatible Plugin types.
     plugins: [tailwindcss()],
   },
 
@@ -20,7 +21,7 @@ export default defineConfig({
   env: {
     schema: {
       PUBLIC_END_COUNTDOWN: envField.string({
-        context: "client", access: "public", default: "2025-11-29T07:30:00+07:00"
+        context: "client", access: "public", default: "2026-12-12T08:00:00+07:00"
       }),
     }
   },

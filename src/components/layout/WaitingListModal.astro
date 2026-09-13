@@ -1,11 +1,11 @@
-<div class="modal" id="waiting-modal" aria-hidden="true">
+<div class="modal" id="waiting-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="waiting-title">
   <div class="modal-card">
     <div class="modal-top">
       <div>
-        <div class="eyebrow mono">Early access</div><h2>
-          Join the waiting list
+        <div class="eyebrow mono">Waiting list open</div><h2 id="waiting-title">
+          Join the DevFest Bandung 2026 waiting list
         </h2><p class="section-copy">
-          Be first to hear when registration opens.
+          Waiting list registration is now open. Share your details so GDG Bandung can curate a relevant and engaged participant community for DevFest Bandung 2026.
         </p>
       </div><button class="close" data-close-modal aria-label="Close">×</button>
     </div><form id="waiting-form" class="form-grid">
@@ -40,7 +40,7 @@
       ><button class="button primary full" type="submit"
         >Join waiting list →</button>
     </form><p class="form-message" id="form-message">
-      You’re on the list — we’ll be in touch soon.
+      Your waiting list registration has been received. These details will help GDG Bandung curate the DevFest Bandung 2026 participant community.
     </p>
   </div>
 </div>
@@ -59,6 +59,9 @@
     );
   modal?.addEventListener("click", (e) => {
     if (e.target === modal) modal.classList.remove("open");
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") modal?.classList.remove("open");
   });
   document.getElementById("waiting-form")?.addEventListener("submit", (e) => {
     e.preventDefault();

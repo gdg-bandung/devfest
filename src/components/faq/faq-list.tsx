@@ -43,7 +43,7 @@ export default function FAQList() {
         </h2>
         <p class="text-center text-xl md:text-2xl lg:text-3xl text-white lg:mx-auto leading-relaxed">
           We've gathered answers to the most popular questions about the Devfest
-          2025 experience.
+          2026 experience.
         </p>
         <div class="mb-8 w-full max-w-md">
           <div class="relative w-full">

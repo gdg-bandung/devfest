@@ -1,151 +1,50 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
+import { EVENT, PREVIOUS_EDITION_PROOF } from "../data/event.data";
+import { listStageAgenda } from "../data/agenda.data";
+import { FAQ_LIST } from "../data/faq.data";
+import { HISTORICAL_COLLABORATIONS } from "../data/sponsor.data";
+import Countdown from "../components/landing-page/countdown";
 ---
 
-<EventLayout title="DevFest 2026 Bandung">
+<EventLayout title={EVENT.seoTitle} description={EVENT.seoDescription}>
   <section class="hero">
-    <div class="wrap">
-      <div class="pill mono">GDG Bandung · West Java's developer gathering</div>
-      <h1>DevFest 2026 <span class="gradient">Bandung</span></h1>
-      <p class="lead">
-        Catch up on the latest from Tech Conferences, Workshops, Panel
-        Discussion, Women Empowerment, Live Podcasts and Mini Hackathon.
-      </p>
-      <div class="countdown">
-        <div class="mono" style="color:#64748b">Counting down to DevFest</div>
-        <div class="clock">
-          <div><b id="days">00</b><span>Days</span></div>
-          <div><b id="hours">00</b><span>Hours</span></div>
-          <div><b id="mins">00</b><span>Minutes</span></div>
-          <div>
-            <b id="secs" style="color:#34a853">00</b><span>Seconds</span>
-          </div>
-        </div>
-      </div>
-      <div class="actions">
-        <button class="button primary" data-open-modal
-          >Join waiting list →</button
-        >
-        <a class="button secondary" href="/cfp">Call for speakers</a>
-        <a class="button yellow" href="/sponsor">Become a sponsor</a>
-      </div>
-    </div>
-  </section>
-  <section class="section alt">
-    <div class="wrap two-col">
+    <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow mono">More than sessions</div><h2
-          class="section-title"
-        >
-          A room for the people building what’s next.
-        </h2><p class="section-copy">
-          DevFest Bandung brings the region’s builders, product teams, students,
-          and technology leaders together around practical ideas, open
-          conversations, and useful connections.
-        </p>
-      </div><div class="recap">
-        <div class="mono" style="color:#ffd427">Last edition</div><h3
-          style="font-size:28px;margin:12px 0"
-        >
-          DevFest Bandung 2025
-        </h3><p>
-          A community-powered day of learning, sharing, and meeting new
-          collaborators. Revisit the moments, speakers, and people who made it
-          memorable on our Instagram.
-        </p><a
-          class="button secondary"
-          style="margin-top:10px"
-          href="https://www.instagram.com/gdgbandung/">See 2025 recap ↗</a>
+        <span class="pill mono">GDG Bandung · 2026</span>
+        <h1>DevFest Bandung <span class="gradient">2026</span></h1>
+        <p class="hero-lead">Explore AI-assisted building, agent development, secure production systems, and scalable multi-agent experiences through talks, hands-on codelabs, and the Builder Space.</p>
+        <div class="countdown-wrap"><span class="mono">Counting down to DevFest Bandung 2026</span><Countdown client:load /></div>
+        <div class="hero-actions"><button class="button primary" data-open-modal type="button">Register</button><a class="button secondary" href="/cfp">Call for speakers →</a><a class="button yellow" href="/sponsor">Call for sponsors →</a></div>
       </div>
-    </div><div class="metrics">
-      <div class="metric">
-        <b>1,000+</b><span>community attendees</span>
-      </div><div class="metric">
-        <b>20+</b><span>sessions & workshops</span>
-      </div><div class="metric">
-        <b>30+</b><span>community partners</span>
-      </div><div class="metric">
-        <b>1</b><span>shared developer community</span>
+      <div class="theme-lockup" aria-label="DevFest Bandung 2026 theme">
+        <div class="theme-word"><i aria-hidden="true"></i>BUILD</div>
+        <div class="theme-word"><i aria-hidden="true"></i>SECURE</div>
+        <div class="theme-word"><i aria-hidden="true"></i>SCALE</div>
+        <div class="theme-word"><i aria-hidden="true"></i>AGENTIC ERA</div>
       </div>
     </div>
   </section>
-  <section class="section">
-    <div class="wrap">
-      <div class="eyebrow mono">Designed for discovery</div><h2
-        class="section-title"
-      >
-        One day. Many ways in.
-      </h2><p class="section-copy">
-        A considered mix of technical depth, human stories, and time to meet the
-        people behind the work.
-      </p><div class="grid-3">
-        <article class="card">
-          <div class="icon blue">⌘</div><h3>Technical talks</h3><p>
-            Fresh engineering perspectives—from applied AI and cloud
-            architecture to product craft.
-          </p>
-        </article><article class="card">
-          <div class="icon green">◎</div><h3>Hands-on workshops</h3><p>
-            Move from inspiration to implementation with practical sessions and
-            peer learning.
-          </p>
-        </article><article class="card">
-          <div class="icon red">↗</div><h3>Community exchange</h3><p>
-            Panel discussions, live podcasts, and meaningful conversations
-            beyond the stage.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section alt">
+
+  <div class="marquee" aria-label="DevFest Bandung themes"><div class="marquee-track"><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span></div></div>
+
+  <section class="section alt" id="about">
     <div class="wrap two-col">
-      <div>
-        <div class="eyebrow mono">Partner with us</div><h2
-          class="section-title"
-        >
-          Put your brand in the room where talent gathers.
-        </h2><p class="section-copy">
-          We create thoughtful sponsorships that connect international
-          technology brands with Indonesia’s vibrant developer community.
-        </p><a class="button primary" style="margin-top:22px" href="/sponsor"
-          >Explore sponsorship →</a>
-      </div><div class="card">
-        <div class="mono" style="color:#34a853">For sponsors</div><h3>
-          Built around your goals
-        </h3><p>
-          From recruitment and product discovery to technical credibility and
-          community impact, let’s shape a partnership with a clear point of
-          view.
-        </p>
-      </div>
+      <div><div class="eyebrow mono">The builder era</div><h2 class="section-title">More people can build. Every builder needs a path to scale.</h2><p class="section-copy">The role of a developer is changing—from writing every line of code to reviewing, orchestrating, and making thoughtful choices about models, platforms, and tools. At the same time, AI is opening the door for more people to turn real problems into useful solutions.</p><p class="section-copy">DevFest Bandung 2026 brings both worlds into one room: learn how to build with confidence, secure what you ship, and scale what works.</p></div>
+      <div class="story-panel"><div class="mono">DevFest Bandung 2025 recap</div><p>Our previous edition brought a large, engaged community together. Revisit the people, partners, and moments that made it memorable on Instagram.</p><div class="tag-row"><span class="tag">2,000+ participants</span><span class="tag">64.94% professionals</span></div><a class="button secondary" href="https://www.instagram.com/gdg_bandung/" target="_blank" rel="noopener noreferrer" style="margin-top:20px">See the Instagram recap →</a></div>
     </div>
+    <div class="wrap metrics"><div class="metric"><b>500</b><span>target participants in the 2026 proposal</span></div>{PREVIOUS_EDITION_PROOF.slice(0, 3).map((item) => <div class="metric"><b>{item.value}</b><span>previous-edition {item.label}</span></div>)}</div>
   </section>
+
+  <section class="section" id="tracks"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Learn by doing</div><h2 class="section-title">Three ways into the programme.</h2><p class="section-copy">The approved content direction follows the full arc: build an idea, secure the system, scale the outcome—and make room for anyone curious enough to try.</p></div></div><div class="track-grid">{listStageAgenda.map((track) => <article class={`track-card ${track.accent}`}><span class="mono">{track.audience}</span><h3>{track.title}</h3><p>{track.description}</p></article>)}</div></div></section>
+
+  <section class="section alt" id="speakers"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Call for speakers</div><h2 class="section-title">Speak to the whole room.</h2><p class="section-copy">Have a practical story, a hard technical lesson, or a sharp idea for developers and builders? Submit a proposal first. The speaker lineup will be announced after review.</p></div><a class="button primary" href="/cfp">Submit a proposal →</a></div><div class="empty-state"><strong>Speaker lineup: coming soon.</strong><p>We welcome proposals for talks and practical sessions that help the community build, secure, and scale.</p></div></div></section>
+
+  <section class="section" id="learning"><div class="wrap"><div class="eyebrow mono">Build / secure / scale</div><h2 class="section-title">Learning that moves with you.</h2><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Build with AI</h3><p>Move from an idea to a useful app, workflow, or prototype through Builder track codelabs and Vibe Lounge challenges.</p></article><article class="benefit-card"><strong>02</strong><h3>Secure by default</h3><p>Understand the governance, safety, and engineering choices needed when autonomous systems become part of your product.</p></article><article class="benefit-card"><strong>03</strong><h3>Scale what works</h3><p>Explore production-ready agents, enterprise systems, and the architecture behind high-performance multi-agent experiences.</p></article></div></div></section>
+
+  <section class="section alt" id="partners"><div class="wrap two-col"><div><div class="eyebrow mono">Partner with the community</div><h2 class="section-title">Make your brand useful in the room.</h2><p class="section-copy">DevFest partnerships work best when they help people learn, try, meet, or build. Bring a product, a challenge, a hiring story, or a community commitment to a high-intent technology audience.</p><a class="button primary" href="/sponsor" style="margin-top:20px">Call for sponsors →</a></div><div class="portfolio-grid home-portfolio">{HISTORICAL_COLLABORATIONS.slice(0, 4).map((brand) => <div class="portfolio-card"><div class="portfolio-logo"><img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" /></div><div class="portfolio-copy"><div class="mono">Historical collaboration</div><h3>{brand.name}</h3></div></div>)}</div></div></section>
+
+  <section class="section" id="faq"><div class="wrap two-col"><div><div class="eyebrow mono">Questions, answered</div><h2 class="section-title">Plan your next move.</h2><p class="section-copy">Dates and programme details are published as they are confirmed. If your question is not here, the organising team is one email away.</p><a class="button secondary" href="/faq" style="margin-top:20px">Read all FAQs →</a></div><div class="faq-list">{FAQ_LIST.slice(0, 4).map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div></section>
+
+  <section class="section alt" id="community"><div class="wrap two-col"><div><div class="eyebrow mono">Beyond one event</div><h2 class="section-title">Community → learning → building → connection.</h2><p class="section-copy">GDG Bandung is a year-round community for people who want to learn in public, find collaborators, and turn curiosity into momentum. DevFest is our biggest shared checkpoint.</p></div><div class="story-panel"><div class="mono">Keep building with us</div><p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p><a class="button secondary" href="https://gdg.community.dev/gdg-bandung/" target="_blank" rel="noopener noreferrer">Join GDG Bandung →</a></div></div></section>
 </EventLayout>
-<style>
-  .metrics {
-    width: min(1180px, calc(100% - 40px));
-    margin: 34px auto 0;
-  }
-</style>
-<script>
-  const target = new Date("2026-11-28T00:00:00+07:00");
-  function tick() {
-    let n = Math.max(0, target.getTime() - Date.now());
-    let d = Math.floor(n / 864e5),
-      h = Math.floor(n / 36e5) % 24,
-      m = Math.floor(n / 6e4) % 60,
-      s = Math.floor(n / 1e3) % 60;
-    [
-      ["days", d],
-      ["hours", h],
-      ["mins", m],
-      ["secs", s],
-    ].forEach(([id, v]) => {
-      const e = document.getElementById(id);
-      if (e) e.textContent = String(v).padStart(2, "0");
-    });
-  }
-  tick();
-  setInterval(tick, 1000);
-</script>

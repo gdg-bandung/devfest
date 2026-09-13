@@ -1,63 +1,22 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
+import { CURRENT_2026_SPONSORS, HISTORICAL_COLLABORATIONS, SPONSORSHIP_TIERS } from "../data/sponsor.data";
 ---
 
-<EventLayout title="Sponsor — DevFest 2026 Bandung"
-  ><section class="page-hero">
-    <div class="wrap">
-      <div class="eyebrow mono">Sponsorship</div><h1>
-        Meet the builders<br /><span class="gradient">behind the future.</span>
-      </h1><p>
-        Partner with one of Indonesia’s most engaged developer communities
-        through a sponsorship designed around real outcomes.
-      </p><a
-        class="button primary"
-        style="margin-top:22px"
-        href="mailto:gdgbandung@gmail.com?subject=DevFest%202026%20Sponsorship"
-        >Request sponsorship deck →</a>
-    </div>
-  </section><section class="section alt">
-    <div class="wrap two-col">
-      <div>
-        <div class="eyebrow mono">A thoughtful partnership</div><h2
-          class="section-title"
-        >
-          More than a logo on a screen.
-        </h2><p class="section-copy">
-          Like the most effective community events, we build sponsor packages
-          around your goals—talent, product conversations, credibility, and
-          durable relationships with developers.
-        </p>
-      </div><div class="card">
-        <div class="mono" style="color:#34a853">Open for partners</div><h3>
-          International brands, local relevance
-        </h3><p>
-          Our team will work with you to create a presence that feels useful and
-          authentic to the community.
-        </p>
-      </div>
-    </div><div class="tiers">
-      <article class="tier">
-        <div class="mono">Connect</div><h3>Community partner</h3><ul>
-          <li>Brand visibility</li><li>Community touchpoints</li><li>
-            Social amplification
-          </li>
-        </ul>
-      </article><article class="tier featured">
-        <div class="mono" style="color:#4285f4">Collaborate</div><h3>
-          Experience partner
-        </h3><ul>
-          <li>On-site activation</li><li>Recruiting & product moments</li><li>
-            Curated audience engagement
-          </li>
-        </ul>
-      </article><article class="tier">
-        <div class="mono">Lead</div><h3>Title partner</h3><ul>
-          <li>Category ownership</li><li>Custom partnership design</li><li>
-            Leadership visibility
-          </li>
-        </ul>
-      </article>
-    </div>
-  </section></EventLayout
->
+<EventLayout title="Partners — DevFest Bandung 2026"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Partnership & sponsorship</div><h1>Put your brand<br /><span class="gradient">to work.</span></h1><p>Partner with GDG Bandung to create useful moments for a professional, internationally minded audience of developers and builders. Bring a product, a challenge, a hiring story, or a community commitment.</p><a class="button primary" href="https://gdgbandung.com/devfest-sponsorship" target="_blank" rel="noopener noreferrer">Start a partnership conversation →</a></div></section>
+
+    <section class="section alt" id="current-partners"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Section 01 · current</div><h2 class="section-title">2026 sponsors & partners.</h2><p class="section-copy">Only confirmed organisations belong in this section. The 2026 sponsor list has not been announced yet.</p></div><span class="tag">Awaiting confirmation</span></div><div class="sponsor-current"><strong>No current 2026 sponsors are published yet.</strong><p>Historical collaborators below are intentionally kept separate. Contact the team to discuss an available partnership tier.</p></div><div class="tier-grid">{CURRENT_2026_SPONSORS.map((group) => <div class="tier"><div class="mono">{group.label}</div>{group.records.length ? group.records.map((record) => <h3>{record.name}</h3>) : <p>Confirmed listings to be added.</p>}</div>)}</div></div></section>
+
+  <section class="section" id="portfolio"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Section 02 · portfolio</div><h2 class="section-title">Trusted by brands that build with the community.</h2><p class="section-copy">A visual record of verified historical GDG Bandung sponsor and partner collaborations. These organisations are not current 2026 sponsors unless they are separately confirmed above.</p></div><div class="tag-row" data-portfolio-filters><button class="button secondary" type="button" data-filter="all" aria-pressed="true">All</button><button class="button secondary" type="button" data-filter="sponsor" aria-pressed="false">Sponsors</button><button class="button secondary" type="button" data-filter="partner" aria-pressed="false">Partners</button><button class="button secondary" type="button" data-filter="media-partner" aria-pressed="false">Media</button></div></div><div class="portfolio-grid" id="portfolio-grid">{HISTORICAL_COLLABORATIONS.map((brand) => <article class="portfolio-card" data-relationship={brand.relationship}>{brand.website ? <a class="portfolio-card-link" href={brand.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name} website`}></a> : null}<div class="portfolio-logo"><img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" /></div><div class="portfolio-copy"><div class="mono">Historical collaboration · {brand.relationship}</div><h3>{brand.name}</h3></div></article>)}</div></div></section>
+
+  <section class="section alt"><div class="wrap"><div class="eyebrow mono">Section 03 · opportunity</div><h2 class="section-title">A partnership should do more than decorate a backdrop.</h2><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Reach the right people</h3><p>The proposal is built around access to 500 curated participants: developers and builders actively shaping technology.</p></article><article class="benefit-card"><strong>02</strong><h3>Make product useful</h3><p>Show a real use case through a hands-on codelab, workshop, partner space, or experience that helps attendees move forward.</p></article><article class="benefit-card"><strong>03</strong><h3>Build lasting trust</h3><p>Support the local GDG ecosystem and earn credibility through learning, collaboration, and meaningful community investment.</p></article></div><div class="tier-grid">{SPONSORSHIP_TIERS.map((tier) => <div class="tier"><div class="mono">2026 tier</div><h3>{tier.name}</h3><p><strong>{tier.price}</strong></p><p>{tier.note}</p></div>)}</div><div class="notice">The tier names, pricing, and benefit summary above come from the supplied 2026 partnership proposal. Final packages are subject to organiser confirmation.</div><a class="button primary" href="https://gdgbandung.com/devfest-sponsorship" target="_blank" rel="noopener noreferrer" style="margin-top:25px">Discuss a custom partnership →</a></div></section>
+  <script>
+    const filters = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>("[data-relationship]");
+    filters.forEach((filter) => filter.addEventListener("click", () => {
+      const value = filter.dataset.filter;
+      cards.forEach((card) => { card.hidden = value !== "all" && card.dataset.relationship !== value; });
+      filters.forEach((item) => item.setAttribute("aria-pressed", String(item === filter)));
+    }));
+  </script>
+</EventLayout>

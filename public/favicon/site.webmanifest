@@ -1,6 +1,6 @@
 {
-  "name": "DevFest Bandung 2025",
-  "short_name": "DevFest Bandung 2025",
+  "name": "DevFest Bandung 2026",
+  "short_name": "DevFest Bandung 2026",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#1f2123",
-  "background_color": "#1f2123",
+  "theme_color": "#f0f0f0",
+  "background_color": "#f0f0f0",
   "display": "standalone"
 }

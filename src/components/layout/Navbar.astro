@@ -12,91 +12,32 @@ const links = [
 ---
 
 <header class="site-header">
-  <nav class="wrap nav" id="nav">
-    <a class="brand logo-brand" href="/" aria-label="DevFest Bandung"
-      ><img src="/logo.webp" alt="DevFest Bandung" /></a
-    ><div class="navlinks">
-      {
-        links.map((link) => (
-          <div class="nav-item">
-            {link.soon ? (
-              <span class="disabled-link" aria-disabled="true">
-                {link.name}
-              </span>
-            ) : (
-              <a class={path === link.href ? "active" : ""} href={link.href}>
-                {link.name}
-              </a>
-            )}
-            {link.soon && <span class="soon">Soon</span>}
-          </div>
-        ))
-      }<button class="button primary mobile-register" data-open-modal
-        >Register</button>
-    </div><button class="button primary desktop-register" data-open-modal
-      >Register</button
-    ><button
-      class="nav-toggle"
-      aria-label="Open menu"
-      aria-expanded="false"
-      id="nav-toggle"><img src="/icons/menu.svg" alt="" /></button>
+  <nav class="wrap nav" id="nav" aria-label="Primary navigation">
+    <a class="logo-brand" href="/" aria-label="DevFest Bandung 2026 home">
+      <img src="/logo-devfest.webp" alt="DevFest Bandung" width="154" height="45" />
+    </a>
+    <ul class="navlinks" id="primary-links">
+      {links.map((link) => (
+        <li class="nav-item">
+          {link.soon ? <span class="disabled-link" aria-disabled="true">{link.name}</span> : <a class={path === link.href ? "active" : ""} href={link.href} aria-current={path === link.href ? "page" : undefined}>{link.name}</a>}
+          {link.soon && <span class="soon">Coming soon</span>}
+        </li>
+      ))}
+      <li class="mobile-register-item"><button class="button primary mobile-register" data-open-modal type="button">Register</button></li>
+    </ul>
+    <button class="button primary register-button" data-open-modal type="button">Register</button>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-links" id="nav-toggle" type="button">
+      <img src="/icons/menu.svg" alt="" />
+    </button>
   </nav>
 </header>
-<style>
-  .logo-brand {
-    display: flex;
-    align-items: center;
-    background: #202124;
-    border-radius: 7px;
-    padding: 5px 9px;
-  }
-  .logo-brand img {
-    width: 146px;
-    height: auto;
-  }
-  .disabled-link {
-    color: #9aa8ba;
-    cursor: not-allowed;
-  }
-  .mobile-register {
-    display: none;
-  }
-  .nav-toggle {
-    padding: 6px;
-  }
-  .nav-toggle img {
-    display: block;
-    width: 28px;
-    height: 28px;
-    filter: brightness(0) saturate(100%) invert(11%) sepia(15%) saturate(1631%)
-      hue-rotate(178deg) brightness(93%);
-  }
-  @media (max-width: 850px) {
-    .logo-brand {
-      padding: 4px 7px;
-    }
-    .logo-brand img {
-      width: 126px;
-    }
-    .desktop-register {
-      display: none;
-    }
-    .nav.open .mobile-register {
-      display: inline-flex;
-      width: 100%;
-      margin-top: 8px;
-    }
-    .nav.open .navlinks {
-      min-height: calc(100vh - 76px);
-    }
-  }
-</style>
+
 <script>
-  document.getElementById("nav-toggle")?.addEventListener("click", () => {
+  const toggle = document.getElementById("nav-toggle");
+  toggle?.addEventListener("click", () => {
     const nav = document.getElementById("nav");
-    nav?.classList.toggle("open");
-    document
-      .getElementById("nav-toggle")
-      ?.setAttribute("aria-expanded", String(nav?.classList.contains("open")));
+    const open = nav?.classList.toggle("open") ?? false;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
 </script>
