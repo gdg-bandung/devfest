@@ -1,6 +1,40 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
-import { FAQ_LIST } from "../data/faq.data";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import FaqItem from "../components/ui/FaqItem.astro";
+import { FAQ_LIST, LINKS, SITE } from "../data/site.data";
 ---
 
-<EventLayout title="FAQ — DevFest Bandung 2026"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Frequently asked questions</div><h1>Everything you need<br /><span class="gradient">to know.</span></h1><p>Answers for attendees, speakers, partners, and the wider DevFest Bandung community. Confirmed details will be added as the programme develops.</p></div></section><section class="section alt"><div class="wrap faq-list">{FAQ_LIST.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}<div class="card" style="margin-top:35px;padding:25px"><div class="eyebrow mono">Still curious?</div><h3>Ask the organising team.</h3><a class="button primary" href="mailto:hi@gdgbandung.com">Email hi@gdgbandung.com →</a></div></div></section></EventLayout>
+<EventLayout title="FAQ — DevFest Bandung 2026">
+  <section class="section gridbg">
+    <div class="container stack hero" style="--gap: 24px">
+      <Eyebrow color="var(--yellow)">FAQ</Eyebrow>
+      <h1 class="display">Questions,<br />answered.</h1>
+      <p class="lead" style="max-width: 640px">Everything you need to plan your day at DevFest Bandung 2026.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container faq">
+      <aside class="facts-wrap">
+        <div class="box shadow-8 facts">
+          <div class="label">QUICK FACTS</div>
+          <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong><br />{SITE.time}</span></div>
+          <div class="fact"><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong><br /><a href={LINKS.maps}>Open in Google Maps ↗</a></span></div>
+          <a class="btn btn--blue btn--block" href={LINKS.register}>Register now →</a>
+        </div>
+      </aside>
+      <div class="stack" style="flex: 3 1 600px; --gap: 12px">
+        {FAQ_LIST.map((faq, index) => <FaqItem faq={faq} open={index === 0} />)}
+      </div>
+    </div>
+  </section>
+</EventLayout>
+
+<style>
+  .hero { padding: 80px 32px 72px; }
+  .faq { padding: 72px 32px 96px; display: flex; flex-wrap: wrap; gap: 48px; }
+  .facts-wrap { flex: 1 1 280px; display: flex; flex-direction: column; gap: 16px; align-self: flex-start; }
+  .facts { padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .fact { display: flex; gap: 12px; align-items: baseline; }
+</style>

@@ -1,0 +1,10 @@
+---
+interface Props {
+  color?: string;
+  class?: string;
+}
+
+const { color = "var(--blue)", class: className } = Astro.props;
+---
+
+<div class:list={["eyebrow", className]}><span class="dot" style={`--dot: ${color}`}></span><slot /></div>

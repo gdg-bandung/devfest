@@ -2,16 +2,27 @@
 import BaseHead from "./BaseHead.astro";
 import Navbar from "./Navbar.astro";
 import Footer from "./Footer.astro";
-import WaitingListModal from "./WaitingListModal.astro";
-const {
-  title = "DevFest Bandung 2026",
-  description,
-} = Astro.props;
+import { SITE } from "../../data/site.data";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE.seoTitle, description = SITE.seoDescription } = Astro.props;
 ---
 
 <html lang="en">
-  <head><BaseHead title={title} description={description ?? "DevFest Bandung 2026 brings developers and builders together to build, secure, and scale in the agentic era."} /></head><body
-    ><div class="site-shell">
-      <Navbar /><main><slot /></main><Footer />
-    </div><WaitingListModal /></body>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <div class="page">
+      <Navbar />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>

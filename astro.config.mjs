@@ -21,7 +21,7 @@ export default defineConfig({
   env: {
     schema: {
       PUBLIC_END_COUNTDOWN: envField.string({
-        context: "client", access: "public", default: "2026-12-12T08:00:00+07:00"
+        context: "client", access: "public", default: "2026-12-19T08:00:00+07:00"
       }),
     }
   },

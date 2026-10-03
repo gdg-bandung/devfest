@@ -1,22 +1,40 @@
+---
+import { IMAGES, LINKS } from "../../data/site.data";
+---
+
 <footer class="site-footer">
-  <div class="footer-wrap">
+  <div class="container">
     <div class="footer-cta">
-      <h2>Chat with one of our learning<br />pros to uncover some cool new<br />stuff!</h2>
-      <a class="community-button" href="https://gdg.community.dev/gdg-bandung/" target="_blank" rel="noopener noreferrer">♣&nbsp; Join Community</a>
+      <h2>Chat with one of our learning pros to uncover some cool new stuff!</h2>
+      <a class="btn btn--blue" href={LINKS.community} data-shadow style="--btn-shadow: #fff">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"></path></svg>
+        Join Community
+      </a>
     </div>
     <div class="footer-main">
       <div class="footer-about">
-        <img src="/images/gdg-bandung-horizontal-light.webp" alt="Google Developer Groups Bandung" />
+        <img src={IMAGES.logoGdgWhite} alt="Google Developer Group Bandung" width="150" height="56" />
         <p>We organize events ranging from small meetups to large-scale conferences like DevFest to create spaces for developers to learn, connect, and grow together. Our community welcomes developers of all levels, from beginners to experts.</p>
       </div>
-      <div class="footer-links">
-        <div><h3>Community</h3><a href="https://gdgbandung.com/brand-guidelines" target="_blank" rel="noopener noreferrer">Brand Guidelines</a><a href="https://gdgbandung.com/terms-and-conditions" target="_blank" rel="noopener noreferrer">Code of Conduct</a></div>
-        <div><h3>Contact Us</h3><a href="https://gdgbandung.com/devfest-sponsorship" target="_blank" rel="noopener noreferrer">Request for Media Partner</a><a href="https://gdgbandung.com/terms-and-conditions" target="_blank" rel="noopener noreferrer">Join as Partner</a></div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href={LINKS.brandGuidelines}>Brand Guidelines</a>
+          <a href={LINKS.terms}>Code of Conduct</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact Us</div>
+          <a href={LINKS.sponsorship}>Request for Media Partner</a>
+          <a href={LINKS.terms}>Join as Partner</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Google Developer Group Bandung · All rights reserved.</span>
-      <div class="social"><span>Connect With Us</span><a href="https://www.instagram.com/gdg_bandung/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/icons/instagram.svg" alt="" /></a></div>
+      <small>© 2026 Google Developer Group Bandung · All rights reserved.</small>
+      <a class="footer-social" href={LINKS.instagram}>
+        Connect With Us
+        <span><svg aria-label="Instagram" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></span>
+      </a>
     </div>
   </div>
 </footer>

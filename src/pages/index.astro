@@ -1,50 +1,438 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
-import { EVENT, PREVIOUS_EDITION_PROOF } from "../data/event.data";
-import { listStageAgenda } from "../data/agenda.data";
-import { FAQ_LIST } from "../data/faq.data";
-import { HISTORICAL_COLLABORATIONS } from "../data/sponsor.data";
-import Countdown from "../components/landing-page/countdown";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import FaqItem from "../components/ui/FaqItem.astro";
+import { HOME_FAQS, IMAGES, LINKS, SITE } from "../data/site.data";
+import { PUBLIC_END_COUNTDOWN } from "astro:env/client";
+
+const remaining = Math.max(0, Date.parse(PUBLIC_END_COUNTDOWN) - Date.now());
+const pad = (n: number) => String(n).padStart(2, "0");
+const countdown = [
+  { unit: "days", label: "DAYS", value: String(Math.floor(remaining / 864e5)) },
+  { unit: "hours", label: "HRS", value: pad(Math.floor((remaining % 864e5) / 36e5)) },
+  { unit: "mins", label: "MIN", value: pad(Math.floor((remaining % 36e5) / 6e4)) },
+];
+
+const themeWords = [
+  { word: "BUILD", color: "var(--blue)" },
+  { word: "SECURE", color: "var(--red)" },
+  { word: "SCALE", color: "var(--green)" },
+  { word: "AGENTIC ERA", color: "var(--yellow)" },
+];
+
+const tracks = [
+  {
+    number: "Track 01",
+    audience: "For anyone who wants to build",
+    title: "Builder track",
+    tone: "bg-blue-soft",
+    description:
+      "Start with a problem, then turn it into a useful app, workflow or prototype with AI assistance. Designed for developers and builders across product, design, marketing and beyond.",
+    points: ["AI-assisted apps and prototypes", "Automating and optimising workflows", "Picking the right Google tools for the job"],
+  },
+  {
+    number: "Track 02",
+    audience: "For professional devs & eng teams",
+    title: "Developer track",
+    tone: "bg-red-soft",
+    description:
+      "Go deeper into the agent ecosystem: develop, deploy, govern, secure and scale autonomous systems for production environments.",
+    points: ["Building and orchestrating agents", "Governance and secure-by-default systems", "Taking multi-agent apps to production scale"],
+  },
+];
+
+const activities = [
+  {
+    image: IMAGES.codelab,
+    alt: "Participants working through a codelab on laptops",
+    color: "var(--blue)",
+    title: "Hands-on codelab & workshop",
+    copy: "Try the newest Google tools and updates from this year’s Google I/O — Gemini, Android, Firebase, Google Cloud — with mentors in the room.",
+  },
+  {
+    image: IMAGES.partnerBooth,
+    alt: "Attendees talking at a partner booth",
+    color: "var(--red)",
+    title: "Networking & collaboration area",
+    copy: "Meet other participants, swap ideas and find collaborators among developers, experts and communities.",
+  },
+  {
+    image: IMAGES.expertPanel,
+    alt: "Industry experts on a panel",
+    color: "var(--yellow)",
+    title: "Industry talks & expert sessions",
+    copy: "Panel discussions and deep dives with industry experts on AI trends and real-world applications.",
+  },
+];
+
+const topics = ["Gemini", "Chrome", "Flutter", "Android", "Google Cloud", "Firebase", "Antigravity", "Gemma", "Gemini Code Assist", "Figma", "Google Labs"];
+
+const lastYear = [
+  { value: "2,000+", label: "participants", color: "var(--stat-blue)" },
+  { value: "64.94%", label: "professionals", color: "var(--stat-green)" },
+  { value: "27", label: "speakers & panelists", color: "var(--sunny)" },
+  { value: "2,100+", label: "YouTube live viewers", color: "var(--stat-pink)" },
+];
 ---
 
-<EventLayout title={EVENT.seoTitle} description={EVENT.seoDescription}>
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="pill mono">GDG Bandung · 2026</span>
-        <h1>DevFest Bandung <span class="gradient">2026&nbsp;</span></h1>
-        <p class="hero-lead">Explore AI-assisted building, agent development, secure production systems, and scalable multi-agent experiences through talks, hands-on codelabs, and the Builder Space.</p>
-        <div class="countdown-wrap"><span class="mono">Counting down to DevFest Bandung 2026</span><Countdown client:load /></div>
-        <div class="hero-actions"><button class="button primary" data-open-modal type="button">Register</button><a class="button secondary" href="/cfp">Call for speakers →</a><a class="button yellow" href="/sponsor">Call for sponsors →</a></div>
+<EventLayout>
+  <!-- HERO -->
+  <section class="section gridbg">
+    <div class="container hero">
+      <div class="hero-copy">
+        <Eyebrow>Google Developer Group Bandung presents</Eyebrow>
+        <h1 class="display display--xl">DevFest<br />Bandung 2026</h1>
+        <p class="hero-tagline"><strong>Build, secure, scale:</strong> developers and builders in the agentic era.</p>
+        <div class="cluster" style="--gap: 12px">
+          <div class="hero-fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateMedium}</strong> · {SITE.time}</span></div>
+          <a class="hero-fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong> ↗</span></a>
+        </div>
+        <div class="cluster hero-actions">
+          <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
+          <a class="btn" href={LINKS.cfp}>Submit a talk</a>
+          <a class="btn" href={LINKS.sponsorship}>Become a sponsor</a>
+        </div>
+        <div class="countdown">
+          <span class="eyebrow">Doors open in</span>
+          <div class="countdown-units" data-countdown={PUBLIC_END_COUNTDOWN}>
+            {countdown.map((item) => (
+              <div class="countdown-unit">
+                <div class="countdown-value" data-unit={item.unit}>{item.value}</div>
+                <div class="mono countdown-label">{item.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      <div class="theme-lockup" aria-label="DevFest Bandung 2026 theme">
-        <div class="theme-word"><i aria-hidden="true"></i>BUILD</div>
-        <div class="theme-word"><i aria-hidden="true"></i>SECURE</div>
-        <div class="theme-word"><i aria-hidden="true"></i>SCALE</div>
-        <div class="theme-word"><i aria-hidden="true"></i>AGENTIC ERA</div>
+
+      <div class="collage">
+        <figure class="collage-main shadow-10">
+          <img class="photo" src={IMAGES.groupPhoto} alt="Full auditorium of DevFest Bandung 2025 attendees posing for a group photo" />
+          <figcaption class="mono tag" style="background: var(--blue)">DEVFEST BANDUNG 2025</figcaption>
+        </figure>
+        <figure class="shadow-8">
+          <img class="photo" src={IMAGES.expertPanel} alt="Panel discussion on stage" />
+          <figcaption class="mono tag tag--sm" style="background: var(--red); color: #fff">EXPERT PANELS</figcaption>
+        </figure>
+        <figure class="shadow-8">
+          <img class="photo" src={IMAGES.codelab} alt="Attendees working on laptops during a codelab" />
+          <figcaption class="mono tag tag--sm" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
+        </figure>
+        <div class="sticker">
+          <div class="sticker-value">2,000+</div>
+          <div class="sticker-label">joined us<br />last year</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="marquee" aria-label="DevFest Bandung themes"><div class="marquee-track"><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span><span>BUILDERS</span><span>BUILD</span><span>SECURE</span><span>SCALE</span><span>COMMUNITY</span></div></div>
-
-  <section class="section alt" id="about">
-    <div class="wrap two-col">
-      <div><div class="eyebrow mono">The builder era</div><h2 class="section-title">More people can build. Every builder needs a path to scale.</h2><p class="section-copy">The role of a developer is changing—from writing every line of code to reviewing, orchestrating, and making thoughtful choices about models, platforms, and tools. At the same time, AI is opening the door for more people to turn real problems into useful solutions.</p><p class="section-copy">DevFest Bandung 2026 brings both worlds into one room: learn how to build with confidence, secure what you ship, and scale what works.</p></div>
-      <div class="story-panel"><div class="mono">DevFest Bandung 2025 recap</div><p>Our previous edition brought a large, engaged community together. Revisit the people, partners, and moments that made it memorable on Instagram.</p><div class="tag-row"><span class="tag">2,000+ participants</span><span class="tag">64.94% professionals</span></div><a class="button secondary" href="https://www.instagram.com/gdg_bandung/" target="_blank" rel="noopener noreferrer" style="margin-top:20px">See the Instagram recap →</a></div>
+  <!-- THEME MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      {themeWords.map((item) => <span class="marquee-word"><span class="dot dot--lg" style={`--dot: ${item.color}`}></span>{item.word}</span>)}
     </div>
-    <div class="wrap metrics"><div class="metric"><b>500</b><span>target participants in the 2026 proposal</span></div>{PREVIOUS_EDITION_PROOF.slice(0, 3).map((item) => <div class="metric"><b>{item.value}</b><span>previous-edition {item.label}</span></div>)}</div>
+  </div>
+
+  <!-- THEME -->
+  <section id="theme" class="section">
+    <div class="container stack" style="--gap: 48px">
+      <div class="theme-intro">
+        <div class="stack" style="flex: 1 1 480px">
+          <Eyebrow color="var(--red)">Our 2026 theme</Eyebrow>
+          <h2 class="title">“Build, secure, scale: Developers and builders in the agentic era”</h2>
+        </div>
+        <p class="copy" style="flex: 1 1 380px">The developer’s job is shifting from writing code to reviewing it and orchestrating autonomous agents. Models and tools keep getting stronger, so you can do more, faster.</p>
+      </div>
+
+      <div class="auto-grid" style="--min: 320px">
+        <div class="box shadow-8 theme-card">
+          <div class="theme-card-title">AI opens the door for everyone</div>
+          <p class="copy-17">More people can now solve more problems, and bring more diverse ideas to life than ever before. “Builders” use their skills and AI assistance to build apps, automate and optimise workflows, and create solutions for any industry — from product management to design.</p>
+        </div>
+        <div class="box shadow-8 theme-card">
+          <div class="theme-card-title">Secure by default, scaled with intent</div>
+          <p class="copy-17">Gartner predicts that 80% of technology products and services will soon be built by people who are not professional software developers. In that world, a secure-by-default mindset matters more than ever — and so does choosing the right models, platforms and tools for your goals.</p>
+        </div>
+      </div>
+
+      <div class="box auto-grid info-strip" style="--min: 240px; --gap: 0">
+        <div class="info-cell" style="border-right: 2px solid var(--ink); border-top-color: var(--blue)">
+          <div class="label" style="text-transform: uppercase">Date &amp; time</div>
+          <div class="info-value">{SITE.dateLong}</div>
+          <div class="info-sub">{SITE.time}</div>
+        </div>
+        <div class="info-cell" style="border-top-color: var(--red)">
+          <div class="label" style="text-transform: uppercase">Venue</div>
+          <div class="info-value">{SITE.venue}</div>
+          <a class="info-sub" href={LINKS.maps}>Open in Google Maps ↗</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="section" id="tracks"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Learn by doing</div><h2 class="section-title">Three ways into the programme.</h2><p class="section-copy">The approved content direction follows the full arc: build an idea, secure the system, scale the outcome—and make room for anyone curious enough to try.</p></div></div><div class="track-grid">{listStageAgenda.map((track) => <article class={`track-card ${track.accent}`}><span class="mono">{track.audience}</span><h3>{track.title}</h3><p>{track.description}</p></article>)}</div></div></section>
+  <!-- TRACKS -->
+  <section id="tracks" class="section section--white">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Learn by doing</Eyebrow>
+        <h2 class="title">Two tracks. Pick the one that fits how you build.</h2>
+        <p class="copy">Build an idea, secure the system, scale the outcome. Both tracks follow the same arc, at different depths.</p>
+      </div>
+      <div class="auto-grid" style="--min: 340px; --gap: 32px">
+        {tracks.map((track) => (
+          <article class:list={["track", track.tone]}>
+            <div class="track-top">
+              <span class="mono track-number">{track.number}</span>
+              <span class="mono track-audience">{track.audience}</span>
+            </div>
+            <h3 class="track-title">{track.title}</h3>
+            <p class="track-copy">{track.description}</p>
+            <ul class="arrow-list">
+              {track.points.map((point) => <li><span aria-hidden="true">→</span>{point}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <section class="section alt" id="speakers"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Call for speakers</div><h2 class="section-title">Speak to the whole room.</h2><p class="section-copy">Have a practical story, a hard technical lesson, or a sharp idea for developers and builders? Submit a proposal first. The speaker lineup will be announced after review.</p></div><a class="button primary" href="/cfp">Submit a proposal →</a></div><div class="empty-state"><strong>Speaker lineup: coming soon.</strong><p>We welcome proposals for talks and practical sessions that help the community build, secure, and scale.</p></div></div></section>
+  <!-- KEY ACTIVITIES -->
+  <section id="activities" class="section">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow color="var(--green)">Key activities</Eyebrow>
+        <h2 class="title">One day to learn, meet and build.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px; --gap: 28px">
+        {activities.map((activity) => (
+          <article class="box shadow-8 activity">
+            <img class="photo" src={activity.image} alt={activity.alt} loading="lazy" />
+            <div class="activity-body">
+              <div class="activity-bar" style={`background: ${activity.color}`}></div>
+              <h3>{activity.title}</h3>
+              <p class="copy-17">{activity.copy}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="topics">
+        <span class="eyebrow">Topics</span>
+        <div class="cluster" style="--gap: 10px">
+          {topics.map((topic) => <span class="chip">{topic}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section class="section" id="learning"><div class="wrap"><div class="eyebrow mono">Build / secure / scale</div><h2 class="section-title">Learning that moves with you.</h2><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Build with AI</h3><p>Move from an idea to a useful app, workflow, or prototype through Builder track codelabs and Vibe Lounge challenges.</p></article><article class="benefit-card"><strong>02</strong><h3>Secure by default</h3><p>Understand the governance, safety, and engineering choices needed when autonomous systems become part of your product.</p></article><article class="benefit-card"><strong>03</strong><h3>Scale what works</h3><p>Explore production-ready agents, enterprise systems, and the architecture behind high-performance multi-agent experiences.</p></article></div></div></section>
+  <!-- LAST YEAR -->
+  <section class="section section--dark">
+    <div class="container last-year">
+      <div class="stack" style="flex: 1 1 420px">
+        <Eyebrow color="var(--yellow)">DevFest Bandung 2025</Eyebrow>
+        <h2 class="title title--56">Last year, the room was full.</h2>
+        <p class="copy" style="color: var(--on-dark)">A quality audience, real engagement, and results that mattered to sponsors.</p>
+        <a class="recap-link" href="/sponsor">See the full 2025 recap →</a>
+      </div>
+      <div class="grid-2" style="flex: 1 1 520px">
+        {lastYear.map((stat) => (
+          <div class="stat">
+            <div class="stat-value" style={`color: ${stat.color}`}>{stat.value}</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-  <section class="section alt" id="partners"><div class="wrap two-col"><div><div class="eyebrow mono">Partner with the community</div><h2 class="section-title">Make your brand useful in the room.</h2><p class="section-copy">DevFest partnerships work best when they help people learn, try, meet, or build. Bring a product, a challenge, a hiring story, or a community commitment to a high-intent technology audience.</p><a class="button primary" href="/sponsor" style="margin-top:20px">Call for sponsors →</a></div><div class="portfolio-grid home-portfolio">{HISTORICAL_COLLABORATIONS.slice(0, 4).map((brand) => <div class="portfolio-card"><div class="portfolio-logo"><img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" /></div><div class="portfolio-copy"><div class="mono">Historical collaboration</div><h3>{brand.name}</h3></div></div>)}</div></div></section>
+  <!-- PARTNERS -->
+  <section id="partners" class="section">
+    <div class="container partners">
+      <div class="stack" style="flex: 1 1 440px">
+        <Eyebrow>Partner with the community</Eyebrow>
+        <h2 class="title">Make your brand useful in the room.</h2>
+        <p class="copy">DevFest partnerships work best when they help people learn, try, meet or build. Bring a product, a challenge, a hiring story or a community commitment to a high-intent audience of developers and builders.</p>
+        <div class="cluster" style="padding-top: 8px">
+          <a class="btn btn--blue" href={LINKS.sponsorship}>Become a sponsor →</a>
+        </div>
+      </div>
+      <div class="grid-2" style="flex: 1 1 520px; --gap: 20px">
+        {[1, 2, 3].map(() => (
+          <div class="box shadow-6">
+            <div class="logo-slot"><span class="mono">[ SPONSOR LOGO ]</span></div>
+            <div class="logo-meta"><span class="label" style="font-size: 11px">2026 PARTNER</span><span>[Partner name]</span></div>
+          </div>
+        ))}
+        <a class="your-brand" href={LINKS.sponsorship}>
+          <span class="your-brand-plus">+</span>
+          <span class="your-brand-title">Your brand here</span>
+          <span class="your-brand-sub">Sponsorship is open</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-  <section class="section" id="faq"><div class="wrap two-col"><div><div class="eyebrow mono">Questions, answered</div><h2 class="section-title">Plan your next move.</h2><p class="section-copy">Dates and programme details are published as they are confirmed. If your question is not here, the organising team is one email away.</p><a class="button secondary" href="/faq" style="margin-top:20px">Read all FAQs →</a></div><div class="faq-list">{FAQ_LIST.slice(0, 4).map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div></section>
+  <!-- CFP -->
+  <section class="section section--green">
+    <div class="container cfp-band">
+      <div class="stack" style="flex: 1 1 560px; --gap: 16px">
+        <Eyebrow color="var(--green)" class="eyebrow--ring">Call for speakers</Eyebrow>
+        <h2 class="title title--56">Speak to the whole room.</h2>
+        <p class="copy" style="color: var(--ink)">Share a practical story, a hard-won technical lesson, or a clear idea that helps people build in the agentic era. First-time speakers welcome.</p>
+      </div>
+      <div class="cluster">
+        <a class="btn btn--dark" href={LINKS.cfp} data-shadow style="--btn-shadow: var(--green)">Submit a proposal →</a>
+      </div>
+    </div>
+  </section>
 
-  <section class="section alt" id="community"><div class="wrap two-col"><div><div class="eyebrow mono">Beyond one event</div><h2 class="section-title">Community → learning → building → connection.</h2><p class="section-copy">GDG Bandung is a year-round community for people who want to learn in public, find collaborators, and turn curiosity into momentum. DevFest is our biggest shared checkpoint.</p></div><div class="story-panel"><div class="mono">Keep building with us</div><p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p><a class="button secondary" href="https://gdg.community.dev/gdg-bandung/" target="_blank" rel="noopener noreferrer">Join GDG Bandung →</a></div></div></section>
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container faq-band">
+      <div class="stack" style="flex: 1 1 340px">
+        <Eyebrow color="var(--yellow)">Plan your day</Eyebrow>
+        <h2 class="title title--56">Questions, answered.</h2>
+        <a class="faq-more" href="/faq">Read all FAQs →</a>
+      </div>
+      <div class="stack" style="flex: 2 1 560px; --gap: 12px">
+        {HOME_FAQS.map((faq, index) => <FaqItem faq={faq} open={index === 0} compact />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND ONE EVENT -->
+  <section class="section--white">
+    <div class="container beyond">
+      <div class="stack" style="flex: 1 1 520px">
+        <Eyebrow>Beyond one event</Eyebrow>
+        <h2 class="title beyond-title">Community → learning → building → connection.</h2>
+        <p class="copy">GDG Bandung is a year-round community for people who want to learn in public, find collaborators, and turn curiosity into momentum. DevFest is our biggest shared checkpoint.</p>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-watermark" aria-hidden="true">BUILD / SECURE / SCALE</div>
+        <div class="mono beyond-kicker">KEEP BUILDING WITH US</div>
+        <p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p>
+        <a class="btn" href={LINKS.community} data-shadow style="--btn-shadow: var(--yellow)">Join GDG Bandung →</a>
+      </div>
+    </div>
+  </section>
 </EventLayout>
+
+<script>
+  const root = document.querySelector<HTMLElement>("[data-countdown]");
+  const target = Date.parse(root?.dataset.countdown ?? "");
+
+  const render = () => {
+    if (!root || Number.isNaN(target)) return;
+    const ms = Math.max(0, target - Date.now());
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const values: Record<string, string> = {
+      days: String(Math.floor(ms / 864e5)),
+      hours: pad(Math.floor((ms % 864e5) / 36e5)),
+      mins: pad(Math.floor((ms % 36e5) / 6e4)),
+    };
+    root.querySelectorAll<HTMLElement>("[data-unit]").forEach((el) => {
+      el.textContent = values[el.dataset.unit ?? ""] ?? el.textContent;
+    });
+  };
+
+  render();
+  setInterval(render, 30000);
+</script>
+
+<style>
+  /* Hero */
+  .hero { padding: 72px 32px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .hero-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
+  .hero-tagline { margin: 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.3; max-width: 600px; }
+  .hero-fact { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--ink); padding: 10px 16px; text-decoration: none; }
+  .hero-actions { padding-top: 8px; }
+
+  .countdown { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 4px; }
+  .countdown .eyebrow { letter-spacing: 0.1em; }
+  .countdown-units { display: flex; gap: 8px; }
+  .countdown-unit { background: var(--ink); color: #fff; padding: 8px 12px; min-width: 56px; text-align: center; }
+  .countdown-value { font-size: 26px; font-weight: 700; line-height: 1; }
+  .countdown-label { font-size: 11px; opacity: 0.8; padding-top: 4px; }
+
+  .collage { flex: 1 1 460px; min-width: 0; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 12px 12px 0; }
+  .collage figure { margin: 0; position: relative; border: 2px solid var(--ink); background: #fff; }
+  .collage figure img { height: 190px; }
+  .collage .collage-main { grid-column: 1 / -1; }
+  .collage .collage-main img { height: 300px; }
+  .tag { position: absolute; left: 16px; bottom: 16px; color: var(--ink); border: 2px solid var(--ink); padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+  .tag--sm { left: 12px; bottom: 12px; padding: 4px 8px; font-size: 11px; }
+  .sticker { position: absolute; top: -28px; right: -8px; width: 132px; height: 132px; border-radius: 50%; background: var(--sunny); border: 2px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: 4px 4px 0 var(--ink); }
+  .sticker-value { font-size: 32px; font-weight: 700; line-height: 1; }
+  .sticker-label { font-size: 13px; line-height: 1.2; padding-top: 4px; }
+
+  /* Marquee */
+  .marquee { background: var(--ink); color: #fff; border-bottom: 2px solid var(--ink); overflow: hidden; }
+  .marquee-inner { max-width: 1280px; margin: 0 auto; padding: 22px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-weight: 700; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; }
+  .marquee-word { display: inline-flex; align-items: center; gap: 14px; }
+
+  /* Theme */
+  .theme-intro { display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-end; }
+  .theme-card { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .theme-card-title { font-weight: 700; font-size: 22px; }
+  .info-cell { padding: 24px 28px; border-top: 6px solid; display: flex; flex-direction: column; gap: 8px; }
+  .info-value { font-size: 22px; font-weight: 700; line-height: 1.2; }
+  .info-sub { font-size: 16px; }
+  div.info-sub { color: var(--muted); }
+
+  /* Tracks */
+  .track { border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .track-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .track-number { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .track-audience { font-size: 12px; font-weight: 700; background: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; }
+  .track-title { margin: 0; font-size: 44px; line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
+  .track-copy { margin: 0; font-size: 18px; line-height: 1.6; }
+
+  /* Activities */
+  .activity { display: flex; flex-direction: column; }
+  .activity img { height: 220px; border-bottom: 2px solid var(--ink); }
+  .activity-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .activity-bar { height: 6px; width: 48px; }
+  .activity h3 { margin: 0; font-size: 24px; font-weight: 700; }
+  .topics { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding-top: 8px; }
+
+  /* Last year */
+  .last-year { padding: 88px 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+  .recap-link { color: var(--stat-blue); font-size: 17px; font-weight: 700; }
+  .stat { border: 2px solid #fff; padding: 24px; }
+  .stat-value { font-size: 48px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 16px; padding-top: 8px; }
+
+  /* Partners */
+  .partners { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .logo-slot { height: 130px; display: flex; align-items: center; justify-content: center; border-bottom: 2px dashed #9a9a9a; background: #fafafa; }
+  .logo-slot span { font-size: 14px; color: #5f5f5f; }
+  .logo-meta { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; font-size: 18px; }
+  .your-brand { background: var(--yellow-soft); border: 2px dashed var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 24px; text-align: center; min-height: 200px; }
+  .your-brand-plus { font-size: 40px; font-weight: 700; line-height: 1; }
+  .your-brand-title { font-size: 18px; font-weight: 700; }
+  .your-brand-sub { font-size: 15px; }
+
+  /* CFP band */
+  .cfp-band { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between; }
+  .cfp-band :global(.eyebrow--ring .dot) { border: 2px solid var(--ink); }
+
+  /* FAQ */
+  .faq-band { display: flex; flex-wrap: wrap; gap: 48px; }
+  .faq-more { font-size: 17px; font-weight: 700; }
+
+  /* Beyond */
+  .beyond { display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: center; }
+  .beyond-title { font-size: clamp(40px, 5vw, 68px); letter-spacing: -0.035em; }
+  .beyond-card { flex: 1 1 440px; position: relative; overflow: hidden; background: var(--ink); color: #fff; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--blue); padding: 48px 44px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .beyond-watermark { position: absolute; right: -40px; bottom: -14px; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: #2f2f2f; transform: rotate(-8deg); white-space: nowrap; }
+  .beyond-kicker { position: relative; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: var(--yellow); }
+  .beyond-card p { position: relative; margin: 0; font-size: 20px; line-height: 1.6; }
+  .beyond-card .btn { position: relative; }
+
+  @media (max-width: 600px) {
+    .track-top { flex-wrap: wrap; }
+    .track-title { font-size: 36px; }
+    .stat-value { font-size: 32px; }
+    .your-brand-plus { font-size: 30px; }
+  }
+</style>

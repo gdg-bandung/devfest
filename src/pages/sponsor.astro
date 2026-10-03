@@ -1,22 +1,188 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
-import { CURRENT_2026_SPONSORS, HISTORICAL_COLLABORATIONS, SPONSORSHIP_TIERS } from "../data/sponsor.data";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import { IMAGES, LINKS, SITE } from "../data/site.data";
+
+const stats = [
+  { value: "64.94%", label: "professionals", color: "var(--stat-blue)" },
+  { value: "392", label: "female registrants", color: "var(--stat-pink)" },
+  { value: "27", label: "speakers & panelists", color: "var(--sunny)" },
+  { value: "13", label: "partners & sponsors", color: "var(--stat-green)" },
+  { value: "2,100+", label: "YouTube live stream viewers", color: "var(--stat-blue)" },
+  { value: "71", label: "media coverage", color: "var(--sunny)" },
+];
+
+const gallery = [
+  { src: IMAGES.groupPhoto, alt: "Full auditorium group photo at DevFest Bandung 2025" },
+  { src: IMAGES.organisersMascot, alt: "Organisers with the event mascot" },
+  { src: IMAGES.keynoteStage, alt: "Keynote speaker on the main stage" },
+  { src: IMAGES.expertPanel, alt: "Panel discussion with industry speakers" },
+  { src: IMAGES.dancePerformance, alt: "Traditional dance performance on stage" },
+  { src: IMAGES.audienceQuestion, alt: "Audience asking a question during a session" },
+];
+
+const reasons = [
+  { number: "01", tone: "bg-blue-soft", title: "Reach the right people", copy: "A curated audience of professional developers and builders working on AI, cloud and product." },
+  { number: "02", tone: "bg-red-soft", title: "Make your product useful", copy: "Show real use cases through a workshop, a challenge or a booth people actually want to visit." },
+  { number: "03", tone: "bg-green-soft", title: "Build lasting trust", copy: "Support the local GDG ecosystem that meets, learns and builds in Bandung all year round." },
+];
+
+const spaces = [
+  {
+    image: IMAGES.codelab,
+    alt: "Participants in a hands-on codelab",
+    title: "Hands-on codelab & workshop",
+    copy: "Participants try the newest Google tools from this year’s Google I/O.",
+    partners: "showcase your tools through real use cases and position your solution directly to a high-intent audience.",
+  },
+  {
+    image: IMAGES.partnerBooth,
+    alt: "Partner booth with attendees",
+    title: "Networking & collaboration area",
+    copy: "A space to connect, swap ideas and find collaborators.",
+    partners: "meet participants at your booth or on the open floor during breaks to generate leads and grow brand awareness.",
+  },
+  {
+    image: IMAGES.expertPanel,
+    alt: "Expert panel on stage",
+    title: "Industry talks & expert sessions",
+    copy: "Panels and deep dives on AI trends and real-world applications.",
+    partners: "join as a speaker, share your expertise and strengthen your credibility with a targeted tech audience.",
+  },
+];
 ---
 
-<EventLayout title="Partners — DevFest Bandung 2026"><section class="page-hero"><div class="wrap"><div class="eyebrow mono">Partnership & sponsorship</div><h1>Put your brand<br /><span class="gradient">to work.</span></h1><p>Partner with GDG Bandung to create useful moments for a professional, internationally minded audience of developers and builders. Bring a product, a challenge, a hiring story, or a community commitment.</p><a class="button primary" href="https://gdgbandung.com/devfest-sponsorship" target="_blank" rel="noopener noreferrer">Start a partnership conversation →</a></div></section>
+<EventLayout title="Sponsor — DevFest Bandung 2026">
+  <!-- HERO -->
+  <section class="section gridbg">
+    <div class="container hero">
+      <div class="stack" style="flex: 1 1 640px; --gap: 24px">
+        <Eyebrow>Sponsorship 2026</Eyebrow>
+        <h1 class="display">Put your brand<br />to work.</h1>
+        <p class="lead" style="max-width: 640px">Partner with GDG Bandung to reach professional developers and builders on 19 December 2026 at El Hotel Bandung.</p>
+        <div class="cluster" style="padding-top: 8px">
+          <a class="btn btn--blue btn--lg" href={LINKS.sponsorship}>Become a sponsor →</a>
+        </div>
+      </div>
+      <div class="box shadow-8 glance">
+        <div class="label">AT A GLANCE</div>
+        <div class="glance-row"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong><br />{SITE.time}</span></div>
+        <div class="glance-row"><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong><br /><a href={LINKS.maps}>Open in Google Maps ↗</a></span></div>
+      </div>
+    </div>
+  </section>
 
-    <section class="section alt" id="current-partners"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Section 01 · current</div><h2 class="section-title">2026 sponsors & partners.</h2><p class="section-copy">Only confirmed organisations belong in this section. The 2026 sponsor list has not been announced yet.</p></div><span class="tag">Awaiting confirmation</span></div><div class="sponsor-current"><strong>No current 2026 sponsors are published yet.</strong><p>Historical collaborators below are intentionally kept separate. Contact the team to discuss an available partnership tier.</p></div><div class="tier-grid">{CURRENT_2026_SPONSORS.map((group) => <div class="tier"><div class="mono">{group.label}</div>{group.records.length ? group.records.map((record) => <h3>{record.name}</h3>) : <p>Confirmed listings to be added.</p>}</div>)}</div></div></section>
+  <!-- 2025 HIGHLIGHTS -->
+  <section class="section section--dark">
+    <div class="container stack" style="--gap: 48px">
+      <div class="stack">
+        <Eyebrow color="var(--yellow)">DevFest Bandung 2025 · Last year’s highlights</Eyebrow>
+        <h2 class="title">Quality audience, real engagement, results that mattered to sponsors.</h2>
+      </div>
 
-  <section class="section" id="portfolio"><div class="wrap"><div class="section-head"><div><div class="eyebrow mono">Section 02 · portfolio</div><h2 class="section-title">Trusted by brands that build with the community.</h2><p class="section-copy">A visual record of verified historical GDG Bandung sponsor and partner collaborations. These organisations are not current 2026 sponsors unless they are separately confirmed above.</p></div><div class="tag-row" data-portfolio-filters><button class="button secondary" type="button" data-filter="all" aria-pressed="true">All</button><button class="button secondary" type="button" data-filter="sponsor" aria-pressed="false">Sponsors</button><button class="button secondary" type="button" data-filter="partner" aria-pressed="false">Partners</button><button class="button secondary" type="button" data-filter="media-partner" aria-pressed="false">Media</button></div></div><div class="portfolio-grid" id="portfolio-grid">{HISTORICAL_COLLABORATIONS.map((brand) => <article class="portfolio-card" data-relationship={brand.relationship}>{brand.website ? <a class="portfolio-card-link" href={brand.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${brand.name} website`}></a> : null}<div class="portfolio-logo"><img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" /></div><div class="portfolio-copy"><div class="mono">Historical collaboration · {brand.relationship}</div><h3>{brand.name}</h3></div></article>)}</div></div></section>
+      <div class="cluster" style="--gap: 32px">
+        <div class="grid-2 stats">
+          <div class="span-all stat-hero">
+            <div class="stat-hero-value">2,000+</div>
+            <div class="stat-hero-label">participants</div>
+          </div>
+          {stats.map((stat) => (
+            <div class="stat">
+              <div class="stat-value" style={`color: ${stat.color}`}>{stat.value}</div>
+              <div class="stat-label">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+        <div class="grid-2 gallery">
+          {gallery.map((photo) => <img class="photo" src={photo.src} alt={photo.alt} loading="lazy" />)}
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <section class="section alt"><div class="wrap"><div class="eyebrow mono">Section 03 · opportunity</div><h2 class="section-title">A partnership should do more than decorate a backdrop.</h2><div class="benefit-grid"><article class="benefit-card"><strong>01</strong><h3>Reach the right people</h3><p>The proposal is built around access to 500 curated participants: developers and builders actively shaping technology.</p></article><article class="benefit-card"><strong>02</strong><h3>Make product useful</h3><p>Show a real use case through a hands-on codelab, workshop, partner space, or experience that helps attendees move forward.</p></article><article class="benefit-card"><strong>03</strong><h3>Build lasting trust</h3><p>Support the local GDG ecosystem and earn credibility through learning, collaboration, and meaningful community investment.</p></article></div><div class="tier-grid">{SPONSORSHIP_TIERS.map((tier) => <div class="tier"><div class="mono">2026 tier</div><h3>{tier.name}</h3><p><strong>{tier.price}</strong></p><p>{tier.note}</p></div>)}</div><div class="notice">The tier names, pricing, and benefit summary above come from the supplied 2026 partnership proposal. Final packages are subject to organiser confirmation.</div><a class="button primary" href="https://gdgbandung.com/devfest-sponsorship" target="_blank" rel="noopener noreferrer" style="margin-top:25px">Discuss a custom partnership →</a></div></section>
-  <script>
-    const filters = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
-    const cards = document.querySelectorAll<HTMLElement>("[data-relationship]");
-    filters.forEach((filter) => filter.addEventListener("click", () => {
-      const value = filter.dataset.filter;
-      cards.forEach((card) => { card.hidden = value !== "all" && card.dataset.relationship !== value; });
-      filters.forEach((item) => item.setAttribute("aria-pressed", String(item === filter)));
-    }));
-  </script>
+  <!-- WHY -->
+  <section class="section">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow color="var(--red)">Why partner</Eyebrow>
+        <h2 class="title">Be useful, not just visible.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 280px">
+        {reasons.map((reason) => (
+          <div class:list={["reason", "shadow-8", reason.tone]}>
+            <div class="mono reason-number">{reason.number}</div>
+            <h3>{reason.title}</h3>
+            <p>{reason.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER SPACES -->
+  <section class="section section--white">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow color="var(--green)">Partner spaces</Eyebrow>
+        <h2 class="title">Where your brand shows up on the day.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px; --gap: 28px">
+        {spaces.map((space) => (
+          <article class="space shadow-8">
+            <img class="photo" src={space.image} alt={space.alt} loading="lazy" />
+            <div class="space-body">
+              <h3>{space.title}</h3>
+              <p class="space-copy">{space.copy}</p>
+              <div class="space-partners"><strong>For partners:</strong> {space.partners}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--blue">
+    <div class="container cta">
+      <h2 class="title title--56">Let’s build something useful for the room.</h2>
+      <div class="cluster">
+        <a class="btn btn--dark" href={LINKS.sponsorship} data-shadow style="--btn-shadow: #fff">Become a sponsor →</a>
+      </div>
+    </div>
+  </section>
 </EventLayout>
+
+<style>
+  .hero { padding: 80px 32px 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; justify-content: space-between; }
+  .glance { flex: 0 1 340px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .glance-row { display: flex; gap: 12px; align-items: baseline; }
+
+  .stats { flex: 1 1 460px; align-content: start; }
+  .stat-hero { background: var(--blue); color: var(--ink); border: 2px solid #fff; padding: 28px 32px; }
+  .stat-hero-value { font-size: clamp(64px, 7vw, 96px); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
+  .stat-hero-label { font-size: 20px; padding-top: 8px; font-weight: 700; }
+  .stat { border: 2px solid #fff; padding: 22px 24px; }
+  .stat-value { font-size: 40px; font-weight: 700; line-height: 1; }
+  .stat-label { font-size: 16px; padding-top: 8px; }
+  .gallery { flex: 1 1 560px; }
+  .gallery img { height: 200px; border: 2px solid #fff; }
+
+  .reason { border: 2px solid var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+  .reason-number { font-size: 14px; font-weight: 700; }
+  .reason h3 { margin: 0; font-size: 26px; font-weight: 700; }
+  .reason p { margin: 0; font-size: 17px; line-height: 1.6; }
+
+  .space { background: var(--paper); border: 2px solid var(--ink); display: flex; flex-direction: column; }
+  .space img { height: 200px; border-bottom: 2px solid var(--ink); }
+  .space-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .space h3 { margin: 0; font-size: 22px; font-weight: 700; }
+  .space-copy { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
+  .space-partners { border-top: 2px solid var(--ink); padding-top: 12px; font-size: 16px; line-height: 1.6; }
+
+  .cta { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
+  .cta .title { flex: 1 1 560px; color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .stat-value { font-size: 30px; }
+  }
+</style>
