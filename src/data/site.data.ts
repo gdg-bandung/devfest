@@ -13,7 +13,7 @@ export const SITE = {
 
 export const LINKS = {
   register: "https://gdgbandung.com/devfest2026",
-  cfp: "https://gdgbandung.com/devfest-cfp",
+  cfs: "https://gdgbandung.com/devfest-cfs",
   sponsorship: "https://gdgbandung.com/devfest-sponsorship",
   maps: "https://share.google/eLtj4R1naoi7zoFjO",
   mapsEmbed: "https://maps.google.com/maps?q=%C3%A9L%20Hotel%20Bandung%2C%20Jl.%20Merdeka%20No.%202%2C%20Bandung&z=16&output=embed",
@@ -26,7 +26,7 @@ export const LINKS = {
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Sponsor", href: "/sponsor" },
-  { name: "Call for Speakers", href: "/cfp" },
+  { name: "Call for Speakers", href: "/cfs" },
   { name: "Venue", href: "/venue" },
   { name: "FAQ", href: "/faq" },
 ] as const;
@@ -78,7 +78,7 @@ export const FAQS = {
   },
   speak: {
     question: "How can I speak at DevFest Bandung?",
-    answer: `Submit your proposal at ${link(LINKS.cfp, "gdgbandung.com/devfest-cfp")}. First-time speakers are welcome.`,
+    answer: `Submit your proposal at ${link(LINKS.cfs, "gdgbandung.com/devfest-cfs")}. First-time speakers are welcome.`,
   },
   partner: {
     question: "Can my company partner with DevFest Bandung?",

@@ -11,6 +11,10 @@ export default defineConfig({
   site: "https://devfest.gdgbandung.com",
   integrations: [solidJs()],
 
+  redirects: {
+    "/cfp": "/cfs",
+  },
+
   vite: {
     // @ts-expect-error Astro and the workspace Vite dependency resolve different compatible Plugin types.
     plugins: [tailwindcss()],
