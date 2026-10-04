@@ -1,16 +1,24 @@
 ---
 import { IMAGES, LINKS } from "../../data/site.data";
+
+interface Props {
+  cta?: boolean;
+}
+
+const { cta = true } = Astro.props;
 ---
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-cta">
-      <h2>Chat with one of our learning pros to uncover some cool new stuff!</h2>
-      <a class="btn btn--light" href={LINKS.community}>
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"></path></svg>
-        Join Community
-      </a>
-    </div>
+    {cta && (
+      <div class="footer-cta">
+        <h2>Chat with one of our learning pros to uncover some cool new stuff!</h2>
+        <a class="btn btn--light" href={LINKS.community}>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"></path></svg>
+          Join Community
+        </a>
+      </div>
+    )}
     <div class="footer-main">
       <div class="footer-about">
         <img src={IMAGES.logoGdgFooter} alt="Google Developer Groups Bandung" width="334" height="48" />

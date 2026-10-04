@@ -3,15 +3,7 @@ import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
 import FaqItem from "../components/ui/FaqItem.astro";
 import { HOME_FAQS, IMAGES, LINKS, SITE } from "../data/site.data";
-import { PUBLIC_END_COUNTDOWN } from "astro:env/client";
 
-const remaining = Math.max(0, Date.parse(PUBLIC_END_COUNTDOWN) - Date.now());
-const pad = (n: number) => String(n).padStart(2, "0");
-const countdown = [
-  { unit: "days", label: "DAYS", value: String(Math.floor(remaining / 864e5)) },
-  { unit: "hours", label: "HRS", value: pad(Math.floor((remaining % 864e5) / 36e5)) },
-  { unit: "mins", label: "MIN", value: pad(Math.floor((remaining % 36e5) / 6e4)) },
-];
 
 const themeWords = [
   { word: "BUILD", color: "var(--blue)" },
@@ -75,7 +67,7 @@ const lastYear = [
 ];
 ---
 
-<EventLayout>
+<EventLayout footerCta={false}>
   <!-- HERO -->
   <section class="section gridbg">
     <div class="container hero">
@@ -86,22 +78,12 @@ const lastYear = [
         <div class="cluster" style="--gap: 12px">
           <div class="hero-fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateMedium}</strong> · {SITE.time}</span></div>
           <a class="hero-fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong> ↗</span></a>
+          <div class="hero-fact"><span class="dot dot--sm" style="--dot: var(--yellow)"></span><span><strong>Only 500 seats</strong> · limited quota</span></div>
         </div>
         <div class="cluster hero-actions">
           <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
           <a class="btn" href={LINKS.cfs}>Submit a talk</a>
           <a class="btn" href={LINKS.sponsorship}>Become a sponsor</a>
-        </div>
-        <div class="countdown">
-          <span class="eyebrow">Doors open in</span>
-          <div class="countdown-units" data-countdown={PUBLIC_END_COUNTDOWN}>
-            {countdown.map((item) => (
-              <div class="countdown-unit">
-                <div class="countdown-value" data-unit={item.unit}>{item.value}</div>
-                <div class="mono countdown-label">{item.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -119,8 +101,8 @@ const lastYear = [
           <figcaption class="mono tag tag--sm tag--outline" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
         </figure>
         <div class="sticker">
-          <div class="sticker-value">2,000+</div>
-          <div class="sticker-label">joined us<br />last year</div>
+          <div class="sticker-value">500</div>
+          <div class="sticker-label">seats only<br />· limited ·</div>
         </div>
       </div>
     </div>
@@ -317,27 +299,6 @@ const lastYear = [
   </section>
 </EventLayout>
 
-<script>
-  const root = document.querySelector<HTMLElement>("[data-countdown]");
-  const target = Date.parse(root?.dataset.countdown ?? "");
-
-  const render = () => {
-    if (!root || Number.isNaN(target)) return;
-    const ms = Math.max(0, target - Date.now());
-    const pad = (n: number) => String(n).padStart(2, "0");
-    const values: Record<string, string> = {
-      days: String(Math.floor(ms / 864e5)),
-      hours: pad(Math.floor((ms % 864e5) / 36e5)),
-      mins: pad(Math.floor((ms % 36e5) / 6e4)),
-    };
-    root.querySelectorAll<HTMLElement>("[data-unit]").forEach((el) => {
-      el.textContent = values[el.dataset.unit ?? ""] ?? el.textContent;
-    });
-  };
-
-  render();
-  setInterval(render, 30000);
-</script>
 
 <style>
   /* Hero */
@@ -347,12 +308,6 @@ const lastYear = [
   .hero-fact { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); padding: 10px 16px; text-decoration: none; }
   .hero-actions { padding-top: 8px; }
 
-  .countdown { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 4px; }
-  .countdown .eyebrow { letter-spacing: 0.1em; }
-  .countdown-units { display: flex; gap: 8px; }
-  .countdown-unit { background: var(--ink); color: #fff; padding: 8px 12px; min-width: 56px; text-align: center; }
-  .countdown-value { font-size: 26px; font-weight: 700; line-height: 1; }
-  .countdown-label { font-size: 11px; opacity: 0.8; padding-top: 4px; }
 
   .collage { flex: 1 1 460px; min-width: 0; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 12px 12px 0; }
   .collage figure { margin: 0; position: relative; background: #fff; }
@@ -364,7 +319,7 @@ const lastYear = [
   .tag--outline { border: 1px solid var(--line); }
   .tag--pill { padding: 4px 10px; border-radius: 999px; }
   .sticker { position: absolute; top: -28px; right: -8px; width: 132px; height: 132px; border-radius: 50%; background: var(--sunny); border: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: var(--shadow-pop); }
-  .sticker-value { font-size: 32px; font-weight: 700; line-height: 1; }
+  .sticker-value { font-size: 40px; font-weight: 700; line-height: 1; }
   .sticker-label { font-size: 13px; line-height: 1.2; padding-top: 4px; }
 
   /* Marquee */
