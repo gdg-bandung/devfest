@@ -32,18 +32,29 @@ export const NAV_LINKS = [
 ] as const;
 
 export const IMAGES = {
-  logoDevfest: "/images/2026/logo-devfest.png",
-  logoGdgFooter: "/images/2026/logo-gdg-bandung-footer.png",
-  organisersMascot: "/images/2026/organisers-mascot.webp",
-  keynoteStage: "/images/2026/keynote-stage.webp",
-  dancePerformance: "/images/2026/dance-performance.webp",
-  audienceQuestion: "/images/2026/audience-question.webp",
+  logoDevfest: "/images/2026/logo-devfest.webp",
+  logoGdgFooter: "/images/2026/logo-gdg-bandung-footer.webp",
   ogImage: "/images/2026/og-image.jpg",
-  heroGroup: "/images/2026/hero-group-2025.webp",
-  industryTalk: "/images/2026/industry-talk.webp",
-  handsOnCodelab: "/images/2026/hands-on-codelab.webp",
-  networking: "/images/2026/networking.webp",
-  cfsSpeaker: "/images/2026/cfs-speaker.webp",
+} as const;
+
+export type Photo = { src: string; width: number; height: number };
+
+const photo = (name: string, width: number, height: number): Photo => ({ src: `/images/2026/${name}.webp`, width, height });
+
+// Every photo ships 480w and 800w variants next to the full-size file.
+export const srcset = ({ src, width }: Photo) =>
+  [480, 800].map((w) => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).concat(`${src} ${width}w`).join(", ");
+
+export const PHOTOS = {
+  heroGroup: photo("hero-group-2025", 1400, 787),
+  industryTalk: photo("industry-talk", 1200, 802),
+  handsOnCodelab: photo("hands-on-codelab", 1200, 675),
+  networking: photo("networking", 1200, 800),
+  organisersMascot: photo("organisers-mascot", 1200, 675),
+  keynoteStage: photo("keynote-stage", 1200, 675),
+  dancePerformance: photo("dance-performance", 1200, 675),
+  audienceQuestion: photo("audience-question", 1200, 675),
+  cfsSpeaker: photo("cfs-speaker", 1400, 933),
 } as const;
 
 export type Faq = { question: string; answer: string };

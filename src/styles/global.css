@@ -13,6 +13,7 @@
 
   --blue: #4285f4;
   --red: #ea4335;
+  --on-red: #000; /* #1e1e1e on red is 4.25:1, black clears AA */
   --green: #34a853;
   --yellow: #f9ab00;
   --sunny: #ffd427;
@@ -152,7 +153,6 @@ a:hover { color: var(--link-hover); }
 .bg-red-soft { background: var(--red-soft); }
 .bg-green-soft { background: var(--green-soft); }
 .bg-yellow-soft { background: var(--yellow-soft); }
-.bg-paper { background: var(--paper); }
 
 .photo { display: block; width: 100%; object-fit: cover; }
 

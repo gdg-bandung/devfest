@@ -1,32 +1,20 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
-import tailwindcss from "@tailwindcss/vite";
-
-import solidJs from '@astrojs/solid-js';
+import { defineConfig } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://devfest.gdgbandung.com",
-  integrations: [solidJs()],
 
   redirects: {
     "/cfp": "/cfs",
   },
 
-  vite: {
-    // @ts-expect-error Astro and the workspace Vite dependency resolve different compatible Plugin types.
-    plugins: [tailwindcss()],
+  build: {
+    // The CSS is small, so inline it to avoid a render-blocking request.
+    inlineStylesheets: "always",
   },
 
   adapter: cloudflare(),
-
-  env: {
-    schema: {
-      PUBLIC_END_COUNTDOWN: envField.string({
-        context: "client", access: "public", default: "2026-12-19T08:00:00+07:00"
-      }),
-    }
-  },
 });

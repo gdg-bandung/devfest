@@ -1,7 +1,7 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
-import { IMAGES, LINKS, SITE } from "../data/site.data";
+import { LINKS, PHOTOS, SITE, srcset } from "../data/site.data";
 
 const stats = [
   { value: "64.94%", label: "professionals", color: "var(--stat-blue)" },
@@ -13,12 +13,12 @@ const stats = [
 ];
 
 const gallery = [
-  { src: IMAGES.heroGroup, alt: "Full auditorium group photo at DevFest Bandung 2025" },
-  { src: IMAGES.organisersMascot, alt: "Organisers posing with the DevFest mascot" },
-  { src: IMAGES.keynoteStage, alt: "Keynote speaker on the main stage in front of the audience" },
-  { src: IMAGES.industryTalk, alt: "Panel discussion with industry speakers" },
-  { src: IMAGES.dancePerformance, alt: "Traditional dance performance on stage" },
-  { src: IMAGES.audienceQuestion, alt: "Audience asking a question during a session" },
+  { image: PHOTOS.heroGroup, alt: "Full auditorium group photo at DevFest Bandung 2025" },
+  { image: PHOTOS.organisersMascot, alt: "Organisers posing with the DevFest mascot" },
+  { image: PHOTOS.keynoteStage, alt: "Keynote speaker on the main stage in front of the audience" },
+  { image: PHOTOS.industryTalk, alt: "Panel discussion with industry speakers" },
+  { image: PHOTOS.dancePerformance, alt: "Traditional dance performance on stage" },
+  { image: PHOTOS.audienceQuestion, alt: "Audience asking a question during a session" },
 ];
 
 const reasons = [
@@ -29,21 +29,21 @@ const reasons = [
 
 const spaces = [
   {
-    image: IMAGES.handsOnCodelab,
+    image: PHOTOS.handsOnCodelab,
     alt: "Participants in a hands-on codelab",
     title: "Hands-on codelab & workshop",
     copy: "Participants try the newest Google tools from this year’s Google I/O.",
     partners: "showcase your tools through real use cases and position your solution directly to a high-intent audience.",
   },
   {
-    image: IMAGES.networking,
+    image: PHOTOS.networking,
     alt: "Attendees chatting during a networking break",
     title: "Networking & collaboration area",
     copy: "A space to connect, swap ideas and find collaborators.",
     partners: "meet participants at your booth or on the open floor during breaks to generate leads and grow brand awareness.",
   },
   {
-    image: IMAGES.industryTalk,
+    image: PHOTOS.industryTalk,
     alt: "Expert panel on stage",
     title: "Industry talks & expert sessions",
     copy: "Panels and deep dives on AI trends and real-world applications.",
@@ -94,7 +94,7 @@ const spaces = [
           ))}
         </div>
         <div class="grid-2 gallery">
-          {gallery.map((photo) => <img class="photo" src={photo.src} alt={photo.alt} loading="lazy" />)}
+          {gallery.map((photo) => <img class="photo" src={photo.image.src} srcset={srcset(photo.image)} sizes="(max-width: 1100px) calc(50vw - 28px), 320px" width={photo.image.width} height={photo.image.height} alt={photo.alt} loading="lazy" decoding="async" />)}
         </div>
       </div>
     </div>
@@ -129,7 +129,7 @@ const spaces = [
       <div class="auto-grid" style="--min: 300px; --gap: 28px">
         {spaces.map((space) => (
           <article class="space card">
-            <img class="photo" src={space.image} alt={space.alt} loading="lazy" />
+            <img class="photo" src={space.image.src} srcset={srcset(space.image)} sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 400px" width={space.image.width} height={space.image.height} alt={space.alt} loading="lazy" decoding="async" />
             <div class="space-body">
               <h3>{space.title}</h3>
               <p class="space-copy">{space.copy}</p>

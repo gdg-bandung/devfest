@@ -1,7 +1,7 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
-import { IMAGES, LINKS } from "../data/site.data";
+import { LINKS, PHOTOS, srcset } from "../data/site.data";
 
 const tracks = [
   {
@@ -22,7 +22,7 @@ const tracks = [
 
 const criteria = [
   { number: "01", badge: "background: var(--blue)", title: "Practical", copy: "Built on something you actually shipped, ran or broke." },
-  { number: "02", badge: "background: var(--red); border: 0; border-radius: 8px", title: "Clear", copy: "One main idea people can take home and try." },
+  { number: "02", badge: "background: var(--red); color: var(--on-red); border: 0; border-radius: 8px", title: "Clear", copy: "One main idea people can take home and try." },
   { number: "03", badge: "background: var(--yellow)", title: "On theme", copy: "Connects to build, secure or scale in the agentic era." },
 ];
 ---
@@ -40,7 +40,7 @@ const criteria = [
         </div>
       </div>
       <figure class="box card hero-photo">
-        <img class="photo" src={IMAGES.cfsSpeaker} alt="Speaker presenting a cost optimization story on the main stage at DevFest Bandung 2025" width="1400" height="933" />
+        <img class="photo" src={PHOTOS.cfsSpeaker.src} srcset={srcset(PHOTOS.cfsSpeaker)} sizes="(max-width: 1100px) calc(100vw - 52px), 500px" width={PHOTOS.cfsSpeaker.width} height={PHOTOS.cfsSpeaker.height} alt="Speaker presenting a cost optimization story on the main stage at DevFest Bandung 2025" fetchpriority="high" />
         <figcaption class="mono">27 SPEAKERS &amp; PANELISTS IN 2025</figcaption>
       </figure>
     </div>
