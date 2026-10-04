@@ -64,7 +64,7 @@ const spaces = [
           <a class="btn btn--blue btn--lg" href={LINKS.sponsorship}>Become a sponsor →</a>
         </div>
       </div>
-      <div class="box shadow-8 glance">
+      <div class="box card glance">
         <div class="label">AT A GLANCE</div>
         <div class="glance-row"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong><br />{SITE.time}</span></div>
         <div class="glance-row"><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong><br /><a href={LINKS.maps}>Open in Google Maps ↗</a></span></div>
@@ -109,7 +109,7 @@ const spaces = [
       </div>
       <div class="auto-grid" style="--min: 280px">
         {reasons.map((reason) => (
-          <div class:list={["reason", "shadow-8", reason.tone]}>
+          <div class:list={["reason", "card", reason.tone]}>
             <div class="mono reason-number">{reason.number}</div>
             <h3>{reason.title}</h3>
             <p>{reason.copy}</p>
@@ -128,7 +128,7 @@ const spaces = [
       </div>
       <div class="auto-grid" style="--min: 300px; --gap: 28px">
         {spaces.map((space) => (
-          <article class="space shadow-8">
+          <article class="space card">
             <img class="photo" src={space.image} alt={space.alt} loading="lazy" />
             <div class="space-body">
               <h3>{space.title}</h3>
@@ -146,7 +146,7 @@ const spaces = [
     <div class="container cta">
       <h2 class="title title--56">Let’s build something useful for the room.</h2>
       <div class="cluster">
-        <a class="btn btn--dark" href={LINKS.sponsorship} data-shadow style="--btn-shadow: #fff">Become a sponsor →</a>
+        <a class="btn btn--dark" href={LINKS.sponsorship}>Become a sponsor →</a>
       </div>
     </div>
   </section>
@@ -158,26 +158,26 @@ const spaces = [
   .glance-row { display: flex; gap: 12px; align-items: baseline; }
 
   .stats { flex: 1 1 460px; align-content: start; }
-  .stat-hero { background: var(--blue); color: var(--ink); border: 2px solid #fff; padding: 28px 32px; }
+  .stat-hero { background: var(--blue); color: var(--ink); border: 1px solid var(--line-dark); padding: 28px 32px; }
   .stat-hero-value { font-size: clamp(64px, 7vw, 96px); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
   .stat-hero-label { font-size: 20px; padding-top: 8px; font-weight: 700; }
-  .stat { border: 2px solid #fff; padding: 22px 24px; }
+  .stat { border: 1px solid var(--line-dark); padding: 22px 24px; }
   .stat-value { font-size: 40px; font-weight: 700; line-height: 1; }
   .stat-label { font-size: 16px; padding-top: 8px; }
   .gallery { flex: 1 1 560px; }
-  .gallery img { height: 200px; border: 2px solid #fff; }
+  .gallery img { height: 200px; border: 1px solid var(--line-dark); }
 
-  .reason { border: 2px solid var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 12px; }
+  .reason { padding: 32px; display: flex; flex-direction: column; gap: 12px; }
   .reason-number { font-size: 14px; font-weight: 700; }
   .reason h3 { margin: 0; font-size: 26px; font-weight: 700; }
   .reason p { margin: 0; font-size: 17px; line-height: 1.6; }
 
-  .space { background: var(--paper); border: 2px solid var(--ink); display: flex; flex-direction: column; }
-  .space img { height: 200px; border-bottom: 2px solid var(--ink); }
+  .space { background: var(--paper); display: flex; flex-direction: column; }
+  .space img { height: 200px; border-bottom: 1px solid var(--line); }
   .space-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
   .space h3 { margin: 0; font-size: 22px; font-weight: 700; }
   .space-copy { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
-  .space-partners { border-top: 2px solid var(--ink); padding-top: 12px; font-size: 16px; line-height: 1.6; }
+  .space-partners { border-top: 1px solid var(--line); padding-top: 12px; font-size: 16px; line-height: 1.6; }
 
   .cta { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
   .cta .title { flex: 1 1 560px; color: var(--ink); }

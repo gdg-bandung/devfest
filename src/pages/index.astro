@@ -106,17 +106,17 @@ const lastYear = [
       </div>
 
       <div class="collage">
-        <figure class="collage-main shadow-10">
+        <figure class="collage-main card">
           <img class="photo" src={IMAGES.groupPhoto} alt="Full auditorium of DevFest Bandung 2025 attendees posing for a group photo" />
-          <figcaption class="mono tag" style="background: var(--blue)">DEVFEST BANDUNG 2025</figcaption>
+          <figcaption class="mono tag tag--outline" style="background: var(--blue)">DEVFEST BANDUNG 2025</figcaption>
         </figure>
-        <figure class="shadow-8">
+        <figure class="card">
           <img class="photo" src={IMAGES.expertPanel} alt="Panel discussion on stage" />
-          <figcaption class="mono tag tag--sm" style="background: var(--red); color: #fff">EXPERT PANELS</figcaption>
+          <figcaption class="mono tag tag--sm tag--pill" style="background: var(--red)">EXPERT PANELS</figcaption>
         </figure>
-        <figure class="shadow-8">
+        <figure class="card">
           <img class="photo" src={IMAGES.codelab} alt="Attendees working on laptops during a codelab" />
-          <figcaption class="mono tag tag--sm" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
+          <figcaption class="mono tag tag--sm tag--outline" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
         </figure>
         <div class="sticker">
           <div class="sticker-value">2,000+</div>
@@ -145,18 +145,18 @@ const lastYear = [
       </div>
 
       <div class="auto-grid" style="--min: 320px">
-        <div class="box shadow-8 theme-card">
+        <div class="box card theme-card">
           <div class="theme-card-title">AI opens the door for everyone</div>
           <p class="copy-17">More people can now solve more problems, and bring more diverse ideas to life than ever before. “Builders” use their skills and AI assistance to build apps, automate and optimise workflows, and create solutions for any industry — from product management to design.</p>
         </div>
-        <div class="box shadow-8 theme-card">
+        <div class="box card theme-card">
           <div class="theme-card-title">Secure by default, scaled with intent</div>
           <p class="copy-17">Gartner predicts that 80% of technology products and services will soon be built by people who are not professional software developers. In that world, a secure-by-default mindset matters more than ever — and so does choosing the right models, platforms and tools for your goals.</p>
         </div>
       </div>
 
       <div class="box auto-grid info-strip" style="--min: 240px; --gap: 0">
-        <div class="info-cell" style="border-right: 2px solid var(--ink); border-top-color: var(--blue)">
+        <div class="info-cell" style="border-right: 1px solid var(--line); border-top-color: var(--blue)">
           <div class="label" style="text-transform: uppercase">Date &amp; time</div>
           <div class="info-value">{SITE.dateLong}</div>
           <div class="info-sub">{SITE.time}</div>
@@ -180,7 +180,7 @@ const lastYear = [
       </div>
       <div class="auto-grid" style="--min: 340px; --gap: 32px">
         {tracks.map((track) => (
-          <article class:list={["track", track.tone]}>
+          <article class:list={["track", "card", track.tone]}>
             <div class="track-top">
               <span class="mono track-number">{track.number}</span>
               <span class="mono track-audience">{track.audience}</span>
@@ -205,7 +205,7 @@ const lastYear = [
       </div>
       <div class="auto-grid" style="--min: 300px; --gap: 28px">
         {activities.map((activity) => (
-          <article class="box shadow-8 activity">
+          <article class="box card activity">
             <img class="photo" src={activity.image} alt={activity.alt} loading="lazy" />
             <div class="activity-body">
               <div class="activity-bar" style={`background: ${activity.color}`}></div>
@@ -257,7 +257,7 @@ const lastYear = [
       </div>
       <div class="grid-2" style="flex: 1 1 520px; --gap: 20px">
         {[1, 2, 3].map(() => (
-          <div class="box shadow-6">
+          <div class="box card">
             <div class="logo-slot"><span class="mono">[ SPONSOR LOGO ]</span></div>
             <div class="logo-meta"><span class="label" style="font-size: 11px">2026 PARTNER</span><span>[Partner name]</span></div>
           </div>
@@ -280,7 +280,7 @@ const lastYear = [
         <p class="copy" style="color: var(--ink)">Share a practical story, a hard-won technical lesson, or a clear idea that helps people build in the agentic era. First-time speakers welcome.</p>
       </div>
       <div class="cluster">
-        <a class="btn btn--dark" href={LINKS.cfp} data-shadow style="--btn-shadow: var(--green)">Submit a proposal →</a>
+        <a class="btn btn--dark" href={LINKS.cfp}>Submit a proposal →</a>
       </div>
     </div>
   </section>
@@ -311,7 +311,7 @@ const lastYear = [
         <div class="beyond-watermark" aria-hidden="true">BUILD / SECURE / SCALE</div>
         <div class="mono beyond-kicker">KEEP BUILDING WITH US</div>
         <p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p>
-        <a class="btn" href={LINKS.community} data-shadow style="--btn-shadow: var(--yellow)">Join GDG Bandung →</a>
+        <a class="btn btn--light" href={LINKS.community}>Join GDG Bandung →</a>
       </div>
     </div>
   </section>
@@ -344,7 +344,7 @@ const lastYear = [
   .hero { padding: 72px 32px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
   .hero-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
   .hero-tagline { margin: 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.3; max-width: 600px; }
-  .hero-fact { display: flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--ink); padding: 10px 16px; text-decoration: none; }
+  .hero-fact { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); padding: 10px 16px; text-decoration: none; }
   .hero-actions { padding-top: 8px; }
 
   .countdown { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 4px; }
@@ -355,18 +355,20 @@ const lastYear = [
   .countdown-label { font-size: 11px; opacity: 0.8; padding-top: 4px; }
 
   .collage { flex: 1 1 460px; min-width: 0; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 12px 12px 0; }
-  .collage figure { margin: 0; position: relative; border: 2px solid var(--ink); background: #fff; }
+  .collage figure { margin: 0; position: relative; background: #fff; }
   .collage figure img { height: 190px; }
   .collage .collage-main { grid-column: 1 / -1; }
   .collage .collage-main img { height: 300px; }
-  .tag { position: absolute; left: 16px; bottom: 16px; color: var(--ink); border: 2px solid var(--ink); padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+  .tag { position: absolute; left: 16px; bottom: 16px; color: var(--ink); padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
   .tag--sm { left: 12px; bottom: 12px; padding: 4px 8px; font-size: 11px; }
-  .sticker { position: absolute; top: -28px; right: -8px; width: 132px; height: 132px; border-radius: 50%; background: var(--sunny); border: 2px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: 4px 4px 0 var(--ink); }
+  .tag--outline { border: 1px solid var(--line); }
+  .tag--pill { padding: 4px 10px; border-radius: 999px; }
+  .sticker { position: absolute; top: -28px; right: -8px; width: 132px; height: 132px; border-radius: 50%; background: var(--sunny); border: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: var(--shadow-pop); }
   .sticker-value { font-size: 32px; font-weight: 700; line-height: 1; }
   .sticker-label { font-size: 13px; line-height: 1.2; padding-top: 4px; }
 
   /* Marquee */
-  .marquee { background: var(--ink); color: #fff; border-bottom: 2px solid var(--ink); overflow: hidden; }
+  .marquee { background: var(--ink); color: #fff; border-bottom: 1px solid var(--line); overflow: hidden; }
   .marquee-inner { max-width: 1280px; margin: 0 auto; padding: 22px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-weight: 700; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; }
   .marquee-word { display: inline-flex; align-items: center; gap: 14px; }
 
@@ -374,22 +376,22 @@ const lastYear = [
   .theme-intro { display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-end; }
   .theme-card { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
   .theme-card-title { font-weight: 700; font-size: 22px; }
-  .info-cell { padding: 24px 28px; border-top: 6px solid; display: flex; flex-direction: column; gap: 8px; }
+  .info-cell { padding: 24px 28px; border-top: 4px solid; display: flex; flex-direction: column; gap: 8px; }
   .info-value { font-size: 22px; font-weight: 700; line-height: 1.2; }
   .info-sub { font-size: 16px; }
   div.info-sub { color: var(--muted); }
 
   /* Tracks */
-  .track { border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+  .track { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
   .track-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .track-number { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-  .track-audience { font-size: 12px; font-weight: 700; background: #fff; border: 2px solid var(--ink); border-radius: 999px; padding: 4px 12px; }
+  .track-audience { font-size: 12px; font-weight: 700; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
   .track-title { margin: 0; font-size: 44px; line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
   .track-copy { margin: 0; font-size: 18px; line-height: 1.6; }
 
   /* Activities */
   .activity { display: flex; flex-direction: column; }
-  .activity img { height: 220px; border-bottom: 2px solid var(--ink); }
+  .activity img { height: 220px; border-bottom: 1px solid var(--line); }
   .activity-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
   .activity-bar { height: 6px; width: 48px; }
   .activity h3 { margin: 0; font-size: 24px; font-weight: 700; }
@@ -398,23 +400,23 @@ const lastYear = [
   /* Last year */
   .last-year { padding: 88px 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
   .recap-link { color: var(--stat-blue); font-size: 17px; font-weight: 700; }
-  .stat { border: 2px solid #fff; padding: 24px; }
+  .stat { border: 1px solid var(--line-dark); padding: 24px; }
   .stat-value { font-size: 48px; font-weight: 700; line-height: 1; }
   .stat-label { font-size: 16px; padding-top: 8px; }
 
   /* Partners */
   .partners { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
-  .logo-slot { height: 130px; display: flex; align-items: center; justify-content: center; border-bottom: 2px dashed #9a9a9a; background: #fafafa; }
-  .logo-slot span { font-size: 14px; color: #5f5f5f; }
+  .logo-slot { height: 130px; display: flex; align-items: center; justify-content: center; border-bottom: 1.5px dashed rgba(30, 30, 30, 0.2); background: var(--paper); }
+  .logo-slot span { font-size: 14px; color: var(--muted); }
   .logo-meta { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; font-size: 18px; }
-  .your-brand { background: var(--yellow-soft); border: 2px dashed var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 24px; text-align: center; min-height: 200px; }
+  .your-brand { background: var(--yellow-soft); border: 1.5px dashed rgba(30, 30, 30, 0.32); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 24px; text-align: center; min-height: 200px; }
   .your-brand-plus { font-size: 40px; font-weight: 700; line-height: 1; }
   .your-brand-title { font-size: 18px; font-weight: 700; }
   .your-brand-sub { font-size: 15px; }
 
   /* CFP band */
   .cfp-band { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between; }
-  .cfp-band :global(.eyebrow--ring .dot) { border: 2px solid var(--ink); }
+  .cfp-band :global(.eyebrow--ring .dot) { border: 1px solid var(--line); }
 
   /* FAQ */
   .faq-band { display: flex; flex-wrap: wrap; gap: 48px; }
@@ -423,8 +425,8 @@ const lastYear = [
   /* Beyond */
   .beyond { display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: center; }
   .beyond-title { font-size: clamp(40px, 5vw, 68px); letter-spacing: -0.035em; }
-  .beyond-card { flex: 1 1 440px; position: relative; overflow: hidden; background: var(--ink); color: #fff; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--blue); padding: 48px 44px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
-  .beyond-watermark { position: absolute; right: -40px; bottom: -14px; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: #2f2f2f; transform: rotate(-8deg); white-space: nowrap; }
+  .beyond-card { flex: 1 1 440px; position: relative; overflow: hidden; background: var(--ink); color: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-soft); border-radius: 16px; padding: 48px 44px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .beyond-watermark { position: absolute; right: -40px; bottom: -14px; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: rgba(240, 240, 240, 0.06); transform: rotate(-8deg); white-space: nowrap; }
   .beyond-kicker { position: relative; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: var(--yellow); }
   .beyond-card p { position: relative; margin: 0; font-size: 20px; line-height: 1.6; }
   .beyond-card .btn { position: relative; }

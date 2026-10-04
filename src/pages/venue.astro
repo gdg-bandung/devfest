@@ -64,8 +64,8 @@ const hotels = [
         </div>
       </div>
 
-      <div class="box shadow-10 details">
-        <div class="detail span-all" style="border-top: 6px solid var(--red)">
+      <div class="box card details">
+        <div class="detail span-all" style="border-top: 4px solid var(--red)">
           <div class="label">VENUE</div>
           <div class="detail-venue">éL Hotel Bandung</div>
         </div>
@@ -73,11 +73,11 @@ const hotels = [
           <div class="label">ADDRESS</div>
           <address>Jl. Merdeka No. 2, Braga, Sumur Bandung,<br />Bandung, West Java 40111</address>
         </div>
-        <div class="detail" style="border-right: 2px solid var(--ink); border-top: 6px solid var(--blue)">
+        <div class="detail" style="border-right: 1px solid var(--line); border-top: 4px solid var(--blue)">
           <div class="label">DATE</div>
           <div class="detail-value">Saturday,<br />19 December 2026</div>
         </div>
-        <div class="detail" style="border-top: 6px solid var(--green)">
+        <div class="detail" style="border-top: 4px solid var(--green)">
           <div class="label">TIME</div>
           <div class="detail-value">08.00–16.00<br />WIB</div>
         </div>
@@ -94,7 +94,7 @@ const hotels = [
       </div>
       <div class="auto-grid" style="--min: 340px">
         {routes.map((route) => (
-          <article class:list={["route", "box", "shadow-8", route.tone]}>
+          <article class:list={["route", "box", "card", route.tone]}>
             <span class:list={["route-icon", { "route-icon--paper": !route.tone }]}>
               <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={route.icon} />
             </span>
@@ -118,7 +118,7 @@ const hotels = [
           {nearby.map((item) => <li><span>{item.place}</span><span class="mono">{item.distance}</span></li>)}
         </ul>
       </div>
-      <a href={LINKS.maps} class="map gridbg">
+      <a href={LINKS.maps} class="map gridbg card">
         <span aria-hidden="true" class="road road--h"></span>
         <span aria-hidden="true" class="road road--v"></span>
         <span class="map-pin">
@@ -138,14 +138,14 @@ const hotels = [
         <p class="copy">A few options near the venue. Book directly with each hotel.</p>
       </div>
       <div class="auto-grid" style="--min: 280px">
-        <article class="hotel hotel--venue">
+        <article class="hotel hotel--venue card">
           <span class="mono hotel-tag">THE VENUE</span>
           <h3>éL Hotel Bandung</h3>
           <p class="hotel-address">Jl. Merdeka No. 2, Braga</p>
           <p>Stay where it happens — no commute on event day.</p>
         </article>
         {hotels.map((hotel) => (
-          <article class="hotel shadow-8">
+          <article class="hotel card">
             <span class="mono hotel-tag">NEARBY</span>
             <h3>{hotel.name}</h3>
             <p class="hotel-address">{hotel.address}</p>
@@ -162,36 +162,36 @@ const hotels = [
 
   .details { flex: 1 1 440px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .detail { padding: 28px; display: flex; flex-direction: column; gap: 8px; }
-  .detail.span-all { border-bottom: 2px solid var(--ink); }
+  .detail.span-all { border-bottom: 1px solid var(--line); }
   .detail-venue { font-size: 26px; font-weight: 700; }
   .detail-value { font-size: 20px; font-weight: 700; }
   .details address { font-style: normal; font-size: 18px; line-height: 1.5; }
 
   .route { padding: 28px; display: flex; gap: 20px; align-items: flex-start; }
-  .route-icon { flex: none; width: 52px; height: 52px; background: #fff; border: 2px solid var(--ink); display: inline-flex; align-items: center; justify-content: center; color: var(--ink); }
+  .route-icon { flex: none; width: 52px; height: 52px; background: #fff; border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center; color: var(--ink); }
   .route-icon--paper { background: var(--paper); }
   .route-body { display: flex; flex-direction: column; gap: 8px; }
   .route h3 { margin: 0; font-size: 22px; font-weight: 700; }
   .route p { margin: 0; font-size: 17px; line-height: 1.6; }
 
   .around { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
-  .distances { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 2px solid var(--ink); }
-  .distances li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 2px solid var(--ink); font-size: 17px; }
+  .distances { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+  .distances li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
   .distances .mono { font-weight: 700; }
 
-  .map { flex: 1 1 560px; min-height: 420px; position: relative; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; }
+  .map { flex: 1 1 560px; min-height: 420px; position: relative; display: flex; align-items: center; justify-content: center; text-decoration: none; overflow: hidden; }
   .road { position: absolute; background: #fff; }
-  .road--h { left: 0; right: 0; top: 46%; height: 22px; border-top: 2px solid #c9c9c9; border-bottom: 2px solid #c9c9c9; }
-  .road--v { top: 0; bottom: 0; left: 58%; width: 22px; border-left: 2px solid #c9c9c9; border-right: 2px solid #c9c9c9; }
+  .road--h { left: 0; right: 0; top: 46%; height: 22px; border-top: 1px solid rgba(30, 30, 30, 0.1); border-bottom: 1px solid rgba(30, 30, 30, 0.1); }
+  .road--v { top: 0; bottom: 0; left: 58%; width: 22px; border-left: 1px solid rgba(30, 30, 30, 0.1); border-right: 1px solid rgba(30, 30, 30, 0.1); }
   .map-pin { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; }
-  .map-label { background: #fff; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 12px 20px; font-size: 17px; font-weight: 700; }
+  .map-label { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-pop); padding: 12px 20px; font-size: 17px; font-weight: 700; }
 
-  .hotel { background: var(--paper); border: 2px solid var(--ink); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .hotel { background: var(--paper); padding: 28px; display: flex; flex-direction: column; gap: 10px; }
   .hotel h3 { margin: 0; font-size: 22px; font-weight: 700; }
   .hotel p { margin: 0; font-size: 16px; line-height: 1.6; }
   .hotel .hotel-address { color: var(--muted); }
-  .hotel-tag { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; background: #fff; border: 2px solid var(--ink); padding: 2px 8px; }
-  .hotel--venue { background: var(--ink); color: #fff; box-shadow: 8px 8px 0 var(--red); }
+  .hotel-tag { align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; background: #fff; border: 1px solid var(--line); padding: 2px 8px; }
+  .hotel--venue { background: var(--ink); color: #fff; }
   .hotel--venue .hotel-address { color: var(--on-dark); }
-  .hotel--venue .hotel-tag { background: var(--red); color: #fff; border: 0; padding: 4px 8px; }
+  .hotel--venue .hotel-tag { background: var(--red); color: var(--ink); border: 0; border-radius: 999px; padding: 4px 10px; }
 </style>

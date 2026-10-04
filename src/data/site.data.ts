@@ -32,7 +32,7 @@ export const NAV_LINKS = [
 
 export const IMAGES = {
   logoDevfest: "/images/2026/logo-devfest.png",
-  logoGdgWhite: "/images/2026/logo-gdg-bandung-white.png",
+  logoGdgFooter: "/images/2026/logo-gdg-bandung-footer.png",
   groupPhoto: "/images/2026/group-photo.jpg",
   organisersMascot: "/images/2026/organisers-mascot.jpg",
   keynoteStage: "/images/2026/keynote-stage.jpg",

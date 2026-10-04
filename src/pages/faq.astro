@@ -17,11 +17,11 @@ import { FAQ_LIST, LINKS, SITE } from "../data/site.data";
   <section class="section">
     <div class="container faq">
       <aside class="facts-wrap">
-        <div class="box shadow-8 facts">
+        <div class="box card facts">
           <div class="label">QUICK FACTS</div>
           <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong><br />{SITE.time}</span></div>
           <div class="fact"><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong><br /><a href={LINKS.maps}>Open in Google Maps ↗</a></span></div>
-          <a class="btn btn--blue btn--block" href={LINKS.register}>Register now →</a>
+          <a class="btn btn--blue" href={LINKS.register}>Register now →</a>
         </div>
       </aside>
       <div class="stack" style="flex: 3 1 600px; --gap: 12px">
