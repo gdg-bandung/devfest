@@ -34,14 +34,15 @@ export const NAV_LINKS = [
 export const IMAGES = {
   logoDevfest: "/images/2026/logo-devfest.png",
   logoGdgFooter: "/images/2026/logo-gdg-bandung-footer.png",
-  groupPhoto: "/images/2026/group-photo.jpg",
   organisersMascot: "/images/2026/organisers-mascot.jpg",
   keynoteStage: "/images/2026/keynote-stage.jpg",
-  expertPanel: "/images/2026/expert-panel.jpg",
   dancePerformance: "/images/2026/dance-performance.jpg",
   audienceQuestion: "/images/2026/audience-question.jpg",
-  codelab: "/images/2026/codelab.jpg",
-  partnerBooth: "/images/2026/partner-booth.jpg",
+  ogImage: "/images/2026/og-image.jpg",
+  heroGroup: "/images/2026/hero-group-2025.webp",
+  industryTalk: "/images/2026/industry-talk.webp",
+  handsOnCodelab: "/images/2026/hands-on-codelab.webp",
+  networking: "/images/2026/networking.webp",
 } as const;
 
 export type Faq = { question: string; answer: string };

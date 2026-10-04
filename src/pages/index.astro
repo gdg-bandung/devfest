@@ -35,22 +35,22 @@ const tracks = [
 
 const activities = [
   {
-    image: IMAGES.codelab,
-    alt: "Participants working through a codelab on laptops",
+    image: IMAGES.handsOnCodelab,
+    alt: "A mentor helping participants on their laptops during a codelab",
     color: "var(--blue)",
     title: "Hands-on codelab & workshop",
     copy: "Try the newest Google tools and updates from this year’s Google I/O — Gemini, Android, Firebase, Google Cloud — with mentors in the room.",
   },
   {
-    image: IMAGES.partnerBooth,
-    alt: "Attendees talking at a partner booth",
+    image: IMAGES.networking,
+    alt: "Attendees gathered around phones, chatting during a networking break",
     color: "var(--red)",
     title: "Networking & collaboration area",
     copy: "Meet other participants, swap ideas and find collaborators among developers, experts and communities.",
   },
   {
-    image: IMAGES.expertPanel,
-    alt: "Industry experts on a panel",
+    image: IMAGES.industryTalk,
+    alt: "Industry experts on a panel at DevFest Bandung 2025",
     color: "var(--yellow)",
     title: "Industry talks & expert sessions",
     copy: "Panel discussions and deep dives with industry experts on AI trends and real-world applications.",
@@ -89,15 +89,15 @@ const lastYear = [
 
       <div class="collage">
         <figure class="collage-main card">
-          <img class="photo" src={IMAGES.groupPhoto} alt="Full auditorium of DevFest Bandung 2025 attendees posing for a group photo" />
+          <img class="photo" src={IMAGES.heroGroup} alt="Full auditorium of DevFest Bandung 2025 attendees posing for a group photo" width="1400" height="787" fetchpriority="high" />
           <figcaption class="mono tag tag--outline" style="background: var(--blue)">DEVFEST BANDUNG 2025</figcaption>
         </figure>
         <figure class="card">
-          <img class="photo" src={IMAGES.expertPanel} alt="Panel discussion on stage" />
+          <img class="photo" src={IMAGES.industryTalk} alt="Panel discussion on stage" width="1200" height="802" />
           <figcaption class="mono tag tag--sm tag--pill" style="background: var(--red)">EXPERT PANELS</figcaption>
         </figure>
         <figure class="card">
-          <img class="photo" src={IMAGES.codelab} alt="Attendees working on laptops during a codelab" />
+          <img class="photo" src={IMAGES.handsOnCodelab} alt="Attendees working on laptops during a codelab" width="1200" height="675" />
           <figcaption class="mono tag tag--sm tag--outline" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
         </figure>
         <div class="sticker">

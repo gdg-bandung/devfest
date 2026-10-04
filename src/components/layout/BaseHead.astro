@@ -1,6 +1,6 @@
 ---
 import "../../styles/global.css";
-import { SITE } from "../../data/site.data";
+import { IMAGES, SITE } from "../../data/site.data";
 
 interface Props {
   title: string;
@@ -10,7 +10,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://devfest.gdgbandung.com");
 
-const { title, description, image = "/images/2026/group-photo.jpg" } = Astro.props;
+const { title, description, image = IMAGES.ogImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
