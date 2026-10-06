@@ -67,7 +67,7 @@ const lastYear = [
 ];
 ---
 
-<EventLayout footerCta={false}>
+<EventLayout>
   <!-- HERO -->
   <section class="section gridbg">
     <div class="container hero">
@@ -280,23 +280,6 @@ const lastYear = [
       </div>
     </div>
   </section>
-
-  <!-- BEYOND ONE EVENT -->
-  <section class="section--white">
-    <div class="container beyond">
-      <div class="stack" style="flex: 1 1 520px">
-        <Eyebrow>Beyond one event</Eyebrow>
-        <h2 class="title beyond-title">Community → learning → building → connection.</h2>
-        <p class="copy">GDG Bandung is a year-round community for people who want to learn in public, find collaborators, and turn curiosity into momentum. DevFest is our biggest shared checkpoint.</p>
-      </div>
-      <div class="beyond-card">
-        <div class="beyond-watermark" aria-hidden="true">BUILD / SECURE / SCALE</div>
-        <div class="mono beyond-kicker">KEEP BUILDING WITH US</div>
-        <p>Join GDG Bandung for meetups, workshops, and conversations that continue long after DevFest.</p>
-        <a class="btn btn--light" href={LINKS.community}>Join GDG Bandung →</a>
-      </div>
-    </div>
-  </section>
 </EventLayout>
 
 
@@ -376,15 +359,6 @@ const lastYear = [
   /* FAQ */
   .faq-band { display: flex; flex-wrap: wrap; gap: 48px; }
   .faq-more { font-size: 17px; font-weight: 700; }
-
-  /* Beyond */
-  .beyond { display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: center; }
-  .beyond-title { font-size: clamp(40px, 5vw, 68px); letter-spacing: -0.035em; }
-  .beyond-card { flex: 1 1 440px; position: relative; overflow: hidden; background: var(--ink); color: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-soft); border-radius: 16px; padding: 48px 44px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
-  .beyond-watermark { position: absolute; right: -40px; bottom: -14px; font-size: 64px; font-weight: 700; letter-spacing: -0.03em; color: rgba(240, 240, 240, 0.06); transform: rotate(-8deg); white-space: nowrap; }
-  .beyond-kicker { position: relative; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; color: var(--yellow); }
-  .beyond-card p { position: relative; margin: 0; font-size: 20px; line-height: 1.6; }
-  .beyond-card .btn { position: relative; }
 
   @media (max-width: 600px) {
     .track-top { flex-wrap: wrap; }
