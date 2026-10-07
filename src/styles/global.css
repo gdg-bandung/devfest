@@ -75,13 +75,18 @@ a:hover { color: var(--blue-ink); }
 
 /* ---------- Layout ---------- */
 
+/* Layout knobs apply only where they are set, so a nested grid or stack
+   falls back to its own default instead of inheriting its parent's gap. */
+@property --gap { syntax: "*"; inherits: false; }
+@property --min { syntax: "*"; inherits: false; }
+
 .page { min-height: 100vh; }
 
 .section { border-bottom: 1px solid var(--line); }
 .section--white { background: var(--white); }
 
 .container {
-  max-width: 1280px;
+  max-width: 1328px; /* 1280px of content plus the 24px gutters */
   margin: 0 auto;
   padding: 96px 24px;
   box-sizing: border-box;
@@ -151,7 +156,7 @@ a:hover { color: var(--blue-ink); }
 .photo { display: block; width: 100%; object-fit: cover; border-radius: 20px; }
 
 .tile { border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
-.tile h3 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 700; }
+.tile h3 { margin: 0; font-size: 24px; font-weight: 700; }
 .tile--white { background: var(--white); border: 1px solid var(--line); }
 .tile--paper { background: var(--paper); }
 
@@ -232,9 +237,9 @@ a.fact:hover { color: var(--blue); }
 }
 
 .nav {
-  max-width: 1280px;
+  max-width: 1328px; /* 1280px of content plus the 24px gutters */
   margin: 0 auto;
-  padding: 14px 24px;
+  padding: 16px 24px;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -297,9 +302,9 @@ a.fact:hover { color: var(--blue); }
 
 .cta-band { background: var(--blue); color: var(--white); }
 .cta-band--dark { background: var(--ink); }
-.cta-band .container { padding-top: 88px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
-.cta-band-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.cta-band h2 { margin: 0; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.05; letter-spacing: -1px; }
+.cta-band .container { padding-top: 88px; padding-bottom: 88px; display: flex; flex-wrap: wrap; gap: 32px 96px; align-items: center; justify-content: space-between; }
+.cta-band-copy { flex: 0 1 680px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.cta-band h2 { margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -1px; }
 .cta-band p { margin: 0; font-size: 19px; line-height: 1.5; }
 .cta-band--dark p { color: var(--line); }
 
@@ -307,27 +312,6 @@ a.fact:hover { color: var(--blue); }
 
 .site-footer { background: var(--footer); color: var(--footer-text); }
 .site-footer .container { padding: 72px 24px 40px; display: flex; flex-direction: column; gap: 56px; }
-
-.footer-cta {
-  background: var(--footer-card);
-  border-radius: 28px;
-  padding: 44px 48px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  align-items: center;
-  justify-content: space-between;
-}
-.footer-cta h2 {
-  margin: 0;
-  flex: 0 1 620px;
-  min-width: 0;
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.12;
-  letter-spacing: -0.5px;
-  font-weight: 700;
-  color: var(--white);
-}
 
 .footer-main { display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between; padding-bottom: 48px; border-bottom: 1px solid var(--footer-line); }
 .footer-about { flex: 1 1 420px; min-width: 0; max-width: 580px; display: flex; flex-direction: column; gap: 28px; }
@@ -395,7 +379,6 @@ a.fact:hover { color: var(--blue); }
   .container,
   .site-footer .container { padding: 64px 20px !important; }
   .nav { padding-left: 20px; padding-right: 20px; }
-  .footer-cta { padding: 28px; }
   .tile { padding: 24px; }
   .faq-item { padding: 18px 20px; }
 }

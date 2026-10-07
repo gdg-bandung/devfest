@@ -18,7 +18,6 @@ export const LINKS = {
   sponsorship: "https://gdgbandung.com/devfest-sponsorship",
   maps: "https://share.google/eLtj4R1naoi7zoFjO",
   mapsEmbed: "https://maps.google.com/maps?q=%C3%A9L%20Hotel%20Bandung%2C%20Jl.%20Merdeka%20No.%202%2C%20Bandung&z=16&output=embed",
-  community: "https://gdg.community.dev/gdg-bandung/",
   brandGuidelines: "https://gdgbandung.com/brand-guidelines",
   codeOfConduct: "https://gdgbandung.com/code-of-conduct",
   terms: "https://gdgbandung.com/terms-and-conditions",

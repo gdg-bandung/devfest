@@ -49,7 +49,7 @@ const speakerFormats = [
         <Eyebrow color="var(--g-blue)" strong>Google Developer Group Bandung presents</Eyebrow>
         <h1 class="hero-title">DevFest Bandung 2026</h1>
         <p class="hero-theme"><span style="color: var(--blue)">Tech</span> <span class="hero-theme-meets">meets</span> <span style="color: #d93025">Human</span></p>
-        <p class="lead" style="max-width: 620px">One day to build, learn, breathe, and connect. DevFest Bandung 2026 brings together {SITE.capacity} developers, students, founders, and tech enthusiasts to discuss future technologies, while leaving room for stories, collaboration, and real career journeys.</p>
+        <p class="lead" style="max-width: 620px; line-height: 1.55">One day to build, learn, breathe, and connect. DevFest Bandung 2026 brings together {SITE.capacity} developers, students, founders, and tech enthusiasts to discuss future technologies, while leaving room for stories, collaboration, and real career journeys.</p>
         <div class="cluster" style="--gap: 10px">
           <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateMedium}</strong> · {SITE.time}</span></div>
           <a class="fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--g-red)"></span>{SITE.venue} ↗</a>
@@ -57,8 +57,8 @@ const speakerFormats = [
         </div>
         <div class="cluster hero-actions">
           <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
-          <a class="btn btn--ghost btn--lg" href="/cfs">Submit a talk</a>
-          <a class="btn btn--ghost btn--lg" href="/sponsor">Become a sponsor</a>
+          <a class="btn btn--ghost btn--lg hero-ghost" href="/cfs">Submit a talk</a>
+          <a class="btn btn--ghost btn--lg hero-ghost" href="/sponsor">Become a sponsor</a>
         </div>
       </div>
 
@@ -265,6 +265,7 @@ const speakerFormats = [
   .hero-theme { margin: 0; display: flex; flex-wrap: wrap; gap: 10px 14px; font-size: clamp(28px, 3.4vw, 44px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
   .hero-theme-meets { color: var(--muted); font-weight: 400; }
   .hero-actions { margin-top: 8px; }
+  .hero-ghost { padding: 0 26px; }
   .hero-photos { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: minmax(300px, 1fr) 220px; gap: 12px; }
   .hero-photo-main { grid-column: span 2; height: 100%; min-height: 300px; object-position: center 55%; }
   .hero-photo-sub { height: 220px; border-bottom: 6px solid var(--accent); box-sizing: border-box; }
@@ -282,6 +283,7 @@ const speakerFormats = [
   a.pillar:hover { border-color: var(--blue); }
   .pillar-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .pillar-number { font-size: 14px; color: var(--muted); }
+  .pillar h3 { line-height: 1.2; }
 
   /* Rooms */
   .room { border-radius: 24px; overflow: hidden; border: 1px solid var(--room-line); display: flex; flex-direction: column; }
@@ -302,7 +304,7 @@ const speakerFormats = [
   .human-note { margin: 0; font-size: 17px; line-height: 1.6; color: var(--amber-ink); font-style: italic; }
   .human-grid { flex: 1 1 460px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .human-card { background: var(--white); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 19px; line-height: 1.4; }
-  .human-card-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); }
+  .human-card-label { font-size: 12px; line-height: normal; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); }
   .human-photo { grid-column: span 2; height: 280px; object-position: center 35%; }
   .human-chat { grid-column: span 2; background: var(--white); border-radius: 20px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; font-size: 17px; line-height: 1.4; }
 
@@ -321,13 +323,14 @@ const speakerFormats = [
   .recap-title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; }
   .more-link { font-weight: 500; font-size: 17px; }
   .stat { gap: 6px; }
-  .stat-value { font-size: 48px; font-weight: 700; letter-spacing: -1px; line-height: 1.1; }
+  .stat-value { font-size: 48px; font-weight: 700; letter-spacing: -1px; line-height: normal; }
   .stat-label { font-size: 16px; color: var(--text-2); }
 
   /* Sponsor + CFS */
   .promo { border-radius: 28px; padding: 44px; display: flex; flex-direction: column; gap: 20px; }
   .promo h2 { margin: 0; font-size: clamp(30px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.5px; }
   .promo-action { margin-top: auto; padding-top: 8px; }
+  .promo-action .btn { font-size: 17px; }
   .promo :global(.promo-eyebrow) { color: var(--blue-ink); }
   .promo-rows > div { flex-direction: column; gap: 4px; padding: 14px 0; }
   .promo-rows strong { font-size: 17px; }
