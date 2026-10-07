@@ -1,24 +1,55 @@
 ---
-import { IMAGES, LINKS } from "../../data/site.data";
+import { IMAGES, LINKS, SOCIAL_LINKS } from "../../data/site.data";
 
-interface Props {
-  cta?: boolean;
-}
-
-const { cta = true } = Astro.props;
+const socials = [
+  {
+    name: "Facebook",
+    href: SOCIAL_LINKS.facebook,
+    viewBox: "0 0 24 23",
+    icon: '<path d="M16.7915 3.8335H14.8748C12.479 3.8335 11.0415 5.271 11.0415 7.66683V19.1668" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.1665 11.5H14.8748" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path>',
+  },
+  {
+    name: "Instagram",
+    href: SOCIAL_LINKS.instagram,
+    viewBox: "0 0 25 25",
+    icon: '<path d="M17.4999 8.85449C18.3283 8.85449 18.9999 8.15494 18.9999 7.29199C18.9999 6.42905 18.3283 5.72949 17.4999 5.72949C16.6715 5.72949 15.9999 6.42905 15.9999 7.29199C15.9999 8.15494 16.6715 8.85449 17.4999 8.85449Z" fill="white"></path><path d="M16.5 3.125C19.26 3.125 21.5 5.45833 21.5 8.33333V16.6667C21.5 19.5417 19.26 21.875 16.5 21.875H8.49997C5.73997 21.875 3.49997 19.5417 3.49997 16.6667V8.33333C3.49997 5.45833 5.73997 3.125 8.49997 3.125H12.5H16.5Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.4999 8.33301C14.7099 8.33301 16.4999 10.1976 16.4999 12.4997C16.4999 14.8018 14.7099 16.6663 12.4999 16.6663C10.2899 16.6663 8.49988 14.8018 8.49988 12.4997C8.49988 10.1976 10.2899 8.33301 12.4999 8.33301Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
+  },
+  {
+    name: "LinkedIn",
+    href: SOCIAL_LINKS.linkedin,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M4.66665 6.24992C5.81724 6.24992 6.74998 5.31718 6.74998 4.16659C6.74998 3.01599 5.81724 2.08325 4.66665 2.08325C3.51605 2.08325 2.58331 3.01599 2.58331 4.16659C2.58331 5.31718 3.51605 6.24992 4.66665 6.24992Z" fill="white"></path><path d="M4.66687 10.4165V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.9169 10.4165V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.9169 15.6248C10.9169 12.7498 13.2502 10.4165 16.1252 10.4165C19.0002 10.4165 21.3335 12.7498 21.3335 15.6248V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path>',
+  },
+  {
+    name: "Telegram",
+    href: SOCIAL_LINKS.telegram,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M19.771 20.8333L22.3752 5.20825L9.87515 14.0624" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22.375 5.20825L2.58331 13.0208" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.771 20.8333L9.87515 14.0625" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.58337 13.0205L9.87504 14.0622" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.0002 16.6667L9.87515 19.7917V14.0625" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
+  },
+  {
+    name: "X",
+    href: SOCIAL_LINKS.x,
+    viewBox: "0 0 21 21",
+    icon: '<path d="M1.3335 1.75H3.41683L15.9168 19.25H13.8335L1.3335 1.75ZM5.0835 1.75H7.16683L19.6668 19.25H17.5835L5.0835 1.75ZM3.00016 1.75H7.16683V3.5H3.00016V1.75ZM13.8335 17.5H18.0002V19.25H13.8335V17.5ZM15.9168 1.75H18.8335L4.66683 19.25H1.75016L15.9168 1.75Z" fill="white"></path>',
+  },
+  {
+    name: "YouTube",
+    href: SOCIAL_LINKS.youtube,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M10.9167 8.85449L17.1667 12.5003L10.9167 16.1462V8.85449Z" fill="white"></path><path d="M12.9999 5.20825C22.3749 5.20825 22.3749 5.20825 22.3749 12.4999C22.3749 19.7916 22.3749 19.7916 12.9999 19.7916C3.62494 19.7916 3.62494 19.7916 3.62494 12.4999C3.62494 5.20825 3.62494 5.20825 12.9999 5.20825Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
+  },
+];
 ---
 
 <footer class="site-footer">
   <div class="container">
-    {cta && (
-      <div class="footer-cta">
-        <h2>Chat with one of our learning pros to uncover some cool new stuff!</h2>
-        <a class="btn btn--light" href={LINKS.community}>
-          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"></path></svg>
-          Join Community
-        </a>
-      </div>
-    )}
+    <div class="footer-cta">
+      <h2>Chat with one of our learning pros to uncover some cool new stuff!</h2>
+      <a class="btn btn--blue" href={LINKS.community}>
+        <svg aria-hidden="true" width="18" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18 14.3c2.1.7 3.5 2.8 3.5 5.7"></path></svg>
+        Join Community
+      </a>
+    </div>
     <div class="footer-main">
       <div class="footer-about">
         <img src={IMAGES.logoGdgFooter} alt="Google Developer Groups Bandung" width="334" height="48" loading="lazy" decoding="async" />
@@ -28,21 +59,27 @@ const { cta = true } = Astro.props;
         <div class="footer-col">
           <div class="footer-col-title">Community</div>
           <a href={LINKS.brandGuidelines}>Brand Guidelines</a>
-          <a href={LINKS.terms}>Code of Conduct</a>
+          <a href={LINKS.codeOfConduct}>Code of Conduct</a>
         </div>
         <div class="footer-col">
           <div class="footer-col-title">Contact Us</div>
-          <a href={LINKS.sponsorship}>Request for Media Partner</a>
-          <a href={LINKS.terms}>Join as Partner</a>
+          <a href={LINKS.terms}>Request for Media Partner</a>
+          <a href={LINKS.sponsorship}>Join as Partner</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <small>© 2026 Google Developer Group Bandung · All rights reserved.</small>
-      <a class="footer-social" href={LINKS.instagram}>
-        Connect With Us
-        <span><svg aria-label="Instagram" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"></circle></svg></span>
-      </a>
+      <small>© 2026 Google Developer Group Bandung • All rights reserved.</small>
+      <div class="footer-social">
+        <span>Connect With Us</span>
+        <div class="footer-social-icons">
+          {socials.map((social) => (
+            <a href={social.href} aria-label={social.name}>
+              <svg aria-hidden="true" width="16" height="16" viewBox={social.viewBox} fill="none" set:html={social.icon} />
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </footer>

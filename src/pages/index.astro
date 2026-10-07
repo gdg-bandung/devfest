@@ -2,68 +2,41 @@
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
 import FaqItem from "../components/ui/FaqItem.astro";
-import { HOME_FAQS, LINKS, PHOTOS, SITE, srcset } from "../data/site.data";
+import CtaBand from "../components/ui/CtaBand.astro";
+import { HOME_FAQS, LINKS, PHOTOS, ROOMS, SITE, srcset } from "../data/site.data";
 
-
-const themeWords = [
-  { word: "BUILD", color: "var(--blue)" },
-  { word: "SECURE", color: "var(--red)" },
-  { word: "SCALE", color: "var(--green)" },
-  { word: "AGENTIC ERA", color: "var(--yellow)" },
+const reasons = [
+  { shape: "square", title: "Build with purpose", copy: "Learn new technologies and practices through keynotes, codelabs, and technical sessions relevant to your journey." },
+  { shape: "circle", title: "Grow with others", copy: "Meet fellow builders, share real concerns, and find new discussion partners or collaborators." },
+  { shape: "triangle", title: "Leave with momentum", copy: "Leave with buildable ideas, actionable connections, and clear next steps within the community." },
 ];
 
-const tracks = [
-  {
-    number: "Track 01",
-    audience: "For anyone who wants to build",
-    title: "Builder track",
-    tone: "bg-blue-soft",
-    description:
-      "Start with a problem, then turn it into a useful app, workflow or prototype with AI assistance. Designed for developers and builders across product, design, marketing and beyond.",
-    points: ["AI-assisted apps and prototypes", "Automating and optimising workflows", "Picking the right Google tools for the job"],
-  },
-  {
-    number: "Track 02",
-    audience: "For professional devs & eng teams",
-    title: "Developer track",
-    tone: "bg-red-soft",
-    description:
-      "Go deeper into the agent ecosystem: develop, deploy, govern, secure and scale autonomous systems for production environments.",
-    points: ["Building and orchestrating agents", "Governance and secure-by-default systems", "Taking multi-agent apps to production scale"],
-  },
+const pillars = [
+  { number: "01", pill: "Main Stage", pillStyle: "", title: "Big ideas for a changing industry.", copy: "Keynotes and panel sessions to explore industry trends, the future of AI, and global stories that guide direction." },
+  { number: "02", pill: "The Builders Rooms", pillStyle: "--pill-bg: var(--blue)", href: "#rooms", title: "Choose your path. Build with depth.", copy: "Three parallel rooms: App Builders, Platform Builders, and Business Builders." },
+  { number: "03", pill: "The Human Activity", pillStyle: "--pill-bg: var(--amber-chip); --pill-ink: var(--amber-ink)", href: "#human", title: "A space to pause, reflect, and connect.", copy: "Interactive activations for career reflection, light mindfulness, and conversations that reassure attendees they are not alone." },
+  { number: "04", pill: "Vibe Hackathon", pillStyle: "--pill-bg: var(--red)", href: "#hackathon", title: "Meet strangers. Make something together.", copy: "Problem-solving sprint in small teams to create solution concepts, architectures, or wireframes — and kickstart new connections." },
 ];
 
-const activities = [
-  {
-    image: PHOTOS.handsOnCodelab,
-    alt: "A mentor helping participants on their laptops during a codelab",
-    color: "var(--blue)",
-    title: "Hands-on codelab & workshop",
-    copy: "Try the newest Google tools and updates from this year’s Google I/O — Gemini, Android, Firebase, Google Cloud — with mentors in the room.",
-  },
-  {
-    image: PHOTOS.networking,
-    alt: "Attendees gathered around phones, chatting during a networking break",
-    color: "var(--red)",
-    title: "Networking & collaboration area",
-    copy: "Meet other participants, swap ideas and find collaborators among developers, experts and communities.",
-  },
-  {
-    image: PHOTOS.industryTalk,
-    alt: "Industry experts on a panel at DevFest Bandung 2025",
-    color: "var(--yellow)",
-    title: "Industry talks & expert sessions",
-    copy: "Panel discussions and deep dives with industry experts on AI trends and real-world applications.",
-  },
+const hackathon = [
+  { label: "Format", value: "1-hour idea and problem-solving sprint" },
+  { label: "Team", value: "Teams formed randomly on the day" },
+  { label: "Output", value: "Solution concept, simple architecture, wireframe, or pitch" },
+  { label: "Ice breaker", value: "Nametag color matching and prompt cards" },
+  { label: "Finale", value: "Brief showcase for the most creative, most human, or most feasible ideas" },
 ];
-
-const topics = ["Gemini", "Chrome", "Flutter", "Android", "Google Cloud", "Firebase", "Antigravity", "Gemma", "Gemini Code Assist", "Figma", "Google Labs"];
 
 const lastYear = [
-  { value: "2,000+", label: "participants", color: "var(--stat-blue)" },
-  { value: "64.94%", label: "professionals", color: "var(--stat-green)" },
-  { value: "27", label: "speakers & panelists", color: "var(--sunny)" },
-  { value: "2,100+", label: "YouTube live viewers", color: "var(--stat-pink)" },
+  { value: "2,000+", label: "participants in 2025", color: "var(--blue)" },
+  { value: "64.94%", label: "professionals", color: "var(--red)" },
+  { value: "27", label: "speakers & panelists", color: "var(--green)" },
+  { value: "2,100+", label: "YouTube live viewers", color: "var(--ink)" },
+];
+
+const speakerFormats = [
+  { title: "Builders Room Session", copy: "Codelab, workshop, or case study for App, Platform, or Business Builders." },
+  { title: "Main Stage Talk / Panel", copy: "Industry trends, global inspiration, implementation stories, or cross-role conversations." },
+  { title: "Human Activity Facilitator", copy: "Guide reflection, community conversations, or light mindfulness safely and inclusively." },
 ];
 ---
 
@@ -72,298 +45,299 @@ const lastYear = [
   <section class="section gridbg">
     <div class="container hero">
       <div class="hero-copy">
-        <Eyebrow>Google Developer Group Bandung presents</Eyebrow>
-        <h1 class="display display--xl">DevFest<br />Bandung 2026</h1>
-        <p class="hero-tagline"><strong>Build, secure, scale:</strong> developers and builders in the agentic era.</p>
-        <div class="cluster" style="--gap: 12px">
-          <div class="hero-fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateMedium}</strong> · {SITE.time}</span></div>
-          <a class="hero-fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong> ↗</span></a>
-          <div class="hero-fact"><span class="dot dot--sm" style="--dot: var(--yellow)"></span><span><strong>Only 500 seats</strong> · limited quota</span></div>
+        <Eyebrow color="var(--g-blue)" strong>Google Developer Group Bandung presents</Eyebrow>
+        <h1 class="hero-title">DevFest Bandung 2026</h1>
+        <p class="hero-theme"><span style="color: var(--blue)">Tech</span> <span class="hero-theme-meets">meets</span> <span style="color: #d93025">Human</span></p>
+        <p class="lead" style="max-width: 620px">One day to build, learn, breathe, and connect. DevFest Bandung 2026 brings together {SITE.capacity} developers, students, founders, and tech enthusiasts to discuss future technologies, while leaving room for stories, collaboration, and real career journeys.</p>
+        <div class="cluster" style="--gap: 10px">
+          <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateMedium}</strong> · {SITE.time}</span></div>
+          <a class="fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--g-red)"></span>{SITE.venue} ↗</a>
+          <div class="fact"><span class="dot dot--sm" style="--dot: var(--g-green)"></span><span><strong>{SITE.capacity} builders</strong> · 2026 capacity</span></div>
         </div>
         <div class="cluster hero-actions">
           <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
-          <a class="btn" href={LINKS.cfs}>Submit a talk</a>
-          <a class="btn" href={LINKS.sponsorship}>Become a sponsor</a>
+          <a class="btn btn--ghost btn--lg" href="/cfs">Submit a talk</a>
+          <a class="btn btn--ghost btn--lg" href="/sponsor">Become a sponsor</a>
         </div>
       </div>
 
-      <div class="collage">
-        <figure class="collage-main card">
-          <img class="photo" src={PHOTOS.heroGroup.src} srcset={srcset(PHOTOS.heroGroup)} sizes="(max-width: 1100px) calc(100vw - 52px), 580px" width={PHOTOS.heroGroup.width} height={PHOTOS.heroGroup.height} alt="Full auditorium of DevFest Bandung 2025 attendees posing for a group photo" fetchpriority="high" />
-          <figcaption class="mono tag tag--outline" style="background: var(--blue)">DEVFEST BANDUNG 2025</figcaption>
-        </figure>
-        <figure class="card">
-          <img class="photo" src={PHOTOS.industryTalk.src} srcset={srcset(PHOTOS.industryTalk)} sizes="(max-width: 1100px) calc(50vw - 36px), 290px" width={PHOTOS.industryTalk.width} height={PHOTOS.industryTalk.height} alt="Panel discussion on stage" />
-          <figcaption class="mono tag tag--sm tag--pill" style="background: var(--red); color: var(--on-red)">EXPERT PANELS</figcaption>
-        </figure>
-        <figure class="card">
-          <img class="photo" src={PHOTOS.handsOnCodelab.src} srcset={srcset(PHOTOS.handsOnCodelab)} sizes="(max-width: 1100px) calc(50vw - 36px), 290px" width={PHOTOS.handsOnCodelab.width} height={PHOTOS.handsOnCodelab.height} alt="Attendees working on laptops during a codelab" />
-          <figcaption class="mono tag tag--sm tag--outline" style="background: var(--green)">HANDS-ON CODELABS</figcaption>
-        </figure>
-        <div class="sticker">
-          <div class="sticker-value">500</div>
-          <div class="sticker-label">seats only<br />· limited ·</div>
-        </div>
+      <div class="hero-photos">
+        <img class="photo hero-photo-main" src={PHOTOS.breakSmiles.src} srcset={srcset(PHOTOS.breakSmiles)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.breakSmiles.width} height={PHOTOS.breakSmiles.height} alt="DevFest Bandung attendees smiling together during a break" fetchpriority="high" />
+        <img class="photo hero-photo-sub" style="--accent: var(--g-blue)" src={PHOTOS.handsOnCodelab.src} srcset={srcset(PHOTOS.handsOnCodelab)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.handsOnCodelab.width} height={PHOTOS.handsOnCodelab.height} alt="Attendees working on laptops together" />
+        <img class="photo hero-photo-sub" style="--accent: var(--g-red)" src={PHOTOS.networking.src} srcset={srcset(PHOTOS.networking)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.networking.width} height={PHOTOS.networking.height} alt="A small group talking around their phones" />
       </div>
     </div>
   </section>
 
-  <!-- THEME MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-inner">
-      {themeWords.map((item) => <span class="marquee-word"><span class="dot dot--lg" style={`--dot: ${item.color}`}></span>{item.word}</span>)}
-    </div>
-  </div>
-
-  <!-- THEME -->
-  <section id="theme" class="section">
+  <!-- WHY TECH MEETS HUMAN -->
+  <section class="section section--white">
     <div class="container stack" style="--gap: 48px">
-      <div class="theme-intro">
-        <div class="stack" style="flex: 1 1 480px">
-          <Eyebrow color="var(--red)">Our 2026 theme</Eyebrow>
-          <h2 class="title">“Build, secure, scale: Developers and builders in the agentic era”</h2>
+      <div class="split">
+        <div class="head" style="flex: 1 1 480px">
+          <Eyebrow>Why Tech Meets Human</Eyebrow>
+          <h2 class="title">Technology moves fast. People need room to grow.</h2>
         </div>
-        <p class="copy" style="flex: 1 1 380px">The developer’s job is shifting from writing code to reviewing it and orchestrating autonomous agents. Models and tools keep getting stronger, so you can do more, faster.</p>
+        <p class="copy" style="flex: 1 1 420px">DevFest Bandung 2026 is not just about tools and trends. We designed a day that connects hard skills with the human reality behind them: learning new things, facing career shifts, overcoming feeling alone in the industry, and finding people to grow with.</p>
       </div>
-
-      <div class="auto-grid" style="--min: 320px">
-        <div class="box card theme-card">
-          <div class="theme-card-title">AI opens the door for everyone</div>
-          <p class="copy-17">More people can now solve more problems, and bring more diverse ideas to life than ever before. “Builders” use their skills and AI assistance to build apps, automate and optimise workflows, and create solutions for any industry — from product management to design.</p>
-        </div>
-        <div class="box card theme-card">
-          <div class="theme-card-title">Secure by default, scaled with intent</div>
-          <p class="copy-17">Gartner predicts that 80% of technology products and services will soon be built by people who are not professional software developers. In that world, a secure-by-default mindset matters more than ever — and so does choosing the right models, platforms and tools for your goals.</p>
-        </div>
-      </div>
-
-      <div class="box auto-grid info-strip" style="--min: 240px; --gap: 0">
-        <div class="info-cell" style="border-right: 1px solid var(--line); border-top-color: var(--blue)">
-          <div class="label" style="text-transform: uppercase">Date &amp; time</div>
-          <div class="info-value">{SITE.dateLong}</div>
-          <div class="info-sub">{SITE.time}</div>
-        </div>
-        <div class="info-cell" style="border-top-color: var(--red)">
-          <div class="label" style="text-transform: uppercase">Venue</div>
-          <div class="info-value">{SITE.venue}</div>
-          <a class="info-sub" href={LINKS.maps}>Open in Google Maps ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRACKS -->
-  <section id="tracks" class="section section--white">
-    <div class="container stack" style="--gap: 48px">
-      <div class="head">
-        <Eyebrow>Learn by doing</Eyebrow>
-        <h2 class="title">Two tracks. Pick the one that fits how you build.</h2>
-        <p class="copy">Build an idea, secure the system, scale the outcome. Both tracks follow the same arc, at different depths.</p>
-      </div>
-      <div class="auto-grid" style="--min: 340px; --gap: 32px">
-        {tracks.map((track) => (
-          <article class:list={["track", "card", track.tone]}>
-            <div class="track-top">
-              <span class="mono track-number">{track.number}</span>
-              <span class="mono track-audience">{track.audience}</span>
-            </div>
-            <h3 class="track-title">{track.title}</h3>
-            <p class="track-copy">{track.description}</p>
-            <ul class="arrow-list">
-              {track.points.map((point) => <li><span aria-hidden="true">→</span>{point}</li>)}
-            </ul>
-          </article>
+      <div class="auto-grid" style="--min: 260px">
+        {reasons.map((reason) => (
+          <div class="tile tile--paper reason">
+            <span class:list={["shape", `shape--${reason.shape}`]} aria-hidden="true"></span>
+            <h3>{reason.title}</h3>
+            <p class="copy-17">{reason.copy}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- KEY ACTIVITIES -->
-  <section id="activities" class="section">
+  <!-- FOUR PILLARS -->
+  <section class="section gridbg">
     <div class="container stack" style="--gap: 48px">
       <div class="head">
-        <Eyebrow color="var(--green)">Key activities</Eyebrow>
-        <h2 class="title">One day to learn, meet and build.</h2>
+        <Eyebrow>One day, four ways to grow</Eyebrow>
+        <h2 class="title">Learn the tech. Meet the human. Build what is next.</h2>
+        <p class="copy">Every part of DevFest is designed to provide a distinct energy: shared inspiration, focused learning, breathing space, and relaxed yet meaningful collaboration.</p>
       </div>
-      <div class="auto-grid" style="--min: 300px; --gap: 28px">
-        {activities.map((activity) => (
-          <article class="box card activity">
-            <img class="photo" src={activity.image.src} srcset={srcset(activity.image)} sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 400px" width={activity.image.width} height={activity.image.height} alt={activity.alt} loading="lazy" decoding="async" />
-            <div class="activity-body">
-              <div class="activity-bar" style={`background: ${activity.color}`}></div>
-              <h3>{activity.title}</h3>
-              <p class="copy-17">{activity.copy}</p>
+      <div class="auto-grid" style="--min: 270px">
+        {pillars.map((pillar) => {
+          const Tag = pillar.href ? "a" : "div";
+          return (
+            <Tag class="tile tile--white pillar" href={pillar.href}>
+              <div class="pillar-top"><span class="mono pillar-number">{pillar.number}</span><span class="pill" style={pillar.pillStyle}>{pillar.pill}</span></div>
+              <h3>{pillar.title}</h3>
+              <p class="copy-16">{pillar.copy}</p>
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDERS ROOMS -->
+  <section id="rooms" class="section section--white">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Pick a room. Go deeper.</Eyebrow>
+        <h2 class="title">Three learning paths for every kind of builder.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px">
+        {ROOMS.map((room) => (
+          <article class:list={["room", `room--${room.key}`]}>
+            <div class="room-head"><h3>{room.name}</h3><span class="mono room-label">{room.label}</span></div>
+            <div class="room-body">
+              <p class="room-audience">{room.audience}</p>
+              <div class="room-field"><span class="mono room-field-label">Primary format</span><span class="room-format">{room.format}</span></div>
+              <div class="room-field" style="gap: 8px">
+                <span class="mono room-field-label">Example focus</span>
+                <div class="cluster" style="--gap: 8px">
+                  {room.topics.map((topic) => <span class="chip" style="--chip-line: var(--room-line)">{topic}</span>)}
+                </div>
+              </div>
             </div>
           </article>
         ))}
       </div>
-      <div class="topics">
-        <span class="eyebrow">Topics</span>
-        <div class="cluster" style="--gap: 10px">
-          {topics.map((topic) => <span class="chip">{topic}</span>)}
+    </div>
+  </section>
+
+  <!-- HUMAN ACTIVITY -->
+  <section id="human" class="section human">
+    <div class="container human-inner">
+      <div class="stack" style="flex: 1 1 460px; min-width: 0; --gap: 20px">
+        <Eyebrow class="human-eyebrow">03 · The Human Activity</Eyebrow>
+        <h2 class="title human-title">You are more than what you ship.</h2>
+        <p class="copy" style="line-height: 1.65">In the midst of intense technical sessions, step into a space designed to slow down the pace. Write your thoughts in the Worry Log, pick a reflection card, or join small chats about career shifts, burnout, and staying grounded in a fast-moving industry.</p>
+        <p class="human-note">Coming alone is completely fine. Sharing is not mandatory. Take the space you need.</p>
+      </div>
+      <div class="human-grid">
+        <div class="human-card" style="transform: rotate(-1.5deg)">
+          <span class="mono human-card-label">Worry Log</span>
+          <span>Write down what has been on your mind. Leave it on the wall.</span>
+        </div>
+        <div class="human-card" style="background: var(--g-yellow); transform: rotate(1.5deg)">
+          <span class="mono human-card-label" style="color: var(--ink)">Reflection Card</span>
+          <span>Pick one prompt. Keep it, or talk it through.</span>
+        </div>
+        <img class="photo human-photo" src={PHOTOS.floorChat.src} srcset={srcset(PHOTOS.floorChat)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.floorChat.width} height={PHOTOS.floorChat.height} alt="Attendees sitting together on the floor, eating and chatting" loading="lazy" decoding="async" />
+        <div class="human-chat">
+          <span class="dot" style="--dot: var(--g-green); width: 12px; height: 12px"></span>
+          <span><strong>Small chats</strong> on career shifts, burnout, and staying grounded.</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LAST YEAR -->
-  <section class="section section--dark">
-    <div class="container last-year">
-      <div class="stack" style="flex: 1 1 420px">
-        <Eyebrow color="var(--yellow)">DevFest Bandung 2025</Eyebrow>
-        <h2 class="title title--56">Last year, the room was full.</h2>
-        <p class="copy" style="color: var(--on-dark)">A quality audience, real engagement, and results that mattered to sponsors.</p>
-        <a class="recap-link" href="/sponsor">See the full 2025 recap →</a>
+  <!-- VIBE HACKATHON -->
+  <section id="hackathon" class="hackathon">
+    <div class="container stack" style="--gap: 56px">
+      <div class="split" style="--gap: 32px 64px">
+        <div class="stack" style="flex: 1 1 520px; --gap: 20px">
+          <Eyebrow class="hackathon-eyebrow">04 · Vibe Hackathon</Eyebrow>
+          <h2 class="title hackathon-title">Strangers in. Collaborators out.</h2>
+        </div>
+        <p class="copy hackathon-copy" style="flex: 1 1 420px">No need to come with a team. In the Vibe Hackathon, you will be paired with other attendees to respond to a problem statement, design a solution, and present ideas in a light format. The goal isn’t a perfect product — the goal is starting conversations that continue after the event.</p>
       </div>
-      <div class="grid-2" style="flex: 1 1 520px">
+      <div class="cluster" style="--gap: 24px">
+        <dl class="rows hackathon-rows">
+          {hackathon.map((row) => (
+            <div><dt class="mono">{row.label}</dt><dd>{row.value}</dd></div>
+          ))}
+        </dl>
+        <img class="photo hackathon-photo" src={PHOTOS.hackathonTables.src} srcset={srcset(PHOTOS.hackathonTables)} sizes="(max-width: 1100px) calc(100vw - 48px), 560px" width={PHOTOS.hackathonTables.width} height={PHOTOS.hackathonTables.height} alt="Attendees building together at shared tables with laptops" loading="lazy" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 2025 RECAP -->
+  <section class="section gridbg">
+    <div class="container stack recap" style="--gap: 36px">
+      <div class="split" style="justify-content: space-between; --gap: 16px">
+        <div class="stack" style="--gap: 12px">
+          <Eyebrow>DevFest Bandung 2025 · Recap</Eyebrow>
+          <h2 class="title recap-title">Last year, the room was full.</h2>
+        </div>
+        <a class="more-link" href="/sponsor">See the full 2025 recap →</a>
+      </div>
+      <div class="auto-grid" style="--min: 220px; --gap: 12px">
         {lastYear.map((stat) => (
-          <div class="stat">
-            <div class="stat-value" style={`color: ${stat.color}`}>{stat.value}</div>
-            <div class="stat-label">{stat.label}</div>
+          <div class="tile tile--white stat">
+            <span class="stat-value" style={`color: ${stat.color}`}>{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- PARTNERS -->
-  <section id="partners" class="section">
-    <div class="container partners">
-      <div class="stack" style="flex: 1 1 440px">
-        <Eyebrow>Partner with the community</Eyebrow>
-        <h2 class="title">Make your brand useful in the room.</h2>
-        <p class="copy">DevFest partnerships work best when they help people learn, try, meet or build. Bring a product, a challenge, a hiring story or a community commitment to a high-intent audience of developers and builders.</p>
-        <div class="cluster" style="padding-top: 8px">
-          <a class="btn btn--blue" href={LINKS.sponsorship}>Become a sponsor →</a>
+  <!-- SPONSOR + CFS -->
+  <section class="section section--white">
+    <div class="container auto-grid" style="--min: 340px; --gap: 20px">
+      <div class="promo" style="background: var(--blue-soft)">
+        <Eyebrow class="promo-eyebrow">Partner with us</Eyebrow>
+        <h2>Help people learn, connect, and feel at home in tech.</h2>
+        <p class="copy-17" style="line-height: 1.6">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
+        <div class="promo-action"><a class="btn btn--blue" href={LINKS.sponsorship}>Become a sponsor →</a></div>
+      </div>
+      <div class="promo" style="background: var(--paper)">
+        <Eyebrow>Call for speakers</Eyebrow>
+        <h2>Teach what you have learned. Share what makes you human.</h2>
+        <div class="rows promo-rows">
+          {speakerFormats.map((format) => (
+            <div><strong>{format.title}</strong><span>{format.copy}</span></div>
+          ))}
         </div>
-      </div>
-      <div class="grid-2" style="flex: 1 1 520px; --gap: 20px">
-        {[1, 2, 3].map(() => (
-          <div class="box card">
-            <div class="logo-slot"><span class="mono">[ SPONSOR LOGO ]</span></div>
-            <div class="logo-meta"><span class="label" style="font-size: 11px">2026 PARTNER</span><span>[Partner name]</span></div>
-          </div>
-        ))}
-        <a class="your-brand" href={LINKS.sponsorship}>
-          <span class="your-brand-plus">+</span>
-          <span class="your-brand-title">Your brand here</span>
-          <span class="your-brand-sub">Sponsorship is open</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CFS -->
-  <section class="section section--green">
-    <div class="container cfs-band">
-      <div class="stack" style="flex: 1 1 560px; --gap: 16px">
-        <Eyebrow color="var(--green)" class="eyebrow--ring">Call for speakers</Eyebrow>
-        <h2 class="title title--56">Speak to the whole room.</h2>
-        <p class="copy" style="color: var(--ink)">Share a practical story, a hard-won technical lesson, or a clear idea that helps people build in the agentic era. First-time speakers welcome.</p>
-      </div>
-      <div class="cluster">
-        <a class="btn btn--dark" href={LINKS.cfs}>Submit a proposal →</a>
+        <div class="promo-action"><a class="btn btn--dark" href={LINKS.cfs}>Submit a talk →</a></div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section">
+  <section id="faq" class="section gridbg">
     <div class="container faq-band">
-      <div class="stack" style="flex: 1 1 340px">
-        <Eyebrow color="var(--yellow)">Plan your day</Eyebrow>
-        <h2 class="title title--56">Questions, answered.</h2>
-        <a class="faq-more" href="/faq">Read all FAQs →</a>
+      <div class="stack" style="flex: 1 1 300px; min-width: 0">
+        <Eyebrow>FAQ</Eyebrow>
+        <h2 class="title">Questions, answered.</h2>
+        <a class="more-link" href="/faq">Read all FAQs →</a>
       </div>
-      <div class="stack" style="flex: 2 1 560px; --gap: 12px">
-        {HOME_FAQS.map((faq, index) => <FaqItem faq={faq} open={index === 0} compact />)}
+      <div class="stack" style="flex: 2 1 560px; min-width: 0; --gap: 10px">
+        {HOME_FAQS.map((faq, index) => <FaqItem faq={faq} open={index === 0} />)}
       </div>
     </div>
   </section>
-</EventLayout>
 
+  <CtaBand
+    title="Come for the tech. Stay for the people."
+    subtitle={`${SITE.dateMedium} · ${SITE.time} · ${SITE.venue} · ${SITE.capacity} seats`}
+    href={LINKS.register}
+    label="Register now →"
+  />
+</EventLayout>
 
 <style>
   /* Hero */
-  .hero { padding: 72px 32px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
-  .hero-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px; }
-  .hero-tagline { margin: 0; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.3; max-width: 600px; }
-  .hero-fact { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid var(--line); padding: 10px 16px; text-decoration: none; }
-  .hero-actions { padding-top: 8px; }
+  .hero { padding: 72px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .hero-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .hero-title { margin: 0; font-size: clamp(48px, 7vw, 96px); line-height: 0.98; letter-spacing: -2px; font-weight: 700; }
+  .hero-theme { margin: 0; display: flex; flex-wrap: wrap; gap: 10px 14px; font-size: clamp(28px, 3.4vw, 44px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
+  .hero-theme-meets { color: var(--muted); font-weight: 400; }
+  .hero-actions { margin-top: 8px; }
+  .hero-photos { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .hero-photo-main { grid-column: span 2; height: 300px; object-position: center 60%; }
+  .hero-photo-sub { height: 200px; border-bottom: 6px solid var(--accent); box-sizing: border-box; }
 
+  /* Why */
+  .reason { padding: 32px; gap: 12px; }
+  .reason h3 { margin-top: 8px; }
+  .shape { width: 44px; height: 44px; }
+  .shape--square { border-radius: 12px; background: var(--g-blue); }
+  .shape--circle { border-radius: 50%; background: var(--g-red); }
+  .shape--triangle { width: 0; height: 0; border-left: 24px solid transparent; border-right: 24px solid transparent; border-bottom: 42px solid var(--g-yellow); }
 
-  .collage { flex: 1 1 460px; min-width: 0; position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 0 12px 12px 0; }
-  .collage figure { margin: 0; position: relative; background: #fff; }
-  .collage figure img { height: 190px; }
-  .collage .collage-main { grid-column: 1 / -1; }
-  .collage .collage-main img { height: 300px; }
-  .tag { position: absolute; left: 16px; bottom: 16px; color: var(--ink); padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
-  .tag--sm { left: 12px; bottom: 12px; padding: 4px 8px; font-size: 11px; }
-  .tag--outline { border: 1px solid var(--line); }
-  .tag--pill { padding: 4px 10px; border-radius: 999px; }
-  .sticker { position: absolute; top: -28px; right: -8px; width: 132px; height: 132px; border-radius: 50%; background: var(--sunny); border: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transform: rotate(8deg); box-shadow: var(--shadow-pop); }
-  .sticker-value { font-size: 40px; font-weight: 700; line-height: 1; }
-  .sticker-label { font-size: 13px; line-height: 1.2; padding-top: 4px; }
+  /* Pillars */
+  a.pillar { color: var(--ink); text-decoration: none; transition: border-color 0.15s; }
+  a.pillar:hover { border-color: var(--blue); }
+  .pillar-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .pillar-number { font-size: 14px; color: var(--muted); }
 
-  /* Marquee */
-  .marquee { background: var(--ink); color: #fff; border-bottom: 1px solid var(--line); overflow: hidden; }
-  .marquee-inner { max-width: 1280px; margin: 0 auto; padding: 22px 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; font-weight: 700; font-size: clamp(24px, 3vw, 40px); letter-spacing: -0.02em; }
-  .marquee-word { display: inline-flex; align-items: center; gap: 14px; }
+  /* Rooms */
+  .room { border-radius: 24px; overflow: hidden; border: 1px solid var(--room-line); display: flex; flex-direction: column; }
+  .room-head { background: var(--room); color: var(--room-on); padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .room-head h3 { margin: 0; font-size: 26px; }
+  .room-label { font-size: 13px; border: 1px solid currentColor; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+  .room-body { flex: 1; background: var(--room-soft); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
+  .room-audience { margin: 0; font-size: 17px; line-height: 1.55; }
+  .room-field { display: flex; flex-direction: column; gap: 4px; }
+  .room-field-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--room-ink); }
+  .room-format { font-size: 17px; font-weight: 700; }
 
-  /* Theme */
-  .theme-intro { display: flex; flex-wrap: wrap; gap: 32px 64px; align-items: flex-end; }
-  .theme-card { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-  .theme-card-title { font-weight: 700; font-size: 22px; }
-  .info-cell { padding: 24px 28px; border-top: 4px solid; display: flex; flex-direction: column; gap: 8px; }
-  .info-value { font-size: 22px; font-weight: 700; line-height: 1.2; }
-  .info-sub { font-size: 16px; }
-  div.info-sub { color: var(--muted); }
+  /* Human Activity */
+  .human { background: var(--cream); border-bottom-color: var(--cream-line); }
+  .human-inner { padding-top: 104px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .human :global(.human-eyebrow) { color: var(--amber-ink); }
+  .human-title { font-size: clamp(36px, 4.4vw, 58px); line-height: 1.05; }
+  .human-note { margin: 0; font-size: 17px; line-height: 1.6; color: var(--amber-ink); font-style: italic; }
+  .human-grid { flex: 1 1 460px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .human-card { background: var(--white); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 19px; line-height: 1.4; }
+  .human-card-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); }
+  .human-photo { grid-column: span 2; height: 240px; }
+  .human-chat { grid-column: span 2; background: var(--white); border-radius: 20px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; font-size: 17px; line-height: 1.4; }
 
-  /* Tracks */
-  .track { padding: 40px; display: flex; flex-direction: column; gap: 20px; }
-  .track-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  .track-number { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
-  .track-audience { font-size: 12px; font-weight: 700; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
-  .track-title { margin: 0; font-size: 44px; line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
-  .track-copy { margin: 0; font-size: 18px; line-height: 1.6; }
+  /* Hackathon */
+  .hackathon { background: var(--ink); color: var(--white); }
+  .hackathon .container { padding-top: 104px; padding-bottom: 104px; }
+  .hackathon :global(.hackathon-eyebrow) { color: var(--red-on-dark); }
+  .hackathon-title { font-size: clamp(38px, 4.8vw, 64px); line-height: 1.02; letter-spacing: -1.5px; }
+  .hackathon-copy { color: var(--line); line-height: 1.65; }
+  .hackathon-rows { --rows-line: var(--muted); flex: 1 1 520px; min-width: 0; margin: 0; }
+  .hackathon-rows dt { flex: 0 0 160px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--red-on-dark); }
+  .hackathon-rows dd { flex: 1 1 260px; margin: 0; font-size: 18px; }
+  .hackathon-photo { flex: 1 1 380px; min-width: 0; width: 100%; height: 380px; }
 
-  /* Activities */
-  .activity { display: flex; flex-direction: column; }
-  .activity img { height: 220px; border-bottom: 1px solid var(--line); }
-  .activity-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
-  .activity-bar { height: 6px; width: 48px; }
-  .activity h3 { margin: 0; font-size: 24px; font-weight: 700; }
-  .topics { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; padding-top: 8px; }
+  /* Recap */
+  .recap-title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; }
+  .more-link { font-weight: 500; font-size: 17px; }
+  .stat { gap: 6px; }
+  .stat-value { font-size: 48px; font-weight: 700; letter-spacing: -1px; line-height: 1.1; }
+  .stat-label { font-size: 16px; color: var(--text-2); }
 
-  /* Last year */
-  .last-year { padding: 88px 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
-  .recap-link { color: var(--stat-blue); font-size: 17px; font-weight: 700; }
-  .stat { border: 1px solid var(--line-dark); padding: 24px; }
-  .stat-value { font-size: 48px; font-weight: 700; line-height: 1; }
-  .stat-label { font-size: 16px; padding-top: 8px; }
-
-  /* Partners */
-  .partners { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
-  .logo-slot { height: 130px; display: flex; align-items: center; justify-content: center; border-bottom: 1.5px dashed rgba(30, 30, 30, 0.2); background: var(--paper); }
-  .logo-slot span { font-size: 14px; color: var(--muted); }
-  .logo-meta { padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; font-size: 18px; }
-  .your-brand { background: var(--yellow-soft); border: 1.5px dashed rgba(30, 30, 30, 0.32); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none; padding: 24px; text-align: center; min-height: 200px; }
-  .your-brand-plus { font-size: 40px; font-weight: 700; line-height: 1; }
-  .your-brand-title { font-size: 18px; font-weight: 700; }
-  .your-brand-sub { font-size: 15px; }
-
-  /* CFS band */
-  .cfs-band { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px 56px; align-items: center; justify-content: space-between; }
-  .cfs-band :global(.eyebrow--ring .dot) { border: 1px solid var(--line); }
+  /* Sponsor + CFS */
+  .promo { border-radius: 28px; padding: 44px; display: flex; flex-direction: column; gap: 20px; }
+  .promo h2 { margin: 0; font-size: clamp(30px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.5px; }
+  .promo-action { margin-top: auto; padding-top: 8px; }
+  .promo :global(.promo-eyebrow) { color: var(--blue-ink); }
+  .promo-rows > div { flex-direction: column; gap: 4px; padding: 14px 0; }
+  .promo-rows strong { font-size: 17px; }
+  .promo-rows span { font-size: 15px; line-height: 1.5; color: var(--text-2); }
 
   /* FAQ */
-  .faq-band { display: flex; flex-wrap: wrap; gap: 48px; }
-  .faq-more { font-size: 17px; font-weight: 700; }
+  .faq-band { display: flex; flex-wrap: wrap; gap: 40px 64px; }
 
   @media (max-width: 600px) {
-    .track-top { flex-wrap: wrap; }
-    .track-title { font-size: 36px; }
-    .stat-value { font-size: 32px; }
-    .your-brand-plus { font-size: 30px; }
+    .hero-photo-main { height: 220px; }
+    .hero-photo-sub { height: 140px; }
+    .hackathon-photo { height: 240px; }
+    .promo { padding: 28px; }
+    .stat-value { font-size: 38px; }
   }
 </style>

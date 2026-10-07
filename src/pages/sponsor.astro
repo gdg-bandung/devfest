@@ -1,54 +1,36 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
 import { LINKS, PHOTOS, SITE, srcset } from "../data/site.data";
 
-const stats = [
-  { value: "64.94%", label: "professionals", color: "var(--stat-blue)" },
-  { value: "392", label: "female registrants", color: "var(--stat-pink)" },
-  { value: "27", label: "speakers & panelists", color: "var(--sunny)" },
-  { value: "13", label: "partners & sponsors", color: "var(--stat-green)" },
-  { value: "2,100+", label: "YouTube live stream viewers", color: "var(--stat-blue)" },
-  { value: "71", label: "media coverage", color: "var(--sunny)" },
-];
-
-const gallery = [
-  { image: PHOTOS.heroGroup, alt: "Full auditorium group photo at DevFest Bandung 2025" },
-  { image: PHOTOS.organisersMascot, alt: "Organisers posing with the DevFest mascot" },
-  { image: PHOTOS.keynoteStage, alt: "Keynote speaker on the main stage in front of the audience" },
-  { image: PHOTOS.industryTalk, alt: "Panel discussion with industry speakers" },
-  { image: PHOTOS.dancePerformance, alt: "Traditional dance performance on stage" },
-  { image: PHOTOS.audienceQuestion, alt: "Audience asking a question during a session" },
+const ways = [
+  { pill: "Vibe Hackathon", pillStyle: "--pill-bg: var(--red)", bg: "var(--red-soft)", title: "Bring a product challenge", copy: "Your challenge becomes the problem statement that teams of strangers solve together in a 1-hour sprint." },
+  { pill: "Builders Rooms", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Support codelabs & charging lounges", copy: "Power the hands-on sessions in App, Platform, and Business Builders rooms, and keep attendees charged all day." },
+  { pill: "Booth", pillStyle: "", bg: "var(--paper)", title: "Activate a booth that helps", copy: "Demos, consultations, or tools attendees can use on the spot — a booth people want to visit." },
+  { pill: "The Human Activity", human: true, bg: "var(--cream)", title: "Partner for The Human Activity", copy: "Back the space for career reflection, light mindfulness, and conversations that remind people they are not alone." },
 ];
 
 const reasons = [
-  { number: "01", tone: "bg-blue-soft", title: "Reach the right people", copy: "A curated audience of professional developers and builders working on AI, cloud and product." },
-  { number: "02", tone: "bg-red-soft", title: "Make your product useful", copy: "Show real use cases through a workshop, a challenge or a booth people actually want to visit." },
-  { number: "03", tone: "bg-green-soft", title: "Build lasting trust", copy: "Support the local GDG ecosystem that meets, learns and builds in Bandung all year round." },
+  { number: "01", title: "Reach the right people", copy: `${SITE.capacity} developers, students, founders, and tech enthusiasts in one room, choosing what to learn and who to meet.` },
+  { number: "02", title: "Make your product useful", copy: "Show real use cases through a codelab, a hackathon challenge, or a booth people actually want to visit." },
+  { number: "03", title: "Build lasting trust", copy: "Support the local GDG ecosystem that meets, learns, and builds in Bandung all year round." },
 ];
 
-const spaces = [
-  {
-    image: PHOTOS.handsOnCodelab,
-    alt: "Participants in a hands-on codelab",
-    title: "Hands-on codelab & workshop",
-    copy: "Participants try the newest Google tools from this year’s Google I/O.",
-    partners: "showcase your tools through real use cases and position your solution directly to a high-intent audience.",
-  },
-  {
-    image: PHOTOS.networking,
-    alt: "Attendees chatting during a networking break",
-    title: "Networking & collaboration area",
-    copy: "A space to connect, swap ideas and find collaborators.",
-    partners: "meet participants at your booth or on the open floor during breaks to generate leads and grow brand awareness.",
-  },
-  {
-    image: PHOTOS.industryTalk,
-    alt: "Expert panel on stage",
-    title: "Industry talks & expert sessions",
-    copy: "Panels and deep dives on AI trends and real-world applications.",
-    partners: "join as a speaker, share your expertise and strengthen your credibility with a targeted tech audience.",
-  },
+const stats = [
+  { value: "2,000+", label: "participants", color: "var(--blue)" },
+  { value: "64.94%", label: "professionals", color: "var(--red)" },
+  { value: "392", label: "female registrants", color: "var(--green)" },
+  { value: "27", label: "speakers & panelists", color: "var(--ink)" },
+  { value: "13", label: "partners & sponsors", color: "var(--blue)" },
+  { value: "2,100+", label: "YouTube live viewers", color: "var(--red)" },
+  { value: "71", label: "media coverage mentions", color: "var(--green)" },
+];
+
+const gallery = [
+  { image: PHOTOS.heroGroup, alt: "DevFest Bandung 2025 group photo with all attendees" },
+  { image: PHOTOS.audienceQuestion, alt: "A full audience during a DevFest Bandung 2025 session" },
+  { image: PHOTOS.mainStageSpeaker, alt: "A speaker presenting on the DevFest Bandung 2025 main stage" },
 ];
 ---
 
@@ -56,133 +38,105 @@ const spaces = [
   <!-- HERO -->
   <section class="section gridbg">
     <div class="container hero">
-      <div class="stack" style="flex: 1 1 640px; --gap: 24px">
-        <Eyebrow>Sponsorship 2026</Eyebrow>
-        <h1 class="display">Put your brand<br />to work.</h1>
-        <p class="lead" style="max-width: 640px">Partner with GDG Bandung to reach professional developers and builders on 19 December 2026 at El Hotel Bandung.</p>
-        <div class="cluster" style="padding-top: 8px">
-          <a class="btn btn--blue btn--lg" href={LINKS.sponsorship}>Become a sponsor →</a>
+      <div class="stack" style="flex: 1 1 560px; min-width: 0; --gap: 24px">
+        <Eyebrow color="var(--g-blue)" strong>Sponsorship 2026</Eyebrow>
+        <h1 class="display">Help people learn, connect, and feel at home in tech.</h1>
+        <p class="lead" style="max-width: 680px">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
+        <div class="cluster" style="--gap: 10px">
+          <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong> · {SITE.time}</span></div>
+          <a class="fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--g-red)"></span>{SITE.venue} ↗</a>
+          <div class="fact"><span class="dot dot--sm" style="--dot: var(--g-green)"></span><span><strong>{SITE.capacity} builders</strong> · 2026 capacity</span></div>
         </div>
+        <div style="margin-top: 8px"><a class="btn btn--blue btn--lg" href={LINKS.sponsorship}>Become a sponsor →</a></div>
       </div>
-      <div class="box card glance">
-        <div class="label">AT A GLANCE</div>
-        <div class="glance-row"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong><br />{SITE.time}</span></div>
-        <div class="glance-row"><span class="dot dot--sm" style="--dot: var(--red)"></span><span><strong>{SITE.venue}</strong><br /><a href={LINKS.maps}>Open in Google Maps ↗</a></span></div>
-      </div>
+      <img class="photo hero-photo" src={PHOTOS.partnerBooth.src} srcset={srcset(PHOTOS.partnerBooth)} sizes="(max-width: 1100px) calc(100vw - 48px), 560px" width={PHOTOS.partnerBooth.width} height={PHOTOS.partnerBooth.height} alt="Attendees visiting a partner booth at DevFest Bandung 2025" fetchpriority="high" />
     </div>
   </section>
 
-  <!-- 2025 HIGHLIGHTS -->
-  <section class="section section--dark">
-    <div class="container stack" style="--gap: 48px">
-      <div class="stack">
-        <Eyebrow color="var(--yellow)">DevFest Bandung 2025 · Last year’s highlights</Eyebrow>
-        <h2 class="title">Quality audience, real engagement, results that mattered to sponsors.</h2>
-      </div>
-
-      <div class="cluster" style="--gap: 32px">
-        <div class="grid-2 stats">
-          <div class="span-all stat-hero">
-            <div class="stat-hero-value">2,000+</div>
-            <div class="stat-hero-label">participants</div>
-          </div>
-          {stats.map((stat) => (
-            <div class="stat">
-              <div class="stat-value" style={`color: ${stat.color}`}>{stat.value}</div>
-              <div class="stat-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-        <div class="grid-2 gallery">
-          {gallery.map((photo) => <img class="photo" src={photo.image.src} srcset={srcset(photo.image)} sizes="(max-width: 1100px) calc(50vw - 28px), 320px" width={photo.image.width} height={photo.image.height} alt={photo.alt} loading="lazy" decoding="async" />)}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY -->
-  <section class="section">
+  <!-- WAYS TO PARTNER -->
+  <section class="section section--white">
     <div class="container stack" style="--gap: 48px">
       <div class="head">
-        <Eyebrow color="var(--red)">Why partner</Eyebrow>
+        <Eyebrow>Ways to partner</Eyebrow>
+        <h2 class="title">Show up where people actually spend their day.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 270px">
+        {ways.map((way) => (
+          <div class="tile way" style={`background: ${way.bg}`}>
+            <span class:list={["pill", { "pill--human": way.human }]} style={way.pillStyle}>{way.pill}</span>
+            <h3>{way.title}</h3>
+            <p class="copy-16">{way.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PARTNER -->
+  <section class="section gridbg">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Why partner</Eyebrow>
         <h2 class="title">Be useful, not just visible.</h2>
       </div>
       <div class="auto-grid" style="--min: 280px">
         {reasons.map((reason) => (
-          <div class:list={["reason", "card", reason.tone]}>
-            <div class="mono reason-number">{reason.number}</div>
+          <div class="tile tile--white reason">
+            <span class="mono reason-number">{reason.number}</span>
             <h3>{reason.title}</h3>
-            <p>{reason.copy}</p>
+            <p class="copy-17">{reason.copy}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- PARTNER SPACES -->
+  <!-- 2025 RECAP -->
   <section class="section section--white">
-    <div class="container stack" style="--gap: 48px">
+    <div class="container stack" style="--gap: 40px">
       <div class="head">
-        <Eyebrow color="var(--green)">Partner spaces</Eyebrow>
-        <h2 class="title">Where your brand shows up on the day.</h2>
+        <Eyebrow>DevFest Bandung 2025 · Last year’s highlights</Eyebrow>
+        <h2 class="title recap-title">Quality audience, real engagement, results that mattered to sponsors.</h2>
       </div>
-      <div class="auto-grid" style="--min: 300px; --gap: 28px">
-        {spaces.map((space) => (
-          <article class="space card">
-            <img class="photo" src={space.image.src} srcset={srcset(space.image)} sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 50vw, 400px" width={space.image.width} height={space.image.height} alt={space.alt} loading="lazy" decoding="async" />
-            <div class="space-body">
-              <h3>{space.title}</h3>
-              <p class="space-copy">{space.copy}</p>
-              <div class="space-partners"><strong>For partners:</strong> {space.partners}</div>
-            </div>
-          </article>
+      <div class="auto-grid" style="--min: 200px; --gap: 12px">
+        {stats.map((stat) => (
+          <div class="stat">
+            <span class="stat-value" style={`color: ${stat.color}`}>{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
         ))}
+      </div>
+      <div class="auto-grid" style="--min: 240px; --gap: 12px">
+        {gallery.map((photo) => <img class="photo gallery-photo" src={photo.image.src} srcset={srcset(photo.image)} sizes="(max-width: 860px) calc(100vw - 48px), 420px" width={photo.image.width} height={photo.image.height} alt={photo.alt} loading="lazy" decoding="async" />)}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--blue">
-    <div class="container cta">
-      <h2 class="title title--56">Let’s build something useful for the room.</h2>
-      <div class="cluster">
-        <a class="btn btn--dark" href={LINKS.sponsorship}>Become a sponsor →</a>
-      </div>
-    </div>
-  </section>
+  <CtaBand
+    title="Let’s build something useful for the room."
+    subtitle={`${SITE.dateLong} · ${SITE.venue} · ${SITE.capacity} builders`}
+    href={LINKS.sponsorship}
+    label="Become a sponsor →"
+  />
 </EventLayout>
 
 <style>
-  .hero { padding: 80px 32px 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; justify-content: space-between; }
-  .glance { flex: 0 1 340px; padding: 28px; display: flex; flex-direction: column; gap: 16px; }
-  .glance-row { display: flex; gap: 12px; align-items: baseline; }
+  .hero { padding: 80px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .hero-photo { flex: 1 1 380px; min-width: 0; height: 420px; border-radius: 24px; }
 
-  .stats { flex: 1 1 460px; align-content: start; }
-  .stat-hero { background: var(--blue); color: var(--ink); border: 1px solid var(--line-dark); padding: 28px 32px; }
-  .stat-hero-value { font-size: clamp(64px, 7vw, 96px); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
-  .stat-hero-label { font-size: 20px; padding-top: 8px; font-weight: 700; }
-  .stat { border: 1px solid var(--line-dark); padding: 22px 24px; }
-  .stat-value { font-size: 40px; font-weight: 700; line-height: 1; }
-  .stat-label { font-size: 16px; padding-top: 8px; }
-  .gallery { flex: 1 1 560px; }
-  .gallery img { height: 200px; border: 1px solid var(--line-dark); }
+  .way h3 { font-size: 23px; }
 
-  .reason { padding: 32px; display: flex; flex-direction: column; gap: 12px; }
-  .reason-number { font-size: 14px; font-weight: 700; }
-  .reason h3 { margin: 0; font-size: 26px; font-weight: 700; }
-  .reason p { margin: 0; font-size: 17px; line-height: 1.6; }
+  .reason { padding: 32px; gap: 12px; }
+  .reason-number { font-size: 14px; color: var(--muted); }
 
-  .space { background: var(--paper); display: flex; flex-direction: column; }
-  .space img { height: 200px; border-bottom: 1px solid var(--line); }
-  .space-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
-  .space h3 { margin: 0; font-size: 22px; font-weight: 700; }
-  .space-copy { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
-  .space-partners { border-top: 1px solid var(--line); padding-top: 12px; font-size: 16px; line-height: 1.6; }
-
-  .cta { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
-  .cta .title { flex: 1 1 560px; color: var(--ink); }
+  .recap-title { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.1; }
+  .stat { background: var(--paper); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 4px; }
+  .stat-value { font-size: 40px; font-weight: 700; line-height: 1.15; }
+  .stat-label { font-size: 15px; color: var(--text-2); }
+  .gallery-photo { height: 240px; border-radius: 18px; }
 
   @media (max-width: 600px) {
-    .stat-value { font-size: 30px; }
+    .hero-photo { height: 280px; }
+    .stat-value { font-size: 34px; }
   }
 </style>

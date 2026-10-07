@@ -7,10 +7,9 @@ import { SITE } from "../../data/site.data";
 interface Props {
   title?: string;
   description?: string;
-  footerCta?: boolean;
 }
 
-const { title = SITE.seoTitle, description = SITE.seoDescription, footerCta = true } = Astro.props;
+const { title = SITE.seoTitle, description = SITE.seoDescription } = Astro.props;
 ---
 
 <html lang="en">
@@ -23,7 +22,7 @@ const { title = SITE.seoTitle, description = SITE.seoDescription, footerCta = tr
       <main>
         <slot />
       </main>
-      <Footer cta={footerCta} />
+      <Footer />
     </div>
   </body>
 </html>

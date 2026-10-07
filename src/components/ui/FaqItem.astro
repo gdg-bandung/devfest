@@ -4,13 +4,12 @@ import type { Faq } from "../../data/site.data";
 interface Props {
   faq: Faq;
   open?: boolean;
-  compact?: boolean;
 }
 
-const { faq, open = false, compact = false } = Astro.props;
+const { faq, open = false } = Astro.props;
 ---
 
-<details class:list={["faq-item", { "faq-item--compact": compact }]} open={open}>
+<details class="faq-item" open={open}>
   <summary>{faq.question}<span class="plus" aria-hidden="true">+</span></summary>
   <p set:html={faq.answer} />
 </details>

@@ -1,10 +1,13 @@
 ---
 interface Props {
+  /** Dot color; omit for a plain section label. */
   color?: string;
+  /** Darker, medium-weight variant used in page heroes. */
+  strong?: boolean;
   class?: string;
 }
 
-const { color = "var(--blue)", class: className } = Astro.props;
+const { color, strong = false, class: className } = Astro.props;
 ---
 
-<div class:list={["eyebrow", className]}><span class="dot" style={`--dot: ${color}`}></span><slot /></div>
+<div class:list={["eyebrow", { "eyebrow--strong": strong }, className]}>{color && <span class="dot" style={`--dot: ${color}`}></span>}<slot /></div>

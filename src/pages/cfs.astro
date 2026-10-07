@@ -1,29 +1,19 @@
 ---
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
-import { LINKS, PHOTOS, srcset } from "../data/site.data";
+import CtaBand from "../components/ui/CtaBand.astro";
+import { LINKS, ROOMS, SITE } from "../data/site.data";
 
-const tracks = [
-  {
-    number: "TRACK 01",
-    tone: "bg-blue-soft",
-    title: "Builder track",
-    copy: "Practical stories about AI-assisted apps, prototypes, products and the Google ecosystem.",
-    fits: ["From problem to working prototype with Gemini", "Workflows you automated and what changed", "Building as a PM, designer or marketer"],
-  },
-  {
-    number: "TRACK 02",
-    tone: "bg-red-soft",
-    title: "Developer track",
-    copy: "Lessons about agents, development, deployment, governance, security and production readiness.",
-    fits: ["Designing and orchestrating multi-agent systems", "Securing and governing agents in production", "Scaling on Google Cloud, Firebase or Android"],
-  },
+const formats = [
+  { pill: "Builders Rooms", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Builders Room Session", copy: "Codelab, workshop, or case study for App Builders, Platform Builders, or Business Builders." },
+  { pill: "Main Stage", pillStyle: "", bg: "var(--paper)", title: "Main Stage Talk / Panel", copy: "For industry trends, global inspiration, implementation stories, or cross-role conversations." },
+  { pill: "The Human Activity", human: true, bg: "var(--cream)", title: "Human Activity Facilitator", copy: "To guide reflection, community conversations, or light mindfulness safely and inclusively." },
 ];
 
 const criteria = [
-  { number: "01", badge: "background: var(--blue)", title: "Practical", copy: "Built on something you actually shipped, ran or broke." },
-  { number: "02", badge: "background: var(--red); color: var(--on-red); border: 0; border-radius: 8px", title: "Clear", copy: "One main idea people can take home and try." },
-  { number: "03", badge: "background: var(--yellow)", title: "On theme", copy: "Connects to build, secure or scale in the agentic era." },
+  { title: "Practical", copy: "Built on something you actually shipped, ran, or broke." },
+  { title: "Clear", copy: "One main idea people can take home and try." },
+  { title: "Human", copy: "Honest about the journey: what you learned, what was hard, and who helped along the way." },
 ];
 ---
 
@@ -31,97 +21,104 @@ const criteria = [
   <!-- HERO -->
   <section class="section gridbg">
     <div class="container hero">
-      <div class="stack" style="flex: 1 1 600px; --gap: 24px">
-        <Eyebrow color="var(--green)">Call for speakers · Open</Eyebrow>
-        <h1 class="display">Speak to the<br />whole room.</h1>
-        <p class="lead" style="max-width: 620px">Share a practical story, a hard-won technical lesson, or a clear idea that helps developers and builders work in the agentic era.</p>
-        <div class="cluster" style="padding-top: 8px">
-          <a class="btn btn--green btn--lg" href={LINKS.cfs}>Submit a proposal →</a>
-        </div>
+      <div class="stack" style="flex: 2 1 600px; min-width: 0; --gap: 24px">
+        <Eyebrow color="var(--g-green)" strong>Call for speakers 2026</Eyebrow>
+        <h1 class="display">Teach what you have learned. Share what makes you human.</h1>
+        <p class="lead" style="max-width: 720px">We are looking for practitioners who can bring clear, practical, and useful technical content from building applications to managing production-scale systems. We also welcome honest stories about career journeys, community, and growing as a builder.</p>
+        <div style="margin-top: 8px"><a class="btn btn--dark btn--lg" href={LINKS.cfs}>Submit a proposal →</a></div>
       </div>
-      <figure class="box card hero-photo">
-        <img class="photo" src={PHOTOS.cfsSpeaker.src} srcset={srcset(PHOTOS.cfsSpeaker)} sizes="(max-width: 1100px) calc(100vw - 52px), 500px" width={PHOTOS.cfsSpeaker.width} height={PHOTOS.cfsSpeaker.height} alt="Speaker presenting a cost optimization story on the main stage at DevFest Bandung 2025" fetchpriority="high" />
-        <figcaption class="mono">27 SPEAKERS &amp; PANELISTS IN 2025</figcaption>
-      </figure>
+      <div class="tile tile--white speakers">
+        <span class="speakers-value">27</span>
+        <span class="mono speakers-label">Speakers &amp; panelists in 2025</span>
+      </div>
     </div>
   </section>
 
-  <!-- TRACKS -->
-  <section id="tracks" class="section section--white">
+  <!-- FORMATS -->
+  <section class="section section--white">
     <div class="container stack" style="--gap: 48px">
       <div class="head">
-        <Eyebrow>Two tracks</Eyebrow>
-        <h2 class="title">Where does your talk fit?</h2>
+        <Eyebrow>Session formats</Eyebrow>
+        <h2 class="title">Three ways to take the stage.</h2>
       </div>
-      <div class="auto-grid" style="--min: 340px; --gap: 32px">
-        {tracks.map((track) => (
-          <article class:list={["track", "card", track.tone]}>
-            <span class="mono track-number">{track.number}</span>
-            <h3>{track.title}</h3>
-            <p>{track.copy}</p>
-            <div class="mono track-fits">GOOD FITS</div>
-            <ul class="arrow-list">
-              {track.fits.map((fit) => <li><span aria-hidden="true">→</span>{fit}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO -->
-  <section class="section">
-    <div class="container who">
-      <div class="stack" style="flex: 1 1 420px">
-        <Eyebrow color="var(--red)">Who should apply</Eyebrow>
-        <h2 class="title title--56">Your perspective matters more than your title.</h2>
-        <p class="copy">We welcome first-time speakers, experienced practitioners, builders and community voices. What counts is what the audience can learn and apply.</p>
-      </div>
-      <div class="stack" style="flex: 1 1 480px; --gap: 16px">
-        {criteria.map((item) => (
-          <div class="box criterion">
-            <span class="mono criterion-badge" style={item.badge}>{item.number}</span>
-            <div>
-              <div class="criterion-title">{item.title}</div>
-              <div class="criterion-copy">{item.copy}</div>
-            </div>
+      <div class="auto-grid" style="--min: 300px">
+        {formats.map((format) => (
+          <div class="tile format" style={`background: ${format.bg}`}>
+            <span class:list={["pill", { "pill--human": format.human }]} style={format.pillStyle}>{format.pill}</span>
+            <h3>{format.title}</h3>
+            <p class="copy-17">{format.copy}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--green">
-    <div class="container cta">
-      <h2 class="title title--56">Got a story worth the stage?</h2>
-      <a class="btn btn--dark btn--lg" href={LINKS.cfs}>Submit a proposal →</a>
+  <!-- ROOMS & GOOD FITS -->
+  <section class="section gridbg">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Pick a room</Eyebrow>
+        <h2 class="title">Which room is your session for?</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px">
+        {ROOMS.map((room) => (
+          <article class:list={["room", `room--${room.key}`]}>
+            <div class="room-head"><h3>{room.name}</h3></div>
+            <div class="room-body">
+              <p class="copy-16">{room.summary}</p>
+              <span class="mono room-fits">Good fits</span>
+              <div class="cluster" style="--gap: 8px">
+                {room.topics.map((topic) => <span class="chip" style="--chip-bg: var(--room-soft)">{topic}</span>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- WHO SHOULD APPLY -->
+  <section class="section section--white">
+    <div class="container who">
+      <div class="head" style="flex: 1 1 340px; min-width: 0">
+        <Eyebrow>Who should apply</Eyebrow>
+        <h2 class="title">Your perspective matters more than your title.</h2>
+      </div>
+      <dl class="rows criteria">
+        {criteria.map((item) => (
+          <div><dt>{item.title}</dt><dd>{item.copy}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <CtaBand
+    dark
+    title="Got a story worth the stage?"
+    subtitle={`${SITE.dateLong} · ${SITE.venue} · ${SITE.capacity} builders`}
+    href={LINKS.cfs}
+    label="Submit a proposal →"
+  />
 </EventLayout>
 
 <style>
-  .hero { padding: 80px 32px 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
-  .hero-photo { flex: 1 1 420px; margin: 0; position: relative; }
-  .hero-photo img { height: 340px; }
-  .hero-photo figcaption { position: absolute; left: 16px; bottom: 16px; background: var(--sunny); border: 1px solid var(--line); padding: 6px 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+  .hero { padding: 80px 24px 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; }
+  .speakers { flex: 1 1 260px; min-width: 0; gap: 6px; }
+  .speakers-value { font-size: 56px; font-weight: 700; letter-spacing: -1px; line-height: 1.1; color: var(--green); }
+  .speakers-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
 
-  .track { padding: 40px; display: flex; flex-direction: column; gap: 18px; }
-  .track-number { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; }
-  .track h3 { margin: 0; font-size: 40px; line-height: 1; letter-spacing: -0.03em; font-weight: 700; }
-  .track p { margin: 0; font-size: 18px; line-height: 1.6; }
-  .track-fits { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; padding-top: 8px; }
+  .format { padding: 32px; }
+  .format h3 { font-size: 25px; }
 
-  .who { display: flex; flex-wrap: wrap; gap: 48px; }
-  .criterion { padding: 24px; display: flex; gap: 20px; align-items: flex-start; }
-  .criterion-badge { font-size: 14px; font-weight: 700; border: 1px solid var(--line); padding: 4px 8px; }
-  .criterion-title { font-weight: 700; font-size: 20px; }
-  .criterion-copy { font-size: 17px; color: var(--muted); padding-top: 4px; }
+  .room { background: var(--white); border: 1px solid var(--room-line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; }
+  .room-head { background: var(--room); color: var(--room-on); padding: 22px 28px; }
+  .room-head h3 { margin: 0; font-size: 24px; }
+  .room-body { padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .room-fits { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--room-ink); }
 
-  .cta { padding: 80px 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between; }
-  .cta .title { flex: 1 1 560px; }
-
-  @media (max-width: 600px) {
-    .track h3 { font-size: 30px; }
-  }
+  .who { display: flex; flex-wrap: wrap; gap: 40px 64px; }
+  .criteria { flex: 2 1 520px; min-width: 0; margin: 0; }
+  .criteria > div { padding: 24px 0; }
+  .criteria dt { flex: 0 0 160px; font-size: 22px; font-weight: 700; }
+  .criteria dd { flex: 1 1 280px; margin: 0; font-size: 18px; line-height: 1.55; color: var(--text-2); }
 </style>
