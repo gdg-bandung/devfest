@@ -51,20 +51,20 @@ export type Photo = { src: string; width: number; height: number };
 
 const photo = (name: string, width: number, height: number): Photo => ({ src: `/images/2026/${name}.webp`, width, height });
 
-// Every photo ships 480w and 800w variants next to the full-size file.
+// Every photo ships 480w, 800w and 1200w variants next to the full-size (1600w) file.
 export const srcset = ({ src, width }: Photo) =>
-  [480, 800].map((w) => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).concat(`${src} ${width}w`).join(", ");
+  [480, 800, 1200].map((w) => `${src.replace(/\.webp$/, `-${w}.webp`)} ${w}w`).concat(`${src} ${width}w`).join(", ");
 
 export const PHOTOS = {
-  heroGroup: photo("hero-group-2025", 1400, 787),
-  breakSmiles: photo("break-smiles", 1200, 800),
-  handsOnCodelab: photo("hands-on-codelab", 1200, 675),
-  networking: photo("networking", 1200, 800),
-  floorChat: photo("floor-chat", 1200, 800),
-  hackathonTables: photo("hackathon-tables", 1200, 675),
-  partnerBooth: photo("partner-booth", 1200, 800),
-  audienceQuestion: photo("audience-question", 1200, 675),
-  mainStageSpeaker: photo("main-stage-speaker", 1200, 675),
+  heroGroup: photo("hero-group-2025", 1600, 900),
+  gdgSignGroup: photo("gdg-sign-group", 1600, 983),
+  handsRaised: photo("hands-raised", 1600, 1067),
+  hackathonLaptopTeam: photo("hackathon-laptop-team", 1600, 1067),
+  tableWave: photo("table-wave", 1600, 1067),
+  hackathonTables: photo("hackathon-tables", 1600, 900),
+  boothPhones: photo("booth-phones", 1600, 1067),
+  audienceQuestion: photo("audience-question", 1600, 900),
+  mainStageSpeaker: photo("main-stage-speaker", 1600, 900),
 } as const;
 
 /** The three parallel Builders Rooms, shared by the home and CFS pages. */

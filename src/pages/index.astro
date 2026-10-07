@@ -3,6 +3,7 @@ import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
 import FaqItem from "../components/ui/FaqItem.astro";
 import CtaBand from "../components/ui/CtaBand.astro";
+import Countdown from "../components/ui/Countdown.astro";
 import { HOME_FAQS, LINKS, PHOTOS, ROOMS, SITE, srcset } from "../data/site.data";
 
 const reasons = [
@@ -62,12 +63,14 @@ const speakerFormats = [
       </div>
 
       <div class="hero-photos">
-        <img class="photo hero-photo-main" src={PHOTOS.breakSmiles.src} srcset={srcset(PHOTOS.breakSmiles)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.breakSmiles.width} height={PHOTOS.breakSmiles.height} alt="DevFest Bandung attendees smiling together during a break" fetchpriority="high" />
-        <img class="photo hero-photo-sub" style="--accent: var(--g-blue)" src={PHOTOS.handsOnCodelab.src} srcset={srcset(PHOTOS.handsOnCodelab)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.handsOnCodelab.width} height={PHOTOS.handsOnCodelab.height} alt="Attendees working on laptops together" />
-        <img class="photo hero-photo-sub" style="--accent: var(--g-red)" src={PHOTOS.networking.src} srcset={srcset(PHOTOS.networking)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.networking.width} height={PHOTOS.networking.height} alt="A small group talking around their phones" />
+        <img class="photo hero-photo-main" src={PHOTOS.gdgSignGroup.src} srcset={srcset(PHOTOS.gdgSignGroup)} sizes="(max-width: 1100px) calc(100vw - 48px), 860px" width={PHOTOS.gdgSignGroup.width} height={PHOTOS.gdgSignGroup.height} alt="DevFest Bandung attendees posing together behind the GDG sign" fetchpriority="high" />
+        <img class="photo hero-photo-sub" style="--accent: var(--g-blue)" src={PHOTOS.handsRaised.src} srcset={srcset(PHOTOS.handsRaised)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.handsRaised.width} height={PHOTOS.handsRaised.height} alt="Attendees raising their hands and smiling during a session" />
+        <img class="photo hero-photo-sub" style="--accent: var(--g-red)" src={PHOTOS.hackathonLaptopTeam.src} srcset={srcset(PHOTOS.hackathonLaptopTeam)} sizes="(max-width: 1100px) calc(50vw - 30px), 300px" width={PHOTOS.hackathonLaptopTeam.width} height={PHOTOS.hackathonLaptopTeam.height} alt="A team gathered around a laptop during the hackathon" />
       </div>
     </div>
   </section>
+
+  <Countdown />
 
   <!-- WHY TECH MEETS HUMAN -->
   <section class="section section--white">
@@ -159,7 +162,7 @@ const speakerFormats = [
           <span class="mono human-card-label" style="color: var(--ink)">Reflection Card</span>
           <span>Pick one prompt. Keep it, or talk it through.</span>
         </div>
-        <img class="photo human-photo" src={PHOTOS.floorChat.src} srcset={srcset(PHOTOS.floorChat)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.floorChat.width} height={PHOTOS.floorChat.height} alt="Attendees sitting together on the floor, eating and chatting" loading="lazy" decoding="async" />
+        <img class="photo human-photo" src={PHOTOS.tableWave.src} srcset={srcset(PHOTOS.tableWave)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.tableWave.width} height={PHOTOS.tableWave.height} alt="A group of attendees smiling and waving together around a table" loading="lazy" decoding="async" />
         <div class="human-chat">
           <span class="dot" style="--dot: var(--g-green); width: 12px; height: 12px"></span>
           <span><strong>Small chats</strong> on career shifts, burnout, and staying grounded.</span>
@@ -184,7 +187,7 @@ const speakerFormats = [
             <div><dt class="mono">{row.label}</dt><dd>{row.value}</dd></div>
           ))}
         </dl>
-        <img class="photo hackathon-photo" src={PHOTOS.hackathonTables.src} srcset={srcset(PHOTOS.hackathonTables)} sizes="(max-width: 1100px) calc(100vw - 48px), 560px" width={PHOTOS.hackathonTables.width} height={PHOTOS.hackathonTables.height} alt="Attendees building together at shared tables with laptops" loading="lazy" decoding="async" />
+        <img class="photo hackathon-photo" src={PHOTOS.hackathonTables.src} srcset={srcset(PHOTOS.hackathonTables)} sizes="(max-width: 1100px) calc(100vw - 48px), 680px" width={PHOTOS.hackathonTables.width} height={PHOTOS.hackathonTables.height} alt="Attendees building together at shared tables with laptops" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -256,15 +259,15 @@ const speakerFormats = [
 
 <style>
   /* Hero */
-  .hero { padding: 72px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: center; }
+  .hero { padding: 72px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch; }
   .hero-copy { flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
   .hero-title { margin: 0; font-size: clamp(48px, 7vw, 96px); line-height: 0.98; letter-spacing: -2px; font-weight: 700; }
   .hero-theme { margin: 0; display: flex; flex-wrap: wrap; gap: 10px 14px; font-size: clamp(28px, 3.4vw, 44px); font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
   .hero-theme-meets { color: var(--muted); font-weight: 400; }
   .hero-actions { margin-top: 8px; }
-  .hero-photos { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .hero-photo-main { grid-column: span 2; height: 300px; object-position: center 60%; }
-  .hero-photo-sub { height: 200px; border-bottom: 6px solid var(--accent); box-sizing: border-box; }
+  .hero-photos { flex: 1 1 420px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: minmax(300px, 1fr) 220px; gap: 12px; }
+  .hero-photo-main { grid-column: span 2; height: 100%; min-height: 300px; object-position: center 55%; }
+  .hero-photo-sub { height: 220px; border-bottom: 6px solid var(--accent); box-sizing: border-box; }
 
   /* Why */
   .reason { padding: 32px; gap: 12px; }
@@ -300,7 +303,7 @@ const speakerFormats = [
   .human-grid { flex: 1 1 460px; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .human-card { background: var(--white); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 19px; line-height: 1.4; }
   .human-card-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--amber-ink); }
-  .human-photo { grid-column: span 2; height: 240px; }
+  .human-photo { grid-column: span 2; height: 280px; object-position: center 35%; }
   .human-chat { grid-column: span 2; background: var(--white); border-radius: 20px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; font-size: 17px; line-height: 1.4; }
 
   /* Hackathon */
@@ -334,7 +337,8 @@ const speakerFormats = [
   .faq-band { display: flex; flex-wrap: wrap; gap: 40px 64px; }
 
   @media (max-width: 600px) {
-    .hero-photo-main { height: 220px; }
+    .hero-photos { grid-template-rows: 220px 140px; }
+    .hero-photo-main { min-height: 0; }
     .hero-photo-sub { height: 140px; }
     .hackathon-photo { height: 240px; }
     .promo { padding: 28px; }
