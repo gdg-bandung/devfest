@@ -1,0 +1,142 @@
+---
+import EventLayout from "../components/layout/EventLayout.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
+import { LINKS, PHOTOS, SITE, srcset } from "../data/site.data";
+
+const ways = [
+  { pill: "Vibe Hackathon", pillStyle: "--pill-bg: var(--red)", bg: "var(--red-soft)", title: "Bring a product challenge", copy: "Your challenge becomes the problem statement that teams of strangers solve together in a 1-hour sprint." },
+  { pill: "Builders Rooms", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Support codelabs & charging lounges", copy: "Power the hands-on sessions in App, Platform, and Business Builders rooms, and keep attendees charged all day." },
+  { pill: "Booth", pillStyle: "", bg: "var(--paper)", title: "Activate a booth that helps", copy: "Demos, consultations, or tools attendees can use on the spot — a booth people want to visit." },
+  { pill: "The Human Activity", human: true, bg: "var(--cream)", title: "Partner for The Human Activity", copy: "Back the space for career reflection, light mindfulness, and conversations that remind people they are not alone." },
+];
+
+const reasons = [
+  { number: "01", title: "Reach the right people", copy: `${SITE.capacity} developers, students, founders, and tech enthusiasts in one room, choosing what to learn and who to meet.` },
+  { number: "02", title: "Make your product useful", copy: "Show real use cases through a codelab, a hackathon challenge, or a booth people actually want to visit." },
+  { number: "03", title: "Build lasting trust", copy: "Support the local GDG ecosystem that meets, learns, and builds in Bandung all year round." },
+];
+
+const stats = [
+  { value: "2,000+", label: "participants", color: "var(--blue)" },
+  { value: "64.94%", label: "professionals", color: "var(--red)" },
+  { value: "392", label: "female registrants", color: "var(--green)" },
+  { value: "27", label: "speakers & panelists", color: "var(--ink)" },
+  { value: "13", label: "partners & sponsors", color: "var(--blue)" },
+  { value: "2,100+", label: "YouTube live viewers", color: "var(--red)" },
+  { value: "71", label: "media coverage mentions", color: "var(--green)" },
+];
+
+const gallery = [
+  { image: PHOTOS.heroGroup, alt: "DevFest Bandung 2025 group photo with all attendees" },
+  { image: PHOTOS.audienceQuestion, alt: "A full audience during a DevFest Bandung 2025 session" },
+  { image: PHOTOS.mainStageSpeaker, alt: "A speaker presenting on the DevFest Bandung 2025 main stage" },
+];
+---
+
+<EventLayout title="Sponsor — DevFest Bandung 2026">
+  <!-- HERO -->
+  <section class="section gridbg">
+    <div class="container hero">
+      <div class="stack" style="flex: 1 1 560px; min-width: 0; --gap: 24px">
+        <Eyebrow color="var(--g-blue)" strong>Sponsorship 2026</Eyebrow>
+        <h1 class="display">Help people learn, connect, and feel at home in tech.</h1>
+        <p class="lead" style="max-width: 680px">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
+        <div class="cluster" style="--gap: 10px">
+          <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong> · {SITE.time}</span></div>
+          <a class="fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--g-red)"></span>{SITE.venue} ↗</a>
+          <div class="fact"><span class="dot dot--sm" style="--dot: var(--g-green)"></span><span><strong>{SITE.capacity} builders</strong> · 2026 capacity</span></div>
+        </div>
+        <div style="margin-top: 8px"><a class="btn btn--blue btn--lg" href={LINKS.sponsorship}>Become a sponsor →</a></div>
+      </div>
+      <img class="photo hero-photo" src={PHOTOS.boothPhones.src} srcset={srcset(PHOTOS.boothPhones)} sizes="(max-width: 600px) 420px, (max-width: 1100px) calc(100vw - 48px), 1000px" width={PHOTOS.boothPhones.width} height={PHOTOS.boothPhones.height} alt="Attendees trying a product on their phones at a partner booth" fetchpriority="high" />
+    </div>
+  </section>
+
+  <!-- WAYS TO PARTNER -->
+  <section class="section section--white">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Ways to partner</Eyebrow>
+        <h2 class="title">Show up where people actually spend their day.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 270px">
+        {ways.map((way) => (
+          <div class="tile way" style={`background: ${way.bg}`}>
+            <span class:list={["pill", { "pill--human": way.human }]} style={way.pillStyle}>{way.pill}</span>
+            <h3>{way.title}</h3>
+            <p class="copy-16">{way.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY PARTNER -->
+  <section class="section gridbg">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Why partner</Eyebrow>
+        <h2 class="title">Be useful, not just visible.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 280px">
+        {reasons.map((reason) => (
+          <div class="tile tile--white reason">
+            <span class="mono reason-number">{reason.number}</span>
+            <h3>{reason.title}</h3>
+            <p class="copy-17">{reason.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 2025 RECAP -->
+  <section class="section section--white">
+    <div class="container stack" style="--gap: 40px">
+      <div class="head">
+        <Eyebrow>DevFest Bandung 2025 · Last year’s highlights</Eyebrow>
+        <h2 class="title recap-title">Quality audience, real engagement, results that mattered to sponsors.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 200px; --gap: 12px">
+        {stats.map((stat) => (
+          <div class="stat">
+            <span class="stat-value" style={`color: ${stat.color}`}>{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+      <div class="auto-grid" style="--min: 240px; --gap: 12px">
+        {gallery.map((photo) => <img class="photo gallery-photo" src={photo.image.src} srcset={srcset(photo.image)} sizes="(max-width: 860px) calc(100vw - 48px), 420px" width={photo.image.width} height={photo.image.height} alt={photo.alt} loading="lazy" decoding="async" />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Let’s build something useful for the room."
+    subtitle={`${SITE.dateLong} · ${SITE.venue} · ${SITE.capacity} builders`}
+    href={LINKS.sponsorship}
+    label="Become a sponsor →"
+  />
+</EventLayout>
+
+<style>
+  .hero { padding: 80px 24px 88px; display: flex; flex-wrap: wrap; gap: 56px; align-items: stretch; }
+  .hero-photo { flex: 1 1 380px; min-width: 0; height: auto; min-height: 360px; border-radius: 24px; object-position: 55% 40%; }
+
+  .way h3 { font-size: 23px; line-height: 1.2; }
+
+  .reason { padding: 32px; gap: 12px; }
+  .reason-number { font-size: 14px; color: var(--muted); }
+
+  .recap-title { font-size: clamp(32px, 3.6vw, 46px); line-height: 1.1; }
+  .stat { background: var(--paper); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 4px; }
+  .stat-value { font-size: 40px; font-weight: 700; }
+  .stat-label { font-size: 15px; color: var(--text-2); }
+  .gallery-photo { height: 240px; border-radius: 18px; }
+
+  @media (max-width: 600px) {
+    .hero-photo { min-height: 280px; }
+    .stat-value { font-size: 34px; }
+  }
+</style>

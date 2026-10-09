@@ -1,9 +1,6 @@
 ---
-import "@fontsource/open-sans/latin-400.css";
-import "@fontsource/open-sans/latin-500.css";
-import "@fontsource/open-sans/latin-600.css";
-import "@fontsource/open-sans/latin-700.css";
 import "../../styles/global.css";
+import { IMAGES, SITE } from "../../data/site.data";
 
 interface Props {
   title: string;
@@ -11,9 +8,11 @@ interface Props {
   image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const FONTS_URL = "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;700&family=Google+Sans+Code:wght@400;500&display=swap";
 
-const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://devfest.gdgbandung.com");
+
+const { title, description, image = IMAGES.ogImage } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -28,21 +27,19 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="theme-color" content="#f1f1f1" />
 
-<!-- Theme Color -->
-<link
-  rel="icon"
-  type="image/png"
-  href="/favicon/favicon-96x96.png"
-  sizes="96x96"
-/>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href={FONTS_URL} onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href={FONTS_URL} /></noscript>
+
+<!-- Icons -->
+<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 <link rel="shortcut icon" href="/favicon/favicon.ico" />
-<link
-  rel="apple-touch-icon"
-  sizes="180x180"
-  href="/favicon/apple-touch-icon.png"
-/>
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-title" content="DevFest Bandung" />
 <link rel="manifest" href="/favicon/site.webmanifest" />
 
@@ -52,6 +49,7 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content={SITE.name} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -59,6 +57,4 @@ const { title, description, image = "/favicon/favicon.ico" } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-<!-- Prefetch image -->
-<link rel="preload" as="image" href="/images/hero.webp" />
+<meta name="twitter:site" content="@gdgbandung" />

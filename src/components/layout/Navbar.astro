@@ -1,74 +1,39 @@
 ---
-import MobileMenuToggle from "./MobileMenuToggle";
+import { IMAGES, LINKS, NAV_LINKS } from "../../data/site.data";
 
-const link = [
-  { name: "Agenda", link: "/agenda" },
-  { name: "Speakers", link: "/speaker" },
-  { name: "Ticket", link: "/ticket" },
-  { name: "FAQ", link: "/faq" },
-];
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const current = (href: string) => (href === path ? "page" : undefined);
 ---
 
-<nav
-  id="navbar"
-  class="fixed top-0 w-full z-50 py-8 lg:py-9 lg:p-0 px-8 lg:px-16 xl:px-[180px] transition-all duration-300 ease-in-out"
->
-  <div
-    class="container mx-auto transition-all duration-300 ease-in-out"
-    id="navbar-container"
-  >
-    <div class="flex items-center justify-between">
-      <h1 class="w-32 lg:w-40 aspect-[160/46.4]">
-        <a href="/" aria-label="DevFest Bandung">
-          <p class="hidden">DevFest Bandung</p>
-          <img
-            src="/logo.webp"
-            alt="DevFest Bandung"
-            class="w-44 lg:w-48"
-            fetchpriority="high"
-            loading="eager"
-          />
-        </a>
-      </h1>
-      <ul class="hidden lg:flex space-x-20">
-        {
-          link.map((item) => (
-            <li class="flex items-center justify-center text-xl gap-1 text-white">
-              {item.link ? <a href={item.link}>{item.name}</a> : item.name}
-            </li>
-          ))
-        }
-      </ul>
-      <MobileMenuToggle menuItems={link} client:visible />
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a class="nav-logo" href="/"><img src={IMAGES.logoDevfest} alt="DevFest Bandung" width="151" height="44" /></a>
+    <div class="nav-desktop">
+      {NAV_LINKS.map((link) => <a class="navlink" href={link.href} aria-current={current(link.href)}>{link.name}</a>)}
+      <a class="btn btn--blue btn--sm" href={LINKS.register}>Register</a>
     </div>
+    <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" data-nav-toggle>
+      <svg class="icon-open" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <svg class="icon-close" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile" id="mobile-nav" hidden>
+    {NAV_LINKS.map((link) => <a class="mnavlink" href={link.href} aria-current={current(link.href)}>{link.name}<span aria-hidden="true">→</span></a>)}
+    <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
   </div>
-</nav>
+</header>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById("navbar");
-    const navbarContainer = document.getElementById("navbar-container");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const menu = document.getElementById("mobile-nav");
 
-    if (!navbar || !navbarContainer) return;
+  const setOpen = (open: boolean) => {
+    if (!toggle || !menu) return;
+    menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
 
-    function handleScroll() {
-      if (window.scrollY > 50) {
-        // Add scrolled styles
-        navbar?.classList.add("bg-black", "lg:py-2.5", "py-2");
-        navbar?.classList.remove("bg-transparent", "py-8", "lg:py-9");
-        navbarContainer?.classList.add("py-2", "lg:py-2.5");
-      } else {
-        // Remove scrolled styles
-        navbar?.classList.add("bg-transparent", "py-8", "lg:py-9");
-        navbar?.classList.remove("bg-black", "lg:py-2.5", "py-2");
-        navbarContainer?.classList.remove("py-2", "lg:py-2.5");
-      }
-    }
-
-    // Initial check
-    handleScroll();
-
-    // Listen for scroll events
-    window.addEventListener("scroll", handleScroll, { passive: true });
-  });
+  toggle?.addEventListener("click", () => setOpen(menu?.hidden ?? false));
+  menu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
 </script>

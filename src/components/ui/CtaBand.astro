@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  href: string;
+  label: string;
+  dark?: boolean;
+}
+
+const { title, subtitle, href, label, dark = false } = Astro.props;
+---
+
+<section class:list={["cta-band", { "cta-band--dark": dark }]}>
+  <div class="container">
+    <div class="cta-band-copy">
+      <h2>{title}</h2>
+      <p>{subtitle}</p>
+    </div>
+    <a class:list={["btn", "btn--xl", dark ? "btn--white-dark" : "btn--white"]} href={href}>{label}</a>
+  </div>
+</section>

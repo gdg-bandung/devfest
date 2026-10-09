@@ -1,153 +1,76 @@
 ---
-// Footer component
-const SOCIAL_MEDIA = [
+import { IMAGES, LINKS, SOCIAL_LINKS } from "../../data/site.data";
+
+const socials = [
   {
     name: "Facebook",
-    url: "https://www.facebook.com/gdgbdg",
-    icon: "/icons/facebook.svg",
+    href: SOCIAL_LINKS.facebook,
+    viewBox: "0 0 24 23",
+    icon: '<path d="M16.7915 3.8335H14.8748C12.479 3.8335 11.0415 5.271 11.0415 7.66683V19.1668" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.1665 11.5H14.8748" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path>',
   },
   {
     name: "Instagram",
-    url: "https://www.instagram.com/gdg_bandung/",
-    icon: "/icons/instagram.svg",
+    href: SOCIAL_LINKS.instagram,
+    viewBox: "0 0 25 25",
+    icon: '<path d="M17.4999 8.85449C18.3283 8.85449 18.9999 8.15494 18.9999 7.29199C18.9999 6.42905 18.3283 5.72949 17.4999 5.72949C16.6715 5.72949 15.9999 6.42905 15.9999 7.29199C15.9999 8.15494 16.6715 8.85449 17.4999 8.85449Z" fill="white"></path><path d="M16.5 3.125C19.26 3.125 21.5 5.45833 21.5 8.33333V16.6667C21.5 19.5417 19.26 21.875 16.5 21.875H8.49997C5.73997 21.875 3.49997 19.5417 3.49997 16.6667V8.33333C3.49997 5.45833 5.73997 3.125 8.49997 3.125H12.5H16.5Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12.4999 8.33301C14.7099 8.33301 16.4999 10.1976 16.4999 12.4997C16.4999 14.8018 14.7099 16.6663 12.4999 16.6663C10.2899 16.6663 8.49988 14.8018 8.49988 12.4997C8.49988 10.1976 10.2899 8.33301 12.4999 8.33301Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
   },
   {
     name: "LinkedIn",
-    url: "https://www.linkedin.com/company/gdg-bandung",
-    icon: "/icons/linkedin.svg",
+    href: SOCIAL_LINKS.linkedin,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M4.66665 6.24992C5.81724 6.24992 6.74998 5.31718 6.74998 4.16659C6.74998 3.01599 5.81724 2.08325 4.66665 2.08325C3.51605 2.08325 2.58331 3.01599 2.58331 4.16659C2.58331 5.31718 3.51605 6.24992 4.66665 6.24992Z" fill="white"></path><path d="M4.66687 10.4165V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.9169 10.4165V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.9169 15.6248C10.9169 12.7498 13.2502 10.4165 16.1252 10.4165C19.0002 10.4165 21.3335 12.7498 21.3335 15.6248V20.8332" stroke="white" stroke-width="3.65385" stroke-linecap="round" stroke-linejoin="round"></path>',
   },
   {
     name: "Telegram",
-    url: "https://t.me/gdgbandung",
-    icon: "/icons/telegram.svg",
+    href: SOCIAL_LINKS.telegram,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M19.771 20.8333L22.3752 5.20825L9.87515 14.0624" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22.375 5.20825L2.58331 13.0208" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19.771 20.8333L9.87515 14.0625" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.58337 13.0205L9.87504 14.0622" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.0002 16.6667L9.87515 19.7917V14.0625" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
   },
   {
     name: "X",
-    url: "https://x.com/gdgbandung",
-    icon: "/icons/x.svg",
+    href: SOCIAL_LINKS.x,
+    viewBox: "0 0 21 21",
+    icon: '<path d="M1.3335 1.75H3.41683L15.9168 19.25H13.8335L1.3335 1.75ZM5.0835 1.75H7.16683L19.6668 19.25H17.5835L5.0835 1.75ZM3.00016 1.75H7.16683V3.5H3.00016V1.75ZM13.8335 17.5H18.0002V19.25H13.8335V17.5ZM15.9168 1.75H18.8335L4.66683 19.25H1.75016L15.9168 1.75Z" fill="white"></path>',
   },
   {
     name: "YouTube",
-    url: "https://www.youtube.com/@gdgbandung",
-    icon: "/icons/youtube.svg",
+    href: SOCIAL_LINKS.youtube,
+    viewBox: "0 0 26 25",
+    icon: '<path d="M10.9167 8.85449L17.1667 12.5003L10.9167 16.1462V8.85449Z" fill="white"></path><path d="M12.9999 5.20825C22.3749 5.20825 22.3749 5.20825 22.3749 12.4999C22.3749 19.7916 22.3749 19.7916 12.9999 19.7916C3.62494 19.7916 3.62494 19.7916 3.62494 12.4999C3.62494 5.20825 3.62494 5.20825 12.9999 5.20825Z" stroke="white" stroke-width="1.82692" stroke-linecap="round" stroke-linejoin="round"></path>',
   },
 ];
 ---
 
-<footer class="px-8 lg:px-16 xl:px-[180px]">
-  <!-- Main Footer Content -->
-  <div class="container mx-auto border-t border-gray-700 py-10 lg:py-9">
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:justify-between">
-      <!-- Brand Section -->
-      <div class="lg:max-w-lg">
-        <h2 class="text-white font-bold text-lg mb-6">
-          <span class="hidden">Google Developer Group Bandung</span>
-          <!-- Logo -->
-          <img
-            src="/images/gdg-bandung.webp"
-            alt="Google Developer Group Bandung"
-            class="w-64 mb-6"
-            fetchpriority="low"
-            loading="lazy"
-            decoding="async"
-          />
-        </h2>
-
-        <!-- Description -->
-        <p class="text-gray-300 leading-relaxed">
-          We organize events ranging from small meetups to large-scale
-          conferences like DevFest to create spaces for developers to learn,
-          connect, and grow together. Our community welcomes developers of all
-          levels, from beginners to experts.
-        </p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-about">
+        <img src={IMAGES.logoGdgFooter} alt="Google Developer Groups Bandung" width="334" height="48" loading="lazy" decoding="async" />
+        <p>We organize events ranging from small meetups to large-scale conferences like DevFest to create spaces for developers to learn, connect, and grow together. Our community welcomes developers of all levels, from beginners to experts.</p>
       </div>
-
-      <div
-        class="flex justify-between w-full gap-8 lg:gap-12 lg:max-w-sm xl:max-w-md"
-      >
-        <!-- Community Links -->
-        <div>
-          <h3 class="text-white font-bold text-lg mb-6">Community</h3>
-          <div class="space-y-4">
-            <a
-              href="https://gdgbandung.com/brand-guidelines"
-              target="_blank"
-              class="block text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              Brand Guidelines
-            </a>
-            <a
-              href="https://gdgbandung.com/code-of-conduct"
-              target="_blank"
-              class="block text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              Code of Conduct
-            </a>
-          </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-title">Community</div>
+          <a href={LINKS.brandGuidelines}>Brand Guidelines</a>
+          <a href={LINKS.codeOfConduct}>Code of Conduct</a>
         </div>
-
-        <!-- Contact Links -->
-        <div>
-          <h3 class="text-white font-bold text-lg mb-6">Contact Us</h3>
-          <div class="space-y-4">
-            <a
-              href="https://gdgbandung.com/terms-and-conditions"
-              target="_blank"
-              class="block text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              Request for Media Partner
-            </a>
-            <a
-              href="http://gdgbandung.com/devfest-sponsorship"
-              target="_blank"
-              class="block text-gray-300 hover:text-white transition-colors duration-300"
-            >
-              Join as Partner
-            </a>
-          </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Contact Us</div>
+          <a href={LINKS.terms}>Request for Media Partner</a>
+          <a href={LINKS.sponsorship}>Join as Partner</a>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Bottom Section -->
-  <div class="container mx-auto border-t border-gray-700 pt-9 pb-13 lg:pb-9">
-    <div
-      class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"
-    >
-      <!-- Copyright -->
-      <div class="text-center lg:text-left">
-        <p class="text-sm">
-          © 2025 Google Developer Group Bandung • All rights reserved.
-        </p>
-      </div>
-
-      <!-- Social Media -->
-      <div
-        class="text-center lg:text-right flex flex-col lg:flex-row gap-6 items-center"
-      >
-        <p class="text-sm">Connect With Us</p>
-        <div
-          class="flex items-center justify-center lg:justify-end gap-4 lg:gap-2"
-        >
-          {
-            SOCIAL_MEDIA.map((media) => (
-              <a
-                href={media.url}
-                target="_blank"
-                class="hover:text-white transition-colors duration-300"
-              >
-                <img
-                  src={media.icon}
-                  alt={media.name}
-                  class="w-6 h-6 lg:w-4 lg:h-4"
-                  fetchpriority="low"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            ))
-          }
+    <div class="footer-bottom">
+      <span>© 2026 Google Developer Group Bandung • All rights reserved.</span>
+      <div class="footer-social">
+        <span>Connect With Us</span>
+        <div class="footer-social-icons">
+          {socials.map((social) => (
+            <a href={social.href} aria-label={social.name}>
+              <svg aria-hidden="true" width="16" height="16" viewBox={social.viewBox} fill="none" set:html={social.icon} />
+            </a>
+          ))}
         </div>
       </div>
     </div>

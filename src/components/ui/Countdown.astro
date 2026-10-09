@@ -1,0 +1,100 @@
+---
+import Eyebrow from "./Eyebrow.astro";
+import { SITE } from "../../data/site.data";
+
+// 19 Dec 2026, 08:00 WIB (UTC+7).
+const START = "2026-12-19T08:00:00+07:00";
+
+const units = [
+  { key: "days", label: "Days", accent: "var(--g-blue)" },
+  { key: "hours", label: "Hours", accent: "var(--g-red)" },
+  { key: "mins", label: "Minutes", accent: "var(--g-yellow)" },
+  { key: "secs", label: "Seconds", accent: "var(--g-green)" },
+];
+---
+
+<section class="countdown" aria-label="Countdown to DevFest Bandung 2026" data-countdown={START}>
+  <div class="container countdown-inner">
+    <div class="countdown-copy">
+      <Eyebrow color="var(--g-green)" class="countdown-eyebrow">Countdown to DevFest Bandung 2026</Eyebrow>
+      <span class="countdown-when" data-countdown-upcoming>{SITE.dateLong} · 08:00 WIB</span>
+      <span class="countdown-when" data-countdown-live hidden>DevFest Bandung 2026 is happening now.</span>
+    </div>
+    <div class="countdown-grid" role="timer" aria-live="off">
+      {units.map((unit) => (
+        <div class="countdown-cell" style={`--accent: ${unit.accent}`}>
+          <span class="countdown-value" data-countdown-unit={unit.key}>--</span>
+          <span class="mono countdown-label">{unit.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Inline so the numbers are filled in before first paint. -->
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-countdown]");
+    if (!root) return;
+    const target = Date.parse(root.dataset.countdown);
+    const cells = {};
+    root.querySelectorAll("[data-countdown-unit]").forEach((el) => (cells[el.dataset.countdownUnit] = el));
+    const upcoming = root.querySelector("[data-countdown-upcoming]");
+    const live = root.querySelector("[data-countdown-live]");
+    const pad = (n) => String(n).padStart(2, "0");
+
+    const tick = () => {
+      const diff = Math.max(0, target - Date.now());
+      const s = Math.floor(diff / 1000);
+      cells.days.textContent = String(Math.floor(s / 86400));
+      cells.hours.textContent = pad(Math.floor((s % 86400) / 3600));
+      cells.mins.textContent = pad(Math.floor((s % 3600) / 60));
+      cells.secs.textContent = pad(s % 60);
+      upcoming.hidden = diff === 0;
+      live.hidden = diff > 0;
+      return diff > 0;
+    };
+
+    if (tick()) {
+      const timer = setInterval(() => tick() || clearInterval(timer), 1000);
+    }
+  })();
+</script>
+
+<style>
+  .countdown { background: var(--ink); color: var(--white); }
+  .countdown-inner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px 64px;
+  }
+  .countdown-copy { flex: 0 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+  .countdown :global(.countdown-eyebrow) { font-size: 13px; color: var(--footer-muted); }
+  .countdown :global(.countdown-eyebrow .dot) { width: 8px; height: 8px; }
+  .countdown-when { font-size: 26px; font-weight: 700; line-height: 1.2; }
+  .countdown-when[hidden] { display: none; }
+  .countdown-grid { flex: 0 1 600px; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .countdown-cell {
+    background: var(--footer-card);
+    border-radius: 18px;
+    border-top: 4px solid var(--accent);
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .countdown-value { font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -1px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .countdown-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--footer-muted); }
+
+  @media (max-width: 600px) {
+    .countdown-inner { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .countdown-grid { gap: 8px; }
+    .countdown-cell { padding: 14px 6px; }
+    .countdown-label { font-size: 10px; letter-spacing: 1px; }
+  }
+</style>

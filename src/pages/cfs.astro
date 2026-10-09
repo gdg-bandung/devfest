@@ -1,0 +1,124 @@
+---
+import EventLayout from "../components/layout/EventLayout.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
+import { LINKS, ROOMS, SITE } from "../data/site.data";
+
+const formats = [
+  { pill: "Builders Rooms", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Builders Room Session", copy: "Codelab, workshop, or case study for App Builders, Platform Builders, or Business Builders." },
+  { pill: "Main Stage", pillStyle: "", bg: "var(--paper)", title: "Main Stage Talk / Panel", copy: "For industry trends, global inspiration, implementation stories, or cross-role conversations." },
+  { pill: "The Human Activity", human: true, bg: "var(--cream)", title: "Human Activity Facilitator", copy: "To guide reflection, community conversations, or light mindfulness safely and inclusively." },
+];
+
+const criteria = [
+  { title: "Practical", copy: "Built on something you actually shipped, ran, or broke." },
+  { title: "Clear", copy: "One main idea people can take home and try." },
+  { title: "Human", copy: "Honest about the journey: what you learned, what was hard, and who helped along the way." },
+];
+---
+
+<EventLayout title="Call for Speakers — DevFest Bandung 2026">
+  <!-- HERO -->
+  <section class="section gridbg">
+    <div class="container hero">
+      <div class="stack" style="flex: 2 1 600px; min-width: 0; --gap: 24px">
+        <Eyebrow color="var(--g-green)" strong>Call for speakers 2026</Eyebrow>
+        <h1 class="display">Teach what you have learned. Share what makes you human.</h1>
+        <p class="lead" style="max-width: 720px">We are looking for practitioners who can bring clear, practical, and useful technical content from building applications to managing production-scale systems. We also welcome honest stories about career journeys, community, and growing as a builder.</p>
+        <div style="margin-top: 8px"><a class="btn btn--dark btn--lg" href={LINKS.cfs}>Submit a proposal →</a></div>
+      </div>
+      <div class="tile tile--white speakers">
+        <span class="speakers-value">27</span>
+        <span class="mono speakers-label">Speakers &amp; panelists in 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="section section--white">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Session formats</Eyebrow>
+        <h2 class="title">Three ways to take the stage.</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px">
+        {formats.map((format) => (
+          <div class="tile format" style={`background: ${format.bg}`}>
+            <span class:list={["pill", { "pill--human": format.human }]} style={format.pillStyle}>{format.pill}</span>
+            <h3>{format.title}</h3>
+            <p class="copy-17">{format.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS & GOOD FITS -->
+  <section class="section gridbg">
+    <div class="container stack" style="--gap: 48px">
+      <div class="head">
+        <Eyebrow>Pick a room</Eyebrow>
+        <h2 class="title">Which room is your session for?</h2>
+      </div>
+      <div class="auto-grid" style="--min: 300px">
+        {ROOMS.map((room) => (
+          <article class:list={["room", `room--${room.key}`]}>
+            <div class="room-head"><h3>{room.name}</h3></div>
+            <div class="room-body">
+              <p class="copy-16">{room.summary}</p>
+              <span class="mono room-fits">Good fits</span>
+              <div class="cluster" style="--gap: 8px">
+                {room.topics.map((topic) => <span class="chip" style="--chip-bg: var(--room-soft)">{topic}</span>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO SHOULD APPLY -->
+  <section class="section section--white">
+    <div class="container who">
+      <div class="head" style="flex: 1 1 340px; min-width: 0">
+        <Eyebrow>Who should apply</Eyebrow>
+        <h2 class="title">Your perspective matters more than your title.</h2>
+      </div>
+      <dl class="rows criteria">
+        {criteria.map((item) => (
+          <div><dt>{item.title}</dt><dd>{item.copy}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <CtaBand
+    dark
+    title="Got a story worth the stage?"
+    subtitle={`${SITE.dateLong} · ${SITE.venue} · ${SITE.capacity} builders`}
+    href={LINKS.cfs}
+    label="Submit a proposal →"
+  />
+</EventLayout>
+
+<style>
+  .hero { padding: 80px 24px 88px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-end; }
+  .speakers { flex: 1 1 260px; min-width: 0; gap: 6px; }
+  .speakers-value { font-size: 56px; font-weight: 700; letter-spacing: -1px; color: var(--green); }
+  .speakers-label { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+  .format { padding: 32px; }
+  .format h3 { font-size: 25px; }
+
+  .room { background: var(--white); border: 1px solid var(--room-line); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; }
+  .room-head { background: var(--room); color: var(--room-on); padding: 22px 28px; }
+  .room-head h3 { margin: 0; font-size: 24px; }
+  .room-body { padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+  .room-fits { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--room-ink); }
+
+  .who { display: flex; flex-wrap: wrap; gap: 40px 64px; }
+  .criteria { flex: 2 1 520px; min-width: 0; margin: 0; }
+  .criteria > div { padding: 24px 0; }
+  .criteria dt { flex: 0 0 160px; font-size: 22px; font-weight: 700; }
+  .criteria dd { flex: 1 1 280px; margin: 0; font-size: 18px; line-height: 1.55; color: var(--text-2); }
+</style>
