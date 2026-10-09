@@ -34,6 +34,17 @@ const lastYear = [
   { value: "2,100+", label: "YouTube live viewers", color: "var(--ink)" },
 ];
 
+// Logo size per tier follows the sponsorship deck: Giant / Large / Medium / Small / Extra Small.
+const sponsorTiers = [
+  { name: "Diamond", size: "Giant", height: 128, min: 220, slots: 3, dot: "var(--g-blue)" },
+  { name: "Platinum", size: "Large", height: 108, min: 190, slots: 3, dot: "var(--ink)" },
+  { name: "Gold", size: "Medium", height: 88, min: 150, slots: 4, dot: "var(--g-yellow)" },
+  { name: "Silver", size: "Small", height: 72, min: 120, slots: 5, dot: "var(--footer-muted)" },
+  { name: "Bronze", size: "Extra Small", height: 60, min: 100, slots: 6, dot: "#c26401" },
+];
+
+const officialPartners = ["Venue Partner", "Ticketing Partner", "Merchandise Partner"];
+
 const speakerFormats = [
   { title: "Builders Room Session", copy: "Codelab, workshop, or case study for App, Platform, or Business Builders." },
   { title: "Main Stage Talk / Panel", copy: "Industry trends, global inspiration, implementation stories, or cross-role conversations." },
@@ -212,6 +223,54 @@ const speakerFormats = [
     </div>
   </section>
 
+  <!-- SPONSORS & PARTNERS -->
+  <section id="partners" class="section section--white">
+    <div class="container stack" style="--gap: 40px">
+      <div class="split" style="justify-content: space-between; --gap: 24px 96px">
+        <div class="head" style="flex: 0 1 680px">
+          <Eyebrow>Sponsors &amp; Partners</Eyebrow>
+          <h2 class="title">Built together with our partners.</h2>
+          <p class="copy">Be our exclusive partner: empower Indonesia’s tech future with GDG Bandung.</p>
+        </div>
+        <a class="btn btn--blue partners-btn" href={LINKS.sponsorship}>Become a sponsor →</a>
+      </div>
+      <div class="partners">
+        {sponsorTiers.map((tier) => (
+          <div class="partner-row">
+            <div class="partner-tier">
+              <span class="partner-name"><span class="dot partner-dot" style={`--dot: ${tier.dot}`}></span>{tier.name}</span>
+              <span class="label partner-size">{tier.size} logo</span>
+            </div>
+            <div class="auto-grid partner-logos" style={`--min: ${tier.min}px; --gap: 12px`}>
+              {Array.from({ length: tier.slots }, () => <div class="logo-slot" style={`height: ${tier.height}px`}>{tier.name} logo</div>)}
+            </div>
+          </div>
+        ))}
+        <div class="partner-row">
+          <div class="partner-tier">
+            <span class="partner-name"><span class="dot partner-dot" style="--dot: var(--g-green)"></span>Official Partners</span>
+          </div>
+          <div class="auto-grid partner-logos" style="--min: 200px; --gap: 12px">
+            {officialPartners.map((name) => (
+              <div class="stack" style="--gap: 8px">
+                <div class="logo-slot" style="height: 92px">Partner logo</div>
+                <span class="partner-role">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="partner-row">
+          <div class="partner-tier">
+            <span class="partner-name"><span class="dot partner-dot" style="--dot: var(--footer-label)"></span>Media Partners</span>
+          </div>
+          <div class="partner-logos media-logos">
+            {Array.from({ length: 12 }, () => <div class="logo-slot logo-slot--sm">Media logo</div>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SPONSOR + CFS -->
   <section class="section section--white">
     <div class="container auto-grid" style="--min: 340px; --gap: 20px">
@@ -324,6 +383,32 @@ const speakerFormats = [
   .stat { gap: 6px; }
   .stat-value { font-size: 48px; font-weight: 700; letter-spacing: -1px; line-height: normal; }
   .stat-label { font-size: 16px; color: var(--text-2); }
+
+  /* Sponsors & partners */
+  .partners-btn { min-height: 52px; border: 0; font-size: 17px; }
+  .partners { display: flex; flex-direction: column; border-bottom: 1px solid var(--line-soft); }
+  .partner-row { display: flex; flex-wrap: wrap; gap: 16px 40px; padding: 28px 0; border-top: 1px solid var(--line-soft); }
+  .partner-tier { flex: 0 0 200px; display: flex; flex-direction: column; gap: 6px; }
+  .partner-name { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; }
+  .partner-dot { width: 12px; height: 12px; }
+  .partner-size { padding-left: 22px; }
+  .partner-logos { flex: 1 1 560px; min-width: 0; }
+  .media-logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+  .logo-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px dashed #c4c7c5;
+    border-radius: 16px;
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #80868b;
+  }
+  .logo-slot--sm { height: 56px; border-radius: 12px; font-size: 11px; }
+  .partner-role { font-size: 14px; color: var(--muted); }
 
   /* Sponsor + CFS */
   .promo { border-radius: 28px; padding: 44px; display: flex; flex-direction: column; gap: 20px; }
