@@ -50,12 +50,13 @@ const sponsors: Record<string, { name: string; logo: Photo; url?: string }[]> = 
 };
 
 // Logo size per tier follows the sponsorship deck, from Diamond (largest) down to Bronze.
+// `slots` is both the number of logos per row and the slots shown before the tier fills up.
 const sponsorTiers = [
   { name: "Diamond", height: 128, min: 220, slots: 2, dot: "var(--g-blue)" },
   { name: "Platinum", height: 108, min: 190, slots: 3, dot: "var(--ink)" },
   { name: "Gold", height: 88, min: 150, slots: 4, dot: "var(--g-yellow)" },
-  { name: "Silver", height: 72, min: 120, slots: 5, dot: "var(--footer-muted)" },
-  { name: "Bronze", height: 60, min: 100, slots: 6, dot: "#c26401" },
+  { name: "Silver", height: 72, min: 120, slots: 6, dot: "var(--footer-muted)" },
+  { name: "Bronze", height: 60, min: 100, slots: 8, dot: "#c26401" },
 ];
 
 const speakerFormats = [
@@ -248,7 +249,7 @@ const speakerFormats = [
           return (
             <div class="partner-row">
               <span class="partner-name"><span class="dot partner-dot" style={`--dot: ${tier.dot}`}></span>{tier.name}</span>
-              <div class="auto-grid partner-logos" style={`--min: ${tier.min}px; --gap: 12px`}>
+              <div class="partner-logos" style={`--min: ${tier.min}px; --cols: ${tier.slots}`}>
                 {confirmed.map((sponsor) => (
                   <a class="logo-card" style={`height: ${tier.height}px; padding: ${padding}`} href={sponsor.url} target="_blank" rel="noopener">
                     <img src={sponsor.logo.src} width={sponsor.logo.width} height={sponsor.logo.height} alt={sponsor.name} loading="lazy" decoding="async" />
@@ -382,7 +383,15 @@ const speakerFormats = [
   .partner-row { display: flex; flex-wrap: wrap; gap: 16px 40px; padding: 28px 0; border-top: 1px solid var(--line-soft); }
   .partner-name { flex: 0 0 200px; align-self: flex-start; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 700; }
   .partner-dot { width: 12px; height: 12px; }
-  .partner-logos { flex: 1 1 560px; min-width: 0; }
+  /* Caps a row at --cols and wraps below that once logos would shrink past --min. */
+  .partner-logos {
+    --gap: 12px;
+    flex: 1 1 560px;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(var(--min), calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)))), 1fr));
+    gap: var(--gap);
+  }
   .logo-slot {
     display: flex;
     align-items: center;
