@@ -66,6 +66,12 @@ export const PHOTOS = {
   mainStageSpeaker: photo("main-stage-speaker", 1600, 900),
 } as const;
 
+export const SPONSOR_LOGOS = {
+  bhisa: photo("sponsor-bhisa", 1148, 417),
+  mayar: photo("sponsor-mayar", 1188, 372),
+  brodo: photo("sponsor-brodo", 1038, 319),
+} as const;
+
 /** The three parallel Builders Rooms, shared by the home and CFS pages. */
 export const ROOMS = [
   {
