@@ -149,12 +149,6 @@ const speakerFormats = [
             <div class="room-body">
               <p class="room-audience">{room.audience}</p>
               <div class="room-field"><span class="mono room-field-label">Primary format</span><span class="room-format">{room.format}</span></div>
-              <div class="room-field" style="gap: 8px">
-                <span class="mono room-field-label">Example focus</span>
-                <div class="cluster" style="--gap: 8px">
-                  {room.topics.map((topic) => <span class="chip" style="--chip-line: var(--room-line)">{topic}</span>)}
-                </div>
-              </div>
             </div>
           </article>
         ))}
