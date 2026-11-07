@@ -67,6 +67,7 @@ export const PHOTOS = {
 } as const;
 
 export const SPONSOR_LOGOS = {
+  googleForDevelopers: photo("sponsor-google-for-developers", 547, 62),
   bhisa: photo("sponsor-bhisa", 1148, 417),
   mayar: photo("sponsor-mayar", 1188, 372),
   wpuCourse: photo("sponsor-wpu-course", 757, 258),

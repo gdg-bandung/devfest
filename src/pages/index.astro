@@ -37,6 +37,9 @@ const lastYear = [
 
 // Confirmed sponsors per tier. A logo links to `url` when set; empty slots fill the rest of the tier.
 const sponsors: Record<string, { name: string; logo: Photo; url?: string }[]> = {
+  Diamond: [
+    { name: "Google for Developers", logo: SPONSOR_LOGOS.googleForDevelopers, url: "https://developers.google.com/" },
+  ],
   Silver: [
     { name: "Bhisa (Bhinneka Sangkuriang)", logo: SPONSOR_LOGOS.bhisa, url: "https://bhisa.id/" },
     { name: "Mayar", logo: SPONSOR_LOGOS.mayar, url: "https://mayar.id" },
