@@ -8,7 +8,9 @@ export default defineConfig({
   site: "https://devfest.gdgbandung.com",
 
   redirects: {
-    "/cfp": "/cfs",
+    // The Call for Speakers has closed; send old links home.
+    "/cfs": "/",
+    "/cfp": "/",
   },
 
   build: {

@@ -191,7 +191,7 @@ a.fact:hover { color: var(--blue); }
 .rows { display: flex; flex-direction: column; border-top: 1px solid var(--rows-line, var(--line)); }
 .rows > * { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 20px 0; border-bottom: 1px solid var(--rows-line, var(--line)); }
 
-/* Builders Room color themes, shared by the home and CFS pages. */
+/* Builders Room color themes. */
 .room--app { --room: var(--blue); --room-on: var(--white); --room-soft: var(--blue-soft); --room-line: var(--blue-line); --room-ink: var(--blue-ink); }
 .room--platform { --room: var(--green); --room-on: var(--white); --room-soft: var(--green-soft); --room-line: var(--green-line); --room-ink: var(--green-ink); }
 .room--business { --room: var(--g-yellow); --room-on: var(--ink); --room-soft: var(--amber-soft); --room-line: var(--amber-line); --room-ink: var(--amber-ink); }
