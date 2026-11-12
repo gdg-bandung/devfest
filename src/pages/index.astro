@@ -62,11 +62,6 @@ const sponsorTiers = [
   { name: "Bronze", height: 60, min: 96, slots: 9, dot: "#c26401" },
 ];
 
-const speakerFormats = [
-  { title: "Builders Room Session", copy: "Codelab, workshop, or case study for App, Platform, or Business Builders." },
-  { title: "Main Stage Talk / Panel", copy: "Industry trends, global inspiration, implementation stories, or cross-role conversations." },
-  { title: "Human Activity Facilitator", copy: "Guide reflection, community conversations, or light mindfulness safely and inclusively." },
-];
 ---
 
 <EventLayout>
@@ -84,7 +79,6 @@ const speakerFormats = [
         </div>
         <div class="cluster hero-actions">
           <a class="btn btn--blue btn--lg" href={LINKS.register}>Register now →</a>
-          <a class="btn btn--ghost btn--lg hero-ghost" href="/cfs">Submit a talk</a>
           <a class="btn btn--ghost btn--lg hero-ghost" href="/sponsor">Become a sponsor</a>
         </div>
       </div>
@@ -267,24 +261,16 @@ const speakerFormats = [
     </div>
   </section>
 
-  <!-- SPONSOR + CFS -->
+  <!-- SPONSOR -->
   <section class="section section--white">
-    <div class="container auto-grid" style="--min: 340px; --gap: 20px">
-      <div class="promo" style="background: var(--blue-soft)">
-        <Eyebrow class="promo-eyebrow">Partner with us</Eyebrow>
-        <h2>Help people learn, connect, and feel at home in tech.</h2>
-        <p class="copy-17" style="line-height: 1.6">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
-        <div class="promo-action"><a class="btn btn--blue" href={LINKS.sponsorship}>Become a sponsor →</a></div>
-      </div>
-      <div class="promo" style="background: var(--paper)">
-        <Eyebrow>Call for speakers</Eyebrow>
-        <h2>Teach what you have learned. Share what makes you human.</h2>
-        <div class="rows promo-rows">
-          {speakerFormats.map((format) => (
-            <div><strong>{format.title}</strong><span>{format.copy}</span></div>
-          ))}
+    <div class="container">
+      <div class="promo">
+        <div class="promo-copy">
+          <Eyebrow class="promo-eyebrow">Partner with us</Eyebrow>
+          <h2>Help people learn, connect, and feel at home in tech.</h2>
+          <p class="copy-17" style="line-height: 1.6">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
         </div>
-        <div class="promo-action"><a class="btn btn--dark" href={LINKS.cfs}>Submit a talk →</a></div>
+        <a class="btn btn--blue promo-btn" href={LINKS.sponsorship}>Become a sponsor →</a>
       </div>
     </div>
   </section>
@@ -422,15 +408,12 @@ const speakerFormats = [
   .logo-card[href]:hover { border-color: var(--blue); box-shadow: 0 2px 10px rgba(26, 115, 232, 0.15); }
   .logo-card img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
-  /* Sponsor + CFS */
-  .promo { border-radius: 28px; padding: 44px; display: flex; flex-direction: column; gap: 20px; }
+  /* Sponsor */
+  .promo { background: var(--blue-soft); border-radius: 28px; padding: 48px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 64px; }
+  .promo-copy { flex: 1 1 520px; min-width: 0; max-width: 760px; display: flex; flex-direction: column; gap: 18px; }
   .promo h2 { margin: 0; font-size: clamp(30px, 3vw, 40px); line-height: 1.1; letter-spacing: -0.5px; }
-  .promo-action { margin-top: auto; padding-top: 8px; }
-  .promo-action .btn { font-size: 17px; }
   .promo :global(.promo-eyebrow) { color: var(--blue-ink); }
-  .promo-rows > div { flex-direction: column; gap: 4px; padding: 14px 0; }
-  .promo-rows strong { font-size: 17px; }
-  .promo-rows span { font-size: 15px; line-height: 1.5; color: var(--text-2); }
+  .promo-btn { flex: none; font-size: 17px; }
 
   /* FAQ */
   .faq-band { display: flex; flex-wrap: wrap; gap: 40px 64px; }

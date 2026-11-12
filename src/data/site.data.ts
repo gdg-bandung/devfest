@@ -14,7 +14,6 @@ export const SITE = {
 
 export const LINKS = {
   register: "https://gdgbandung.com/devfest2026",
-  cfs: "https://gdgbandung.com/devfest-cfs",
   sponsorship: "https://gdgbandung.com/devfest-sponsorship",
   maps: "https://share.google/eLtj4R1naoi7zoFjO",
   mapsEmbed: "https://maps.google.com/maps?q=%C3%A9L%20Hotel%20Bandung%2C%20Jl.%20Merdeka%20No.%202%2C%20Bandung&z=16&output=embed",
@@ -26,7 +25,6 @@ export const LINKS = {
 export const NAV_LINKS = [
   { name: "Home", href: "/" },
   { name: "Sponsor", href: "/sponsor" },
-  { name: "Call for Speakers", href: "/cfs" },
   { name: "Venue", href: "/venue" },
   { name: "FAQ", href: "/faq" },
 ] as const;
@@ -76,7 +74,7 @@ export const SPONSOR_LOGOS = {
   sessionize: photo("sponsor-sessionize", 1179, 216),
 } as const;
 
-/** The three parallel Builders Rooms, shared by the home and CFS pages. */
+/** The three parallel Builders Rooms shown on the home page. */
 export const ROOMS = [
   {
     key: "app",
@@ -152,16 +150,12 @@ export const FAQS = {
     question: "Can my company partner with DevFest Bandung?",
     answer: `Yes. Bring a product challenge for the Vibe Hackathon, support codelabs and charging lounges, activate a booth, or partner for The Human Activity. See the ${link("/sponsor", "sponsor page")} or email ${link(`mailto:${SITE.contactEmail}`, SITE.contactEmail)}.`,
   },
-  speak: {
-    question: "Can I speak at DevFest Bandung?",
-    answer: `Yes. We accept Builders Room sessions, Main Stage talks and panels, and Human Activity facilitators. See the ${link("/cfs", "Call for Speakers")}.`,
-  },
 } satisfies Record<string, Faq>;
 
 export const FAQ_GROUPS: { title: string; faqs: Faq[] }[] = [
   { title: "About the event", faqs: [FAQS.what, FAQS.audience, FAQS.when] },
   { title: "The program", faqs: [FAQS.rooms, FAQS.optional, FAQS.alone, FAQS.laptop] },
-  { title: "Registration & partners", faqs: [FAQS.register, FAQS.partner, FAQS.speak] },
+  { title: "Registration & partners", faqs: [FAQS.register, FAQS.partner] },
 ];
 
 export const HOME_FAQS: Faq[] = [FAQS.audience, FAQS.rooms, FAQS.optional, FAQS.laptop, FAQS.alone];
