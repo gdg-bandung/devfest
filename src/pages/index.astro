@@ -15,17 +15,9 @@ const reasons = [
 
 const pillars = [
   { number: "01", pill: "Main Stage", pillStyle: "", title: "Big ideas for a changing industry.", copy: "Keynotes and panel sessions to explore industry trends, the future of AI, and global stories that guide direction." },
-  { number: "02", pill: "The Builders Rooms", pillStyle: "--pill-bg: var(--blue)", href: "#rooms", title: "Choose your path. Build with depth.", copy: "Three parallel rooms: App Builders, Platform Builders, and Business Builders." },
+  { number: "02", pill: "The Tech Dimensions", pillStyle: "--pill-bg: var(--blue)", href: "#rooms", title: "Three parallel rooms where you can choose which Tech you want to learn.", copy: "The Tech you listen and build, or you choose to be one of the WonderWoman with all the chosen Women in Tech." },
   { number: "03", pill: "The Human Activity", pillStyle: "--pill-bg: var(--amber-chip); --pill-ink: var(--amber-ink)", href: "#human", title: "A space to pause, reflect, and connect.", copy: "Interactive activations for career reflection, light mindfulness, and conversations that reassure attendees they are not alone." },
-  { number: "04", pill: "Vibe Hackathon", pillStyle: "--pill-bg: var(--red)", href: "#hackathon", title: "Meet strangers. Make something together.", copy: "Problem-solving sprint in small teams to create solution concepts, architectures, or wireframes — and kickstart new connections." },
-];
-
-const hackathon = [
-  { label: "Format", value: "1-hour idea and problem-solving sprint" },
-  { label: "Team", value: "Teams formed randomly on the day" },
-  { label: "Output", value: "Solution concept, simple architecture, wireframe, or pitch" },
-  { label: "Ice breaker", value: "Nametag color matching and prompt cards" },
-  { label: "Finale", value: "Brief showcase for the most creative, most human, or most feasible ideas" },
+  { number: "04", pill: "Developer Playground", pillStyle: "--pill-bg: var(--red)", href: "#playground", title: "Put your workshop knowledge into practice!", copy: "Create a simple mini-project, experiment with new tools, and turn what you’ve learned into something real through hands-on activities." },
 ];
 
 const lastYear = [
@@ -138,20 +130,24 @@ const sponsorTiers = [
     </div>
   </section>
 
-  <!-- BUILDERS ROOMS -->
+  <!-- TECH DIMENSIONS -->
   <section id="rooms" class="section section--white">
     <div class="container stack" style="--gap: 48px">
       <div class="head">
-        <Eyebrow>Pick a room. Go deeper.</Eyebrow>
-        <h2 class="title">Three learning paths for every kind of builder.</h2>
+        <Eyebrow>02 · The Tech Dimensions</Eyebrow>
+        <h2 class="title">Pick a room. Go deeper.</h2>
       </div>
       <div class="auto-grid" style="--min: 300px">
         {ROOMS.map((room) => (
           <article class:list={["room", `room--${room.key}`]}>
-            <div class="room-head"><h3>{room.name}</h3><span class="mono room-label">{room.label}</span></div>
+            <div class="room-head"><h3>{room.name}</h3></div>
             <div class="room-body">
-              <p class="room-audience">{room.audience}</p>
-              <div class="room-field"><span class="mono room-field-label">Primary format</span><span class="room-format">{room.format}</span></div>
+              <p class="room-description">{room.description}</p>
+              <dl class="room-fields">
+                {room.fields.map((field) => (
+                  <div class="room-field"><dt class="mono room-field-label">{field.label}</dt><dd class="room-format">{field.value}</dd></div>
+                ))}
+              </dl>
             </div>
           </article>
         ))}
@@ -186,24 +182,15 @@ const sponsorTiers = [
     </div>
   </section>
 
-  <!-- VIBE HACKATHON -->
-  <section id="hackathon" class="hackathon">
-    <div class="container stack" style="--gap: 56px">
-      <div class="split" style="--gap: 32px 64px">
-        <div class="stack" style="flex: 1 1 520px; --gap: 20px">
-          <Eyebrow class="hackathon-eyebrow">04 · Vibe Hackathon</Eyebrow>
-          <h2 class="title hackathon-title">Strangers in. Collaborators out.</h2>
-        </div>
-        <p class="copy hackathon-copy" style="flex: 1 1 420px">No need to come with a team. In the Vibe Hackathon, you will be paired with other attendees to respond to a problem statement, design a solution, and present ideas in a light format. The goal isn’t a perfect product — the goal is starting conversations that continue after the event.</p>
+  <!-- DEVELOPER PLAYGROUND -->
+  <section id="playground" class="playground">
+    <div class="container playground-inner">
+      <div class="stack" style="flex: 1 1 480px; min-width: 0; --gap: 24px">
+        <Eyebrow class="playground-eyebrow">04 · Developer Playground</Eyebrow>
+        <h2 class="title playground-title">Turn what you’ve learned into something you can create!</h2>
+        <p class="copy playground-copy">In Developer Playground, participants will put their workshop knowledge into practice by working on a small, simple project. It’s an opportunity to experiment with new tools, explore ideas, and bring concepts to life through hands-on activities. The goal isn’t to build something perfect, but to learn by creating and gain confidence through the experience.</p>
       </div>
-      <div class="cluster" style="--gap: 24px">
-        <dl class="rows hackathon-rows">
-          {hackathon.map((row) => (
-            <div><dt class="mono">{row.label}</dt><dd>{row.value}</dd></div>
-          ))}
-        </dl>
-        <img class="photo hackathon-photo" src={PHOTOS.hackathonTables.src} srcset={srcset(PHOTOS.hackathonTables)} sizes="(max-width: 1100px) calc(100vw - 48px), 680px" width={PHOTOS.hackathonTables.width} height={PHOTOS.hackathonTables.height} alt="Attendees building together at shared tables with laptops" loading="lazy" decoding="async" />
-      </div>
+      <img class="photo playground-photo" src={PHOTOS.hackathonTables.src} srcset={srcset(PHOTOS.hackathonTables)} sizes="(max-width: 1100px) calc(100vw - 48px), 600px" width={PHOTOS.hackathonTables.width} height={PHOTOS.hackathonTables.height} alt="Attendees building together at shared tables with laptops" loading="lazy" decoding="async" />
     </div>
   </section>
 
@@ -327,12 +314,13 @@ const sponsorTiers = [
 
   /* Rooms */
   .room { border-radius: 24px; overflow: hidden; border: 1px solid var(--room-line); display: flex; flex-direction: column; }
-  .room-head { background: var(--room); color: var(--room-on); padding: 24px 28px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .room-head { background: var(--room); color: var(--room-on); padding: 24px 28px; }
   .room-head h3 { margin: 0; font-size: 26px; }
-  .room-label { font-size: 13px; border: 1px solid currentColor; border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
-  .room-body { flex: 1; background: var(--room-soft); padding: 28px; display: flex; flex-direction: column; gap: 18px; }
-  .room-audience { margin: 0; font-size: 17px; line-height: 1.55; }
+  .room-body { flex: 1; background: var(--room-soft); padding: 28px; display: flex; flex-direction: column; gap: 20px; }
+  .room-description { margin: 0; font-size: 17px; line-height: 1.6; }
+  .room-fields { margin: auto 0 0; padding-top: 4px; display: flex; flex-direction: column; gap: 14px; }
   .room-field { display: flex; flex-direction: column; gap: 4px; }
+  .room-field dd { margin: 0; }
   .room-field-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--room-ink); }
   .room-format { font-size: 17px; font-weight: 700; }
 
@@ -348,16 +336,13 @@ const sponsorTiers = [
   .human-photo { grid-column: span 2; height: 280px; object-position: center 35%; }
   .human-chat { grid-column: span 2; background: var(--white); border-radius: 20px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; font-size: 17px; line-height: 1.4; }
 
-  /* Hackathon */
-  .hackathon { background: var(--ink); color: var(--white); }
-  .hackathon .container { padding-top: 104px; padding-bottom: 104px; }
-  .hackathon :global(.hackathon-eyebrow) { color: var(--red-on-dark); }
-  .hackathon-title { font-size: clamp(38px, 4.8vw, 64px); line-height: 1.02; letter-spacing: -1.5px; }
-  .hackathon-copy { color: var(--line); line-height: 1.65; }
-  .hackathon-rows { --rows-line: var(--muted); flex: 1 1 520px; min-width: 0; margin: 0; }
-  .hackathon-rows dt { flex: 0 0 160px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--red-on-dark); }
-  .hackathon-rows dd { flex: 1 1 260px; margin: 0; font-size: 18px; }
-  .hackathon-photo { flex: 1 1 380px; min-width: 0; width: 100%; height: 380px; }
+  /* Developer Playground */
+  .playground { background: var(--ink); color: var(--white); }
+  .playground-inner { padding-top: 104px; padding-bottom: 104px; display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: center; }
+  .playground :global(.playground-eyebrow) { color: var(--red-on-dark); }
+  .playground-title { line-height: 1.06; }
+  .playground-copy { color: var(--line); line-height: 1.65; }
+  .playground-photo { flex: 1 1 380px; min-width: 0; width: 100%; height: 380px; }
 
   /* Recap */
   .recap-title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; }
@@ -422,7 +407,7 @@ const sponsorTiers = [
     .hero-photos { grid-template-rows: 220px 140px; }
     .hero-photo-main { min-height: 0; }
     .hero-photo-sub { height: 140px; }
-    .hackathon-photo { height: 240px; }
+    .playground-photo { height: 240px; }
     .promo { padding: 28px; }
     .stat-value { font-size: 38px; }
   }
