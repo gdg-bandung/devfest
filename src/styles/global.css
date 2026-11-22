@@ -191,10 +191,10 @@ a.fact:hover { color: var(--blue); }
 .rows { display: flex; flex-direction: column; border-top: 1px solid var(--rows-line, var(--line)); }
 .rows > * { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 20px 0; border-bottom: 1px solid var(--rows-line, var(--line)); }
 
-/* Builders Room color themes. */
-.room--app { --room: var(--blue); --room-on: var(--white); --room-soft: var(--blue-soft); --room-line: var(--blue-line); --room-ink: var(--blue-ink); }
-.room--platform { --room: var(--green); --room-on: var(--white); --room-soft: var(--green-soft); --room-line: var(--green-line); --room-ink: var(--green-ink); }
-.room--business { --room: var(--g-yellow); --room-on: var(--ink); --room-soft: var(--amber-soft); --room-line: var(--amber-line); --room-ink: var(--amber-ink); }
+/* Tech Dimensions room color themes. */
+.room--listen { --room: var(--blue); --room-on: var(--white); --room-soft: var(--blue-soft); --room-line: var(--blue-line); --room-ink: var(--blue-ink); }
+.room--inspire { --room: var(--green); --room-on: var(--white); --room-soft: var(--green-soft); --room-line: var(--green-line); --room-ink: var(--green-ink); }
+.room--build { --room: var(--g-yellow); --room-on: var(--ink); --room-soft: var(--amber-soft); --room-line: var(--amber-line); --room-ink: var(--amber-ink); }
 
 /* ---------- Buttons ---------- */
 
@@ -363,6 +363,7 @@ a.fact:hover { color: var(--blue); }
 .faq-item .plus { font-size: 24px; line-height: 1; transition: transform 0.2s; }
 .faq-item[open] .plus { transform: rotate(45deg); }
 .faq-item p { margin: 14px 0 0; font-size: 17px; line-height: 1.6; color: var(--text-2); }
+.faq-item p + p { margin-top: 10px; }
 
 /* ---------- Responsive ---------- */
 

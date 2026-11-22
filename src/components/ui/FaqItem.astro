@@ -11,5 +11,5 @@ const { faq, open = false } = Astro.props;
 
 <details class="faq-item" open={open}>
   <summary>{faq.question}<span class="plus" aria-hidden="true">+</span></summary>
-  <p set:html={faq.answer} />
+  {faq.answer.map((paragraph) => <p set:html={paragraph} />)}
 </details>

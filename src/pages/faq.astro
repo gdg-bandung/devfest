@@ -2,7 +2,7 @@
 import EventLayout from "../components/layout/EventLayout.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
 import FaqItem from "../components/ui/FaqItem.astro";
-import { FAQ_GROUPS, SITE } from "../data/site.data";
+import { FAQ_GROUPS, LINKS } from "../data/site.data";
 ---
 
 <EventLayout title="FAQ — DevFest Bandung 2026">
@@ -11,7 +11,7 @@ import { FAQ_GROUPS, SITE } from "../data/site.data";
       <div class="stack intro" style="--gap: 20px">
         <Eyebrow color="var(--g-yellow)" strong>FAQ</Eyebrow>
         <h1 class="display faq-title">Questions, answered.</h1>
-        <p class="copy-17" style="font-size: 18px; line-height: 1.6">Still curious? Email <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</p>
+        <p class="copy-17" style="font-size: 18px; line-height: 1.6">Still curious? Reach us at <a href={LINKS.connect}>connect.gdgbandung.com</a>.</p>
       </div>
 
       <div class="stack groups" style="--gap: 36px">
