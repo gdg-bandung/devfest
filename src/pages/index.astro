@@ -32,10 +32,15 @@ const sponsors: Record<string, { name: string; logo: Photo; url?: string }[]> = 
   Diamond: [
     { name: "Google for Developers", logo: SPONSOR_LOGOS.googleForDevelopers, url: "https://developers.google.com/" },
   ],
+  Platinum: [
+    { name: "Logitech", logo: SPONSOR_LOGOS.logitech, url: "https://www.logitech.com/" },
+  ],
   Silver: [
     { name: "Bhisa (Bhinneka Sangkuriang)", logo: SPONSOR_LOGOS.bhisa, url: "https://bhisa.id/" },
     { name: "Mayar", logo: SPONSOR_LOGOS.mayar, url: "https://mayar.id" },
     { name: "WPU Course", logo: SPONSOR_LOGOS.wpuCourse, url: "https://wpucourse.id/" },
+    { name: "Paragon Corp", logo: SPONSOR_LOGOS.paragon, url: "https://www.paragon-innovation.com/" },
+    { name: "Sandisk", logo: SPONSOR_LOGOS.sandisk, url: "https://www.sandisk.com/" },
   ],
   Bronze: [
     { name: "Brodo", logo: SPONSOR_LOGOS.brodo, url: "https://bro.do" },
@@ -47,10 +52,10 @@ const sponsors: Record<string, { name: string; logo: Photo; url?: string }[]> = 
 // Logo size per tier follows the sponsorship deck, from Diamond (largest) down to Bronze.
 // `slots` is both the number of logos per row and the slots shown before the tier fills up.
 const sponsorTiers = [
-  { name: "Diamond", height: 128, min: 220, slots: 2, dot: "var(--g-blue)" },
-  { name: "Platinum", height: 108, min: 190, slots: 3, dot: "var(--ink)" },
+  { name: "Diamond", height: 128, min: 220, slots: 1, dot: "var(--g-blue)" },
+  { name: "Platinum", height: 108, min: 190, slots: 2, dot: "var(--ink)" },
   { name: "Gold", height: 88, min: 150, slots: 4, dot: "var(--g-yellow)" },
-  { name: "Silver", height: 72, min: 120, slots: 6, dot: "var(--footer-muted)" },
+  { name: "Silver", height: 72, min: 170, slots: 6, dot: "var(--footer-muted)" },
   { name: "Bronze", height: 60, min: 96, slots: 9, dot: "#c26401" },
 ];
 
