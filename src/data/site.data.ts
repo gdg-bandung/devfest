@@ -72,6 +72,9 @@ export const SPONSOR_LOGOS = {
   brodo: photo("sponsor-brodo", 1038, 319),
   jetbrains: photo("sponsor-jetbrains", 1192, 256),
   sessionize: photo("sponsor-sessionize", 1179, 216),
+  logitech: photo("sponsor-logitech", 1200, 365),
+  paragon: photo("sponsor-paragon", 1123, 154),
+  sandisk: photo("sponsor-sandisk", 1200, 121),
 } as const;
 
 /** The three parallel Tech Dimensions rooms shown on the home page. */
