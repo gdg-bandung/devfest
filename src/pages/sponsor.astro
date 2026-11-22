@@ -5,15 +5,15 @@ import CtaBand from "../components/ui/CtaBand.astro";
 import { LINKS, PHOTOS, SITE, srcset } from "../data/site.data";
 
 const ways = [
-  { pill: "Vibe Hackathon", pillStyle: "--pill-bg: var(--red)", bg: "var(--red-soft)", title: "Bring a product challenge", copy: "Your challenge becomes the problem statement that teams of strangers solve together in a 1-hour sprint." },
-  { pill: "Builders Rooms", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Support codelabs & charging lounges", copy: "Power the hands-on sessions in App, Platform, and Business Builders rooms, and keep attendees charged all day." },
+  { pill: "Developer Playground", pillStyle: "--pill-bg: var(--red)", bg: "var(--red-soft)", title: "Put your tools in builders’ hands", copy: "Attendees try your product while they build a small project of their own after the workshop." },
+  { pill: "Tech You Build", pillStyle: "--pill-bg: var(--blue)", bg: "var(--blue-soft)", title: "Run a hands-on workshop", copy: "Lead a guided session where attendees follow along step by step with your product, and keep their laptops charged all day." },
   { pill: "Booth", pillStyle: "", bg: "var(--paper)", title: "Activate a booth that helps", copy: "Demos, consultations, or tools attendees can use on the spot — a booth people want to visit." },
   { pill: "The Human Activity", human: true, bg: "var(--cream)", title: "Partner for The Human Activity", copy: "Back the space for career reflection, light mindfulness, and conversations that remind people they are not alone." },
 ];
 
 const reasons = [
   { number: "01", title: "Reach the right people", copy: `${SITE.capacity} developers, students, founders, and tech enthusiasts in one room, choosing what to learn and who to meet.` },
-  { number: "02", title: "Make your product useful", copy: "Show real use cases through a codelab, a hackathon challenge, or a booth people actually want to visit." },
+  { number: "02", title: "Make your product useful", copy: "Show real use cases through a workshop, a tool in the Developer Playground, or a booth people actually want to visit." },
   { number: "03", title: "Build lasting trust", copy: "Support the local GDG ecosystem that meets, learns, and builds in Bandung all year round." },
 ];
 
@@ -41,7 +41,7 @@ const gallery = [
       <div class="stack" style="flex: 1 1 560px; min-width: 0; --gap: 24px">
         <Eyebrow color="var(--g-blue)" strong>Sponsorship 2026</Eyebrow>
         <h1 class="display">Help people learn, connect, and feel at home in tech.</h1>
-        <p class="lead" style="max-width: 680px">The partnership at DevFest Bandung is more than just a logo. Bring a product challenge for the Vibe Hackathon, support charging lounges and codelabs, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
+        <p class="lead" style="max-width: 680px">The partnership at DevFest Bandung is more than just a logo. Run a workshop in Tech You Build, put your tools in the Developer Playground, support charging lounges, activate booths that help attendees, or partner for The Human Activity. We are looking for brands that want to bring real value to {SITE.capacity} builders in Bandung.</p>
         <div class="cluster" style="--gap: 10px">
           <div class="fact"><span class="dot dot--sm"></span><span><strong>{SITE.dateShort}</strong> · {SITE.time}</span></div>
           <a class="fact" href={LINKS.maps}><span class="dot dot--sm" style="--dot: var(--g-red)"></span>{SITE.venue} ↗</a>
