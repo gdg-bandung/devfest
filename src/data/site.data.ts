@@ -65,7 +65,8 @@ export const PHOTOS = {
 } as const;
 
 export const SPONSOR_LOGOS = {
-  googleForDevelopers: photo("sponsor-google-for-developers", 547, 62),
+  // SVG: the Diamond tile renders this logo far wider than any raster we have, so a bitmap blurs.
+  googleForDevelopers: { src: "/images/2026/sponsor-google-for-developers.svg", width: 243, height: 24 },
   bhisa: photo("sponsor-bhisa", 1148, 417),
   mayar: photo("sponsor-mayar", 1188, 372),
   wpuCourse: photo("sponsor-wpu-course", 757, 258),
